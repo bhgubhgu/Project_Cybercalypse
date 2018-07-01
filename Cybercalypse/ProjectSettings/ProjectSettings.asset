@@ -3,23 +3,41 @@
 --- !u!129 &1
 PlayerSettings:
   m_ObjectHideFlags: 0
+<<<<<<< HEAD
+  serializedVersion: 15
+  productGUID: ff151b23d4911194db6f9845eaf346e6
+  AndroidProfiler: 0
+  AndroidFilterTouchesWhenObscured: 0
+  AndroidEnableSustainedPerformanceMode: 0
+=======
   serializedVersion: 14
   productGUID: 964ad4ec1355b644180f2238ff367fc9
   AndroidProfiler: 0
   AndroidFilterTouchesWhenObscured: 0
+>>>>>>> dev
   defaultScreenOrientation: 4
   targetDevice: 2
   useOnDemandResources: 0
   accelerometerFrequency: 60
+<<<<<<< HEAD
+  companyName: DefaultCompany
+  productName: Cybercalypse
+  defaultCursor: {fileID: 0}
+=======
   companyName: PhantasyLab
   productName: Cybercalypse
   defaultCursor: {fileID: 2800000, guid: 0e1f18ecc23ebef44a3bba41461bc916, type: 3}
+>>>>>>> dev
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
   m_ShowUnitySplashScreen: 1
   m_ShowUnitySplashLogo: 1
   m_SplashScreenOverlayOpacity: 1
+<<<<<<< HEAD
+  m_SplashScreenAnimation: 1
+=======
   m_SplashScreenAnimation: 0
+>>>>>>> dev
   m_SplashScreenLogoStyle: 1
   m_SplashScreenDrawMode: 0
   m_SplashScreenBackgroundAnimationZoom: 1
@@ -41,8 +59,13 @@ PlayerSettings:
   m_SplashScreenLogos: []
   m_VirtualRealitySplashScreen: {fileID: 0}
   m_HolographicTrackingLossScreen: {fileID: 0}
+<<<<<<< HEAD
+  defaultScreenWidth: 1024
+  defaultScreenHeight: 768
+=======
   defaultScreenWidth: 1028
   defaultScreenHeight: 728
+>>>>>>> dev
   defaultScreenWidthWeb: 960
   defaultScreenHeightWeb: 600
   m_StereoRenderingPath: 0
@@ -64,11 +87,18 @@ PlayerSettings:
   preserveFramebufferAlpha: 0
   disableDepthAndStencilBuffers: 0
   androidBlitType: 0
+<<<<<<< HEAD
+  defaultIsNativeResolution: 1
+  macRetinaSupport: 1
+  runInBackground: 0
+  captureSingleScreen: 0
+=======
   defaultIsFullScreen: 1
   defaultIsNativeResolution: 0
   macRetinaSupport: 1
   runInBackground: 1
   captureSingleScreen: 1
+>>>>>>> dev
   muteOtherAudioSources: 0
   Prepare IOS For Recording: 0
   Force IOS Speakers When Recording: 0
@@ -91,8 +121,12 @@ PlayerSettings:
   visibleInBackground: 1
   allowFullscreenSwitch: 1
   graphicsJobMode: 0
+<<<<<<< HEAD
+  fullscreenMode: 1
+=======
   macFullscreenMode: 2
   d3d11FullscreenMode: 1
+>>>>>>> dev
   xboxSpeechDB: 0
   xboxEnableHeadOrientation: 0
   xboxEnableGuest: 0
@@ -108,6 +142,12 @@ PlayerSettings:
   xboxOneLoggingLevel: 1
   xboxOneDisableEsram: 0
   xboxOnePresentImmediateThreshold: 0
+<<<<<<< HEAD
+  switchQueueCommandMemory: 0
+  videoMemoryForVertexBuffers: 0
+  psp2PowerMode: 0
+  psp2AcquireBGM: 1
+=======
   videoMemoryForVertexBuffers: 0
   psp2PowerMode: 0
   psp2AcquireBGM: 1
@@ -120,6 +160,7 @@ PlayerSettings:
   wiiUSupportsProController: 0
   wiiUAllowScreenCapture: 1
   wiiUControllerCount: 0
+>>>>>>> dev
   m_SupportedAspectRatios:
     4:3: 1
     5:4: 1
@@ -147,6 +188,10 @@ PlayerSettings:
     hololens:
       depthFormat: 1
       depthBufferSharingEnabled: 0
+<<<<<<< HEAD
+    enable360StereoCapture: 0
+=======
+>>>>>>> dev
     oculus:
       sharedDepthBuffer: 0
       dashSupport: 0
@@ -157,8 +202,12 @@ PlayerSettings:
   resolutionScalingMode: 0
   androidSupportedAspectRatio: 1
   androidMaxAspectRatio: 2.1
+<<<<<<< HEAD
+  applicationIdentifier: {}
+=======
   applicationIdentifier:
     Standalone: com.phantasylab.cybercalypse
+>>>>>>> dev
   buildNumber: {}
   AndroidBundleVersionCode: 1
   AndroidMinSdkVersion: 16
@@ -174,9 +223,13 @@ PlayerSettings:
   APKExpansionFiles: 0
   keepLoadedShadersAlive: 0
   StripUnusedMeshComponents: 0
+<<<<<<< HEAD
+  VertexChannelCompressionMask: 4054
+=======
   VertexChannelCompressionMask:
     serializedVersion: 2
     m_Bits: 4294901998
+>>>>>>> dev
   iPhoneSdkVersion: 988
   iOSTargetOSVersionString: 8.0
   tvOSSdkVersion: 0
@@ -205,6 +258,10 @@ PlayerSettings:
   tvOSSmallIconLayers: []
   tvOSSmallIconLayers2x: []
   tvOSLargeIconLayers: []
+<<<<<<< HEAD
+  tvOSLargeIconLayers2x: []
+=======
+>>>>>>> dev
   tvOSTopShelfImageLayers: []
   tvOSTopShelfImageLayers2x: []
   tvOSTopShelfImageWideLayers: []
@@ -238,9 +295,21 @@ PlayerSettings:
   appleDeveloperTeamID: 
   iOSManualSigningProvisioningProfileID: 
   tvOSManualSigningProvisioningProfileID: 
+<<<<<<< HEAD
+  iOSManualSigningProvisioningProfileType: 0
+  tvOSManualSigningProvisioningProfileType: 0
+  appleEnableAutomaticSigning: 0
+  iOSRequireARKit: 0
+  appleEnableProMotion: 0
+  clonedFromGUID: 00000000000000000000000000000000
+  templatePackageId: 
+  templateDefaultScene: 
+  AndroidTargetArchitectures: 1
+=======
   appleEnableAutomaticSigning: 0
   clonedFromGUID: 00000000000000000000000000000000
   AndroidTargetDevice: 0
+>>>>>>> dev
   AndroidSplashScreenScale: 0
   androidSplashScreen: {fileID: 0}
   AndroidKeystoreName: 
@@ -256,6 +325,10 @@ PlayerSettings:
     banner: {fileID: 0}
   androidGamepadSupportLevel: 0
   resolutionDialogBanner: {fileID: 0}
+<<<<<<< HEAD
+  m_BuildTargetIcons: []
+  m_BuildTargetPlatformIcons: []
+=======
   m_BuildTargetIcons:
   - m_BuildTarget: 
     m_Icons:
@@ -264,6 +337,7 @@ PlayerSettings:
       m_Width: 128
       m_Height: 128
       m_Kind: 0
+>>>>>>> dev
   m_BuildTargetBatching: []
   m_BuildTargetGraphicsAPIs: []
   m_BuildTargetVRSettings: []
@@ -276,6 +350,10 @@ PlayerSettings:
     iPhone: 1
     tvOS: 1
   m_BuildTargetGroupLightmapEncodingQuality: []
+<<<<<<< HEAD
+  playModeTestRunnerEnabled: 0
+  runPlayModeTestAsEditModeTest: 0
+=======
   wiiUTitleID: 0005000011000000
   wiiUGroupID: 00010000
   wiiUCommonSaveSize: 4096
@@ -295,6 +373,7 @@ PlayerSettings:
   wiiUDrcBufferDisabled: 0
   wiiUProfilerLibPath: 
   playModeTestRunnerEnabled: 0
+>>>>>>> dev
   actionOnDotNetUnhandledException: 1
   enableInternalProfiler: 0
   logObjCUncaughtExceptions: 1
@@ -470,12 +549,20 @@ PlayerSettings:
   ps4pnFriends: 1
   ps4pnGameCustomData: 1
   playerPrefsSupport: 0
+<<<<<<< HEAD
+  enableApplicationExit: 0
+=======
+>>>>>>> dev
   restrictedAudioUsageRights: 0
   ps4UseResolutionFallback: 0
   ps4ReprojectionSupport: 0
   ps4UseAudio3dBackend: 0
   ps4SocialScreenEnabled: 0
+<<<<<<< HEAD
+  ps4ScriptOptimizationLevel: 2
+=======
   ps4ScriptOptimizationLevel: 0
+>>>>>>> dev
   ps4Audio3dVirtualSpeakerCount: 14
   ps4attribCpuUsage: 0
   ps4PatchPkgPath: 
@@ -539,8 +626,12 @@ PlayerSettings:
   psp2UseLibLocation: 0
   psp2InfoBarOnStartup: 0
   psp2InfoBarColor: 0
+<<<<<<< HEAD
+  psp2ScriptOptimizationLevel: 2
+=======
   psp2ScriptOptimizationLevel: 0
   psmSplashimage: {fileID: 0}
+>>>>>>> dev
   splashScreenBackgroundSourceLandscape: {fileID: 0}
   splashScreenBackgroundSourcePortrait: {fileID: 0}
   spritePackerPolicy: 
@@ -554,12 +645,23 @@ PlayerSettings:
   webGLTemplate: APPLICATION:Default
   webGLAnalyzeBuildSize: 0
   webGLUseEmbeddedResources: 0
+<<<<<<< HEAD
+  webGLCompressionFormat: 1
+  webGLLinkerTarget: 0
+  scriptingDefineSymbols: {}
+  platformArchitecture: {}
+  scriptingBackend: {}
+  il2cppCompilerConfiguration: {}
+  incrementalIl2cppBuild: {}
+  allowUnsafeCode: 0
+=======
   webGLUseWasm: 0
   webGLCompressionFormat: 1
   scriptingDefineSymbols: {}
   platformArchitecture: {}
   scriptingBackend: {}
   incrementalIl2cppBuild: {}
+>>>>>>> dev
   additionalIl2CppArgs: 
   scriptingRuntimeVersion: 0
   apiCompatibilityLevelPerPlatform: {}
@@ -632,11 +734,23 @@ PlayerSettings:
   XboxOneSplashScreen: {fileID: 0}
   XboxOneAllowedProductIds: []
   XboxOnePersistentLocalStorageSize: 0
+<<<<<<< HEAD
+  XboxOneXTitleMemory: 8
+=======
+>>>>>>> dev
   xboxOneScriptCompiler: 0
   vrEditorSettings:
     daydream:
       daydreamIconForeground: {fileID: 0}
       daydreamIconBackground: {fileID: 0}
+<<<<<<< HEAD
+  cloudServicesEnabled: {}
+  facebookSdkVersion: 7.9.4
+  apiCompatibilityLevel: 2
+  cloudProjectId: 
+  projectName: 
+  organizationId: 
+=======
   cloudServicesEnabled:
     Build: 0
     Collab: 1
@@ -648,6 +762,7 @@ PlayerSettings:
   cloudProjectId: e279372c-2aa6-49be-96a2-2969b5b7c5b3
   projectName: Cybercalypse
   organizationId: phantasy_lab
+>>>>>>> dev
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0
   disableOldInputManagerSupport: 0
