@@ -12,6 +12,9 @@ Developer: **PhantasyLab**, Publisher: **PhantasyLab**
   - **Lee Jumyeong**: Senior Artist
   - **Ju Huijin**: Intermediate Artist
   - **Kim Taeyeon**: Intermidate Artist
+  
+- - -
+  
 * Platform
   - PC
     + Windows
@@ -21,3 +24,5 @@ Developer: **PhantasyLab**, Publisher: **PhantasyLab**
     + Xbox One
     + PlayStation 4
     + Nintendo Switch
+
+- - -
