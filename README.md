@@ -13,9 +13,11 @@ Developer: **PhantasyLab**, Publisher: **PhantasyLab**
   - **Ju Huijin**: Intermediate Artist
   - **Kim Taeyeon**: Intermidate Artist
 * Platform
-  - Windows
-  - Linux
-  - macOS
-  - Xbox One
-  - PlayStation 4
-  - Nintendo Switch
+  - PC
+    + Windows
+    + Linux
+    + macOS
+  - Console 
+    + Xbox One
+    + PlayStation 4
+    + Nintendo Switch
