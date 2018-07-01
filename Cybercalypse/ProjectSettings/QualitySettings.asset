@@ -4,6 +4,7 @@
 QualitySettings:
   m_ObjectHideFlags: 0
   serializedVersion: 5
+<<<<<<< HEAD
   m_CurrentQuality: 5
   m_QualitySettings:
   - serializedVersion: 2
@@ -148,6 +149,12 @@ QualitySettings:
     excludedTargetPlatforms: []
   - serializedVersion: 2
     name: Ultra
+=======
+  m_CurrentQuality: 0
+  m_QualitySettings:
+  - serializedVersion: 2
+    name: Standard
+>>>>>>> dev
     pixelLightCount: 4
     shadows: 2
     shadowResolution: 2
@@ -161,7 +168,11 @@ QualitySettings:
     blendWeights: 4
     textureQuality: 0
     anisotropicTextures: 2
+<<<<<<< HEAD
     antiAliasing: 2
+=======
+    antiAliasing: 0
+>>>>>>> dev
     softParticles: 1
     softVegetation: 1
     realtimeReflectionProbes: 1
@@ -173,6 +184,7 @@ QualitySettings:
     asyncUploadTimeSlice: 2
     asyncUploadBufferSize: 4
     resolutionScalingFixedDPIFactor: 1
+<<<<<<< HEAD
     excludedTargetPlatforms: []
   m_PerPlatformDefaultQuality:
     Android: 2
@@ -187,3 +199,22 @@ QualitySettings:
     XboxOne: 5
     iPhone: 2
     tvOS: 2
+=======
+    excludedTargetPlatforms:
+    - WebGL
+  m_PerPlatformDefaultQuality:
+    Android: 0
+    Nintendo 3DS: 0
+    Nintendo Switch: 0
+    PS4: 0
+    PSM: 0
+    PSP2: 0
+    Standalone: 0
+    Tizen: 0
+    WebGL: 0
+    WiiU: 0
+    Windows Store Apps: 0
+    XboxOne: 0
+    iPhone: 0
+    tvOS: 0
+>>>>>>> dev
