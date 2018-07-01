@@ -4,7 +4,7 @@ Project Cybercalypse
 Developer: **PhantasyLab**, Publisher: **PhantasyLab**
 
 * Crew
-  - Kim Hyeonu: Producer / Lead Engineer
+  - **Kim Hyeonu**: Producer / Lead Engineer
   - Jo Daemosuri: Senior Designer
   - Ku Yongmo: Senior Engineer
   - Yun Dongjun: Intermediate Engineer
