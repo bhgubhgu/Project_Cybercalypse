@@ -9,8 +9,8 @@ Developer: **PhantasyLab**, Publisher: **PhantasyLab**
   - **Ku Yongmo**: Senior Engineer
   - **Yun Dongjun**: Intermediate Engineer
   - **Jo Huijae**: Intermediate Engineer
-  - **Lee Jumyeong**: Senior Artist
-  - **Ju Huijin**: Intermediate Artist
+  - **Lee Jumyeong**: Lead Artist
+  - **Ju Huijin**: Senior Artist
   - **Kim Taeyeon**: Intermidate Artist
   
 - - -
