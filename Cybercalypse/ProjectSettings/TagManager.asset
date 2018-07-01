@@ -3,6 +3,9 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
+<<<<<<< HEAD
+  tags: []
+=======
   tags:
   - Executor
   - Malware
@@ -13,6 +16,7 @@ TagManager:
   - Slot
   - Skill
   - Ability
+>>>>>>> dev
   layers:
   - Default
   - TransparentFX
@@ -22,6 +26,32 @@ TagManager:
   - UI
   - 
   - 
+<<<<<<< HEAD
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+=======
   - Ground
   - Player
   - NomalAttack
@@ -46,10 +76,13 @@ TagManager:
   - Minimap
   - BackGround
   - InstantConsumable
+>>>>>>> dev
   m_SortingLayers:
   - name: Default
     uniqueID: 0
     locked: 0
+<<<<<<< HEAD
+=======
   - name: 'Background '
     uniqueID: 2503228959
     locked: 0
@@ -74,3 +107,4 @@ TagManager:
   - name: Foreground
     uniqueID: 156309363
     locked: 0
+>>>>>>> dev

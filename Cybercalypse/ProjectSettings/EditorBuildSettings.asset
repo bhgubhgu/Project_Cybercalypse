@@ -4,6 +4,10 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
+<<<<<<< HEAD
+  m_Scenes: []
+  m_configObjects: {}
+=======
   m_Scenes:
   - enabled: 0
     path: Assets/Cybercalypse/Scenes/Insdie Game Scenes/Scene_InfectedArea00_2(CurrentScene).unity
@@ -14,3 +18,4 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Cybercalypse/Scenes/Insdie Game Scenes/Scene_InfectedArea00_2(CurrentScene).unity
     guid: 20ef763abee7abf468dacf3d3da4692a
+>>>>>>> dev
