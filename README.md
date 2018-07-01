@@ -26,3 +26,8 @@ Developer: **PhantasyLab**, Publisher: **PhantasyLab**
     + Nintendo Switch
 
 - - -
+
+* Tools
+  - Game Engine: Unity
+  - IDE: Visual Studio 2017 Community
+  - Code Editor: Visual Studio Code
