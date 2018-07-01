@@ -1,5 +1,4 @@
 Project Cybercalypse
 ====
 
-Developer: **PhantasyLab**
-Publisher: **PhantasyLab**
+Developer: **PhantasyLab**, Publisher: **PhantasyLab**
