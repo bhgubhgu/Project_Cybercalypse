@@ -1,6 +1,9 @@
 Project Cybercalypse
 ====
 
+Author: Kim Hyeonu, Last modified date: 2018. 07. 01
+---
+
 Developer: **PhantasyLab**, Publisher: **PhantasyLab**
 
 * Crew
@@ -31,3 +34,5 @@ Developer: **PhantasyLab**, Publisher: **PhantasyLab**
   - Game Engine: Unity
   - IDE: Visual Studio 2017 Community
   - Code Editor: Visual Studio Code
+
+- - -
