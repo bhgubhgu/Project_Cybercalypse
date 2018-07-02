@@ -13,18 +13,9 @@ public class CGameManager : SingleTonManager<CGameManager>
     /// 최종 수정일 : 2018.06.30
     /// </summary>
 
-    /*public GameObject bossWall1;
-    public GameObject bossWall2;
-    public GameObject bossWallTrigger1;
-    public GameObject bossWallTrigger2;*/
-
     public bool isPlayerInvincible;
     public GameObject playerObject;
-
-    /*public Texture2D crossHair;
-    public Texture2D standard;*/
-
-    /*public GameObject cursor;*/
+    public GameObject skillLibrary;
 
     public bool isDead;
     public bool isGameOver;
@@ -38,66 +29,22 @@ public class CGameManager : SingleTonManager<CGameManager>
     private GameObject retryText;
     private GameObject retryButton;
 
-    //   IA00_2_Feature_Door (0)
-    //!< IA00_2_Device_Lever (0)
-    //public List<PassageTrigger> doors;
-    //public List<bool> isDoorOpen;
-    //public List<Sprite> skillSprites;
-    //public List<int> skillIndex;
-    /*public static List<PassageTrigger> doors;*/
-
-   /* public bool[] bDoors;
-    public static List<bool> isDoorOpen;
-
-    public List<Sprite> originSprites;
-    public static List<Sprite> skillSprites;
-
-    public List<int> originSkillIndex;
-    public static List<int> skillIndex;*/
-
-    //!< Popup Window
-    /*public Transform popupWindow;*/
     private Text content;
-    //!< LootItem
-   /* public Transform SkillGroup;*/
 
     private new void Awake()
     {
         base.Awake();
-       /* bossWall1 = GameObject.Find("BossWall1").gameObject;
-        bossWall2 = GameObject.Find("BossWall2").gameObject;
-
-        bossWallTrigger1 = GameObject.Find("BossWallTrigger1").gameObject;
-        bossWallTrigger2 = GameObject.Find("BossWallTrigger2").gameObject;*/
 
         sprite = playerObject.GetComponent<SpriteRenderer>();
 
         fadeObject = transform.Find("Fade").gameObject;
         fadeObject.GetComponent<SpriteRenderer>().color = Color.clear;
 
-        //retryText = fadeObject.transform.Find("Retry").gameObject;
-        //retryText.GetComponent<TextMesh>().color = Color.clear;
-
-        //retryButton = fadeObject.transform.Find("RetryButton").gameObject;
-        //retryButton.GetComponent<TextMesh>().color = Color.clear;
-        
-        //content = popupWindow.Find("Content").GetComponent<Text>();
-
-        /*if (isDoorOpen == null)
-            isDoorOpen = new List<bool>(bDoors);
-        if (skillSprites == null)
-            skillSprites = new List<Sprite>(originSprites);
-        if (skillIndex == null)
-            skillIndex = new List<int>(originSkillIndex);*/
+        skillLibrary = GameObject.Find("Skill Library").gameObject;
     }
 
     private void Start()
     {
-        /*bossWall1.SetActive(false);
-        bossWall2.SetActive(false);*/
-
-       // popupWindow.gameObject.SetActive(false);
-
         CInputManager.instance.GamePause += GamePause;
         CInputManager.instance.GameRetry += isRetry;
         CInputManager.instance.MenuClose += TurnOffWindow;
@@ -107,7 +54,6 @@ public class CGameManager : SingleTonManager<CGameManager>
 
     public void GamePause(bool isGamePauseNow)
     {
-        /*cursorTexturePosition = new Vector2(crossHair.width * 0.5f, crossHair.height * 0.5f);*/
         //crossHair 중심을 마우스 좌표로 사용하기 위해 crossHair 텍스쳐의 정 중앙의 포지션으로 놓는다.
 
         if(isGamePauseNow)
@@ -118,8 +64,6 @@ public class CGameManager : SingleTonManager<CGameManager>
         else
         {
             Cursor.visible = false;
-           /* Cursor.SetCursor(crossHair, cursorTexturePosition, CursorMode.Auto);
-            cursor.GetComponent<RawImage>().texture = crossHair;*/
         }
     }
 
@@ -137,7 +81,6 @@ public class CGameManager : SingleTonManager<CGameManager>
     {
         Time.timeScale = 0.7f;
 
-        //playerObject.SetActive(false);
         isDead = true;
         StartCoroutine(FadeOut(5.0f));
     }
@@ -171,13 +114,11 @@ public class CGameManager : SingleTonManager<CGameManager>
 
     public void TurnOnWindow()
     {
-        //popupWindow.gameObject.SetActive(true);
     }
 
     public void TurnOffWindow(bool isMenuClose)
     {
-        //if (isMenuClose)
-            //popupWindow.gameObject.SetActive(false);
+
     }
 
     IEnumerator HasBlink()
@@ -241,7 +182,6 @@ public class CGameManager : SingleTonManager<CGameManager>
 
     IEnumerator slowlyTime()
     {
-
         yield return null;
     }
 
