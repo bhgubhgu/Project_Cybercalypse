@@ -21,22 +21,6 @@ public class TestPlayerSkillInventory : MonoBehaviour, IBeginDragHandler, IDragH
         }
     }
 
-   /* private void OnMouseOver()
-    {
-        if (Input.GetKeyDown(KeyCode.Mouse1) && TestShop.isShopOpen)
-        {
-            if (this.GetComponent<Image>().sprite != null)
-            {
-                TestTradeSystem.instance.Trade(this.GetComponent<Image>().sprite, 0);
-                this.GetComponent<Image>().sprite = null;
-            }
-            else
-            {
-                return;
-            }
-        }
-    }*/
-
     public void OnBeginDrag(PointerEventData eventData)
     {
         transform.parent.SetAsLastSibling();
@@ -59,10 +43,14 @@ public class TestPlayerSkillInventory : MonoBehaviour, IBeginDragHandler, IDragH
         if (sprite == null)
         {
             this.GetComponent<Image>().sprite = null;
+            //Skll Change
+            CGameManager.instance.skillLibrary.GetComponent<CSkillLibrary>().ChangeSkillInPlayerInventory(this.GetComponent<Image>().sprite);
         }
         else
         {
             this.GetComponent<Image>().sprite = sprite;
+            //Skill Change
+            CGameManager.instance.skillLibrary.GetComponent<CSkillLibrary>().ChangeSkillInPlayerInventory(this.GetComponent<Image>().sprite);
         }
     }
 

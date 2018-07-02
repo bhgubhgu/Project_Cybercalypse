@@ -76,8 +76,8 @@ public class CSkillLibrary : ASkill
 
     private Dictionary<string, Skill> skillsDictionary = new Dictionary<string, Skill>(); //스킬 슬롯 Change를 위한 Dictionary
     private Dictionary<Skill, string> skillsNameDictionary = new Dictionary<Skill, string>(); //스킬 슬롯 Change 때 Key 값이 SKill일때
-    private Dictionary<Skill, string> resetNameDictionary = new Dictionary<Skill, string>(); // 처음 등록시 
     private Dictionary<Skill, int> skillIndexDictionary = new Dictionary<Skill, int>(); //스킬 슬롯 Change 때 skill index 값을 받아올때
+    private Dictionary<int, Skill> registSkillDictionary = new Dictionary<int, Skill>();
 
     private void Awake()
     {
@@ -110,6 +110,15 @@ public class CSkillLibrary : ASkill
         skillIndexDictionary.Add(MoonLightSlash, 5);
         skillIndexDictionary.Add(Null, 6);
         // .. 앞으로 더 늘어남
+
+        registSkillDictionary.Add(0, LightningSphere);
+        registSkillDictionary.Add(1, CrimsonStrike);
+        registSkillDictionary.Add(2, BlackOut);
+        registSkillDictionary.Add(3, FrozenContinuam);
+        registSkillDictionary.Add(4, FireBall);
+        registSkillDictionary.Add(5, MoonLightSlash);
+        registSkillDictionary.Add(6, Null);
+        // .. 앞으로 더 늘어남
     }
 
     private void ResetRegistSkills()
@@ -124,15 +133,12 @@ public class CSkillLibrary : ASkill
         // .. 앞으로 더 늘어남
     }
 
-    private void ResetSlot()
+    private void ResetSlot() //스킬 셋팅 초기화
     {
         for (int i = 0; i < 6; i++)
         {
             skillSlotList[i] += skillsDictionary["Null"];
         }
-
-        /*skillSlotList[4] += skillsDictionary["MoonLightSlash"];
-        skillSlotList[5] += skillsDictionary["FireBall"];*/
     }
 
     public void RegistSkill(int i, int skillIndexs)
@@ -317,6 +323,7 @@ public class CSkillLibrary : ASkill
         if (changeSkill == skillsDictionary["Null"])
         {
             skillSlotList[slotIndex] -= skillsDictionary["Null"];
+            skillSlotList[slotIndex] += registSkillDictionary[slotIndex];
         }
         else
         {
@@ -353,7 +360,10 @@ public class CSkillLibrary : ASkill
     //지울것
     public void ChangeSkillInPlayerInventory(Sprite skillSprite)
     {
-
+        if(skillSprite.name == "bearded-idle-1")
+        {
+            ChangeSlot( CheckSlotSkill(0) , 0);
+        }
     }
     #endregion
 }

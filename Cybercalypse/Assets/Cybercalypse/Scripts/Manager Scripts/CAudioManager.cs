@@ -90,13 +90,13 @@ public class CAudioManager : SingleTonManager<CAudioManager>
     {
         if(skill.Method.Name == "LightningSphere")
         {
-            effectMusic.clip = skillSoundDictionary["LightningSphere"];
-            effectMusic.Play();
+            //effectMusic.clip = skillSoundDictionary["LightningSphere"];
+            //effectMusic.Play();
         }
         else if (skill.Method.Name == "CrimsonStrike")
         {
-            effectMusic.clip = skillSoundDictionary["CrimsonStrike"];
-            effectMusic.Play();
+            //effectMusic.clip = skillSoundDictionary["CrimsonStrike"];
+            //effectMusic.Play();
         }
         else if (skill.Method.Name == "FireBall")
         {
@@ -112,13 +112,13 @@ public class CAudioManager : SingleTonManager<CAudioManager>
         }
         else if (skill.Method.Name == "BlackOut")
         {
-            effectMusic.clip = skillSoundDictionary["BlackOut"];
-            effectMusic.Play();
+           // effectMusic.clip = skillSoundDictionary["BlackOut"];
+           // effectMusic.Play();
         }
         else if (skill.Method.Name == "FrozenContinuam")
         {
-            effectMusic.clip = skillSoundDictionary["FrozenContinuam"];
-            effectMusic.Play();
+           // effectMusic.clip = skillSoundDictionary["FrozenContinuam"];
+           // effectMusic.Play();
         }
         else
         {
