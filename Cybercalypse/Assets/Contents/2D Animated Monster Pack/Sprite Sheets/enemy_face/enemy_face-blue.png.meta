@@ -1,0 +1,701 @@
+fileFormatVersion: 2
+guid: 5260749d0f106a14fad31ccc1f2f5f93
+timeCreated: 1460233511
+licenseType: Store
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: enemy_face-blue_0
+    21300002: enemy_face-blue_1
+    21300004: enemy_face-blue_2
+    21300006: enemy_face-blue_3
+    21300008: enemy_face-blue_4
+    21300010: enemy_face-blue_5
+    21300012: enemy_face-blue_6
+    21300014: enemy_face-blue_7
+    21300016: enemy_face-blue_8
+    21300018: enemy_face-blue_9
+    21300020: enemy_face-blue_10
+    21300022: enemy_face-blue_11
+    21300024: enemy_face-blue_12
+    21300026: enemy_face-blue_13
+    21300028: enemy_face-blue_14
+    21300030: enemy_face-blue_15
+    21300032: enemy_face-blue_16
+    21300034: enemy_face-blue_17
+    21300036: enemy_face-blue_18
+    21300038: enemy_face-blue_19
+    21300040: enemy_face-blue_20
+    21300042: enemy_face-blue_21
+    21300044: enemy_face-blue_22
+    21300046: enemy_face-blue_23
+    21300048: enemy_face-blue_24
+    21300050: enemy_face-blue_25
+    21300052: enemy_face-blue_26
+    21300054: enemy_face-blue_27
+    21300056: enemy_face-blue_28
+    21300058: enemy_face-blue_29
+    21300060: enemy_face-blue_30
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: enemy_face-blue_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 128
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 2, y: 16}
+        - {x: 1, y: 15}
+        - {x: 1, y: 6}
+        - {x: 3, y: -2}
+        - {x: 16, y: -2}
+        - {x: 16, y: 16}
+    - name: enemy_face-blue_1
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 128
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 2, y: 16}
+        - {x: 2, y: 1}
+        - {x: 5, y: -2}
+        - {x: 13, y: -2}
+        - {x: 16, y: -1}
+        - {x: 16, y: 16}
+    - name: enemy_face-blue_2
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 128
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 1, y: 16}
+        - {x: 1, y: 6}
+        - {x: 3, y: -1}
+        - {x: 14, y: -1}
+        - {x: 16, y: 0}
+        - {x: 16, y: 16}
+    - name: enemy_face-blue_3
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 128
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 1, y: 16}
+        - {x: 1, y: 1}
+        - {x: 3, y: -1}
+        - {x: 13, y: -1}
+        - {x: 16, y: 0}
+        - {x: 16, y: 16}
+    - name: enemy_face-blue_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 96
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 3, y: 16}
+        - {x: 3, y: 1}
+        - {x: 6, y: -2}
+        - {x: 16, y: -2}
+        - {x: 16, y: 16}
+    - name: enemy_face-blue_5
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 96
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 14, y: 16}
+        - {x: 5, y: 16}
+        - {x: 2, y: 13}
+        - {x: 2, y: -1}
+        - {x: 4, y: -2}
+        - {x: 15, y: -2}
+        - {x: 16, y: -1}
+        - {x: 16, y: 14}
+    - name: enemy_face-blue_6
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 96
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 1, y: 16}
+        - {x: 1, y: 1}
+        - {x: 3, y: -1}
+        - {x: 13, y: -1}
+        - {x: 16, y: 0}
+        - {x: 16, y: 16}
+    - name: enemy_face-blue_7
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 64
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 3, y: 16}
+        - {x: 3, y: 1}
+        - {x: 6, y: -2}
+        - {x: 16, y: -2}
+        - {x: 16, y: 16}
+    - name: enemy_face-blue_8
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 64
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 14, y: 16}
+        - {x: 5, y: 16}
+        - {x: 2, y: 13}
+        - {x: 2, y: -1}
+        - {x: 4, y: -2}
+        - {x: 15, y: -2}
+        - {x: 16, y: -1}
+        - {x: 16, y: 14}
+    - name: enemy_face-blue_9
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 64
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 4, y: 16}
+        - {x: 2, y: 14}
+        - {x: 2, y: 3}
+        - {x: 4, y: -2}
+        - {x: 16, y: -2}
+        - {x: 16, y: 14}
+        - {x: 15, y: 16}
+    - name: enemy_face-blue_10
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 64
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 3, y: 16}
+        - {x: 1, y: 11}
+        - {x: 1, y: 3}
+        - {x: 5, y: -2}
+        - {x: 15, y: -2}
+        - {x: 16, y: 0}
+        - {x: 16, y: 16}
+    - name: enemy_face-blue_11
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 64
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 3, y: 16}
+        - {x: 1, y: 15}
+        - {x: 1, y: 0}
+        - {x: 4, y: -2}
+        - {x: 16, y: -2}
+        - {x: 16, y: 16}
+    - name: enemy_face-blue_12
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 64
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 2, y: 2}
+        - {x: 3, y: -2}
+        - {x: 16, y: -2}
+        - {x: 16, y: 16}
+        - {x: 5, y: 16}
+        - {x: 2, y: 13}
+    - name: enemy_face-blue_13
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 64
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 3, y: 14}
+        - {x: 1, y: 10}
+        - {x: 1, y: 5}
+        - {x: 4, y: -2}
+        - {x: 16, y: -2}
+        - {x: 16, y: 14}
+    - name: enemy_face-blue_14
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 64
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 13, y: -2}
+        - {x: 16, y: -1}
+        - {x: 16, y: 2}
+        - {x: 13, y: 3}
+        - {x: 11, y: 1}
+      - - {x: 6, y: -1}
+        - {x: 9, y: 0}
+        - {x: 9, y: 3}
+        - {x: 6, y: 4}
+        - {x: 4, y: 2}
+      - - {x: 8, y: 4}
+        - {x: 9, y: 3}
+        - {x: 11, y: 3}
+        - {x: 16, y: 7}
+        - {x: 16, y: 10}
+        - {x: 14, y: 11}
+        - {x: 12, y: 11}
+        - {x: 8, y: 6}
+      - - {x: 0, y: 6}
+        - {x: 2, y: 4}
+        - {x: 5, y: 5}
+        - {x: 7, y: 10}
+        - {x: 5, y: 12}
+        - {x: 2, y: 11}
+    - name: enemy_face-blue_15
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 2, y: 16}
+        - {x: 1, y: 15}
+        - {x: 1, y: 6}
+        - {x: 3, y: -2}
+        - {x: 16, y: -2}
+        - {x: 16, y: 16}
+    - name: enemy_face-blue_16
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 2, y: 16}
+        - {x: 2, y: 2}
+        - {x: 5, y: -1}
+        - {x: 13, y: -1}
+        - {x: 16, y: 0}
+        - {x: 16, y: 16}
+    - name: enemy_face-blue_17
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -5, y: 16}
+        - {x: -16, y: 13}
+        - {x: -16, y: 8}
+        - {x: 2, y: 0}
+        - {x: 5, y: -1}
+        - {x: 16, y: -1}
+        - {x: 16, y: 16}
+    - name: enemy_face-blue_18
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -16, y: 16}
+        - {x: -16, y: 8}
+        - {x: 7, y: -2}
+        - {x: 16, y: -2}
+        - {x: 16, y: 16}
+    - name: enemy_face-blue_19
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 1, y: 16}
+        - {x: -2, y: 14}
+        - {x: -2, y: 6}
+        - {x: 2, y: -1}
+        - {x: 7, y: -2}
+        - {x: 16, y: -2}
+        - {x: 16, y: 16}
+      - - {x: -16, y: 8}
+        - {x: -4, y: 8}
+        - {x: -3, y: 10}
+        - {x: -4, y: 13}
+        - {x: -16, y: 13}
+    - name: enemy_face-blue_20
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 3, y: 16}
+        - {x: 0, y: 15}
+        - {x: 0, y: 6}
+        - {x: 6, y: -2}
+        - {x: 16, y: -2}
+        - {x: 16, y: 16}
+      - - {x: -13, y: 8}
+        - {x: -10, y: 9}
+        - {x: -10, y: 12}
+        - {x: -13, y: 13}
+        - {x: -15, y: 11}
+      - - {x: -6, y: 8}
+        - {x: -3, y: 9}
+        - {x: -3, y: 12}
+        - {x: -6, y: 13}
+        - {x: -8, y: 11}
+    - name: enemy_face-blue_21
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 4, y: 16}
+        - {x: 3, y: 15}
+        - {x: 3, y: 0}
+        - {x: 7, y: -2}
+        - {x: 16, y: -2}
+        - {x: 16, y: 16}
+    - name: enemy_face-blue_22
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 2, y: 16}
+        - {x: 2, y: 2}
+        - {x: 5, y: -1}
+        - {x: 13, y: -1}
+        - {x: 16, y: 0}
+        - {x: 16, y: 16}
+    - name: enemy_face-blue_23
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 0, y: 16}
+        - {x: -1, y: 15}
+        - {x: -16, y: -9}
+        - {x: -16, y: -16}
+        - {x: 16, y: -16}
+        - {x: 16, y: 16}
+    - name: enemy_face-blue_24
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -16, y: -16}
+        - {x: 16, y: -16}
+        - {x: 16, y: 16}
+        - {x: -6, y: 16}
+        - {x: -16, y: 8}
+    - name: enemy_face-blue_25
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 1, y: 16}
+        - {x: -16, y: -9}
+        - {x: -16, y: -16}
+        - {x: 16, y: -16}
+        - {x: 16, y: 16}
+    - name: enemy_face-blue_26
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -6, y: 16}
+        - {x: -16, y: -7}
+        - {x: -16, y: -16}
+        - {x: 16, y: -16}
+        - {x: 16, y: 16}
+    - name: enemy_face-blue_27
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 6, y: 16}
+        - {x: 3, y: 13}
+        - {x: -16, y: -8}
+        - {x: -16, y: -16}
+        - {x: 16, y: -16}
+        - {x: 16, y: 16}
+    - name: enemy_face-blue_28
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 9, y: -8}
+        - {x: -16, y: -8}
+        - {x: -16, y: -16}
+        - {x: 16, y: -16}
+        - {x: 16, y: -11}
+        - {x: 15, y: -10}
+      - - {x: -8, y: -6}
+        - {x: -5, y: -5}
+        - {x: -5, y: -2}
+        - {x: -8, y: -1}
+        - {x: -10, y: -3}
+      - - {x: 4, y: 16}
+        - {x: 3, y: 15}
+        - {x: 3, y: 0}
+        - {x: 7, y: -2}
+        - {x: 16, y: -2}
+        - {x: 16, y: 16}
+      - - {x: -5, y: 2}
+        - {x: -5, y: 1}
+        - {x: -3, y: -1}
+        - {x: -2, y: -1}
+        - {x: 2, y: 3}
+        - {x: 2, y: 5}
+        - {x: -1, y: 6}
+    - name: enemy_face-blue_29
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 0, y: -16}
+        - {x: -1, y: -12}
+        - {x: -14, y: -10}
+        - {x: -16, y: -10}
+        - {x: -16, y: -16}
+      - - {x: 4, y: -12}
+        - {x: 0, y: -14}
+        - {x: 0, y: -16}
+        - {x: 16, y: -16}
+        - {x: 16, y: -13}
+        - {x: 12, y: -12}
+      - - {x: 4, y: 16}
+        - {x: 2, y: 12}
+        - {x: 3, y: 1}
+        - {x: 6, y: -2}
+        - {x: 14, y: -2}
+        - {x: 16, y: -1}
+        - {x: 16, y: 15}
+        - {x: 13, y: 16}
+    - name: enemy_face-blue_30
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -11, y: -16}
+        - {x: -12, y: -13}
+        - {x: -16, y: -13}
+        - {x: -16, y: -16}
+      - - {x: -10, y: -13}
+        - {x: -11, y: -16}
+        - {x: -2, y: -16}
+        - {x: -2, y: -14}
+        - {x: -5, y: -13}
+      - - {x: 1, y: -16}
+        - {x: 9, y: -16}
+        - {x: 7, y: -11}
+        - {x: 5, y: -11}
+        - {x: 1, y: -15}
+      - - {x: 12, y: -16}
+        - {x: 16, y: -16}
+        - {x: 16, y: -14}
+        - {x: 14, y: -13}
+      - - {x: 14, y: 16}
+        - {x: 5, y: 16}
+        - {x: 2, y: 13}
+        - {x: 3, y: 1}
+        - {x: 6, y: -2}
+        - {x: 14, y: -2}
+        - {x: 16, y: 0}
+        - {x: 16, y: 14}
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

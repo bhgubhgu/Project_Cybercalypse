@@ -1,0 +1,110 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+<<<<<<< HEAD
+  tags: []
+=======
+  tags:
+  - Executor
+  - Malware
+  - Exosuit
+  - Weapon
+  - Projectile
+  - Item
+  - Slot
+  - Skill
+  - Ability
+>>>>>>> dev
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - 
+  - 
+<<<<<<< HEAD
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+=======
+  - Ground
+  - Player
+  - NomalAttack
+  - SpecialAttack
+  - BoundaryWall
+  - FireBall
+  - MoonLightSlash
+  - LightningSphere
+  - Frozen
+  - BlackOut
+  - CrimsonStrike
+  - 
+  - Platform
+  - Slope
+  - 
+  - 
+  - 
+  - Live
+  - AICollider
+  - Shop
+  - Trap
+  - Minimap
+  - BackGround
+  - InstantConsumable
+>>>>>>> dev
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
+<<<<<<< HEAD
+=======
+  - name: 'Background '
+    uniqueID: 2503228959
+    locked: 0
+  - name: Wall
+    uniqueID: 1742188505
+    locked: 0
+  - name: Terrain
+    uniqueID: 2850793099
+    locked: 0
+  - name: Back Feature
+    uniqueID: 3577379443
+    locked: 0
+  - name: Inanimate Thing
+    uniqueID: 1402239565
+    locked: 0
+  - name: Animate Thing
+    uniqueID: 1276692813
+    locked: 0
+  - name: Front Feature
+    uniqueID: 1141452619
+    locked: 0
+  - name: Foreground
+    uniqueID: 156309363
+    locked: 0
+>>>>>>> dev
