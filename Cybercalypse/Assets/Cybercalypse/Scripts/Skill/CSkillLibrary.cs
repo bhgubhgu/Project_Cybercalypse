@@ -76,8 +76,8 @@ public class CSkillLibrary : ASkill
 
     private Dictionary<string, Skill> skillsDictionary = new Dictionary<string, Skill>(); //스킬 슬롯 Change를 위한 Dictionary
     private Dictionary<Skill, string> skillsNameDictionary = new Dictionary<Skill, string>(); //스킬 슬롯 Change 때 Key 값이 SKill일때
-    private Dictionary<Skill, string> resetNameDictionary = new Dictionary<Skill, string>(); // 처음 등록시 
     private Dictionary<Skill, int> skillIndexDictionary = new Dictionary<Skill, int>(); //스킬 슬롯 Change 때 skill index 값을 받아올때
+    private Dictionary<int, Skill> registSkillDictionary = new Dictionary<int, Skill>();
 
     private void Awake()
     {
@@ -99,7 +99,7 @@ public class CSkillLibrary : ASkill
         //EX) skillLIst[0] = 0번째 슬롯에 등록된 스킬 ...
     }
 
-#region 스킬 슬롯 검사 및 추가
+    #region 스킬 슬롯 검사 및 추가
     private void RegistAllSkill()
     {
         skillIndexDictionary.Add(LightningSphere, 0);
@@ -109,6 +109,15 @@ public class CSkillLibrary : ASkill
         skillIndexDictionary.Add(FireBall, 4);
         skillIndexDictionary.Add(MoonLightSlash, 5);
         skillIndexDictionary.Add(Null, 6);
+        // .. 앞으로 더 늘어남
+
+        registSkillDictionary.Add(0, LightningSphere);
+        registSkillDictionary.Add(1, CrimsonStrike);
+        registSkillDictionary.Add(2, BlackOut);
+        registSkillDictionary.Add(3, FrozenContinuam);
+        registSkillDictionary.Add(4, FireBall);
+        registSkillDictionary.Add(5, MoonLightSlash);
+        registSkillDictionary.Add(6, Null);
         // .. 앞으로 더 늘어남
     }
 
@@ -124,15 +133,12 @@ public class CSkillLibrary : ASkill
         // .. 앞으로 더 늘어남
     }
 
-    private void ResetSlot()
+    private void ResetSlot() //스킬 셋팅 초기화
     {
-        for(int i = 0; i < 4; i++)
+        for (int i = 0; i < 6; i++)
         {
             skillSlotList[i] += skillsDictionary["Null"];
         }
-
-        skillSlotList[4] += skillsDictionary["MoonLightSlash"];
-        skillSlotList[5] += skillsDictionary["FireBall"];
     }
 
     public void RegistSkill(int i, int skillIndexs)
@@ -148,7 +154,7 @@ public class CSkillLibrary : ASkill
         {
             skillSlotList[i] += skillsDictionary["LightningSphere"];
         }
-        else if(skillIndexs == 1)
+        else if (skillIndexs == 1)
         {
             skillSlotList[i] += skillsDictionary["CrimsonStrike"];
         }
@@ -237,7 +243,7 @@ public class CSkillLibrary : ASkill
 
     private ESkillOffset SkillOffsetKind(SkillOffsetDel offsetDel) //스킬 체크 용
     {
-        if(Equals(offsetDel, skillOffsetArray[0]))
+        if (Equals(offsetDel, skillOffsetArray[0]))
         {
             return ESkillOffset.Slot1;
         }
@@ -267,40 +273,46 @@ public class CSkillLibrary : ASkill
         }
     }
 
-#region Skills
+    #region Skills
     private void LightningSphere()
     {
-        lightningSphereDel();
+        //lightningSphereDel();
+        Debug.Log("LightningSphere");
     }
 
     private void CrimsonStrike()
     {
-        crimsonStrikeDel();
+        //crimsonStrikeDel();
+        Debug.Log("CrimsonStrike");
     }
 
     private void FireBall()
     {
-        fireBallDel();
+        //fireBallDel();
+        Debug.Log("FireBall");
     }
 
     private void MoonLightSlash()
     {
-        moonLightSlashDel();
+        //moonLightSlashDel();
+        Debug.Log("MoonLightSlash");
     }
 
     private void BlackOut()
     {
-        BlackOutDel();
+        //BlackOutDel();
+        Debug.Log("BlackOut");
     }
 
     private void FrozenContinuam()
     {
-        FrozenContinuamDel();
+        //FrozenContinuamDel();
+        Debug.Log("FrozenContinuam");
     }
 
     private void Null()
     {
-
+        Debug.Log("Nothing!!");
     }
 
     #endregion
@@ -311,10 +323,11 @@ public class CSkillLibrary : ASkill
         if (changeSkill == skillsDictionary["Null"])
         {
             skillSlotList[slotIndex] -= skillsDictionary["Null"];
+            skillSlotList[slotIndex] += registSkillDictionary[slotIndex];
         }
         else
         {
-            if(skillSlotList[slotIndex] == skillsDictionary["Null"])
+            if (skillSlotList[slotIndex] == skillsDictionary["Null"])
             {
                 skillSlotList[slotIndex] -= skillsDictionary["Null"];
                 skillSlotList[slotIndex] += skillsDictionary[changeSkill.Method.Name];
@@ -334,13 +347,24 @@ public class CSkillLibrary : ASkill
 
     public int CheckSkillIndex(Skill skill)
     {
-        if(skill == Null)
+        if (skill == Null)
         {
             return 6;
         }
-        return skillIndexDictionary[skill];
+        else
+        {
+            return skillIndexDictionary[skill];
+        }
     }
 
+    //지울것
+    public void ChangeSkillInPlayerInventory(Sprite skillSprite)
+    {
+        if(skillSprite.name == "bearded-idle-1")
+        {
+            ChangeSlot( CheckSlotSkill(0) , 0);
+        }
+    }
     #endregion
 }
 

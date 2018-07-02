@@ -373,6 +373,8 @@ public abstract class APhysics : MonoBehaviour
     #region Physics Virtual Method for Player
     public virtual float HMove(float moveForce, float hInputValue, Vector3 mousePosition)
     {
+        moveForce = 25;
+
         if ((this.transform.position.x < mousePosition.x))
         {
             this.transform.localScale = new Vector3(+1, 1, 1);
@@ -625,6 +627,7 @@ public abstract class APhysics : MonoBehaviour
     #region physics for coroutine
     public IEnumerator ActionJump(float jumpForce)
     {
+        jumpForce = 2.3f;
         for (float lessTime = 1f; m_jumpVelocity >= -Mathf.Epsilon ; m_jumpTime += Time.deltaTime , lessTime -= Time.deltaTime)
         {
             if((m_isKnockback || Input.GetButtonUp("Accelerate Upward") || Input.GetKeyUp(KeyCode.Joystick1Button0) || m_isHeadCollide))
