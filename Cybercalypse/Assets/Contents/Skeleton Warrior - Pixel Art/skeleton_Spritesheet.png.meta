@@ -1,0 +1,1389 @@
+fileFormatVersion: 2
+guid: 2254d78d895b1d84fa04fc93d5048b1a
+timeCreated: 1513215667
+licenseType: Store
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: skeleton_Spritesheet_0
+    21300002: skeleton_Spritesheet_1
+    21300004: skeleton_Spritesheet_2
+    21300006: skeleton_Spritesheet_3
+    21300008: skeleton_Spritesheet_4
+    21300010: skeleton_Spritesheet_5
+    21300012: skeleton_Spritesheet_6
+    21300014: skeleton_Spritesheet_7
+    21300016: skeleton_Spritesheet_8
+    21300018: skeleton_Spritesheet_9
+    21300020: skeleton_Spritesheet_10
+    21300022: skeleton_Spritesheet_11
+    21300024: skeleton_Spritesheet_12
+    21300026: skeleton_Spritesheet_13
+    21300028: skeleton_Spritesheet_14
+    21300030: skeleton_Spritesheet_15
+    21300032: skeleton_Spritesheet_16
+    21300034: skeleton_Spritesheet_17
+    21300036: skeleton_Spritesheet_18
+    21300038: skeleton_Spritesheet_19
+    21300040: skeleton_Spritesheet_20
+    21300042: skeleton_Spritesheet_21
+    21300044: skeleton_Spritesheet_22
+    21300046: skeleton_Spritesheet_23
+    21300048: skeleton_Spritesheet_24
+    21300050: skeleton_Spritesheet_25
+    21300052: skeleton_Spritesheet_26
+    21300054: skeleton_Spritesheet_27
+    21300056: skeleton_Spritesheet_28
+    21300058: skeleton_Spritesheet_29
+    21300060: skeleton_Spritesheet_30
+    21300062: skeleton_Spritesheet_31
+    21300064: skeleton_Spritesheet_32
+    21300066: skeleton_Spritesheet_33
+    21300068: skeleton_Spritesheet_34
+    21300070: skeleton_Spritesheet_35
+    21300072: skeleton_Spritesheet_36
+    21300074: skeleton_Spritesheet_37
+    21300076: skeleton_Spritesheet_38
+    21300078: skeleton_Spritesheet_39
+    21300080: skeleton_Spritesheet_40
+    21300082: skeleton_Spritesheet_41
+    21300084: skeleton_Spritesheet_42
+    21300086: skeleton_Spritesheet_43
+    21300088: skeleton_Spritesheet_44
+    21300090: skeleton_Spritesheet_45
+    21300092: skeleton_Spritesheet_46
+    21300094: skeleton_Spritesheet_47
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -3
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: 0
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: skeleton_Spritesheet_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 384
+        width: 128
+        height: 64
+      alignment: 9
+      pivot: {x: 0.41, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -17.48, y: 1}
+        - {x: 19.52, y: 1}
+        - {x: 19.52, y: 57}
+        - {x: -4.4799995, y: 57}
+        - {x: -14.48, y: 54}
+        - {x: -47.48, y: 6}
+        - {x: -47.48, y: 3}
+        - {x: -46.48, y: 1}
+        - {x: -35.48, y: 1}
+        - {x: -11.48, y: 26}
+        - {x: -17.48, y: 16}
+        - {x: -19.48, y: 3}
+    - name: skeleton_Spritesheet_1
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 384
+        width: 128
+        height: 64
+      alignment: 9
+      pivot: {x: 0.41, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 12.520004, y: 56}
+        - {x: -7.4799957, y: 56}
+        - {x: -47.479996, y: 8}
+        - {x: -47.479996, y: 1}
+        - {x: 19.520004, y: 1}
+        - {x: 19.520004, y: 37}
+        - {x: 17.520004, y: 48}
+    - name: skeleton_Spritesheet_2
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 384
+        width: 128
+        height: 64
+      alignment: 9
+      pivot: {x: 0.41, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 4.519989, y: 15}
+        - {x: 1.519989, y: 7}
+        - {x: 4.519989, y: 1}
+        - {x: 17.519989, y: 1}
+        - {x: 19.519989, y: 3}
+        - {x: 19.519989, y: 17}
+        - {x: 16.519989, y: 47}
+        - {x: 11.519989, y: 55}
+        - {x: -7.480011, y: 55}
+        - {x: -22.480011, y: 38}
+        - {x: -48.48001, y: 7}
+        - {x: -48.48001, y: 1}
+        - {x: -1.480011, y: 1}
+        - {x: -2.480011, y: 6}
+        - {x: 3.519989, y: 12}
+        - {x: 5.519989, y: 16}
+    - name: skeleton_Spritesheet_3
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 384
+        width: 128
+        height: 64
+      alignment: 9
+      pivot: {x: 0.41, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -7.480011, y: 55}
+        - {x: -22.480011, y: 38}
+        - {x: -48.48001, y: 7}
+        - {x: -48.48001, y: 1}
+        - {x: 19.519989, y: 1}
+        - {x: 19.519989, y: 41}
+        - {x: 13.519989, y: 55}
+    - name: skeleton_Spritesheet_4
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 384
+        width: 128
+        height: 64
+      alignment: 9
+      pivot: {x: 0.41, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -7.4799805, y: 56}
+        - {x: -48.47998, y: 10}
+        - {x: -48.47998, y: 1}
+        - {x: 19.52002, y: 1}
+        - {x: 19.52002, y: 54}
+        - {x: 17.52002, y: 56}
+    - name: skeleton_Spritesheet_5
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 384
+        width: 128
+        height: 64
+      alignment: 9
+      pivot: {x: 0.41, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -17.47998, y: 1}
+        - {x: 19.52002, y: 1}
+        - {x: 19.52002, y: 55}
+        - {x: 14.52002, y: 57}
+        - {x: -9.47998, y: 57}
+        - {x: -47.47998, y: 8}
+        - {x: -47.47998, y: 2}
+        - {x: -46.47998, y: 1}
+        - {x: -34.47998, y: 1}
+        - {x: -10.47998, y: 26}
+        - {x: -17.47998, y: 16}
+        - {x: -19.47998, y: 3}
+    - name: skeleton_Spritesheet_6
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 384
+        width: 128
+        height: 64
+      alignment: 9
+      pivot: {x: 0.41, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -17.47998, y: 1}
+        - {x: 19.52002, y: 1}
+        - {x: 19.52002, y: 57}
+        - {x: -4.4799805, y: 57}
+        - {x: -14.47998, y: 54}
+        - {x: -47.47998, y: 6}
+        - {x: -47.47998, y: 3}
+        - {x: -46.47998, y: 1}
+        - {x: -35.47998, y: 1}
+        - {x: -11.47998, y: 26}
+        - {x: -17.47998, y: 16}
+        - {x: -19.47998, y: 3}
+    - name: skeleton_Spritesheet_7
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 320
+        width: 128
+        height: 64
+      alignment: 9
+      pivot: {x: 0.41, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -19.48, y: 3}
+        - {x: -17.48, y: 1}
+        - {x: 19.52, y: 1}
+        - {x: 19.52, y: 36}
+        - {x: 17.52, y: 50}
+        - {x: 9.52, y: 56}
+        - {x: 0.52000046, y: 56}
+        - {x: -5.4799995, y: 54}
+        - {x: -12.48, y: 51}
+        - {x: -47.48, y: 6}
+        - {x: -47.48, y: 3}
+        - {x: -46.48, y: 1}
+        - {x: -37.48, y: 1}
+        - {x: -28.48, y: 8}
+        - {x: -11.48, y: 27}
+        - {x: -17.48, y: 16}
+    - name: skeleton_Spritesheet_8
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 320
+        width: 128
+        height: 64
+      alignment: 9
+      pivot: {x: 0.41, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -19.479996, y: 3}
+        - {x: -19.479996, y: 1}
+        - {x: 20.520004, y: 1}
+        - {x: 20.520004, y: 56}
+        - {x: 0.5200043, y: 56}
+        - {x: -5.4799957, y: 54}
+        - {x: -12.479996, y: 51}
+        - {x: -47.479996, y: 6}
+        - {x: -47.479996, y: 3}
+        - {x: -46.479996, y: 1}
+        - {x: -37.479996, y: 1}
+        - {x: -28.479996, y: 8}
+        - {x: -11.479996, y: 27}
+        - {x: -17.479996, y: 16}
+    - name: skeleton_Spritesheet_9
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 320
+        width: 128
+        height: 64
+      alignment: 9
+      pivot: {x: 0.41, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -4.480011, y: 3}
+        - {x: -3.480011, y: 6}
+        - {x: 2.519989, y: 1}
+        - {x: 19.519989, y: 1}
+        - {x: 19.519989, y: 49}
+        - {x: 16.519989, y: 55}
+        - {x: -5.480011, y: 55}
+        - {x: -14.480011, y: 52}
+        - {x: -46.48001, y: 4}
+        - {x: -45.48001, y: 1}
+        - {x: -36.48001, y: 1}
+        - {x: -27.480011, y: 8}
+        - {x: -15.480011, y: 1}
+        - {x: -6.480011, y: 1}
+    - name: skeleton_Spritesheet_10
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 320
+        width: 128
+        height: 64
+      alignment: 9
+      pivot: {x: 0.41, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -6.480011, y: 54}
+        - {x: -42.48001, y: 8}
+        - {x: -42.48001, y: 1}
+        - {x: 19.519989, y: 1}
+        - {x: 19.519989, y: 48}
+        - {x: 14.519989, y: 54}
+    - name: skeleton_Spritesheet_11
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 320
+        width: 128
+        height: 64
+      alignment: 9
+      pivot: {x: 0.41, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 18.52002, y: 41}
+        - {x: 12.52002, y: 53}
+        - {x: -5.4799805, y: 53}
+        - {x: -40.47998, y: 6}
+        - {x: -39.47998, y: 3}
+        - {x: -31.47998, y: 2}
+        - {x: -20.47998, y: 11}
+        - {x: -16.47998, y: 4}
+        - {x: -11.47998, y: 1}
+        - {x: -3.4799805, y: 1}
+        - {x: -0.47998047, y: 2}
+        - {x: 1.5200195, y: 1}
+        - {x: 18.52002, y: 1}
+    - name: skeleton_Spritesheet_12
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 320
+        width: 128
+        height: 64
+      alignment: 9
+      pivot: {x: 0.41, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 11.52002, y: 25}
+        - {x: 15.52002, y: 33}
+        - {x: 16.52002, y: 48}
+        - {x: 11.52002, y: 55}
+        - {x: 3.5200195, y: 55}
+        - {x: -0.47998047, y: 54}
+        - {x: -5.4799805, y: 49}
+        - {x: -39.47998, y: 4}
+        - {x: -38.47998, y: 1}
+        - {x: 17.52002, y: 1}
+        - {x: 17.52002, y: 13}
+    - name: skeleton_Spritesheet_13
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 320
+        width: 128
+        height: 64
+      alignment: 9
+      pivot: {x: 0.41, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 57.52002, y: 56}
+        - {x: -27.47998, y: 56}
+        - {x: -27.47998, y: 47}
+        - {x: -20.47998, y: 39}
+        - {x: -17.47998, y: 2}
+        - {x: -11.47998, y: 1}
+        - {x: 35.52002, y: 1}
+        - {x: 53.52002, y: 8}
+        - {x: 74.52002, y: 23}
+        - {x: 74.52002, y: 54}
+    - name: skeleton_Spritesheet_14
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 256
+        width: 128
+        height: 64
+      alignment: 9
+      pivot: {x: 0.41, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -35.48, y: 1}
+        - {x: 40.52, y: 1}
+        - {x: 62.52, y: 13}
+        - {x: 62.52, y: 53}
+        - {x: 60.52, y: 55}
+        - {x: -30.48, y: 55}
+        - {x: -35.48, y: 49}
+      - - {x: 54.52, y: 45}
+        - {x: 37.52, y: 25}
+        - {x: 37.52, y: 12}
+        - {x: 38.52, y: 11}
+        - {x: 55.52, y: 11}
+        - {x: 75.520004, y: 24}
+        - {x: 75.520004, y: 40}
+        - {x: 69.520004, y: 45}
+    - name: skeleton_Spritesheet_15
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 256
+        width: 128
+        height: 64
+      alignment: 9
+      pivot: {x: 0.41, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 16.520004, y: 2}
+        - {x: 17.520004, y: 1}
+        - {x: 30.520004, y: 1}
+        - {x: 30.520004, y: 51}
+        - {x: -18.479996, y: 51}
+        - {x: -32.479996, y: 49}
+        - {x: -32.479996, y: 2}
+        - {x: -28.479996, y: 1}
+        - {x: 14.520004, y: 1}
+        - {x: 16.520004, y: 2}
+        - {x: 16.520004, y: 5}
+        - {x: 13.520004, y: 8}
+        - {x: 17.520004, y: 11}
+      - - {x: 63.520004, y: 24}
+        - {x: 56.520004, y: 17}
+        - {x: 58.520004, y: 14}
+        - {x: 64.520004, y: 14}
+        - {x: 68.520004, y: 20}
+        - {x: 68.520004, y: 24}
+      - - {x: 67.520004, y: 37}
+        - {x: 69.520004, y: 31}
+        - {x: 71.520004, y: 29}
+        - {x: 74.520004, y: 30}
+        - {x: 74.520004, y: 35}
+        - {x: 70.520004, y: 40}
+        - {x: 68.520004, y: 40}
+      - - {x: -30.479996, y: 32}
+        - {x: -29.479996, y: 30}
+        - {x: -27.479996, y: 30}
+        - {x: -23.479996, y: 32}
+        - {x: -22.479996, y: 38}
+        - {x: -25.479996, y: 40}
+        - {x: -29.479996, y: 36}
+      - - {x: -23.479996, y: 44}
+        - {x: -23.479996, y: 42}
+        - {x: -21.479996, y: 40}
+        - {x: -20.479996, y: 40}
+        - {x: -14.479996, y: 46}
+        - {x: -14.479996, y: 48}
+        - {x: -17.479996, y: 49}
+      - - {x: 37.520004, y: 53}
+        - {x: 26.520004, y: 53}
+        - {x: 25.520004, y: 51}
+        - {x: 25.520004, y: 45}
+        - {x: 51.520004, y: 40}
+        - {x: 54.520004, y: 40}
+        - {x: 54.520004, y: 44}
+        - {x: 46.520004, y: 52}
+    - name: skeleton_Spritesheet_16
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 256
+        width: 128
+        height: 64
+      alignment: 9
+      pivot: {x: 0.41, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 11.519989, y: 53}
+        - {x: -29.480011, y: 34}
+        - {x: -29.480011, y: 3}
+        - {x: -27.480011, y: 1}
+        - {x: 30.519989, y: 1}
+        - {x: 30.519989, y: 53}
+      - - {x: 65.51999, y: 25}
+        - {x: 59.51999, y: 17}
+        - {x: 59.51999, y: 15}
+        - {x: 61.51999, y: 14}
+        - {x: 66.51999, y: 16}
+        - {x: 70.51999, y: 19}
+        - {x: 70.51999, y: 23}
+        - {x: 69.51999, y: 25}
+      - - {x: -31.480011, y: 31}
+        - {x: -29.480011, y: 29}
+        - {x: -26.480011, y: 30}
+        - {x: -25.480011, y: 35}
+        - {x: -27.480011, y: 37}
+        - {x: -30.480011, y: 36}
+      - - {x: 66.51999, y: 39}
+        - {x: 69.51999, y: 35}
+        - {x: 72.51999, y: 36}
+        - {x: 72.51999, y: 39}
+        - {x: 69.51999, y: 42}
+        - {x: 67.51999, y: 42}
+      - - {x: -24.480011, y: 42}
+        - {x: -24.480011, y: 41}
+        - {x: -22.480011, y: 39}
+        - {x: -21.480011, y: 39}
+        - {x: -17.480011, y: 43}
+        - {x: -17.480011, y: 45}
+        - {x: -20.480011, y: 46}
+      - - {x: 25.519989, y: 54}
+        - {x: 24.519989, y: 52}
+        - {x: 25.519989, y: 49}
+        - {x: 33.51999, y: 48}
+        - {x: 36.51999, y: 48}
+        - {x: 37.51999, y: 50}
+        - {x: 36.51999, y: 53}
+        - {x: 31.519989, y: 54}
+    - name: skeleton_Spritesheet_17
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 256
+        width: 128
+        height: 64
+      alignment: 9
+      pivot: {x: 0.41, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 12.519989, y: 13}
+        - {x: 18.519989, y: 11}
+        - {x: 16.519989, y: 2}
+        - {x: 19.519989, y: 1}
+        - {x: 30.519989, y: 1}
+        - {x: 30.519989, y: 48}
+        - {x: 22.519989, y: 53}
+        - {x: 8.519989, y: 53}
+        - {x: -27.480011, y: 18}
+        - {x: -29.480011, y: 16}
+        - {x: -29.480011, y: 15}
+        - {x: -25.480011, y: 10}
+        - {x: 2.519989, y: 1}
+        - {x: 14.519989, y: 1}
+        - {x: 16.519989, y: 3}
+        - {x: 16.519989, y: 5}
+        - {x: 13.519989, y: 8}
+      - - {x: 67.51999, y: 25}
+        - {x: 66.51999, y: 21}
+        - {x: 68.51999, y: 19}
+        - {x: 69.51999, y: 19}
+        - {x: 72.51999, y: 22}
+        - {x: 72.51999, y: 24}
+        - {x: 70.51999, y: 26}
+      - - {x: -32.48001, y: 29}
+        - {x: -30.480011, y: 27}
+        - {x: -27.480011, y: 28}
+        - {x: -27.480011, y: 31}
+        - {x: -29.480011, y: 33}
+        - {x: -32.48001, y: 32}
+      - - {x: 23.519989, y: 53}
+        - {x: 24.519989, y: 50}
+        - {x: 28.519989, y: 50}
+        - {x: 30.519989, y: 52}
+        - {x: 29.519989, y: 55}
+        - {x: 25.519989, y: 55}
+    - name: skeleton_Spritesheet_18
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 256
+        width: 128
+        height: 64
+      alignment: 9
+      pivot: {x: 0.41, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 19.52002, y: 1}
+        - {x: 29.52002, y: 1}
+        - {x: 30.52002, y: 2}
+        - {x: 30.52002, y: 47}
+        - {x: 24.52002, y: 54}
+        - {x: 14.52002, y: 54}
+        - {x: 2.5200195, y: 49}
+        - {x: -22.47998, y: 19}
+        - {x: -22.47998, y: 15}
+        - {x: -1.4799805, y: 1}
+        - {x: 14.52002, y: 1}
+        - {x: 16.52002, y: 3}
+        - {x: 16.52002, y: 5}
+        - {x: 17.52002, y: 2}
+    - name: skeleton_Spritesheet_19
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 256
+        width: 128
+        height: 64
+      alignment: 9
+      pivot: {x: 0.41, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 27.52002, y: 54}
+        - {x: 10.52002, y: 54}
+        - {x: 0.52001953, y: 30}
+        - {x: 0.52001953, y: 1}
+        - {x: 24.52002, y: 1}
+        - {x: 31.52002, y: 2}
+        - {x: 36.52002, y: 23}
+        - {x: 36.52002, y: 44}
+        - {x: 33.52002, y: 50}
+    - name: skeleton_Spritesheet_20
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 256
+        width: 128
+        height: 64
+      alignment: 9
+      pivot: {x: 0.41, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 4.5200195, y: 55}
+        - {x: 0.52001953, y: 53}
+        - {x: -4.4799805, y: 48}
+        - {x: -7.4799805, y: 50}
+        - {x: -0.47998047, y: 55}
+        - {x: 12.52002, y: 55}
+        - {x: 18.52002, y: 47}
+        - {x: 21.52002, y: 49}
+        - {x: 21.52002, y: 60}
+        - {x: 13.52002, y: 64}
+        - {x: -12.47998, y: 64}
+        - {x: -18.47998, y: 53}
+        - {x: -18.47998, y: 26}
+        - {x: -13.47998, y: 10}
+        - {x: 0.52001953, y: 1}
+        - {x: 19.52002, y: 1}
+        - {x: 15.52002, y: 47}
+        - {x: 12.52002, y: 52}
+        - {x: 9.52002, y: 55}
+    - name: skeleton_Spritesheet_21
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 192
+        width: 128
+        height: 64
+      alignment: 9
+      pivot: {x: 0.41, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -47.48, y: 54}
+        - {x: -47.48, y: 23}
+        - {x: -22.48, y: 1}
+        - {x: 18.52, y: 1}
+        - {x: 18.52, y: 54}
+      - - {x: -22.48, y: 61}
+        - {x: -25.48, y: 57}
+        - {x: -24.48, y: 54}
+        - {x: -14.48, y: 54}
+        - {x: -9.48, y: 57}
+        - {x: -9.48, y: 60}
+        - {x: -10.48, y: 61}
+    - name: skeleton_Spritesheet_22
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 192
+        width: 128
+        height: 64
+      alignment: 9
+      pivot: {x: 0.41, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 18.520004, y: 1}
+        - {x: 18.520004, y: 25}
+        - {x: 16.520004, y: 48}
+        - {x: 11.520004, y: 56}
+        - {x: -7.4799957, y: 56}
+        - {x: -50.479996, y: 24}
+        - {x: -50.479996, y: 1}
+        - {x: -4.4799957, y: 1}
+        - {x: -3.4799957, y: 3}
+        - {x: -2.4799957, y: 6}
+        - {x: 2.5200043, y: 1}
+      - - {x: -49.479996, y: 28}
+        - {x: -47.479996, y: 26}
+        - {x: -44.479996, y: 27}
+        - {x: -44.479996, y: 31}
+        - {x: -46.479996, y: 33}
+        - {x: -49.479996, y: 32}
+      - - {x: -29.479996, y: 55}
+        - {x: -28.479996, y: 52}
+        - {x: -25.479996, y: 52}
+        - {x: -18.479996, y: 54}
+        - {x: -17.479996, y: 56}
+        - {x: -18.479996, y: 59}
+        - {x: -26.479996, y: 59}
+    - name: skeleton_Spritesheet_23
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 192
+        width: 128
+        height: 64
+      alignment: 9
+      pivot: {x: 0.41, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -7.480011, y: 57}
+        - {x: -48.48001, y: 8}
+        - {x: -48.48001, y: 4}
+        - {x: -47.48001, y: 2}
+        - {x: -39.48001, y: 1}
+        - {x: -19.480011, y: 15}
+        - {x: -19.480011, y: 17}
+        - {x: -19.480011, y: 3}
+        - {x: -18.480011, y: 1}
+        - {x: 19.519989, y: 1}
+        - {x: 19.519989, y: 49}
+        - {x: 17.519989, y: 57}
+      - - {x: -49.48001, y: 21}
+        - {x: -47.48001, y: 19}
+        - {x: -44.48001, y: 20}
+        - {x: -44.48001, y: 23}
+        - {x: -46.48001, y: 25}
+        - {x: -49.48001, y: 24}
+      - - {x: -31.480011, y: 50}
+        - {x: -26.480011, y: 52}
+        - {x: -26.480011, y: 55}
+        - {x: -29.480011, y: 56}
+        - {x: -33.48001, y: 53}
+    - name: skeleton_Spritesheet_24
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 192
+        width: 128
+        height: 64
+      alignment: 9
+      pivot: {x: 0.41, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -17.480011, y: 1}
+        - {x: -6.480011, y: 1}
+        - {x: -3.480011, y: 2}
+        - {x: 6.519989, y: 1}
+        - {x: 18.519989, y: 1}
+        - {x: 19.519989, y: 3}
+        - {x: 19.519989, y: 9}
+        - {x: 16.519989, y: 14}
+        - {x: 18.519989, y: 48}
+        - {x: 11.519989, y: 56}
+        - {x: -7.480011, y: 56}
+        - {x: -48.48001, y: 4}
+        - {x: -47.48001, y: 1}
+        - {x: -35.48001, y: 1}
+        - {x: -10.480011, y: 26}
+        - {x: -18.480011, y: 17}
+        - {x: -20.480011, y: 4}
+    - name: skeleton_Spritesheet_25
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 192
+        width: 128
+        height: 64
+      alignment: 9
+      pivot: {x: 0.41, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -7.4799805, y: 58}
+        - {x: -47.47998, y: 4}
+        - {x: -47.47998, y: 1}
+        - {x: 18.52002, y: 1}
+        - {x: 18.52002, y: 45}
+        - {x: 17.52002, y: 50}
+        - {x: 11.52002, y: 58}
+    - name: skeleton_Spritesheet_26
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 192
+        width: 128
+        height: 64
+      alignment: 9
+      pivot: {x: 0.41, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 17.52002, y: 18}
+        - {x: 17.52002, y: 53}
+        - {x: 12.52002, y: 60}
+        - {x: -6.4799805, y: 60}
+        - {x: -46.47998, y: 4}
+        - {x: -45.47998, y: 1}
+        - {x: 17.52002, y: 1}
+        - {x: 17.52002, y: 6}
+        - {x: 16.52002, y: 9}
+    - name: skeleton_Spritesheet_27
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 192
+        width: 128
+        height: 64
+      alignment: 9
+      pivot: {x: 0.41, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -0.47998047, y: 1}
+        - {x: 21.52002, y: 1}
+        - {x: 21.52002, y: 52}
+        - {x: 15.52002, y: 57}
+        - {x: -7.4799805, y: 57}
+        - {x: -46.47998, y: 7}
+        - {x: -46.47998, y: 3}
+        - {x: -45.47998, y: 1}
+        - {x: -36.47998, y: 1}
+        - {x: -27.47998, y: 8}
+        - {x: -11.47998, y: 27}
+        - {x: -3.4799805, y: 7}
+    - name: skeleton_Spritesheet_28
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 128
+        width: 128
+        height: 64
+      alignment: 9
+      pivot: {x: 0.41, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 11.52, y: 1}
+        - {x: 21.52, y: 1}
+        - {x: 22.52, y: 3}
+        - {x: 22.52, y: 19}
+        - {x: 19.52, y: 48}
+        - {x: 15.52, y: 56}
+        - {x: 0.52000046, y: 56}
+        - {x: -9.48, y: 52}
+        - {x: -46.48, y: 4}
+        - {x: -46.48, y: 1}
+        - {x: 6.5200005, y: 1}
+        - {x: 7.5200005, y: 3}
+        - {x: 8.52, y: 6}
+        - {x: 8.52, y: 4}
+    - name: skeleton_Spritesheet_29
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 128
+        width: 128
+        height: 64
+      alignment: 9
+      pivot: {x: 0.41, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -7.4799957, y: 57}
+        - {x: -13.479996, y: 55}
+        - {x: -46.479996, y: 5}
+        - {x: -46.479996, y: 4}
+        - {x: -44.479996, y: 1}
+        - {x: 21.520004, y: 1}
+        - {x: 21.520004, y: 39}
+        - {x: 16.520004, y: 57}
+    - name: skeleton_Spritesheet_30
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 128
+        width: 128
+        height: 64
+      alignment: 9
+      pivot: {x: 0.41, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -4.480011, y: 59}
+        - {x: -8.480011, y: 53}
+        - {x: -20.480011, y: 33}
+        - {x: -24.480011, y: 26}
+        - {x: -46.48001, y: 4}
+        - {x: -46.48001, y: 1}
+        - {x: 18.519989, y: 1}
+        - {x: 18.519989, y: 52}
+        - {x: 16.519989, y: 59}
+    - name: skeleton_Spritesheet_31
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 128
+        width: 128
+        height: 64
+      alignment: 9
+      pivot: {x: 0.41, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -4.480011, y: 59}
+        - {x: -19.480011, y: 34}
+        - {x: -23.480011, y: 26}
+        - {x: -45.48001, y: 4}
+        - {x: -44.48001, y: 1}
+        - {x: 18.519989, y: 1}
+        - {x: 18.519989, y: 52}
+        - {x: 13.519989, y: 59}
+    - name: skeleton_Spritesheet_32
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 128
+        width: 128
+        height: 64
+      alignment: 9
+      pivot: {x: 0.41, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -5.4799805, y: 1}
+        - {x: 3.5200195, y: 1}
+        - {x: 5.5200195, y: 3}
+        - {x: 5.5200195, y: 5}
+        - {x: 3.5200195, y: 8}
+        - {x: 6.5200195, y: 5}
+        - {x: 10.52002, y: 4}
+        - {x: 18.52002, y: 3}
+        - {x: 19.52002, y: 4}
+        - {x: 19.52002, y: 43}
+        - {x: 15.52002, y: 58}
+        - {x: -4.4799805, y: 58}
+        - {x: -46.47998, y: 4}
+        - {x: -45.47998, y: 1}
+        - {x: -33.47998, y: 1}
+        - {x: -8.47998, y: 26}
+        - {x: -9.47998, y: 15}
+        - {x: -9.47998, y: 3}
+    - name: skeleton_Spritesheet_33
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 128
+        width: 128
+        height: 64
+      alignment: 9
+      pivot: {x: 0.41, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -13.47998, y: 1}
+        - {x: -2.4799805, y: 1}
+        - {x: -1.4799805, y: 6}
+        - {x: 7.5200195, y: 1}
+        - {x: 22.52002, y: 1}
+        - {x: 22.52002, y: 50}
+        - {x: 16.52002, y: 56}
+        - {x: -3.4799805, y: 56}
+        - {x: -15.47998, y: 52}
+        - {x: -48.47998, y: 4}
+        - {x: -47.47998, y: 1}
+        - {x: -35.47998, y: 1}
+        - {x: -10.47998, y: 26}
+        - {x: -15.47998, y: 15}
+        - {x: -19.47998, y: 2}
+    - name: skeleton_Spritesheet_34
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 128
+        width: 128
+        height: 64
+      alignment: 9
+      pivot: {x: 0.41, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -19.47998, y: 3}
+        - {x: -17.47998, y: 1}
+        - {x: 19.52002, y: 1}
+        - {x: 19.52002, y: 46}
+        - {x: 16.52002, y: 55}
+        - {x: -10.47998, y: 55}
+        - {x: -47.47998, y: 8}
+        - {x: -47.47998, y: 2}
+        - {x: -46.47998, y: 1}
+        - {x: -37.47998, y: 1}
+        - {x: -28.47998, y: 8}
+        - {x: -11.47998, y: 27}
+        - {x: -17.47998, y: 16}
+    - name: skeleton_Spritesheet_35
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 64
+        width: 128
+        height: 64
+      alignment: 9
+      pivot: {x: 0.41, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 19.52, y: 12}
+        - {x: 13.52, y: 49}
+        - {x: 8.52, y: 58}
+        - {x: -14.48, y: 58}
+        - {x: -21.48, y: 56}
+        - {x: -47.48, y: 12}
+        - {x: -47.48, y: 2}
+        - {x: -46.48, y: 1}
+        - {x: 19.52, y: 1}
+    - name: skeleton_Spritesheet_36
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 64
+        width: 128
+        height: 64
+      alignment: 9
+      pivot: {x: 0.41, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -14.479996, y: 60}
+        - {x: -41.479996, y: 32}
+        - {x: -29.479996, y: 24}
+        - {x: -21.479996, y: 26}
+        - {x: -49.479996, y: 7}
+        - {x: -49.479996, y: 1}
+        - {x: 19.520004, y: 1}
+        - {x: 19.520004, y: 37}
+        - {x: 15.520004, y: 60}
+      - - {x: -18.479996, y: 39}
+        - {x: -18.479996, y: 38}
+        - {x: -16.479996, y: 36}
+        - {x: -14.479996, y: 36}
+        - {x: -11.479996, y: 39}
+        - {x: -12.479996, y: 42}
+        - {x: -15.479996, y: 42}
+    - name: skeleton_Spritesheet_37
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 64
+        width: 128
+        height: 64
+      alignment: 9
+      pivot: {x: 0.41, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -19.480011, y: 56}
+        - {x: -47.48001, y: 17}
+        - {x: -48.48001, y: 13}
+        - {x: -48.48001, y: 9}
+        - {x: -43.48001, y: 1}
+        - {x: 19.519989, y: 1}
+        - {x: 19.519989, y: 56}
+      - - {x: -37.48001, y: 26}
+        - {x: -30.480011, y: 17}
+        - {x: -19.480011, y: 17}
+        - {x: -19.480011, y: 26}
+        - {x: -26.480011, y: 40}
+        - {x: -36.48001, y: 40}
+        - {x: -37.48001, y: 37}
+      - - {x: -20.480011, y: 36}
+        - {x: -20.480011, y: 35}
+        - {x: -18.480011, y: 33}
+        - {x: -17.480011, y: 33}
+        - {x: -14.480011, y: 36}
+        - {x: -14.480011, y: 38}
+        - {x: -17.480011, y: 39}
+      - - {x: -20.480011, y: 50}
+        - {x: -19.480011, y: 47}
+        - {x: -16.480011, y: 47}
+        - {x: -14.480011, y: 49}
+        - {x: -15.480011, y: 52}
+        - {x: -18.480011, y: 52}
+      - - {x: -17.480011, y: 63}
+        - {x: -17.480011, y: 56}
+        - {x: -16.480011, y: 53}
+        - {x: -8.480011, y: 53}
+        - {x: -5.480011, y: 54}
+        - {x: -5.480011, y: 62}
+        - {x: -7.480011, y: 64}
+        - {x: -14.480011, y: 64}
+      - - {x: 8.519989, y: 59}
+        - {x: 9.519989, y: 56}
+        - {x: 12.519989, y: 56}
+        - {x: 14.519989, y: 58}
+        - {x: 13.519989, y: 61}
+        - {x: 10.519989, y: 61}
+    - name: skeleton_Spritesheet_38
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 64
+        width: 128
+        height: 64
+      alignment: 9
+      pivot: {x: 0.41, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -19.480011, y: 50}
+        - {x: -47.48001, y: 10}
+        - {x: -48.48001, y: 8}
+        - {x: -48.48001, y: 6}
+        - {x: -43.48001, y: 1}
+        - {x: 18.519989, y: 1}
+        - {x: 18.519989, y: 48}
+        - {x: 14.519989, y: 50}
+      - - {x: -39.48001, y: 30}
+        - {x: -43.48001, y: 30}
+        - {x: -44.48001, y: 27}
+        - {x: -44.48001, y: 20}
+        - {x: -32.48001, y: 11}
+        - {x: -23.480011, y: 11}
+        - {x: -22.480011, y: 14}
+        - {x: -22.480011, y: 18}
+        - {x: -28.480011, y: 23}
+      - - {x: -20.480011, y: 30}
+        - {x: -17.480011, y: 31}
+        - {x: -17.480011, y: 34}
+        - {x: -20.480011, y: 35}
+        - {x: -22.480011, y: 33}
+      - - {x: -22.480011, y: 46}
+        - {x: -19.480011, y: 47}
+        - {x: -19.480011, y: 50}
+        - {x: -22.480011, y: 51}
+        - {x: -24.480011, y: 49}
+      - - {x: 17.519989, y: 51}
+        - {x: 20.519989, y: 48}
+        - {x: 23.519989, y: 49}
+        - {x: 23.519989, y: 51}
+        - {x: 20.519989, y: 54}
+        - {x: 18.519989, y: 54}
+      - - {x: -17.480011, y: 61}
+        - {x: -21.480011, y: 58}
+        - {x: -21.480011, y: 52}
+        - {x: -20.480011, y: 49}
+        - {x: -13.480011, y: 49}
+        - {x: -10.480011, y: 51}
+        - {x: -9.480011, y: 56}
+        - {x: -9.480011, y: 58}
+        - {x: -12.480011, y: 61}
+      - - {x: 15.519989, y: 54}
+        - {x: 18.519989, y: 55}
+        - {x: 18.519989, y: 58}
+        - {x: 15.519989, y: 59}
+        - {x: 13.519989, y: 57}
+    - name: skeleton_Spritesheet_39
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 64
+        width: 128
+        height: 64
+      alignment: 9
+      pivot: {x: 0.41, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 21.52002, y: 34}
+        - {x: 15.52002, y: 38}
+        - {x: -18.47998, y: 38}
+        - {x: -44.47998, y: 15}
+        - {x: -48.47998, y: 11}
+        - {x: -48.47998, y: 4}
+        - {x: -45.47998, y: 1}
+        - {x: 12.52002, y: 1}
+        - {x: 18.52002, y: 3}
+        - {x: 21.52002, y: 6}
+      - - {x: -21.47998, y: 27}
+        - {x: -18.47998, y: 28}
+        - {x: -18.47998, y: 31}
+        - {x: -21.47998, y: 32}
+        - {x: -23.47998, y: 30}
+      - - {x: 17.52002, y: 35}
+        - {x: 20.52002, y: 36}
+        - {x: 20.52002, y: 39}
+        - {x: 17.52002, y: 40}
+        - {x: 15.52002, y: 38}
+      - - {x: -25.47998, y: 54}
+        - {x: -27.47998, y: 49}
+        - {x: -27.47998, y: 42}
+        - {x: -18.47998, y: 42}
+        - {x: -17.47998, y: 45}
+        - {x: -16.47998, y: 51}
+        - {x: -19.47998, y: 54}
+      - - {x: 23.52002, y: 45}
+        - {x: 26.52002, y: 46}
+        - {x: 26.52002, y: 49}
+        - {x: 23.52002, y: 50}
+        - {x: 21.52002, y: 48}
+    - name: skeleton_Spritesheet_40
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 64
+        width: 128
+        height: 64
+      alignment: 9
+      pivot: {x: 0.41, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 12.52002, y: 17}
+        - {x: 12.52002, y: 15}
+        - {x: 16.52002, y: 10}
+        - {x: 23.52002, y: 7}
+        - {x: 24.52002, y: 7}
+        - {x: 29.52002, y: 9}
+        - {x: 29.52002, y: 16}
+        - {x: 18.52002, y: 37}
+        - {x: -21.47998, y: 37}
+        - {x: -48.47998, y: 10}
+        - {x: -48.47998, y: 2}
+        - {x: -44.47998, y: 1}
+        - {x: 12.52002, y: 1}
+        - {x: 15.52002, y: 4}
+        - {x: 15.52002, y: 10}
+        - {x: 14.52002, y: 13}
+      - - {x: -24.47998, y: 37}
+        - {x: -28.47998, y: 34}
+        - {x: -28.47998, y: 27}
+        - {x: -27.47998, y: 25}
+        - {x: -19.47998, y: 25}
+        - {x: -17.47998, y: 30}
+        - {x: -17.47998, y: 35}
+        - {x: -21.47998, y: 37}
+    - name: skeleton_Spritesheet_41
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 64
+        width: 128
+        height: 64
+      alignment: 9
+      pivot: {x: 0.41, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -9.47998, y: 36}
+        - {x: -49.47998, y: 16}
+        - {x: -49.47998, y: 2}
+        - {x: -47.47998, y: 1}
+        - {x: 17.52002, y: 1}
+        - {x: 36.52002, y: 14}
+        - {x: 36.52002, y: 34}
+        - {x: 34.52002, y: 36}
+    - name: skeleton_Spritesheet_42
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 128
+        height: 64
+      alignment: 9
+      pivot: {x: 0.41, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 13.52, y: 33}
+        - {x: 1.5200005, y: 33}
+        - {x: -1.4799995, y: 28}
+        - {x: -1.4799995, y: 23}
+        - {x: -47.48, y: 9}
+        - {x: -49.48, y: 4}
+        - {x: -49.48, y: 2}
+        - {x: -48.48, y: 1}
+        - {x: 19.52, y: 1}
+        - {x: 39.52, y: 16}
+        - {x: 39.52, y: 28}
+        - {x: 38.52, y: 30}
+    - name: skeleton_Spritesheet_43
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 128
+        height: 64
+      alignment: 9
+      pivot: {x: 0.41, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -49.479996, y: 1}
+        - {x: 36.520004, y: 1}
+        - {x: 48.520004, y: 11}
+        - {x: 48.520004, y: 21}
+        - {x: -3.4799957, y: 21}
+        - {x: -49.479996, y: 15}
+    - name: skeleton_Spritesheet_44
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 128
+        height: 64
+      alignment: 9
+      pivot: {x: 0.41, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 43.51999, y: 19}
+        - {x: -24.480011, y: 19}
+        - {x: -49.48001, y: 8}
+        - {x: -49.48001, y: 1}
+        - {x: 45.51999, y: 1}
+        - {x: 48.51999, y: 2}
+        - {x: 50.51999, y: 5}
+        - {x: 50.51999, y: 13}
+    - name: skeleton_Spritesheet_45
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 0
+        width: 128
+        height: 64
+      alignment: 9
+      pivot: {x: 0.41, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -23.480011, y: 17}
+        - {x: -47.48001, y: 9}
+        - {x: -49.48001, y: 5}
+        - {x: -49.48001, y: 1}
+        - {x: 48.51999, y: 1}
+        - {x: 48.51999, y: 17}
+    - name: skeleton_Spritesheet_46
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 0
+        width: 128
+        height: 64
+      alignment: 9
+      pivot: {x: 0.41, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -20.47998, y: 3}
+        - {x: -17.47998, y: 1}
+        - {x: 19.52002, y: 1}
+        - {x: 19.52002, y: 51}
+        - {x: 14.52002, y: 53}
+        - {x: -16.47998, y: 53}
+        - {x: -45.47998, y: 15}
+        - {x: -45.47998, y: 2}
+        - {x: -43.47998, y: 1}
+        - {x: -33.47998, y: 1}
+        - {x: -15.47998, y: 19}
+        - {x: -17.47998, y: 16}
+    - name: skeleton_Spritesheet_47
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 0
+        width: 128
+        height: 64
+      alignment: 9
+      pivot: {x: 0.41, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 8.52002, y: 58}
+        - {x: -14.47998, y: 58}
+        - {x: -21.47998, y: 56}
+        - {x: -47.47998, y: 29}
+        - {x: -47.47998, y: 1}
+        - {x: 19.52002, y: 1}
+        - {x: 19.52002, y: 23}
+        - {x: 13.52002, y: 49}
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
