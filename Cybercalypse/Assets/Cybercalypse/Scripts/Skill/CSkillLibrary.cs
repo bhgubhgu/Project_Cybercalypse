@@ -100,20 +100,13 @@ public class CSkillLibrary : ASkill
     {
         ResetRegistSkills();
         RegistAllSkill();
+        RegistSkillIconToSkill();
         ResetSlot();
     }
 
     #region 스킬 슬롯 검사 및 추가
     private void RegistAllSkill()
     {
-        /*skillIndexDictionary.Add(LightningSphere, 0);
-        skillIndexDictionary.Add(CrimsonStrike, 1);
-        skillIndexDictionary.Add(BlackOut, 2);
-        skillIndexDictionary.Add(FrozenContinuam, 3);
-        skillIndexDictionary.Add(FireBall, 4);
-        skillIndexDictionary.Add(MoonLightSlash, 5);
-        skillIndexDictionary.Add(Null, 6);*/
-
         skillIndexDictionary.Add(Null, 0);
         skillIndexDictionary.Add(LightningSphere, 1);
         skillIndexDictionary.Add(CrimsonStrike, 2);
@@ -130,15 +123,6 @@ public class CSkillLibrary : ASkill
         skillIndexReverseDictionary.Add(4, FrozenContinuam);
         skillIndexReverseDictionary.Add(5, FireBall);
         skillIndexReverseDictionary.Add(6, MoonLightSlash);
-
-        //Test 실질적인 아이콘을 가진 스킬 오브젝트
-        registSkillSpriteDictionary.Add(CGameManager.instance.testSkillList[0].GetComponent<SpriteRenderer>().sprite, Null);
-        registSkillSpriteDictionary.Add(CGameManager.instance.testSkillList[1].GetComponent<SpriteRenderer>().sprite, LightningSphere);
-        registSkillSpriteDictionary.Add(CGameManager.instance.testSkillList[2].GetComponent<SpriteRenderer>().sprite, CrimsonStrike);
-        registSkillSpriteDictionary.Add(CGameManager.instance.testSkillList[3].GetComponent<SpriteRenderer>().sprite, BlackOut);
-        registSkillSpriteDictionary.Add(CGameManager.instance.testSkillList[4].GetComponent<SpriteRenderer>().sprite, FrozenContinuam);
-        registSkillSpriteDictionary.Add(CGameManager.instance.testSkillList[5].GetComponent<SpriteRenderer>().sprite, FireBall);
-        registSkillSpriteDictionary.Add(CGameManager.instance.testSkillList[6].GetComponent<SpriteRenderer>().sprite, MoonLightSlash);
     }
 
     private void ResetRegistSkills()
@@ -161,6 +145,18 @@ public class CSkillLibrary : ASkill
         // .. 앞으로 더 늘어남
     }
 
+    private void RegistSkillIconToSkill()
+    {
+        //Test 실질적인 아이콘을 가진 스킬 오브젝트
+        registSkillSpriteDictionary.Add(CGameManager.instance.testSkillList[0].GetComponent<SpriteRenderer>().sprite, Null);
+        registSkillSpriteDictionary.Add(CGameManager.instance.testSkillList[1].GetComponent<SpriteRenderer>().sprite, LightningSphere);
+        registSkillSpriteDictionary.Add(CGameManager.instance.testSkillList[2].GetComponent<SpriteRenderer>().sprite, CrimsonStrike);
+        registSkillSpriteDictionary.Add(CGameManager.instance.testSkillList[3].GetComponent<SpriteRenderer>().sprite, BlackOut);
+        registSkillSpriteDictionary.Add(CGameManager.instance.testSkillList[4].GetComponent<SpriteRenderer>().sprite, FrozenContinuam);
+        registSkillSpriteDictionary.Add(CGameManager.instance.testSkillList[5].GetComponent<SpriteRenderer>().sprite, FireBall);
+        registSkillSpriteDictionary.Add(CGameManager.instance.testSkillList[6].GetComponent<SpriteRenderer>().sprite, MoonLightSlash);
+    }
+
     private void ResetSlot() //스킬 셋팅 초기화
     {
         for (int i = 0; i < 6; i++)
@@ -168,51 +164,6 @@ public class CSkillLibrary : ASkill
             skillSlotList[i] += skillsDictionary["Null"];
         }
     }
-
-    /*public void RegistSkill(int i, int skillIndexs)
-    {
-        //스킬을 획득한 후 여기서 스킬 등록이 이루어진다(비어있는 슬롯에 등록됨)
-
-        if (skillSlotList[i] == skillsDictionary["Null"])
-        {
-            skillSlotList[i] -= skillsDictionary["Null"];
-        }
-
-        if(skillIndexs == 0)
-        {
-            skillSlotList[i] += skillsDictionary["Null"];
-        }
-        if (skillIndexs == 1)
-        {
-            skillSlotList[i] += skillsDictionary["LightningSphere"];
-        }
-        else if (skillIndexs == 2)
-        {
-            skillSlotList[i] += skillsDictionary["CrimsonStrike"];
-        }
-        else if (skillIndexs == 3)
-        {
-            skillSlotList[i] += skillsDictionary["BlackOut"];
-        }
-        else if (skillIndexs == 4)
-        {
-            skillSlotList[i] += skillsDictionary["FrozenContinuam"];
-        }
-        else if (skillIndexs == 5)
-        {
-            skillSlotList[i] += skillsDictionary["FireBall"];
-        }
-        else if (skillIndexs == 6)
-        {
-            skillSlotList[i] += skillsDictionary["MoonLightSlash"];
-        }
-        else if (skillIndexs == 6)
-        {
-            skillSlotList[i] += skillsDictionary["Null"];
-        }
-
-        skillsNameDictionary.Add(skillSlotList[i], skillSlotList[i].Method.Name);
-    }*/
 
     public void SetSkillSlot(SkillOffsetDel offsetDel)
     {
@@ -358,29 +309,10 @@ public class CSkillLibrary : ASkill
     {
         skillSlotList[slotIndex] -= skillsDictionary[skillsNameDictionary[skillSlotList[slotIndex]]];
         skillSlotList[slotIndex] += skillsDictionary[changeSkill.Method.Name];
-
-        /*if (changeSkill == skillsDictionary["Null"])
-        {
-            skillSlotList[slotIndex] -= skillsDictionary["Null"];
-        }
-        else
-        {
-            if (skillSlotList[slotIndex] == skillsDictionary["Null"])
-            {
-                skillSlotList[slotIndex] -= skillsDictionary["Null"];
-                skillSlotList[slotIndex] += skillsDictionary[changeSkill.Method.Name];
-            }
-            else
-            {
-                skillSlotList[slotIndex] -= skillsDictionary[skillsNameDictionary[skillSlotList[slotIndex]]];
-                skillSlotList[slotIndex] += skillsDictionary[changeSkill.Method.Name];
-            }
-        }*/
     }
 
     public Skill CheckSlotSkill(int index)
     {
-        //return skillSlotList[index];
         return skillIndexReverseDictionary[index];
     }
 
@@ -391,21 +323,8 @@ public class CSkillLibrary : ASkill
 
     public int CheckSkillIndex(Skill skill)
     {
-        /*if (skill == Null)
-        {
-            return 6;
-        }*/
-        //else
-        //{
-            return skillIndexDictionary[skill];
-        //}
+         return skillIndexDictionary[skill];
     }
-
-    //지울것
-   /* public void ChangeSkillInPlayerInventory(Sprite skillSprite, int slotIndex)
-    {
-        RegistSkill(slotIndex, CheckSkillIndex(registSkillSpriteDictionary[skillSprite]));
-    }*/
 
     //지울것
     public Skill FindSkillToSkillIcon(Sprite skillSprite)

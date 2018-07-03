@@ -50,7 +50,7 @@ public class TestPlayerSkillInventory : MonoBehaviour, IBeginDragHandler, IDragH
         Sprite dragSprite = eventData.pointerDrag.transform.gameObject.GetComponent<Image>().sprite;
         Sprite enterSprite = eventData.pointerEnter.transform.gameObject.GetComponent<Image>().sprite;
 
-            //Skill Change
+            //Skill Change (Test 날림으로 만듬)
             if (slot == ESlot.Q && this.GetComponent<Image>().sprite.name == "NullSkill")
             {
                 CGameManager.instance.skillLibrary.GetComponent<CSkillLibrary>().ChangeSlot(CGameManager.instance.skillLibrary.GetComponent<CSkillLibrary>().FindSkillToSkillIcon(dragSprite), 0);              
@@ -64,11 +64,11 @@ public class TestPlayerSkillInventory : MonoBehaviour, IBeginDragHandler, IDragH
             CGameManager.instance.skillLibrary.GetComponent<CSkillLibrary>().ChangeSlot(CGameManager.instance.skillLibrary.GetComponent<CSkillLibrary>().FindSkillToSkillIcon(dragSprite), 0);
             CGameManager.instance.skillLibrary.GetComponent<CSkillLibrary>().ChangeSlot(CGameManager.instance.skillLibrary.GetComponent<CSkillLibrary>().FindSkillToSkillIcon(enterSprite), 1);
             }
-        else if (slot == ESlot.E && slotQ.GetComponent<Image>().sprite.name != "NullSkill" && slotE.GetComponent<Image>().sprite.name != "NullSkill")
-        {
+            else if (slot == ESlot.E && slotQ.GetComponent<Image>().sprite.name != "NullSkill" && slotE.GetComponent<Image>().sprite.name != "NullSkill")
+            {
             CGameManager.instance.skillLibrary.GetComponent<CSkillLibrary>().ChangeSlot(CGameManager.instance.skillLibrary.GetComponent<CSkillLibrary>().FindSkillToSkillIcon(dragSprite), 1);
             CGameManager.instance.skillLibrary.GetComponent<CSkillLibrary>().ChangeSlot(CGameManager.instance.skillLibrary.GetComponent<CSkillLibrary>().FindSkillToSkillIcon(enterSprite), 0);
-        }
+            }
 
         this.GetComponent<Image>().sprite = dragSprite;
         eventData.pointerDrag.transform.gameObject.GetComponent<Image>().sprite = enterSprite;
@@ -76,6 +76,16 @@ public class TestPlayerSkillInventory : MonoBehaviour, IBeginDragHandler, IDragH
 
     public void OnEndDrag(PointerEventData eventData)
     {
+        if (slotQ.GetComponent<Image>().sprite.name == "NullSkill")
+        {
+            CGameManager.instance.skillLibrary.GetComponent<CSkillLibrary>().ChangeSlot(CGameManager.instance.skillLibrary.GetComponent<CSkillLibrary>().FindSkillToSkillIcon(slotQ.GetComponent<Image>().sprite), 0);
+        }
+
+        if (slotE.GetComponent<Image>().sprite.name == "NullSkill")
+        {
+            CGameManager.instance.skillLibrary.GetComponent<CSkillLibrary>().ChangeSlot(CGameManager.instance.skillLibrary.GetComponent<CSkillLibrary>().FindSkillToSkillIcon(slotE.GetComponent<Image>().sprite), 1);
+        }
+
         this.gameObject.GetComponent<CanvasGroup>().blocksRaycasts = true;
         this.transform.localPosition = new Vector3(0, 0);
     }
