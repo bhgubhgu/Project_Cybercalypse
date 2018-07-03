@@ -74,7 +74,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1244805817838596
 GameObject:
   m_ObjectHideFlags: 0
@@ -170,7 +170,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1449503754443782
 GameObject:
   m_ObjectHideFlags: 0
@@ -234,7 +234,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1486211939468602
 GameObject:
   m_ObjectHideFlags: 0
@@ -303,7 +303,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1731296570456486
 GameObject:
   m_ObjectHideFlags: 1
@@ -319,7 +319,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1751939103534852
 GameObject:
   m_ObjectHideFlags: 1
@@ -383,7 +383,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1908784784948806
 GameObject:
   m_ObjectHideFlags: 0
@@ -991,7 +991,7 @@ CapsuleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0.115}
@@ -1231,6 +1231,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 032ccce90d26eb14c9a211ca732053d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isCantBuy: 0
 --- !u!114 &114130560078798072
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1239,7 +1240,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1586109803578456}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 316af7b3355d874448f8530c8b265250, type: 3}
+  m_Script: {fileID: 11500000, guid: 0e1a1db7074bd3344b17b608b85b0888, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &114134376499089110
@@ -1400,9 +1401,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isPlayerInvincible: 0
   playerObject: {fileID: 1908784784948806}
+  skillLibrary: {fileID: 0}
   isDead: 0
   isGameOver: 0
   isMenuClose: 0
+  testSkillList:
+  - {fileID: 1755727193438246, guid: 2c6aa4658b175504f855c368354341ad, type: 2}
+  - {fileID: 1755476957924244, guid: 68a8a1167e8644147b94783f54a67552, type: 2}
+  - {fileID: 1667226556227596, guid: 79e7493587e724443b4a85b881568e38, type: 2}
+  - {fileID: 1382099843839014, guid: 81ba586e728b838478e7a3090ba933bc, type: 2}
+  - {fileID: 1161926440650372, guid: 44a27838d1fb7ab4e99d408f34324d54, type: 2}
+  - {fileID: 1735641263043758, guid: 906b41a2fe50baa498ce545f0e8610fc, type: 2}
+  abilityList:
+  - {fileID: 1005326389958706, guid: 5882a54a0d7c8da43afb3034828d73e9, type: 2}
+  - {fileID: 1715638949361926, guid: 9db2be3873b42a44ea24b4a3360a7c58, type: 2}
+  - {fileID: 1865283464531912, guid: 4a5f7dc24f024c143917af87b79db5ff, type: 2}
 --- !u!114 &114684230341662248
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1529,7 +1542,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1141452619
-  m_SortingLayer: 0
+  m_SortingLayer: 7
   m_SortingOrder: 0
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -1572,7 +1585,7 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -914459225
+  m_SortingLayerID: 1402239565
   m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 7577b5f61765681418803a1d4f2bc6f7, type: 3}
@@ -1617,7 +1630,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 156309363
-  m_SortingLayer: 0
+  m_SortingLayer: 8
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: f9e22d48c8dec2945951b6a03e939514, type: 3}
   m_Color: {r: 0, g: 0, b: 0, a: 0}
@@ -1660,7 +1673,7 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 1612869499
+  m_SortingLayerID: 1276692813
   m_SortingLayer: 6
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: d4d64c2cf3e6747918f85172c9b9801d, type: 3}

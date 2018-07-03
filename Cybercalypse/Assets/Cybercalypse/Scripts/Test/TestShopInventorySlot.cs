@@ -32,7 +32,7 @@ public class TestShopInventorySlot : MonoBehaviour, IEndDragHandler
 
        for (int i = 0; i < playerInventory.transform.childCount - 1; i++)
        {
-            if (slotDictionary[i].GetComponent<Image>().sprite == null)
+            if (slotDictionary[i].GetComponent<Image>().sprite.name == "NullSkill")
             {
                 TestTradeSystem.instance.Trade(this.transform.GetComponent<Image>().sprite, 1);
 

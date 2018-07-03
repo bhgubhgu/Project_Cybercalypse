@@ -40,6 +40,10 @@ public class CDataManager : SingleTonManager<CDataManager>
     {
         base.Awake(); //추상 싱글톤 클래스에서의 Awake 오버라이딩
         monsterDataList = new List<CMonsterData>();
+    }
+
+    private void Start()
+    {
         LoadJsonData();
     }
 
@@ -69,7 +73,6 @@ public class CDataManager : SingleTonManager<CDataManager>
         //플레이어 저장된 position 로드
         string[] playerPositionData = playerData.PlayerSavePosition.Split('/');
         CGameManager.instance.playerObject.transform.position = new Vector3(float.Parse(playerPositionData[0]), float.Parse(playerPositionData[1]), float.Parse(playerPositionData[2]));
-        
 
         //몬스터 데이터 로드
         for (int i = 0; i < monsterJsonData.Count; i++)
