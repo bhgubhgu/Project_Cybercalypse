@@ -77,7 +77,8 @@ public class CSkillLibrary : ASkill
     private Dictionary<string, Skill> skillsDictionary = new Dictionary<string, Skill>(); //스킬 슬롯 Change를 위한 Dictionary
     private Dictionary<Skill, string> skillsNameDictionary = new Dictionary<Skill, string>(); //스킬 슬롯 Change 때 Key 값이 SKill일때
     private Dictionary<Skill, int> skillIndexDictionary = new Dictionary<Skill, int>(); //스킬 슬롯 Change 때 skill index 값을 받아올때
-    private Dictionary<int, Skill> registSkillDictionary = new Dictionary<int, Skill>();
+    private Dictionary<int, Skill> skillIndexReverseDictionary = new Dictionary<int, Skill>(); //스킬 슬롯 Change 때 Key 값을 index로 받아올때
+    private Dictionary<Sprite, Skill> registSkillSpriteDictionary = new Dictionary<Sprite, Skill>(); //Skill 아이콘을 키로 각 아이콘에 해당하는 실질적 스킬들을 저장
 
     private void Awake()
     {
@@ -92,44 +93,71 @@ public class CSkillLibrary : ASkill
 
         skillOffsetArray = new SkillOffsetDel[6];
         skillSlotList = new Skill[6];
+        //EX) skillLIst[0] = 0번째 슬롯에 등록된 스킬 ...
+    }
 
+    private new void Start()
+    {
         ResetRegistSkills();
         RegistAllSkill();
         ResetSlot();
-        //EX) skillLIst[0] = 0번째 슬롯에 등록된 스킬 ...
     }
 
     #region 스킬 슬롯 검사 및 추가
     private void RegistAllSkill()
     {
-        skillIndexDictionary.Add(LightningSphere, 0);
+        /*skillIndexDictionary.Add(LightningSphere, 0);
         skillIndexDictionary.Add(CrimsonStrike, 1);
         skillIndexDictionary.Add(BlackOut, 2);
         skillIndexDictionary.Add(FrozenContinuam, 3);
         skillIndexDictionary.Add(FireBall, 4);
         skillIndexDictionary.Add(MoonLightSlash, 5);
-        skillIndexDictionary.Add(Null, 6);
+        skillIndexDictionary.Add(Null, 6);*/
+
+        skillIndexDictionary.Add(Null, 0);
+        skillIndexDictionary.Add(LightningSphere, 1);
+        skillIndexDictionary.Add(CrimsonStrike, 2);
+        skillIndexDictionary.Add(BlackOut, 3);
+        skillIndexDictionary.Add(FrozenContinuam, 4);
+        skillIndexDictionary.Add(FireBall, 5);
+        skillIndexDictionary.Add(MoonLightSlash, 6);
         // .. 앞으로 더 늘어남
 
-        registSkillDictionary.Add(0, LightningSphere);
-        registSkillDictionary.Add(1, CrimsonStrike);
-        registSkillDictionary.Add(2, BlackOut);
-        registSkillDictionary.Add(3, FrozenContinuam);
-        registSkillDictionary.Add(4, FireBall);
-        registSkillDictionary.Add(5, MoonLightSlash);
-        registSkillDictionary.Add(6, Null);
-        // .. 앞으로 더 늘어남
+        skillIndexReverseDictionary.Add(0, Null);
+        skillIndexReverseDictionary.Add(1, LightningSphere);
+        skillIndexReverseDictionary.Add(2, CrimsonStrike);
+        skillIndexReverseDictionary.Add(3, BlackOut);
+        skillIndexReverseDictionary.Add(4, FrozenContinuam);
+        skillIndexReverseDictionary.Add(5, FireBall);
+        skillIndexReverseDictionary.Add(6, MoonLightSlash);
+
+        //Test 실질적인 아이콘을 가진 스킬 오브젝트
+        registSkillSpriteDictionary.Add(CGameManager.instance.testSkillList[0].GetComponent<SpriteRenderer>().sprite, Null);
+        registSkillSpriteDictionary.Add(CGameManager.instance.testSkillList[1].GetComponent<SpriteRenderer>().sprite, LightningSphere);
+        registSkillSpriteDictionary.Add(CGameManager.instance.testSkillList[2].GetComponent<SpriteRenderer>().sprite, CrimsonStrike);
+        registSkillSpriteDictionary.Add(CGameManager.instance.testSkillList[3].GetComponent<SpriteRenderer>().sprite, BlackOut);
+        registSkillSpriteDictionary.Add(CGameManager.instance.testSkillList[4].GetComponent<SpriteRenderer>().sprite, FrozenContinuam);
+        registSkillSpriteDictionary.Add(CGameManager.instance.testSkillList[5].GetComponent<SpriteRenderer>().sprite, FireBall);
+        registSkillSpriteDictionary.Add(CGameManager.instance.testSkillList[6].GetComponent<SpriteRenderer>().sprite, MoonLightSlash);
     }
 
     private void ResetRegistSkills()
     {
+        skillsDictionary.Add("Null", Null);
         skillsDictionary.Add("LightningSphere", LightningSphere);
         skillsDictionary.Add("CrimsonStrike", CrimsonStrike);
         skillsDictionary.Add("BlackOut", BlackOut);
         skillsDictionary.Add("FrozenContinuam", FrozenContinuam);
         skillsDictionary.Add("FireBall", FireBall);
         skillsDictionary.Add("MoonLightSlash", MoonLightSlash);
-        skillsDictionary.Add("Null", Null);
+
+        skillsNameDictionary.Add(Null, "Null");
+        skillsNameDictionary.Add(LightningSphere, "LightningSphere");
+        skillsNameDictionary.Add(CrimsonStrike, "CrimsonStrike");
+        skillsNameDictionary.Add(BlackOut, "BlackOut");
+        skillsNameDictionary.Add(FrozenContinuam, "FrozenContinuam");
+        skillsNameDictionary.Add(FireBall, "FireBall");
+        skillsNameDictionary.Add(MoonLightSlash, "MoonLightSlash");
         // .. 앞으로 더 늘어남
     }
 
@@ -141,7 +169,7 @@ public class CSkillLibrary : ASkill
         }
     }
 
-    public void RegistSkill(int i, int skillIndexs)
+    /*public void RegistSkill(int i, int skillIndexs)
     {
         //스킬을 획득한 후 여기서 스킬 등록이 이루어진다(비어있는 슬롯에 등록됨)
 
@@ -150,33 +178,41 @@ public class CSkillLibrary : ASkill
             skillSlotList[i] -= skillsDictionary["Null"];
         }
 
-        if (skillIndexs == 0)
+        if(skillIndexs == 0)
+        {
+            skillSlotList[i] += skillsDictionary["Null"];
+        }
+        if (skillIndexs == 1)
         {
             skillSlotList[i] += skillsDictionary["LightningSphere"];
         }
-        else if (skillIndexs == 1)
+        else if (skillIndexs == 2)
         {
             skillSlotList[i] += skillsDictionary["CrimsonStrike"];
         }
-        else if (skillIndexs == 2)
+        else if (skillIndexs == 3)
         {
             skillSlotList[i] += skillsDictionary["BlackOut"];
         }
-        else if (skillIndexs == 3)
+        else if (skillIndexs == 4)
         {
             skillSlotList[i] += skillsDictionary["FrozenContinuam"];
         }
-        else if (skillIndexs == 4)
+        else if (skillIndexs == 5)
         {
             skillSlotList[i] += skillsDictionary["FireBall"];
         }
-        else if (skillIndexs == 5)
+        else if (skillIndexs == 6)
         {
             skillSlotList[i] += skillsDictionary["MoonLightSlash"];
         }
+        else if (skillIndexs == 6)
+        {
+            skillSlotList[i] += skillsDictionary["Null"];
+        }
 
         skillsNameDictionary.Add(skillSlotList[i], skillSlotList[i].Method.Name);
-    }
+    }*/
 
     public void SetSkillSlot(SkillOffsetDel offsetDel)
     {
@@ -320,10 +356,12 @@ public class CSkillLibrary : ASkill
     #region 스킬의 슬롯 변경
     public void ChangeSlot(Skill changeSkill, int slotIndex)
     {
-        if (changeSkill == skillsDictionary["Null"])
+        skillSlotList[slotIndex] -= skillsDictionary[skillsNameDictionary[skillSlotList[slotIndex]]];
+        skillSlotList[slotIndex] += skillsDictionary[changeSkill.Method.Name];
+
+        /*if (changeSkill == skillsDictionary["Null"])
         {
             skillSlotList[slotIndex] -= skillsDictionary["Null"];
-            skillSlotList[slotIndex] += registSkillDictionary[slotIndex];
         }
         else
         {
@@ -337,33 +375,42 @@ public class CSkillLibrary : ASkill
                 skillSlotList[slotIndex] -= skillsDictionary[skillsNameDictionary[skillSlotList[slotIndex]]];
                 skillSlotList[slotIndex] += skillsDictionary[changeSkill.Method.Name];
             }
-        }
+        }*/
     }
 
     public Skill CheckSlotSkill(int index)
     {
-        return skillSlotList[index];
+        //return skillSlotList[index];
+        return skillIndexReverseDictionary[index];
+    }
+
+    public Skill CheckSkillIcon(Sprite skill)
+    {
+        return registSkillSpriteDictionary[skill];
     }
 
     public int CheckSkillIndex(Skill skill)
     {
-        if (skill == Null)
+        /*if (skill == Null)
         {
             return 6;
-        }
-        else
-        {
+        }*/
+        //else
+        //{
             return skillIndexDictionary[skill];
-        }
+        //}
     }
 
     //지울것
-    public void ChangeSkillInPlayerInventory(Sprite skillSprite)
+   /* public void ChangeSkillInPlayerInventory(Sprite skillSprite, int slotIndex)
     {
-        if(skillSprite.name == "bearded-idle-1")
-        {
-            ChangeSlot( CheckSlotSkill(0) , 0);
-        }
+        RegistSkill(slotIndex, CheckSkillIndex(registSkillSpriteDictionary[skillSprite]));
+    }*/
+
+    //지울것
+    public Skill FindSkillToSkillIcon(Sprite skillSprite)
+    {
+        return CheckSlotSkill(CheckSkillIndex(CheckSkillIcon(skillSprite)));
     }
     #endregion
 }

@@ -21,6 +21,9 @@ public class CGameManager : SingleTonManager<CGameManager>
     public bool isGameOver;
     public bool isMenuClose;
 
+    public List<GameObject> testSkillList;
+    public List<GameObject> abilityList;
+
     private SpriteRenderer sprite;
     private Vector2 cursorTexturePosition;
     
