@@ -13,9 +13,6 @@ public class TestPlayerSkillInventory : MonoBehaviour, IBeginDragHandler, IDragH
     private GameObject slotQ;
     private GameObject slotE;
 
-    private bool isSkillChangeComplete;
-    private bool isGetAnotherObject;
-
     private void Awake()
     {
         slotQ = this.transform.parent.transform.parent.GetChild(0).transform.GetChild(0).gameObject;
@@ -49,46 +46,33 @@ public class TestPlayerSkillInventory : MonoBehaviour, IBeginDragHandler, IDragH
         //Skill Change (Test 날림으로 만듬)
             if (slot == ESkillSlot.Q && this.GetComponent<Image>().sprite.name == "NullSkill")
             {
-                isSkillChangeComplete = true;
                 CGameManager.instance.skillLibrary.GetComponent<CSkillLibrary>().ChangeSlot(CGameManager.instance.skillLibrary.GetComponent<CSkillLibrary>().FindSkillToSkillIcon(dragSprite), 0);
             }
             else if (slot == ESkillSlot.E && this.GetComponent<Image>().sprite.name == "NullSkill")
             {
-                isSkillChangeComplete = true;
                 CGameManager.instance.skillLibrary.GetComponent<CSkillLibrary>().ChangeSlot(CGameManager.instance.skillLibrary.GetComponent<CSkillLibrary>().FindSkillToSkillIcon(dragSprite), 1);
             }
             else if (slot == ESkillSlot.Q && slotQ.GetComponent<Image>().sprite.name != "NullSkill" && slotE.GetComponent<Image>().sprite.name != "NullSkill" && eventData.pointerEnter.gameObject == slotE)
             {
-                isSkillChangeComplete = true;
                 CGameManager.instance.skillLibrary.GetComponent<CSkillLibrary>().ChangeSlot(CGameManager.instance.skillLibrary.GetComponent<CSkillLibrary>().FindSkillToSkillIcon(dragSprite), 0);
                 CGameManager.instance.skillLibrary.GetComponent<CSkillLibrary>().ChangeSlot(CGameManager.instance.skillLibrary.GetComponent<CSkillLibrary>().FindSkillToSkillIcon(enterSprite), 1);
             }
             else if (slot == ESkillSlot.E && slotQ.GetComponent<Image>().sprite.name != "NullSkill" && slotE.GetComponent<Image>().sprite.name != "NullSkill" && eventData.pointerEnter.gameObject == slotQ)
             {
-                isSkillChangeComplete = true;
                 CGameManager.instance.skillLibrary.GetComponent<CSkillLibrary>().ChangeSlot(CGameManager.instance.skillLibrary.GetComponent<CSkillLibrary>().FindSkillToSkillIcon(dragSprite), 1);
                 CGameManager.instance.skillLibrary.GetComponent<CSkillLibrary>().ChangeSlot(CGameManager.instance.skillLibrary.GetComponent<CSkillLibrary>().FindSkillToSkillIcon(enterSprite), 0);
             }
             else if (slot == ESkillSlot.Q && slotQ.GetComponent<Image>().sprite.name != "NullSkill")
             {
-                isSkillChangeComplete = true;
                 CGameManager.instance.skillLibrary.GetComponent<CSkillLibrary>().ChangeSlot(CGameManager.instance.skillLibrary.GetComponent<CSkillLibrary>().FindSkillToSkillIcon(dragSprite), 0);
             }
             else if (slot == ESkillSlot.E && slotQ.GetComponent<Image>().sprite.name != "NullSkill")
             {
-                isSkillChangeComplete = true;
                 CGameManager.instance.skillLibrary.GetComponent<CSkillLibrary>().ChangeSlot(CGameManager.instance.skillLibrary.GetComponent<CSkillLibrary>().FindSkillToSkillIcon(dragSprite), 1);
             }
-            else
-            {
-                isSkillChangeComplete = false;
-            }
 
-        if(isSkillChangeComplete)
-        {
             this.GetComponent<Image>().sprite = dragSprite;
             eventData.pointerDrag.transform.gameObject.GetComponent<Image>().sprite = enterSprite;
-        }
     }
 
     public void OnEndDrag(PointerEventData eventData)

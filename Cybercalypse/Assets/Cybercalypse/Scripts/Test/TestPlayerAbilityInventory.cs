@@ -15,14 +15,11 @@ public class TestPlayerAbilityInventory : MonoBehaviour, IBeginDragHandler, IDra
     private GameObject slotAbility2;
     private GameObject slotAbility3;
 
-    private bool isAbilityChangeComplete;
-    private bool isGetAnotherObject;
-
     private void Awake()
     {
-        slotAbility1 = this.transform.parent.transform.parent.GetChild(2).transform.GetChild(0).gameObject;
-        slotAbility2 = this.transform.parent.transform.parent.GetChild(3).transform.GetChild(0).gameObject;
-        slotAbility3 = this.transform.parent.transform.parent.GetChild(4).transform.GetChild(0).gameObject;
+        slotAbility1 = this.transform.parent.transform.parent.GetChild(0).transform.GetChild(0).gameObject;
+        slotAbility2 = this.transform.parent.transform.parent.GetChild(1).transform.GetChild(0).gameObject;
+        slotAbility3 = this.transform.parent.transform.parent.GetChild(2).transform.GetChild(0).gameObject;
     }
 
     public void OnBeginDrag(PointerEventData eventData)
@@ -52,66 +49,50 @@ public class TestPlayerAbilityInventory : MonoBehaviour, IBeginDragHandler, IDra
         //Ability Change (Test 날림으로 만듬)
         if (slot == EAbilitySlot.Ability1 && this.GetComponent<Image>().sprite.name == "NullAbility")
         {
-            isAbilityChangeComplete = true;
             CGameManager.instance.abilityLibrary.GetComponent<CAbilityLibrary>().ChangeSlot(CGameManager.instance.abilityLibrary.GetComponent<CAbilityLibrary>().FindAbilityToAbilityIcon(dragSprite), 0);
         }
         else if (slot == EAbilitySlot.Ability2 && this.GetComponent<Image>().sprite.name == "NullAbility")
         {
-            Debug.Log("wow");
-            isAbilityChangeComplete = true;
             CGameManager.instance.abilityLibrary.GetComponent<CAbilityLibrary>().ChangeSlot(CGameManager.instance.abilityLibrary.GetComponent<CAbilityLibrary>().FindAbilityToAbilityIcon(dragSprite), 1);
         }
         else if (slot == EAbilitySlot.Ability3 && this.GetComponent<Image>().sprite.name == "NullAbility")
         {
-            isAbilityChangeComplete = true;
             CGameManager.instance.abilityLibrary.GetComponent<CAbilityLibrary>().ChangeSlot(CGameManager.instance.abilityLibrary.GetComponent<CAbilityLibrary>().FindAbilityToAbilityIcon(dragSprite), 2);
         }
         else if (slot == EAbilitySlot.Ability1 && slotAbility1.GetComponent<Image>().sprite.name != "NullAbility" && slotAbility2.GetComponent<Image>().sprite.name != "NullAbility" && slotAbility3.GetComponent<Image>().sprite.name != "NullAbility" && (eventData.pointerEnter.gameObject == slotAbility2 || eventData.pointerEnter.gameObject == slotAbility3))
         {
-            isAbilityChangeComplete = true;
             CGameManager.instance.abilityLibrary.GetComponent<CAbilityLibrary>().ChangeSlot(CGameManager.instance.abilityLibrary.GetComponent<CAbilityLibrary>().FindAbilityToAbilityIcon(dragSprite), 0);
             CGameManager.instance.abilityLibrary.GetComponent<CAbilityLibrary>().ChangeSlot(CGameManager.instance.abilityLibrary.GetComponent<CAbilityLibrary>().FindAbilityToAbilityIcon(enterSprite), 1);
             CGameManager.instance.abilityLibrary.GetComponent<CAbilityLibrary>().ChangeSlot(CGameManager.instance.abilityLibrary.GetComponent<CAbilityLibrary>().FindAbilityToAbilityIcon(enterSprite), 2);
         }
         else if (slot == EAbilitySlot.Ability2 && slotAbility1.GetComponent<Image>().sprite.name != "NullAbility" && slotAbility2.GetComponent<Image>().sprite.name != "NullAbility" && slotAbility3.GetComponent<Image>().sprite.name != "NullAbility" &&  (eventData.pointerEnter.gameObject == slotAbility1 || eventData.pointerEnter.gameObject == slotAbility3))
         {
-            isAbilityChangeComplete = true;
             CGameManager.instance.abilityLibrary.GetComponent<CAbilityLibrary>().ChangeSlot(CGameManager.instance.abilityLibrary.GetComponent<CAbilityLibrary>().FindAbilityToAbilityIcon(dragSprite), 1);
             CGameManager.instance.abilityLibrary.GetComponent<CAbilityLibrary>().ChangeSlot(CGameManager.instance.abilityLibrary.GetComponent<CAbilityLibrary>().FindAbilityToAbilityIcon(enterSprite), 0);
             CGameManager.instance.abilityLibrary.GetComponent<CAbilityLibrary>().ChangeSlot(CGameManager.instance.abilityLibrary.GetComponent<CAbilityLibrary>().FindAbilityToAbilityIcon(enterSprite), 2);
         }
         else if (slot == EAbilitySlot.Ability3 && slotAbility1.GetComponent<Image>().sprite.name != "NullAbility" && slotAbility2.GetComponent<Image>().sprite.name != "NullAbility" && slotAbility3.GetComponent<Image>().sprite.name != "NullAbility" && (eventData.pointerEnter.gameObject == slotAbility1 || eventData.pointerEnter.gameObject == slotAbility2))
         {
-            isAbilityChangeComplete = true;
             CGameManager.instance.abilityLibrary.GetComponent<CAbilityLibrary>().ChangeSlot(CGameManager.instance.abilityLibrary.GetComponent<CAbilityLibrary>().FindAbilityToAbilityIcon(enterSprite), 2);
             CGameManager.instance.abilityLibrary.GetComponent<CAbilityLibrary>().ChangeSlot(CGameManager.instance.abilityLibrary.GetComponent<CAbilityLibrary>().FindAbilityToAbilityIcon(dragSprite), 1);
             CGameManager.instance.abilityLibrary.GetComponent<CAbilityLibrary>().ChangeSlot(CGameManager.instance.abilityLibrary.GetComponent<CAbilityLibrary>().FindAbilityToAbilityIcon(enterSprite), 0);
         }
         else if (slot == EAbilitySlot.Ability1 && slotAbility1.GetComponent<Image>().sprite.name != "NullAbility")
         {
-            isAbilityChangeComplete = true;
             CGameManager.instance.abilityLibrary.GetComponent<CAbilityLibrary>().ChangeSlot(CGameManager.instance.abilityLibrary.GetComponent<CAbilityLibrary>().FindAbilityToAbilityIcon(dragSprite), 0);
         }
         else if (slot == EAbilitySlot.Ability2 && slotAbility2.GetComponent<Image>().sprite.name != "NullAbility")
         {
-            isAbilityChangeComplete = true;
             CGameManager.instance.abilityLibrary.GetComponent<CAbilityLibrary>().ChangeSlot(CGameManager.instance.abilityLibrary.GetComponent<CAbilityLibrary>().FindAbilityToAbilityIcon(dragSprite), 1);
         }
         else if (slot == EAbilitySlot.Ability3 && slotAbility3.GetComponent<Image>().sprite.name != "NullAbility")
         {
-            isAbilityChangeComplete = true;
             CGameManager.instance.abilityLibrary.GetComponent<CAbilityLibrary>().ChangeSlot(CGameManager.instance.abilityLibrary.GetComponent<CAbilityLibrary>().FindAbilityToAbilityIcon(dragSprite), 2);
         }
-        else
-        {
-            isAbilityChangeComplete = false;
-        }
 
-        if (isAbilityChangeComplete)
-        {
-            this.GetComponent<Image>().sprite = dragSprite;
-            eventData.pointerDrag.transform.gameObject.GetComponent<Image>().sprite = enterSprite;
-        }
+         this.GetComponent<Image>().sprite = dragSprite;
+         eventData.pointerDrag.transform.gameObject.GetComponent<Image>().sprite = enterSprite;
+        
     }
 
     public void OnEndDrag(PointerEventData eventData)

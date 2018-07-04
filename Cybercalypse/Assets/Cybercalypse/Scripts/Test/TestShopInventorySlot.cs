@@ -6,8 +6,6 @@ using UnityEngine.UI;
 public class TestShopInventorySlot : MonoBehaviour
 {
     private GameObject playerInventory;
-    private Vector3 startPosition;
-    private Vector3 mousePosition;
 
     private Dictionary<int, GameObject> slotDictionary;
 
@@ -29,7 +27,7 @@ public class TestShopInventorySlot : MonoBehaviour
     {
        for (int i = 0; i < playerInventory.transform.childCount - 1; i++)
        {
-            if (slotDictionary[i].GetComponent<Image>().sprite.name == "NullSkill" || slotDictionary[i].GetComponent<Image>().sprite.name == "NullAbility")
+            if (slotDictionary[i].GetComponent<Image>().sprite.name == "NullSkill" || slotDictionary[i].GetComponent<Image>().sprite.name == "NullAbility" || slotDictionary[i].GetComponent<Image>().sprite.name == "NullWeapon" || slotDictionary[i].GetComponent<Image>().sprite.name == "NullMask" || slotDictionary[i].GetComponent<Image>().sprite.name == "NullSuit")
             {
                 TestTradeSystem.instance.Trade(this.transform.GetComponent<Image>().sprite, 1);
 
