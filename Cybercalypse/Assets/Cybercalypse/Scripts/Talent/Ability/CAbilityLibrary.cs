@@ -20,8 +20,6 @@ public class CAbilityLibrary : AAbility
     public override ETalantCategory TalantCagegory { get; set; }
     #endregion
 
-    private int delegateIndex = 0;
-
     private Ability[] abilitySlotList;
     public Ability lightningSphereDel;
     public Ability crimsonStrikeDel;
@@ -49,7 +47,7 @@ public class CAbilityLibrary : AAbility
 
         abilityOffsetArray = new AbilityOffsetDel[3];
         abilitySlotList = new Ability[3];
-        //EX) AbilityLIst[0] = 0번째 슬롯에 등록된 스킬 ...
+        //EX) AbilityLIst[0] = 0번째 슬롯에 등록된 어빌리티 ...
     }
 
     private void Start()
@@ -58,22 +56,6 @@ public class CAbilityLibrary : AAbility
         RegistAllAbility();
         RegistAbilityIconToAbility();
         ResetSlot();
-    }
-
-    private void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.F1))
-        {
-            abilitySlotList[0]();
-        }
-        else if(Input.GetKeyDown(KeyCode.F2))
-        {
-            abilitySlotList[1]();
-        }
-        else if (Input.GetKeyDown(KeyCode.F3))
-        {
-            abilitySlotList[2]();
-        }
     }
 
     #region 스킬 슬롯 검사 및 추가

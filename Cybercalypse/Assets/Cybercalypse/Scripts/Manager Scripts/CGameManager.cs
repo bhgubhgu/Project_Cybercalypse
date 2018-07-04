@@ -17,6 +17,7 @@ public class CGameManager : SingleTonManager<CGameManager>
     public GameObject playerObject;
     public GameObject skillLibrary;
     public GameObject abilityLibrary;
+    public GameObject equipmentLibrary;
 
     public bool isDead;
     public bool isGameOver;
@@ -24,7 +25,9 @@ public class CGameManager : SingleTonManager<CGameManager>
 
     public List<Sprite> testSkillList;
     public List<Sprite> testAbilityList;
-    public List<Sprite> test;
+    public List<Sprite> testWeaponList;
+    public List<Sprite> testMaskList;
+    public List<Sprite> testSuitList;
 
     private SpriteRenderer sprite;
     private Vector2 cursorTexturePosition;
@@ -47,6 +50,7 @@ public class CGameManager : SingleTonManager<CGameManager>
 
         skillLibrary = GameObject.Find("Skill Library").gameObject;
         abilityLibrary = GameObject.Find("Ability Library").gameObject;
+        equipmentLibrary = GameObject.Find("Equipment Library").gameObject;
     }
 
     private void Start()
