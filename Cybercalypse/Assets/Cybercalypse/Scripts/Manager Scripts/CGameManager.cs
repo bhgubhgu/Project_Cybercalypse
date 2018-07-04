@@ -16,13 +16,18 @@ public class CGameManager : SingleTonManager<CGameManager>
     public bool isPlayerInvincible;
     public GameObject playerObject;
     public GameObject skillLibrary;
+    public GameObject abilityLibrary;
+    public GameObject equipmentLibrary;
 
     public bool isDead;
     public bool isGameOver;
     public bool isMenuClose;
 
-    public List<GameObject> testSkillList;
-    public List<GameObject> abilityList;
+    public List<Sprite> testSkillList;
+    public List<Sprite> testAbilityList;
+    public List<Sprite> testWeaponList;
+    public List<Sprite> testMaskList;
+    public List<Sprite> testSuitList;
 
     private SpriteRenderer sprite;
     private Vector2 cursorTexturePosition;
@@ -44,6 +49,8 @@ public class CGameManager : SingleTonManager<CGameManager>
         fadeObject.GetComponent<SpriteRenderer>().color = Color.clear;
 
         skillLibrary = GameObject.Find("Skill Library").gameObject;
+        abilityLibrary = GameObject.Find("Ability Library").gameObject;
+        equipmentLibrary = GameObject.Find("Equipment Library").gameObject;
     }
 
     private void Start()
