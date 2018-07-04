@@ -8,31 +8,21 @@ public class TestPlayerInventorySlot : MonoBehaviour, IBeginDragHandler, IDragHa
 {
     private Vector3 startPosition;
     private Vector3 mousePosition;
-    
-    private void Update()
+    private Sprite nullSprite;
+
+    private void Awake()
     {
-        if(this.gameObject.GetComponent<Image>().sprite == null)
-        {
-            this.gameObject.GetComponent<Image>().color = new Vector4(1, 1, 1, 0);
-        }
-        else
-        {
-            this.gameObject.GetComponent<Image>().color = new Vector4(1, 1, 1, 1);
-        }
+        nullSprite = this.GetComponent<Image>().sprite;
     }
 
     private void OnMouseOver()
     {
         if(Input.GetKeyDown(KeyCode.Mouse1) && TestShop.isShopOpen)
         {
-            if(this.GetComponent<Image>().sprite != null)
+            if(this.GetComponent<Image>().sprite.name != "NullSkill" || this.GetComponent<Image>().sprite.name != "NullAbility")
             {
                 TestTradeSystem.instance.Trade(this.GetComponent<Image>().sprite, 0);
-                this.GetComponent<Image>().sprite = null;
-            }
-            else
-            {
-                return;
+                this.GetComponent<Image>().sprite = nullSprite;
             }
         }
     }

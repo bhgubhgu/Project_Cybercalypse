@@ -12,7 +12,7 @@ public class TestPlayerInventoryOnOff : MonoBehaviour
     private void Awake()
     {
         playerInventory = GameObject.Find("Player Inventory").gameObject;
-        skillInventory = GameObject.Find("Skill Inventory").gameObject;
+        skillInventory = GameObject.Find("Talent Inventory").gameObject;
     }
 
     private void Start()
