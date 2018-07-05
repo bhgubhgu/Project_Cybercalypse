@@ -331,11 +331,11 @@ GameObject:
   - component: {fileID: 212484304386871694}
   - component: {fileID: 114922902475612076}
   - component: {fileID: 114917910816652396}
-  - component: {fileID: 95793724902227622}
   - component: {fileID: 114750467084968098}
+  - component: {fileID: 114885155784105520}
+  - component: {fileID: 95793724902227622}
   - component: {fileID: 50953263309108454}
   - component: {fileID: 70467393376919188}
-  - component: {fileID: 114885155784105520}
   m_Layer: 9
   m_Name: Player
   m_TagString: Player
@@ -1177,6 +1177,7 @@ MonoBehaviour:
   playerObject: {fileID: 1908784784948806}
   skillLibrary: {fileID: 0}
   abilityLibrary: {fileID: 0}
+  equipmentLibrary: {fileID: 0}
   isDead: 0
   isGameOver: 0
   isMenuClose: 0
@@ -1193,10 +1194,15 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 43597c51dd50b4747b8285c33ea57329, type: 3}
   - {fileID: 21300000, guid: c89b43bfa20a9458b9f49b9d641ac47c, type: 3}
   - {fileID: 21300000, guid: dec23d3f1b157493ea928ad647f275c2, type: 3}
-  test:
-  - {fileID: 21300000, guid: e4ab738c3a9c842b69fa93cbbff0ea53, type: 3}
-  - {fileID: 21300000, guid: 945b6607d85804ca6b5bc6f6d628e68c, type: 3}
-  - {fileID: 21300000, guid: e5d48ddba917147d4984d60c82de0138, type: 3}
+  testWeaponList:
+  - {fileID: 21300000, guid: a2b157e5acac1944cb3442bd57e0390a, type: 3}
+  - {fileID: 21300000, guid: c18f7c9d872c57f4d8cae42ae2e58c73, type: 3}
+  testMaskList:
+  - {fileID: 21300000, guid: 165de5d7249ac404d8a6c7400697de4a, type: 3}
+  - {fileID: 21300002, guid: c18f7c9d872c57f4d8cae42ae2e58c73, type: 3}
+  testSuitList:
+  - {fileID: 21300000, guid: 4aac5621669fdac4ba955a951a32d2cf, type: 3}
+  - {fileID: 21300004, guid: c18f7c9d872c57f4d8cae42ae2e58c73, type: 3}
 --- !u!114 &114666935132007160
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1237,7 +1243,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83e247b8aafd4f74a82fc20220705090, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skillPool: {fileID: 114684230341662248}
 --- !u!114 &114877350254083934
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1271,7 +1276,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0533af708eb9bc0439a9f3ba62fda7d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skillOffset_Instance: {fileID: 114684230341662248}
 --- !u!114 &114922902475612076
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -2,10 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NewAni : MonoBehaviour
+public class CPlayerAnimation : MonoBehaviour
 {
-    public CSkillLibrary skillPool;
+    /// <summary>
+    /// 작성자 : 구용모
+    /// 스크립트 : Player 객체의 애니메이션을 구현하는 스크립트
+    /// 최초 작성일 : . . .
+    /// 최종 수정일 : 2018.07.04
+    /// </summary>
 
+    private CSkillLibrary skillPool;
     private Animator ani;
     private CPlayerController control;
     private CPlayerController playerController;
@@ -18,6 +24,7 @@ public class NewAni : MonoBehaviour
         playerController = GetComponent<CPlayerController>();
         ani = GetComponent<Animator>();
         control = GetComponent<CPlayerController>();
+        skillPool = CGameManager.instance.skillLibrary.GetComponent<CSkillLibrary>();
     }
 
     private void Start()

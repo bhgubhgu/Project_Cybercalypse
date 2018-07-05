@@ -39,6 +39,14 @@ public class TestClickListner : MonoBehaviour
         }
     }
 
+    private void OnDisable()
+    {
+        weaponCategorySlot.SetActive(false);
+        armorCategorySlot.SetActive(false);
+        skillCategorySlot.SetActive(false);
+        abilityCategorySlot.SetActive(false);
+    }
+
     public void WeaponClick()
     {
         if (!TestShop.isShopOpen)

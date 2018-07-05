@@ -243,11 +243,32 @@ public abstract class APhysics : MonoBehaviour
         ///만약 Hit 했을 경우 바로 무적이 되고 무적 될 동안은 Hit 되서는 안된다.
         ///플레이어와 몬스터의 경계를 나눠야 한다.
         ///</summary>
-        
         if((pBoundRight >= hBoundLeft && (pBoundTop <= hBoundBottom || pBoundBottom <= hBboundTop) && !CGameManager.instance.isPlayerInvincible) || (pBoundLeft <= hBoundRight && ((pBoundTop <= hBoundBottom || pBoundBottom <= hBboundTop)) && !CGameManager.instance.isPlayerInvincible))
         {
-            //Hit 완성
+            //Hit 완성(플레이어 전용)
+
+            //플레이어가 아닐시 리턴
+            if (colliders.gameObject.layer == 25)
+            {
+                Debug.Log("Not Player!");
+                return;
+            }
+
             CGameManager.instance.PlayerHasInvincible(); // 플레이어 만의 무적 판정
+        }
+
+        if ((pBoundRight >= hBoundLeft && (pBoundTop <= hBoundBottom || pBoundBottom <= hBboundTop)) || (pBoundLeft <= hBoundRight && ((pBoundTop <= hBoundBottom || pBoundBottom <= hBboundTop))))
+        {
+            //Hit 제작 (몬스터 전용)
+
+            //몬스터가 아닐시 리턴
+            if(colliders.gameObject.layer == 9)
+            {
+                Debug.Log("Not Monster!");
+                return;
+            }
+
+            Debug.Log("Hit by Player");
         }
     }
 
@@ -373,8 +394,6 @@ public abstract class APhysics : MonoBehaviour
     #region Physics Virtual Method for Player
     public virtual float HMove(float moveForce, float hInputValue, Vector3 mousePosition)
     {
-        moveForce = 25;
-
         if ((this.transform.position.x < mousePosition.x))
         {
             this.transform.localScale = new Vector3(+1, 1, 1);
@@ -627,7 +646,6 @@ public abstract class APhysics : MonoBehaviour
     #region physics for coroutine
     public IEnumerator ActionJump(float jumpForce)
     {
-        jumpForce = 2.3f;
         for (float lessTime = 1f; m_jumpVelocity >= -Mathf.Epsilon ; m_jumpTime += Time.deltaTime , lessTime -= Time.deltaTime)
         {
             if((m_isKnockback || Input.GetButtonUp("Accelerate Upward") || Input.GetKeyUp(KeyCode.Joystick1Button0) || m_isHeadCollide))
