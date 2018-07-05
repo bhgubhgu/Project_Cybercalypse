@@ -8,12 +8,10 @@ public class CPlayerController : APhysics
     /// 작성자 : 구용모
     /// 스크립트 : Player 객체의 행동들을 입력을 받는 스크립트
     /// 최초 작성일 : . . .
-    /// 최종 수정일 : 2018.06.14
+    /// 최종 수정일 : 2018.07.04
     /// </summary>
 
-    public CSkillLibrary skillOffset_Instance;
-    /*public CursorControl cursor;*/
-
+    private CSkillLibrary skillOffset_Instance;
     private List<CSkillLibrary.SkillOffsetDel> skillMethodList;
     private CExecutor executor;
 
@@ -206,6 +204,7 @@ public class CPlayerController : APhysics
         whatIsGround = 1 << 8 | 1 << 20 | 1 << 0 | 1 << 21;
         whatIsPlayerHit = 1 << 25;
         executor = this.GetComponent<CExecutor>();
+        skillOffset_Instance = CGameManager.instance.skillLibrary.GetComponent<CSkillLibrary>();
     }
 
     private void Start()

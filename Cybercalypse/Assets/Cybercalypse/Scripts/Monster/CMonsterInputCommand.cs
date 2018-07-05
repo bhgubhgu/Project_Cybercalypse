@@ -58,22 +58,12 @@ public class CMonsterInputCommand : MonoBehaviour
 
     private void Awake()
     {
-        playerChecker = this.transform.GetChild(8);
         whatIsPlayer = 1 << 9;
         whatIsGround = 1 << 8 | 1 << 0;
         whatIsPlayerAttack = 1 << 13  | 1 << 15  | 1 << 17;
         checkerRadius = 1.7f;
         cMonster = GetComponent<CMonster>();
         control = this.GetComponent<CMonsterController>();
-
-        if(kind == CMonsterController.EMonsterKind.Follower_Monster)
-        {
-            cornerChecker = this.transform.GetChild(7).transform;
-        }
-        else if(kind == CMonsterController.EMonsterKind.Apostle_Monster)
-        {
-            bossPlayerAttackChecker = this.transform.GetChild(12);
-        }
     }
 
     private void Start()
@@ -83,19 +73,6 @@ public class CMonsterInputCommand : MonoBehaviour
 
     private void Update()
     {
-        isCheckPlayer = Physics2D.OverlapCircle(playerChecker.position, checkerRadius, whatIsPlayer);
-        playerCheck = Physics2D.OverlapCircle(playerChecker.position, checkerRadius, whatIsPlayer);
-
-        if (kind == CMonsterController.EMonsterKind.Follower_Monster)
-        {
-            isCorner = Physics2D.OverlapCircle(cornerChecker.position, 0.01f, whatIsGround);
-        }
-        else if (kind == CMonsterController.EMonsterKind.Apostle_Monster)
-        {
-            isPlayerAttack = Physics2D.OverlapCircle(bossPlayerAttackChecker.position, 1.5f, whatIsPlayerAttack);
-            playerAttackObject = Physics2D.OverlapCircle(bossPlayerAttackChecker.position, 1.5f, whatIsPlayerAttack);
-        }
-
         HMove(hInputValue);
     }
 
@@ -149,7 +126,7 @@ public class CMonsterInputCommand : MonoBehaviour
                 }
             }
 
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(2f);
         }
     }
 

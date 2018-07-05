@@ -111,15 +111,15 @@ public class CEquiptmentLibrary : AEquipment
     private void RegistAllEquipment()
     {
         equipmentIndexDictionary.Add(Null, 0);
-        equipmentIndexDictionary.Add(LightningSphere, 1);
-        equipmentIndexDictionary.Add(CrimsonStrike, 2);
-        equipmentIndexDictionary.Add(BlackOut, 3);
+        equipmentIndexDictionary.Add(LightningSphere, 1); //weapon은 1
+        equipmentIndexDictionary.Add(CrimsonStrike, 2); //mask는 2
+        equipmentIndexDictionary.Add(BlackOut, 3); //suit는 3
         // .. 앞으로 더 늘어남
 
         equipmentIndexReverseDictionary.Add(0, Null);
-        equipmentIndexReverseDictionary.Add(1, LightningSphere);
-        equipmentIndexReverseDictionary.Add(2, CrimsonStrike);
-        equipmentIndexReverseDictionary.Add(3, BlackOut);
+        equipmentIndexReverseDictionary.Add(1, LightningSphere); //weapon은 1
+        equipmentIndexReverseDictionary.Add(2, CrimsonStrike); //mask는 2
+        equipmentIndexReverseDictionary.Add(3, BlackOut); //suit는 3
     }
 
     private void ResetRegistEquipments()
