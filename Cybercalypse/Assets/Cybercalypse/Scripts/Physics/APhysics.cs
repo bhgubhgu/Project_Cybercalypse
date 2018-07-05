@@ -214,9 +214,9 @@ public abstract class APhysics : MonoBehaviour
 
     private void CheckCalypseAABBHit(Collider2D colliders)
     {
-        if(colliders == null)
+        //아무런 콜리더 오브젝트를 감지하지 못하면 리턴 시킨다.
+        if (colliders == null)
         {
-            //아무런 콜리더 오브젝트를 감지하지 못하면 리턴 시킨다.
             return;
         }
 
@@ -243,32 +243,35 @@ public abstract class APhysics : MonoBehaviour
         ///만약 Hit 했을 경우 바로 무적이 되고 무적 될 동안은 Hit 되서는 안된다.
         ///플레이어와 몬스터의 경계를 나눠야 한다.
         ///</summary>
+        
+        //플레이어
         if((pBoundRight >= hBoundLeft && (pBoundTop <= hBoundBottom || pBoundBottom <= hBboundTop) && !CGameManager.instance.isPlayerInvincible) || (pBoundLeft <= hBoundRight && ((pBoundTop <= hBoundBottom || pBoundBottom <= hBboundTop)) && !CGameManager.instance.isPlayerInvincible))
         {
-            //Hit 완성(플레이어 전용)
-
             //플레이어가 아닐시 리턴
-            if (colliders.gameObject.layer == 25)
+            if (colliders.gameObject.layer == 9)
             {
                 Debug.Log("Not Player!");
                 return;
             }
-
-            CGameManager.instance.PlayerHasInvincible(); // 플레이어 만의 무적 판정
+            else
+            {
+                CGameManager.instance.PlayerHasInvincible(); // 플레이어 만의 무적 판정
+                //Hit(0.1f, colliders.gameObject); //넉백을 당하다.
+            }
         }
 
+        //몬스터
         if ((pBoundRight >= hBoundLeft && (pBoundTop <= hBoundBottom || pBoundBottom <= hBboundTop)) || (pBoundLeft <= hBoundRight && ((pBoundTop <= hBoundBottom || pBoundBottom <= hBboundTop))))
         {
-            //Hit 제작 (몬스터 전용)
-
             //몬스터가 아닐시 리턴
-            if(colliders.gameObject.layer == 9)
+            if(colliders.gameObject.layer == 25)
             {
-                Debug.Log("Not Monster!");
                 return;
             }
-
-            Debug.Log("Hit by Player");
+            else
+            {
+                Debug.Log("Hit by Player");
+            }
         }
     }
 
@@ -559,7 +562,7 @@ public abstract class APhysics : MonoBehaviour
         }
 
         //넉백
-        StartCoroutine(Knockback(knockBackForce, dir));
+        //StartCoroutine(Knockback(knockBackForce, dir));
     }
     #endregion
 
@@ -726,7 +729,31 @@ public abstract class APhysics : MonoBehaviour
           yield  break;
         }
 
-        float knockbackForce = 0.00001f; //무기,스킬에 따라서 넉백 크기가 달라진다.(임시용) (1~3)
+        for (float dashTime = 0, lessTime = 1f ; dashTime <= 0.3f ; dashTime += Time.deltaTime, lessTime -= Time.deltaTime)
+        {
+            if (m_isLeftCheck || m_isRightCheck || m_isKnockback)
+            {
+                m_isDashNow = false;
+                yield break;
+            }
+
+            m_isDashNow = true;
+            m_dashVelocity = (Mathf.Pow(dashTime, 2f) * -gravityVelocity * 0.5f) + (dashTime * moveForce);
+
+            Vector3 velocityVector = new Vector3(m_dashVelocity * dir, 0);
+
+            if (m_isSlope)
+            {
+                float distance = velocityVector.x;
+                velocityVector.y = Mathf.Sin(Mathf.Abs(m_angle) * Mathf.Deg2Rad) * Mathf.Abs(distance);
+                velocityVector.x = Mathf.Cos(Mathf.Abs(m_angle) * Mathf.Deg2Rad) * Mathf.Abs(distance) * Mathf.Sign(velocityVector.x);
+            }
+
+            this.transform.position = Vector3.Lerp(this.transform.position, velocityVector + this.transform.position, 100f/* * lessTime*/ * Time.deltaTime);
+            yield return null;
+        }
+
+        /*float knockbackForce = 0.1f; //무기,스킬에 따라서 넉백 크기가 달라진다.(임시용) (1~3)
         float knockBackDistance = dir * (((7 * (knockbackForce + 2) * knockbackForce) / 101f) + 9) * 2 * moveForce;
         float knockback = 0.0f;
         float knockbackGoal = this.transform.position.x + knockBackDistance;
@@ -740,11 +767,11 @@ public abstract class APhysics : MonoBehaviour
             }
 
             knockback += dir * (moveForce * 7 * (0.25f * (1 + 1)));
-            this.transform.Translate(new Vector2(knockback * 0.1f, 0.0f));
+            this.transform.position = Vector3.Lerp(this.transform.position, new Vector3(this.transform.position.x + knockback, this.transform.position.y), Time.deltaTime * 1.5f);
             m_isKnockback = true;
             yield return null;
         }
-
+        */
         m_isKnockback = false;
     }
     #endregion
