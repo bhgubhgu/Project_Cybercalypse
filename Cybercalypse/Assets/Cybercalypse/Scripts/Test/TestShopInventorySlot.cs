@@ -2,13 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.EventSystems;
 
-public class TestShopInventorySlot : MonoBehaviour, IEndDragHandler
+public class TestShopInventorySlot : MonoBehaviour
 {
     private GameObject playerInventory;
-    private Vector3 startPosition;
-    private Vector3 mousePosition;
 
     private Dictionary<int, GameObject> slotDictionary;
 
@@ -28,11 +25,9 @@ public class TestShopInventorySlot : MonoBehaviour, IEndDragHandler
 
     private void OnMouseDown()
     {
-       this.gameObject.GetComponent<CanvasGroup>().blocksRaycasts = false;
-
        for (int i = 0; i < playerInventory.transform.childCount - 1; i++)
        {
-            if (slotDictionary[i].GetComponent<Image>().sprite == null)
+            if (slotDictionary[i].GetComponent<Image>().sprite.name == "NullSkill" || slotDictionary[i].GetComponent<Image>().sprite.name == "NullAbility" || slotDictionary[i].GetComponent<Image>().sprite.name == "NullWeapon" || slotDictionary[i].GetComponent<Image>().sprite.name == "NullMask" || slotDictionary[i].GetComponent<Image>().sprite.name == "NullSuit")
             {
                 TestTradeSystem.instance.Trade(this.transform.GetComponent<Image>().sprite, 1);
 
@@ -54,11 +49,5 @@ public class TestShopInventorySlot : MonoBehaviour, IEndDragHandler
                 }
             }
        }
-    }
-
-    public void OnEndDrag(PointerEventData eventData)
-    {
-        this.gameObject.GetComponent<CanvasGroup>().blocksRaycasts = true;
-        this.transform.localPosition = new Vector3(0, 0);
     }
 }

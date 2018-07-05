@@ -8,6 +8,7 @@ public class TestShop : MonoBehaviour
     private Vector3 startPosition;
     private GameObject shopInventory;
     private GameObject playerInventory;
+    private GameObject playerTalentInventory;
     public static bool isShopOpen;
 
     private void Awake()
@@ -29,6 +30,7 @@ public class TestShop : MonoBehaviour
             isShopOpen = false;
             shopInventory.SetActive(false);
             playerInventory.SetActive(false);
+
             this.GetComponent<BoxCollider2D>().enabled = true;
         }
     }
