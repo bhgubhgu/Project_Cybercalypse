@@ -20,24 +20,23 @@ public class CGridDrivenContentsGenerator : MonoBehaviour
     // 도착 지점의 Chamber 상대 좌표
     public Vector2Int EndChamberPos { get; private set; }
 
-    private AContentsGenerator generator;
+    public AContentsGenerator generator;
 
     void Awake()
     {
         ChamberPosition = new Dictionary<Vector2Int, CChamber>();
     }
-    private void Start()
-    {
-        InitGenerator(10, 10, null);
-        StartGenerator();
-    }
+    //private void Start()
+    //{
+    //    InitGenerator(10, 10, null);
+    //    StartGenerator();
+    //}
 
     /// <summary>
     /// 생성할 맵에 대한 최소 정보 입력(Chamber의 가로 개수, Chamber의 세로 개수, 맵 구성요소 생성기)
     /// </summary>
-    public void InitGenerator(int numOfHorizontal, int numOfVertical, AContentsGenerator _generator)
+    public void InitGenerator(int numOfHorizontal, int numOfVertical)
     {
-        generator = _generator;
         NumOfChamberInHorizontal = numOfHorizontal;
         NumOfChamberInVertical = numOfVertical;
         //makeNoneChamber();
@@ -53,7 +52,7 @@ public class CGridDrivenContentsGenerator : MonoBehaviour
         makeDummyPath(StartChamberPos);
         Debug.Log("Dummy Over");
         // generator를 이용해여 맵 구성요소 생성
-        //generator.GenerateContents();
+        generator.GenerateContents();
     }
 
     /// <summary>
