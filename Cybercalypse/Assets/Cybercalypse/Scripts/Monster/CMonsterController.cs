@@ -195,6 +195,14 @@ public class CMonsterController : APhysics
             return false;
         }
     }
+
+    public override bool IsKnockback
+    {
+        get
+        {
+            return m_isKnockback;
+        }
+    }
     #endregion
 
     private void Awake()
@@ -241,7 +249,6 @@ public class CMonsterController : APhysics
                 if(collisionObject.gameObject.layer != 13)
                 {
                     cMonster.GetDamage(140.0f);
-                    Hit(0.01f, collisionObject.gameObject);
                 }
                 else
                 {
@@ -254,7 +261,6 @@ public class CMonsterController : APhysics
                 if (collisionObject.gameObject.layer != 13)
                 {
                     cMonster.GetDamage(140.0f);
-                    Hit(0.005f, collisionObject.gameObject);
                 }
                 else
                 {
