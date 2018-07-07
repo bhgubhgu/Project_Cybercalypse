@@ -34,12 +34,11 @@ public class CDungeonGenerator : AContentsGenerator
         startChamberPos = LevelManager.instance.GridGenerator.StartChamberPos;
         endChamberPos = LevelManager.instance.GridGenerator.EndChamberPos;
 
-        Debug.Log("GenerateContents!");
         currentChamberPos = startChamberPos;
         Queue<Vector2Int> startQueue = new Queue<Vector2Int>();
         startQueue.Enqueue(new Vector2Int(startChamberPos.x * chamberWidth + chamberWidth / 2, startChamberPos.y * chamberHeight + chamberHeight / 2));
         operateSimulation(startChamberPos, startQueue);
-        //instantiateGameObject();
+        instantiateGameObject();
     }
 
     /// <summary>
@@ -52,18 +51,14 @@ public class CDungeonGenerator : AContentsGenerator
         // 출발할 지점의 큐가 빈 상태면 예외!, StartQueue가 Empty가 되는경우가 언제일까????
         if (prevStartQueue.Count == 0)
         {
-            Debug.Log("nextChamberCount: " + chamberPosition[currentChamberPos].NextChamberPosition.Count);
-            Debug.Log("Start Queue is Empty!");
             return;
         }
         // 재귀 메소드가 가지고 있어야 할 정보
         Queue<Vector2Int> nextStartQueue = new Queue<Vector2Int>();
         int eachNumOfSimulation = numOfSimulation / prevStartQueue.Count;
         
-        Debug.Log("nextChamberCount: " + chamberPosition[currentChamberPos].NextChamberPosition.Count);
         chamberPosition[currentChamberPos].NextChamberPosition.ForEach(delegate (Vector2Int nextChamber)
             {
-                Debug.Log(currentChamberPos + " -> " + nextChamber);
                 // 해당하는 nextChamber가 현재 기준으로 어디 방향인지 검사
                 Vector2Int gap = nextChamber - currentChamberPos;
 
@@ -76,22 +71,15 @@ public class CDungeonGenerator : AContentsGenerator
                     }
                     for (int i = 0; i < eachNumOfSimulation; i++)
                     {
-                        Debug.Log(i + "th new Simulation");
                         // 무한 츠쿠요미 ㅠㅠ
                         simulation(start, currentChamberPos, nextStartQueue, gap);
                     }
                 }
 
-                //다음 Chamber를 대상으로 재귀적 수행
-                if (count < 50)
-                {
-                    count++;
-                    operateSimulation(nextChamber, nextStartQueue);
-                }
-                //operateSimulation(nextChamber, nextStartQueue);
+                operateSimulation(nextChamber, nextStartQueue);
             });
     }
-    int count = 0;
+
     /// <summary>
     /// 시뮬레이션 수행 메소드
     /// </summary>
@@ -111,11 +99,7 @@ public class CDungeonGenerator : AContentsGenerator
         }
 
         int index = (int)Random.Range(0.0f, adjacentPos.Length);
-        if(adjacentPos.Length == 0)
-        {
-            Debug.Log("Error: " + startPos);
-        }
-        Debug.Log(adjacentPos[index]);
+
         if (!tileDict.ContainsKey(adjacentPos[index]))
         {
             tileDict.Add(adjacentPos[index], ETileType.Empty);
@@ -210,7 +194,7 @@ public class CDungeonGenerator : AContentsGenerator
     {
         foreach(KeyValuePair<Vector2Int, ETileType> tile in tileDict)
         {
-            GameObject tileObject = GameObject.Instantiate(elementDict[ETileType.Empty][0].content, new Vector3(tile.Key.x, tile.Key.y)
+            GameObject tileObject = GameObject.Instantiate(elementDict[ETileType.Empty][0].content, new Vector3(tile.Key.x * 0.16f, tile.Key.y * 0.16f)
                 , Quaternion.identity);
             tileObject.transform.SetParent(spriteHolder);
         }
