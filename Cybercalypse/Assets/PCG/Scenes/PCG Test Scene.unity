@@ -225,9 +225,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   contents:
   - {fileID: 114943804673443378, guid: f8784ebe4f8730b4eaa90621e10bd33d, type: 2}
-  chamberWidth: 5
-  chamberHeight: 5
-  numOfSimulation: 5
+  chamberWidth: 20
+  chamberHeight: 20
+  numOfSimulation: 10
 --- !u!4 &1327378091
 Transform:
   m_ObjectHideFlags: 0

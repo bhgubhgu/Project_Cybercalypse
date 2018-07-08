@@ -26,11 +26,6 @@ public class CGridDrivenContentsGenerator : MonoBehaviour
     {
         ChamberPosition = new Dictionary<Vector2Int, CChamber>();
     }
-    //private void Start()
-    //{
-    //    InitGenerator(10, 10, null);
-    //    StartGenerator();
-    //}
 
     /// <summary>
     /// 생성할 맵에 대한 최소 정보 입력(Chamber의 가로 개수, Chamber의 세로 개수, 맵 구성요소 생성기)
@@ -39,7 +34,6 @@ public class CGridDrivenContentsGenerator : MonoBehaviour
     {
         NumOfChamberInHorizontal = numOfHorizontal;
         NumOfChamberInVertical = numOfVertical;
-        //makeNoneChamber();
     }
 
     /// <summary>
@@ -48,26 +42,10 @@ public class CGridDrivenContentsGenerator : MonoBehaviour
     public void StartGenerator()
     {
         makeEssentialPath();
-        Debug.Log("Essential Over");
         makeDummyPath(StartChamberPos);
-        Debug.Log("Dummy Over");
         // generator를 이용해여 맵 구성요소 생성
         generator.GenerateContents();
     }
-
-    /// <summary>
-    /// 정해진 그리드 내에 None Chamber를 생성 -> 불필요 메소드
-    /// </summary>
-    //private void makeNoneChamber()
-    //{
-    //    for (int i = 0; i < NumOfChamberInVertical; i++)
-    //    {
-    //        for (int j = 0; j < NumOfChamberInHorizontal; j++)
-    //        {
-    //            ChamberPosition.Add(new Vector2Int(i, j), new CChamber(EChamberType.None, new Vector2Int(i, j)));
-    //        }
-    //    }
-    //}
 
     /// <summary>
     /// 필수 경로를 생성
@@ -123,7 +101,6 @@ public class CGridDrivenContentsGenerator : MonoBehaviour
 
         adjacentList.ForEach(delegate (Vector2Int adjPath)
         {
-        //if (ChamberPosition.ContainsKey(adjPath) && ChamberPosition[adjPath].ChamberType == EChamberType.None)
         if (!ChamberPosition.ContainsKey(adjPath) && adjPath.x >= 0 && adjPath.x < NumOfChamberInHorizontal
         && adjPath.y >= 0 && adjPath.y < NumOfChamberInVertical)
             {
@@ -154,7 +131,6 @@ public class CGridDrivenContentsGenerator : MonoBehaviour
         // 해당 Chamber가 필수 경로 상의 Chamber인 경우
         if (ChamberPosition[start].ChamberType == EChamberType.Essential && ChamberPosition[start].NextChamberPosition.Count != 0)
         {
-            Debug.Log(start);
             // 다음 필수경로를 대상으로 실행
             makeDummyPath(ChamberPosition[start].NextChamberPosition[0]);
         }
@@ -168,11 +144,10 @@ public class CGridDrivenContentsGenerator : MonoBehaviour
             return;
         }
         int index = (int)Random.Range(0.0f, adjacentChambers.Length);
-        //ChamberPosition[adjacentChambers[index]].ChamberType = EChamberType.Dummy;
+
         ChamberPosition.Add(adjacentChambers[index], new CChamber(EChamberType.Dummy, adjacentChambers[index]));
         addFromCurrentToNextChamberPassage(start, adjacentChambers[index]);
 
-        Debug.Log(adjacentChambers[index]);
         // 40%의 확률로 길이 확장
         if (possibility == 0 || possibility == 1 || possibility == 2)
         {
