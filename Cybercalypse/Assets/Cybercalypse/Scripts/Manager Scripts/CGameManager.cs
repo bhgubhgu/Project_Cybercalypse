@@ -10,7 +10,7 @@ public class CGameManager : SingleTonManager<CGameManager>
     /// 작성자 : 구용모
     /// 스크립트 : CyberCalypse의 전체적인 게임 흐름을 관리하는 매니저 스크립트
     /// 최초 작성일 : . . .
-    /// 최종 수정일 : 2018.06.30
+    /// 최종 수정일 : 2018.07.08
     /// </summary>
 
     public bool isPlayerInvincible;
