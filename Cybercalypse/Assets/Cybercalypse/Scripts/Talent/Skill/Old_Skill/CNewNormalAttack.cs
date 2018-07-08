@@ -48,11 +48,7 @@ public class CNewNormalAttack : ASkill
         set;
     }
 
-<<<<<<< HEAD:Cybercalypse/Assets/Cybercalypse/Scripts/Skill/CNewNormalAttack.cs
     public override ETalentCategory TalentCategory
-=======
-    public override ETalantCategory TalentCategory
->>>>>>> dev:Cybercalypse/Assets/Cybercalypse/Scripts/Talent/Skill/Old_Skill/CNewNormalAttack.cs
     {
         get;
         set;

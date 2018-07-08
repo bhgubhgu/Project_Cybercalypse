@@ -47,12 +47,8 @@ public class CNewMeleeAttack : ASkill
         get;
         set;
     }
-
-<<<<<<< HEAD:Cybercalypse/Assets/Cybercalypse/Scripts/Skill/CNewMeleeAttack.cs
+    
     public override ETalentCategory TalentCategory
-=======
-    public override ETalantCategory TalentCategory
->>>>>>> dev:Cybercalypse/Assets/Cybercalypse/Scripts/Talent/Skill/Old_Skill/CNewMeleeAttack.cs
     {
         get;
         set;

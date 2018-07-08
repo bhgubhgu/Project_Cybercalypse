@@ -48,15 +48,7 @@ public class CNewBitEjection : ASkill
         set;
     }
 
-<<<<<<< HEAD:Cybercalypse/Assets/Cybercalypse/Scripts/Skill/CNewBitEjection.cs
-    public override ETalentCategory TalentCategory
-=======
-    public override ETalantCategory TalentCategory
->>>>>>> dev:Cybercalypse/Assets/Cybercalypse/Scripts/Talent/Skill/Old_Skill/CNewBitEjection.cs
-    {
-        get;
-        set;
-    }
+    public override ETalentCategory TalentCategory { get; set; }
     #endregion
 
     private float ShockwaveMagnitude;// (충격파 크기)
@@ -78,12 +70,7 @@ public class CNewBitEjection : ASkill
         //오브젝트 준비
         ItemName = "Bit Ejection";
         ItemCategory = EItemCategory.Talent;
-<<<<<<< HEAD:Cybercalypse/Assets/Cybercalypse/Scripts/Skill/CNewBitEjection.cs
         TalentCategory = ETalentCategory.Skill;
-=======
-        TalentCategory = ETalantCategory.Skill;
->>>>>>> dev:Cybercalypse/Assets/Cybercalypse/Scripts/Talent/Skill/Old_Skill/CNewBitEjection.cs
-
         bitEjectionCount = 1;
         bitEjectionComponent = new List<CSkill_BitEjection>();
         cSkillOffset_Instance = transform.parent.gameObject.GetComponent<CSkillLibrary>();

@@ -14,10 +14,10 @@ public class CAbilityLibrary : AAbility
     #region //!< override member
     public override string ItemName { get; set; }
     public override string ItemDesc { get; set; }
-    public override SpriteRenderer ItemIcon { get; set; }
-    public override SpriteRenderer ItemSubs { get; set; }
+    public override Sprite ItemIcon { get; set; }
+    public override Sprite ItemSubs { get; set; }
     public override EItemCategory ItemCategory { get; set; }
-    public override ETalantCategory TalentCategory { get; set; }
+    public override ETalentCategory TalentCategory { get; set; }
     #endregion
 
     private Ability[] abilitySlotList;

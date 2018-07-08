@@ -48,11 +48,7 @@ public class CNewCrimsonStrike : ASkill
         set;
     }
 
-<<<<<<< HEAD:Cybercalypse/Assets/Cybercalypse/Scripts/Skill/CNewCrimsonStrike.cs
     public override ETalentCategory TalentCategory
-=======
-    public override ETalantCategory TalentCategory
->>>>>>> dev:Cybercalypse/Assets/Cybercalypse/Scripts/Talent/Skill/Old_Skill/CNewCrimsonStrike.cs
     {
         get;
         set;
@@ -88,11 +84,7 @@ public class CNewCrimsonStrike : ASkill
         //오브젝트 준비
         ItemName = "Crimson Strike";
         ItemCategory = EItemCategory.Talent;
-<<<<<<< HEAD:Cybercalypse/Assets/Cybercalypse/Scripts/Skill/CNewCrimsonStrike.cs
         TalentCategory = ETalentCategory.Skill;
-=======
-        TalentCategory = ETalantCategory.Skill;
->>>>>>> dev:Cybercalypse/Assets/Cybercalypse/Scripts/Talent/Skill/Old_Skill/CNewCrimsonStrike.cs
 
         targetLayerMask = 1 << 25;
 

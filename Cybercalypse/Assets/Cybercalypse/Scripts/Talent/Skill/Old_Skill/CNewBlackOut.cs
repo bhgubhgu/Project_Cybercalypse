@@ -47,12 +47,8 @@ public class CNewBlackOut : ASkill
         get;
         set;
     }
-
-<<<<<<< HEAD:Cybercalypse/Assets/Cybercalypse/Scripts/Skill/CNewBlackOut.cs
+    
     public override ETalentCategory TalentCategory
-=======
-    public override ETalantCategory TalentCategory
->>>>>>> dev:Cybercalypse/Assets/Cybercalypse/Scripts/Talent/Skill/Old_Skill/CNewBlackOut.cs
     {
         get;
         set;

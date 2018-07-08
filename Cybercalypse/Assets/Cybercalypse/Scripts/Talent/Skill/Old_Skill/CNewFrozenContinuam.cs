@@ -47,12 +47,8 @@ public class CNewFrozenContinuam : ASkill
         get;
         set;
     }
-
-<<<<<<< HEAD:Cybercalypse/Assets/Cybercalypse/Scripts/Skill/CNewFrozenContinuam.cs
+    
     public override ETalentCategory TalentCategory
-=======
-    public override ETalantCategory TalentCategory
->>>>>>> dev:Cybercalypse/Assets/Cybercalypse/Scripts/Talent/Skill/Old_Skill/CNewFrozenContinuam.cs
     {
         get;
         set;

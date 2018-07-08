@@ -12,10 +12,6 @@ public abstract class ATalent : AItem
     /// </summary>
 
     public enum ETalentCategory { Skill, Ability }
-
-<<<<<<< HEAD:Cybercalypse/Assets/Cybercalypse/Scripts/Skill/ATalent.cs
+    
     public abstract ETalentCategory TalentCategory { get; set; }
-=======
-    public abstract ETalantCategory TalentCategory { get; set; }
->>>>>>> dev:Cybercalypse/Assets/Cybercalypse/Scripts/Talent/ATalent.cs
 }

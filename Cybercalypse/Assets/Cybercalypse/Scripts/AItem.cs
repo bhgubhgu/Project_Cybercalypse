@@ -22,8 +22,4 @@ public abstract class AItem : MonoBehaviour
     public abstract Sprite ItemIcon { get; set; }
     public abstract Sprite ItemSubs { get; set; }
     public abstract EItemCategory ItemCategory { get; set; }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> dev

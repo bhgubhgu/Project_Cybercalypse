@@ -54,16 +54,8 @@ public class CSkillLibrary : ASkill
         get;
         set;
     }
-
-<<<<<<< HEAD:Cybercalypse/Assets/Cybercalypse/Scripts/Skill/CSkillLibrary.cs
-    public override ETalentCategory TalentCategory
-=======
-    public override ETalantCategory TalentCategory
->>>>>>> dev:Cybercalypse/Assets/Cybercalypse/Scripts/Talent/Skill/CSkillLibrary.cs
-    {
-        get;
-        set;
-    }
+    
+    public override ETalentCategory TalentCategory { get; set; }
     #endregion
 
     private int delegateIndex = 0;

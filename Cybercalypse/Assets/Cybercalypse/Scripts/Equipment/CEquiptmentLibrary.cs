@@ -36,7 +36,7 @@ public class CEquiptmentLibrary : AEquipment
             throw new System.NotImplementedException();
         }
     }
-    public override SpriteRenderer ItemIcon
+    public override Sprite ItemIcon
     {
         get
         {
@@ -60,7 +60,7 @@ public class CEquiptmentLibrary : AEquipment
             throw new System.NotImplementedException();
         }
     }
-    public override SpriteRenderer ItemSubs
+    public override Sprite ItemSubs
     {
         get
         {
