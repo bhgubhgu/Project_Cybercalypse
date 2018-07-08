@@ -40,12 +40,13 @@ public class CDataManager : SingleTonManager<CDataManager>
     {
         base.Awake(); //추상 싱글톤 클래스에서의 Awake 오버라이딩
         monsterDataList = new List<CMonsterData>();
-    }
-
-    private void Start()
-    {
         LoadJsonData();
     }
+
+   /* private void Start()
+    {
+        LoadJsonData();
+    }*/
 
     private void Update()
     {
