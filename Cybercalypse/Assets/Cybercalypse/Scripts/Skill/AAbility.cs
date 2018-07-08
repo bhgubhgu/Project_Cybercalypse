@@ -10,4 +10,8 @@ public abstract class AAbility : ATalent
     /// 최초 작성일 : . . .
     /// 최종 수정일 : 2018.06.14
     /// </summary>
+    /// 
+
+    public delegate void Ability();
+    public delegate void AbilityOffsetDel();
 }

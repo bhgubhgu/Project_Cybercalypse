@@ -18,7 +18,7 @@ public class CNewCrimsonStrike : ASkill
         set;
     }
 
-    public override SpriteRenderer ItemIcon
+    public override Sprite ItemIcon
     {
         get;
         set;
@@ -30,7 +30,7 @@ public class CNewCrimsonStrike : ASkill
         set;
     }
 
-    public override SpriteRenderer ItemSubs
+    public override Sprite ItemSubs
     {
         get;
         set;
@@ -48,7 +48,7 @@ public class CNewCrimsonStrike : ASkill
         set;
     }
 
-    public override ETalantCategory TalantCagegory
+    public override ETalentCategory TalentCategory
     {
         get;
         set;
@@ -84,7 +84,7 @@ public class CNewCrimsonStrike : ASkill
         //오브젝트 준비
         ItemName = "Crimson Strike";
         ItemCategory = EItemCategory.Talent;
-        TalantCagegory = ETalantCategory.Skill;
+        TalentCategory = ETalentCategory.Skill;
 
         targetLayerMask = 1 << 25;
 

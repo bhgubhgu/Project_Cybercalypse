@@ -18,7 +18,7 @@ public class CNewMeleeAttack : ASkill
         set;
     }
 
-    public override SpriteRenderer ItemIcon
+    public override Sprite ItemIcon
     {
         get;
         set;
@@ -30,7 +30,7 @@ public class CNewMeleeAttack : ASkill
         set;
     }
 
-    public override SpriteRenderer ItemSubs
+    public override Sprite ItemSubs
     {
         get;
         set;
@@ -48,7 +48,7 @@ public class CNewMeleeAttack : ASkill
         set;
     }
 
-    public override ETalantCategory TalantCagegory
+    public override ETalentCategory TalentCategory
     {
         get;
         set;
