@@ -6,7 +6,11 @@ using Random = UnityEngine.Random;
 public class CGridDrivenContentsGenerator : MonoBehaviour
 {
     // 상대 좌표에 곱할 상수
-    public const float TILE_LENGTH = 0.16f;
+    public float TILE_LENGTH = 0.16f;
+    public int numOfChamberInHorizontal;
+    public int numOfChamberInVertical;
+    public float possibilityOfContinuousDummy;
+    public float possibilityOfDividedDummy;
     
     // 그리드 사각형 내에 어떤 그리드에 어떤 Chamber가 위치하는지 저장
     public Dictionary<Vector2Int, CChamber> ChamberPosition { get; private set; }
@@ -30,10 +34,12 @@ public class CGridDrivenContentsGenerator : MonoBehaviour
     /// <summary>
     /// 생성할 맵에 대한 최소 정보 입력(Chamber의 가로 개수, Chamber의 세로 개수, 맵 구성요소 생성기)
     /// </summary>
-    public void InitGenerator(int numOfHorizontal, int numOfVertical)
+    private void initGenerator()
     {
-        NumOfChamberInHorizontal = numOfHorizontal;
-        NumOfChamberInVertical = numOfVertical;
+        NumOfChamberInHorizontal = numOfChamberInHorizontal;
+        NumOfChamberInVertical = numOfChamberInVertical;
+
+
     }
 
     /// <summary>
@@ -41,10 +47,22 @@ public class CGridDrivenContentsGenerator : MonoBehaviour
     /// </summary>
     public void StartGenerator()
     {
+        initGenerator();
         makeEssentialPath();
         makeDummyPath(StartChamberPos);
         // generator를 이용해여 맵 구성요소 생성
         generator.GenerateContents();
+    }
+
+    private void checkPossibility()
+    {
+        float sum = possibilityOfContinuousDummy + possibilityOfDividedDummy;
+        if(possibilityOfContinuousDummy <= 0.0f || possibilityOfDividedDummy <= 0.0f ||
+            possibilityOfContinuousDummy + possibilityOfDividedDummy >= 100.0f)
+        {
+            possibilityOfDividedDummy = 20.0f;
+            possibilityOfContinuousDummy = 60.0f;
+        }
     }
 
     /// <summary>
@@ -135,7 +153,7 @@ public class CGridDrivenContentsGenerator : MonoBehaviour
             makeDummyPath(ChamberPosition[start].NextChamberPosition[0]);
         }
 
-        int possibility = (int)Random.Range(0.0f, 5.0f);
+        int possibility = (int)Random.Range(0.0f, 100.0f);
         Vector2Int[] adjacentChambers = getAdjacentPath(start, false);
 
         // 인접한 Chamber가 존재하지 않는 경우
@@ -148,15 +166,16 @@ public class CGridDrivenContentsGenerator : MonoBehaviour
         ChamberPosition.Add(adjacentChambers[index], new CChamber(EChamberType.Dummy, adjacentChambers[index]));
         addFromCurrentToNextChamberPassage(start, adjacentChambers[index]);
 
-        // 40%의 확률로 길이 확장
-        if (possibility == 0 || possibility == 1 || possibility == 2)
+        // 설정된 확률로 길이 확장
+        if (possibility <= possibilityOfContinuousDummy)
         {
             makeDummyPath(adjacentChambers[index]);
-        }  // 40% 확률로 새로운 길 분열
-        else if (possibility == 3)
+        }  // 설정된 확률로 길이 분열
+        else if (possibility > possibilityOfContinuousDummy && possibility <= possibilityOfDividedDummy + possibilityOfContinuousDummy)
         {
             makeDummyPath(adjacentChambers[index]);
             makeDummyPath(start);
         }
+        // 이외의 확률로 길이 끊어짐
     }
 }

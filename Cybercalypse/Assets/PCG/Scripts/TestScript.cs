@@ -7,7 +7,6 @@ public class TestScript : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         generator = LevelManager.instance.GridGenerator;
-        generator.InitGenerator(30, 30);
         generator.StartGenerator();
 	}
 }
