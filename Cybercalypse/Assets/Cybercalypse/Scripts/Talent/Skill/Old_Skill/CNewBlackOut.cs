@@ -48,7 +48,7 @@ public class CNewBlackOut : ASkill
         set;
     }
 
-    public override ETalantCategory TalantCagegory
+    public override ETalantCategory TalentCategory
     {
         get;
         set;

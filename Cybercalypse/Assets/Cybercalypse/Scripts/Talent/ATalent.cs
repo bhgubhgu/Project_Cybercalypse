@@ -13,5 +13,5 @@ public abstract class ATalent : AItem
 
     public enum ETalantCategory { Ability, Skill }
 
-    public abstract ETalantCategory TalantCagegory { get; set; }
+    public abstract ETalantCategory TalentCategory { get; set; }
 }

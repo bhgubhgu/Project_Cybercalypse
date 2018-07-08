@@ -17,7 +17,7 @@ public class CAbilityLibrary : AAbility
     public override SpriteRenderer ItemIcon { get; set; }
     public override SpriteRenderer ItemSubs { get; set; }
     public override EItemCategory ItemCategory { get; set; }
-    public override ETalantCategory TalantCagegory { get; set; }
+    public override ETalantCategory TalentCategory { get; set; }
     #endregion
 
     private Ability[] abilitySlotList;
