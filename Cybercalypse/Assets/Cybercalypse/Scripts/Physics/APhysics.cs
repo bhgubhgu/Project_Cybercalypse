@@ -280,6 +280,11 @@ public abstract class APhysics : MonoBehaviour
             }
         }
 
+        ///<summary>
+        ///매 프레임 마다 맞으면 안된다.
+        ///만약 Hit 했을 경우 바로 무적이 되고 무적 될 동안은 Hit 되서는 안된다.
+        ///플레이어와 몬스터의 경계를 나눠야 한다.
+        ///</summary>
         //몬스터 왼쪽 넉백
         if ((pBoundRight >= hBoundLeft && pBoundLeft <= hBoundLeft && (pBoundTop <= hBoundBottom || pBoundBottom <= hBboundTop) && !testMonsterHitCheck))
         {
