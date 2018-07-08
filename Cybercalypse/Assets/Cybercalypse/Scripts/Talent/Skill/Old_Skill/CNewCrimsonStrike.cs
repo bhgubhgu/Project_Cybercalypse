@@ -48,7 +48,7 @@ public class CNewCrimsonStrike : ASkill
         set;
     }
 
-    public override ETalantCategory TalantCagegory
+    public override ETalantCategory TalentCategory
     {
         get;
         set;
@@ -84,7 +84,7 @@ public class CNewCrimsonStrike : ASkill
         //오브젝트 준비
         ItemName = "Crimson Strike";
         ItemCategory = EItemCategory.Talent;
-        TalantCagegory = ETalantCategory.Skill;
+        TalentCategory = ETalantCategory.Skill;
 
         targetLayerMask = 1 << 25;
 

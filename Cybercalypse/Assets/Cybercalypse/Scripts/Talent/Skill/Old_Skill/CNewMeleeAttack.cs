@@ -48,7 +48,7 @@ public class CNewMeleeAttack : ASkill
         set;
     }
 
-    public override ETalantCategory TalantCagegory
+    public override ETalantCategory TalentCategory
     {
         get;
         set;
