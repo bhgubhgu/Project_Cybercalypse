@@ -47,9 +47,18 @@ public class CDataManager : SingleTonManager<CDataManager>
         LoadJsonData();
     }
 
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.Alpha0))
+        {
+            SaveJsonData();
+        }
+    }
+
     private void LoadJsonData() //게임 시작시 로드할 데이터 메소드(처음 게임 시작시에는 미리 json에 저장된 데이터를 불러온다.)
     {
-        string playerJsonString = File.ReadAllText(Application.dataPath + "/Cybercalypse/Data/playerData.json"); //Player의 데이터
+#if UNITY_EDITOR
+        string playerJsonString = File.ReadAllText(Application.dataPath + "/Cybercalypse/Data/playerData.json");//Player의 데이터
         string monsterJsonString = File.ReadAllText(Application.dataPath + "/Cybercalypse/Data/monsterData.json"); //Monster들의 데이터
 
         JsonData playerJsonData = JsonMapper.ToObject(playerJsonString); //플레이어 데이터 불러옴
@@ -87,6 +96,62 @@ public class CDataManager : SingleTonManager<CDataManager>
                     )
                 );
         }
+#endif
+#if UNITY_STANDALONE_WIN
+
+        TextAsset playerJsonStringAsset = (TextAsset)Resources.Load("playerData", typeof(TextAsset));
+        string buildPlayerJsonString = playerJsonStringAsset.text;
+
+        TextAsset monsterJsonStringAsset = (TextAsset)Resources.Load("monsterData", typeof(TextAsset));
+        string buildMonsterJsonString = monsterJsonStringAsset.text;
+
+        JsonData playerJsonDatas = JsonMapper.ToObject(buildPlayerJsonString); //플레이어 데이터 불러옴
+        JsonData monsterJsonDatas = JsonMapper.ToObject(buildMonsterJsonString); //몬스터 데이터 불러옴
+
+        playerData = new CPlayerData
+    (
+     playerJsonDatas["PlayerCurrentHealth"].ToString(),
+     playerJsonDatas["PlayerMaxHealth"].ToString(),
+     playerJsonDatas["PlayerCurrentShield"].ToString(),
+     playerJsonDatas["PlayerMaxShield"].ToString(),
+     playerJsonDatas["PlayerMoveForce"].ToString(),
+     playerJsonDatas["PlayerJumpForce"].ToString(),
+     playerJsonDatas["PlayerSavePosition"].ToString()
+    );
+
+        //플레이어 데이터 로드(Window File)
+        playerData = new CPlayerData
+            (
+             playerJsonDatas["PlayerCurrentHealth"].ToString(),
+             playerJsonDatas["PlayerMaxHealth"].ToString(),
+             playerJsonDatas["PlayerCurrentShield"].ToString(),
+             playerJsonDatas["PlayerMaxShield"].ToString(),
+             playerJsonDatas["PlayerMoveForce"].ToString(),
+             playerJsonDatas["PlayerJumpForce"].ToString(),
+             playerJsonDatas["PlayerSavePosition"].ToString()
+            );
+
+        CGameManager.instance.playerObject.GetComponent<CExecutor>().MoveForce = float.Parse(playerData.PlayerMoveForce); //플레이어 moveForce 할당
+        CGameManager.instance.playerObject.GetComponent<CExecutor>().JumpForce = float.Parse(playerData.PlayerJumpForce); //플레이어 jumpForce 할당
+
+        //플레이어 저장된 position 로드(Window File)
+        string[] playerPositionDatas = playerData.PlayerSavePosition.Split('/');
+        CGameManager.instance.playerObject.transform.position = new Vector3(float.Parse(playerPositionDatas[0]), float.Parse(playerPositionDatas[1]), float.Parse(playerPositionDatas[2]));
+
+        //몬스터 데이터 로드(Window File)
+        for (int i = 0; i < monsterJsonDatas.Count; i++)
+        {
+            monsterDataList.Add
+                (
+                    new CMonsterData
+                    (
+                        int.Parse(monsterJsonDatas[i]["monsterInstanceID"].ToString()),
+                        monsterJsonDatas[i]["monsterCurrentHealth"].ToString(),
+                        monsterJsonDatas[i]["monsterMaxHealth"].ToString()
+                    )
+                );
+        }
+#endif
     }
 
     private void SaveJsonData() //현재 플레이어의 상태를 저장 (Player Object는 GameManager에서 가져온다.)  //게임 세이브시 동작할 데이터 메소드
@@ -105,7 +170,21 @@ public class CDataManager : SingleTonManager<CDataManager>
 
         JsonData savePlayerJsonData = JsonMapper.ToJson(playerData);
 
-        File.WriteAllText(Application.dataPath + "/Cybercalypse/Data/playerData.json", savePlayerJsonData.ToString()); //데이터 저장
+#if UNITY_EDITOR
+        string playerJsonString = Application.dataPath + "/Cybercalypse/Data/playerData.json"; //Player의 데이터
+        string monsterJsonString = File.ReadAllText(Application.dataPath + "/Cybercalypse/Data/monsterData.json"); //Monster들의 데이터
+        File.WriteAllText(playerJsonString, savePlayerJsonData.ToString()); //데이터 저장
+#endif
+
+#if UNITY_STANDALONE_WIN
+        TextAsset playerJsonStringAsset = (TextAsset)Resources.Load("playerData", typeof(TextAsset));
+        string buildPlayerJsonString = playerJsonStringAsset.text;
+
+        TextAsset monsterJsonStringAsset = (TextAsset)Resources.Load("monsterData", typeof(TextAsset));
+        string buildMonsterJsonString = monsterJsonStringAsset.text;
+
+        File.WriteAllText(Application.dataPath + "/Cybercalypse/Resources/playerData.json", savePlayerJsonData.ToString()); //데이터 저장
+#endif
     }
 }
 
