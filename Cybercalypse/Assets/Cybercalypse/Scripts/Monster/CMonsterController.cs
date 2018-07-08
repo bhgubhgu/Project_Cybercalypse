@@ -74,6 +74,10 @@ public class CMonsterController : APhysics
         {
             return m_moveForce;
         }
+        set
+        {
+            m_moveForce = value;
+        }
     }
 
     public override float HorizontalMoveAcceleration //입력 안받음
@@ -89,6 +93,10 @@ public class CMonsterController : APhysics
         get
         {
             return m_jumpForce;
+        }
+        set
+        {
+            m_jumpForce = value;
         }
     }
 
