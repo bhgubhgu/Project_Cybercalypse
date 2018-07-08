@@ -197,6 +197,14 @@ public class CPlayerController : APhysics
             return m_isJumpForGrounded;
         }
     }
+
+    public override bool IsKnockback
+    {
+        get
+        {
+            return m_isKnockback;
+        }
+    }
     #endregion
 
     private void Awake()
