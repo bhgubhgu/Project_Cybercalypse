@@ -8,12 +8,10 @@ public class CPlayerController : APhysics
     /// 작성자 : 구용모
     /// 스크립트 : Player 객체의 행동들을 입력을 받는 스크립트
     /// 최초 작성일 : . . .
-    /// 최종 수정일 : 2018.06.14
+    /// 최종 수정일 : 2018.07.04
     /// </summary>
 
-    public CSkillLibrary skillOffset_Instance;
-    /*public CursorControl cursor;*/
-
+    private CSkillLibrary skillOffset_Instance;
     private List<CSkillLibrary.SkillOffsetDel> skillMethodList;
     private CExecutor executor;
 
@@ -78,6 +76,10 @@ public class CPlayerController : APhysics
         {
             return m_moveForce;
         }
+        set
+        {
+            m_moveForce = value;
+        }
     }
 
     public override float HorizontalMoveAcceleration
@@ -93,6 +95,10 @@ public class CPlayerController : APhysics
         get
         {
             return m_jumpForce;
+        }
+        set
+        {
+            m_jumpForce = value;
         }
     }
 
@@ -199,6 +205,14 @@ public class CPlayerController : APhysics
             return m_isJumpForGrounded;
         }
     }
+
+    public override bool IsKnockback
+    {
+        get
+        {
+            return m_isKnockback;
+        }
+    }
     #endregion
 
     private void Awake()
@@ -211,6 +225,7 @@ public class CPlayerController : APhysics
     private void Start()
     {
         Physics2D.autoSimulation = false; //Unity 물리 사용안함
+        skillOffset_Instance = CGameManager.instance.skillLibrary.GetComponent<CSkillLibrary>();
 
         skillMethodList = new List<CSkillLibrary.SkillOffsetDel>();
 
@@ -238,15 +253,15 @@ public class CPlayerController : APhysics
         skillMethodList.Add(CActSkillMouseLeft);
         skillMethodList.Add(CActSkillMouseRight);
         #endregion
-
+        
         for(int i = 0; i < skillMethodList.Count; i++)
         {
             skillOffset_Instance.SetSkillSlot(skillMethodList[i]);
         }
 
-        //jumpForce, moveForce
-        m_moveForce = executor.MoveForce;
-        m_jumpForce = executor.JumpForce;
+        //Get Player Data
+        MoveForce = executor.MoveForce;
+        JumpForce = executor.JumpForce;
     }
 
     #region InputManager Event Method

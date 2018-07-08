@@ -74,6 +74,10 @@ public class CMonsterController : APhysics
         {
             return m_moveForce;
         }
+        set
+        {
+            m_moveForce = value;
+        }
     }
 
     public override float HorizontalMoveAcceleration //입력 안받음
@@ -89,6 +93,10 @@ public class CMonsterController : APhysics
         get
         {
             return m_jumpForce;
+        }
+        set
+        {
+            m_jumpForce = value;
         }
     }
 
@@ -195,26 +203,28 @@ public class CMonsterController : APhysics
             return false;
         }
     }
+
+    public override bool IsKnockback
+    {
+        get
+        {
+            return m_isKnockback;
+        }
+    }
     #endregion
 
     private void Awake()
     {
-        groundChecker = this.transform.GetChild(7);
-        platformChecker = this.transform.GetChild(6);
-        defaultBackWallChecker = this.transform.GetChild(5);
-        defaultFrontWallChecker = this.transform.GetChild(4);
-
         groundCheckerRadious = 0.01f;
 
         whatIsGround = 1 << 8 | 1 << 20 | 1 << 0;
         whatIsPlatform = 1 << 20;
         whatIsDefault = 1 << 0 | 1 << 8;
         whatIsAnotherObject = 1 << 13 | 1 << 14 | 1 << 15 | 1 << 16 | 1 << 17 | 1 << 18;
+        whatIsPlayerHit = 1 << 9;
 
         inputCommand = this.gameObject.GetComponent<CMonsterInputCommand>();
         cMonster = this.gameObject.GetComponent<CMonster>();
-
-        groundAttack = this.transform.GetChild(7).gameObject;
 
         mainCamera = Camera.main.gameObject.GetComponent<CCameraController>();
 
@@ -238,25 +248,6 @@ public class CMonsterController : APhysics
         inputCommand.BossJump += BossJumpControl;
     }
 
-    /*private void Update()
-    {
-        
-        //콜리더 체크
-       /* m_isNewDetectAnotherObject = Physics2D.OverlapBox(this.transform.position, new Vector2(0.35f, 0.35f), 90f, whatIsAnotherObject);
-        collisionObject = Physics2D.OverlapBox(this.transform.position, new Vector2(0.5f, 0.5f), 90f, whatIsAnotherObject);
-        m_isKnockBackNow = Physics2D.OverlapCircle(this.transform.position, 0.15f, whatIsGround);
-        MonsterHit(m_isNewDetectAnotherObject, m_isWater, collisionObject);
-
-        //Wall, Ground 충돌 체크
-        m_isPlatform = Physics2D.OverlapCircle(platformChecker.position, groundCheckerRadious, whatIsPlatform);
-        m_isDefaultBackWall = Physics2D.OverlapCircle(defaultBackWallChecker.position, groundCheckerRadious, whatIsDefault);
-        m_isDefaultFrontWall = Physics2D.OverlapCircle(defaultFrontWallChecker.position, groundCheckerRadious, whatIsDefault);
-        m_isGrounded = Physics2D.OverlapCircle(groundChecker.position, groundCheckerRadious, whatIsGround);
-
-        //중력
-        m_gravity = base.Gravity(IsGrounded);*/
-   // }*/
-
     private void MonsterHit(bool isDetectEnemy, bool isDetectWater, Collider2D collisionObject)
     {
         if (isDetectEnemy && collisionObject.gameObject != null && !IsHit)
@@ -266,7 +257,6 @@ public class CMonsterController : APhysics
                 if(collisionObject.gameObject.layer != 13)
                 {
                     cMonster.GetDamage(140.0f);
-                    Hit(0.01f, collisionObject.gameObject);
                 }
                 else
                 {
@@ -279,7 +269,6 @@ public class CMonsterController : APhysics
                 if (collisionObject.gameObject.layer != 13)
                 {
                     cMonster.GetDamage(140.0f);
-                    Hit(0.005f, collisionObject.gameObject);
                 }
                 else
                 {

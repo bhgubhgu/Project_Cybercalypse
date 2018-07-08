@@ -12,8 +12,11 @@ public abstract class APhysics : MonoBehaviour
     /// </summary>
 
     const float gravityVelocity = 9.8f;
+    const float knockbackSmoother = 100.0f;
     const float playerMass = 1;
     const float playerGravity = 1;
+
+    bool testMonsterHitCheck;
 
     #region abstract Property
     public abstract float HInputValue
@@ -41,10 +44,12 @@ public abstract class APhysics : MonoBehaviour
     public abstract float MoveForce
     {
         get;
+        set;
     }
     public abstract float JumpForce
     {
         get;
+        set;
     }
     public abstract float HorizontalMoveAcceleration
     {
@@ -107,6 +112,11 @@ public abstract class APhysics : MonoBehaviour
     }
 
     public abstract bool IsJumpForGrounded
+    {
+        get;
+    }
+
+    public abstract bool IsKnockback
     {
         get;
     }
@@ -214,9 +224,9 @@ public abstract class APhysics : MonoBehaviour
 
     private void CheckCalypseAABBHit(Collider2D colliders)
     {
-        if(colliders == null)
+        //아무런 콜리더 오브젝트를 감지하지 못하면 리턴 시킨다.
+        if (colliders == null)
         {
-            //아무런 콜리더 오브젝트를 감지하지 못하면 리턴 시킨다.
             return;
         }
 
@@ -244,11 +254,76 @@ public abstract class APhysics : MonoBehaviour
         ///플레이어와 몬스터의 경계를 나눠야 한다.
         ///</summary>
         
-        if((pBoundRight >= hBoundLeft && (pBoundTop <= hBoundBottom || pBoundBottom <= hBboundTop) && !CGameManager.instance.isPlayerInvincible) || (pBoundLeft <= hBoundRight && ((pBoundTop <= hBoundBottom || pBoundBottom <= hBboundTop)) && !CGameManager.instance.isPlayerInvincible))
+        //플레이어 왼쪽 넉백
+        if((pBoundRight >= hBoundLeft && pBoundLeft <=hBoundLeft && (pBoundTop <= hBoundBottom || pBoundBottom <= hBboundTop) && !CGameManager.instance.isPlayerInvincible) /*|| (pBoundLeft <= hBoundRight && ((pBoundTop <= hBoundBottom || pBoundBottom <= hBboundTop)) && !CGameManager.instance.isPlayerInvincible)*/)
         {
-            //Hit 완성
-            CGameManager.instance.PlayerHasInvincible(); // 플레이어 만의 무적 판정
+            //플레이어가 아닐시 리턴
+            if (colliders.gameObject.layer == 9)
+            {
+                return;
+            }
+            else
+            {
+                CGameManager.instance.PlayerHasInvincible(); // 플레이어 만의 무적 판정
+                Hit(0.01f, -1f);
+            }
         }
+        //플레이어 오른쪽 넉백
+        else if ((pBoundLeft <= hBoundRight && pBoundLeft >= hBoundLeft && ((pBoundTop <= hBoundBottom || pBoundBottom <= hBboundTop)) && !CGameManager.instance.isPlayerInvincible))
+        {
+            if (colliders.gameObject.layer == 9)
+            {
+                return;
+            }
+            else
+            {
+                CGameManager.instance.PlayerHasInvincible(); // 플레이어 만의 무적 판정
+                Hit(0.01f, +1f);
+            }
+        }
+
+        ///<summary>
+        ///매 프레임 마다 맞으면 안된다.
+        ///만약 Hit 했을 경우 바로 무적이 되고 무적 될 동안은 Hit 되서는 안된다.
+        ///플레이어와 몬스터의 경계를 나눠야 한다.
+        ///</summary>
+        //몬스터 왼쪽 넉백
+        if ((pBoundRight >= hBoundLeft && pBoundLeft <= hBoundLeft && (pBoundTop <= hBoundBottom || pBoundBottom <= hBboundTop) && !testMonsterHitCheck))
+        {
+            //몬스터가 아닐시 리턴
+            if(colliders.gameObject.layer == 25)
+            {
+                return;
+            }
+            else
+            {
+                Hit(0.01f, -1f); //Test
+                StartCoroutine(TestInvincible());
+                return;
+            }
+        }
+        //몬스터 오른쪽 넉백
+        else if ((pBoundLeft <= hBoundRight && pBoundLeft >= hBoundLeft && ((pBoundTop <= hBoundBottom || pBoundBottom <= hBboundTop)) && !testMonsterHitCheck))
+        {
+            if (colliders.gameObject.layer == 25)
+            {
+                return;
+            }
+            else
+            {
+                Hit(0.01f, +1f); //Test
+                StartCoroutine(TestInvincible());
+            }
+        }
+    }
+
+    IEnumerator TestInvincible()
+    {
+        Physics2D.IgnoreLayerCollision(25, 9, true);
+        testMonsterHitCheck = true;
+        yield return new WaitForSeconds(0.2f);
+        Physics2D.IgnoreLayerCollision(25, 9, false);
+        testMonsterHitCheck = false;
     }
 
     private void CheckCalypseAABBVertical(Collider2D colliders) //바닦, 머리 충돌
@@ -524,21 +599,9 @@ public abstract class APhysics : MonoBehaviour
         return m_gravity;
     }
 
-    public virtual void Hit(float knockBackForce, GameObject hitObject)
+    public virtual void Hit(float knockBackForce, float hitDir)
     {
-        int dir = 0;
-
-        if (this.transform.position.x > hitObject.transform.position.x)
-        {
-            dir = +1;
-        }
-        else if (this.transform.position.x < hitObject.transform.position.x)
-        {
-            dir = -1;
-        }
-
-        //넉백
-        StartCoroutine(Knockback(knockBackForce, dir));
+        StartCoroutine(Knockback(knockBackForce, hitDir));
     }
     #endregion
 
@@ -682,7 +745,7 @@ public abstract class APhysics : MonoBehaviour
         yield break;
     }
 
-    IEnumerator DownPlatformMove()
+    public IEnumerator DownPlatformMove()
     {
         Vector3 testPosition = new Vector3(this.transform.position.x, this.transform.position.y - 0.3f, this.transform.position.z);
 
@@ -697,18 +760,19 @@ public abstract class APhysics : MonoBehaviour
         m_isDownPlatform = false;
     }
 
-    IEnumerator Knockback(float moveForce, float dir)
+    public IEnumerator Knockback(float moveForce, float dir)
     {
         if (m_isKnockback)
         {
-          yield return new WaitForSeconds(Time.deltaTime * 60 * 0.25f);
-          yield  break;
+            yield  break;
         }
 
-        float knockbackForce = 0.00001f; //무기,스킬에 따라서 넉백 크기가 달라진다.(임시용) (1~3)
+        float knockbackForce = 0.1f; //무기,스킬에 따라서 넉백 크기가 달라진다.(임시용) (1~3)
         float knockBackDistance = dir * (((7 * (knockbackForce + 2) * knockbackForce) / 101f) + 9) * 2 * moveForce;
         float knockback = 0.0f;
         float knockbackGoal = this.transform.position.x + knockBackDistance;
+
+        m_isKnockback = true;
 
         while ((this.transform.position.x - knockbackGoal >= Mathf.Epsilon && dir < 0.0f) || (knockbackGoal - this.transform.position.x >= Mathf.Epsilon && dir > 0.0f))
         {
@@ -718,12 +782,21 @@ public abstract class APhysics : MonoBehaviour
                 yield break;
             }
 
-            knockback += dir * (moveForce * 7 * (0.25f * (1 + 1)));
-            this.transform.Translate(new Vector2(knockback * 0.1f, 0.0f));
-            m_isKnockback = true;
+            knockback += dir * (moveForce * 7 * (0.25f * (playerMass + playerGravity)));
+
+            Vector3 velocityVector = new Vector3(knockback, 0);
+
+            if (m_isSlope)
+            {
+                float distance = velocityVector.x;
+                velocityVector.y = Mathf.Sin(Mathf.Abs(m_angle) * Mathf.Deg2Rad) * Mathf.Abs(distance);
+                velocityVector.x = Mathf.Cos(Mathf.Abs(m_angle) * Mathf.Deg2Rad) * Mathf.Abs(distance) * Mathf.Sign(velocityVector.x);
+            }
+
+            this.transform.position = Vector3.Lerp(this.transform.position, velocityVector + this.transform.position, knockbackSmoother * Time.deltaTime);
             yield return null;
         }
-
+        
         m_isKnockback = false;
     }
     #endregion

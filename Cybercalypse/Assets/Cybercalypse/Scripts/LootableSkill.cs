@@ -66,7 +66,7 @@ public class LootableSkill : MonoBehaviour
         {
             /*CGameManager.skillSprites[i] = skills[i].sprite = sprite;*/
             int skillIndex = FindSkillIndex(i);
-            skillOffset.RegistSkill(i,skillIndex);
+            //skillOffset.RegistSkill(i,skillIndex);
             skillGroup.transform.GetChild(i).transform.GetChild(0).transform.gameObject.GetComponent<TestChangeSkillSlot>().currentSlotSkill = skillOffset.CheckSlotSkill(i);
             skillGroup.transform.GetChild(i).transform.GetChild(0).transform.gameObject.GetComponent<TestChangeSkillSlot>().skillIndex = skillIndex;
         }

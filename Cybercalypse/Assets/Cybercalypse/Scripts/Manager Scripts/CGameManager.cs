@@ -10,25 +10,24 @@ public class CGameManager : SingleTonManager<CGameManager>
     /// 작성자 : 구용모
     /// 스크립트 : CyberCalypse의 전체적인 게임 흐름을 관리하는 매니저 스크립트
     /// 최초 작성일 : . . .
-    /// 최종 수정일 : 2018.06.30
+    /// 최종 수정일 : 2018.07.08
     /// </summary>
-
-    /*public GameObject bossWall1;
-    public GameObject bossWall2;
-    public GameObject bossWallTrigger1;
-    public GameObject bossWallTrigger2;*/
 
     public bool isPlayerInvincible;
     public GameObject playerObject;
-
-    /*public Texture2D crossHair;
-    public Texture2D standard;*/
-
-    /*public GameObject cursor;*/
+    public GameObject skillLibrary;
+    public GameObject abilityLibrary;
+    public GameObject equipmentLibrary;
 
     public bool isDead;
     public bool isGameOver;
     public bool isMenuClose;
+
+    public List<Sprite> testSkillList;
+    public List<Sprite> testAbilityList;
+    public List<Sprite> testWeaponList;
+    public List<Sprite> testMaskList;
+    public List<Sprite> testSuitList;
 
     private SpriteRenderer sprite;
     private Vector2 cursorTexturePosition;
@@ -38,66 +37,51 @@ public class CGameManager : SingleTonManager<CGameManager>
     private GameObject retryText;
     private GameObject retryButton;
 
-    //   IA00_2_Feature_Door (0)
-    //!< IA00_2_Device_Lever (0)
-    //public List<PassageTrigger> doors;
-    //public List<bool> isDoorOpen;
-    //public List<Sprite> skillSprites;
-    //public List<int> skillIndex;
-    /*public static List<PassageTrigger> doors;*/
-
-   /* public bool[] bDoors;
-    public static List<bool> isDoorOpen;
-
-    public List<Sprite> originSprites;
-    public static List<Sprite> skillSprites;
-
-    public List<int> originSkillIndex;
-    public static List<int> skillIndex;*/
-
-    //!< Popup Window
-    /*public Transform popupWindow;*/
     private Text content;
-    //!< LootItem
-   /* public Transform SkillGroup;*/
 
     private new void Awake()
     {
         base.Awake();
-       /* bossWall1 = GameObject.Find("BossWall1").gameObject;
-        bossWall2 = GameObject.Find("BossWall2").gameObject;
 
-        bossWallTrigger1 = GameObject.Find("BossWallTrigger1").gameObject;
-        bossWallTrigger2 = GameObject.Find("BossWallTrigger2").gameObject;*/
-
+        testSkillList = new List<Sprite>();
+        testAbilityList = new List<Sprite>();
+        testWeaponList = new List<Sprite>();
+        testMaskList = new List<Sprite>();
+        testSuitList = new List<Sprite>();
         sprite = playerObject.GetComponent<SpriteRenderer>();
 
         fadeObject = transform.Find("Fade").gameObject;
         fadeObject.GetComponent<SpriteRenderer>().color = Color.clear;
 
-        //retryText = fadeObject.transform.Find("Retry").gameObject;
-        //retryText.GetComponent<TextMesh>().color = Color.clear;
+        skillLibrary = GameObject.Find("Skill Library").gameObject;
+        abilityLibrary = GameObject.Find("Ability Library").gameObject;
+        equipmentLibrary = GameObject.Find("Equipment Library").gameObject;
 
-        //retryButton = fadeObject.transform.Find("RetryButton").gameObject;
-        //retryButton.GetComponent<TextMesh>().color = Color.clear;
-        
-        //content = popupWindow.Find("Content").GetComponent<Text>();
+        testSkillList.Add(GameObject.Find("NullSkill").gameObject.GetComponent<SpriteRenderer>().sprite);
+        testSkillList.Add(GameObject.Find("Skill1").gameObject.GetComponent<SpriteRenderer>().sprite);
+        testSkillList.Add(GameObject.Find("Skill2").gameObject.GetComponent<SpriteRenderer>().sprite);
+        testSkillList.Add(GameObject.Find("Skill3").gameObject.GetComponent<SpriteRenderer>().sprite);
+        testSkillList.Add(GameObject.Find("Skill4").gameObject.GetComponent<SpriteRenderer>().sprite);
+        testSkillList.Add(GameObject.Find("Skill5").gameObject.GetComponent<SpriteRenderer>().sprite);
+        testSkillList.Add(GameObject.Find("Skill6").gameObject.GetComponent<SpriteRenderer>().sprite);
 
-        /*if (isDoorOpen == null)
-            isDoorOpen = new List<bool>(bDoors);
-        if (skillSprites == null)
-            skillSprites = new List<Sprite>(originSprites);
-        if (skillIndex == null)
-            skillIndex = new List<int>(originSkillIndex);*/
+        testWeaponList.Add(GameObject.Find("NullWeapon").gameObject.GetComponent<SpriteRenderer>().sprite);
+        testWeaponList.Add(GameObject.Find("Weapon1").gameObject.GetComponent<SpriteRenderer>().sprite);
+
+        testMaskList.Add(GameObject.Find("NullMask").gameObject.GetComponent<SpriteRenderer>().sprite);
+        testMaskList.Add(GameObject.Find("Mask1").gameObject.GetComponent<SpriteRenderer>().sprite);
+
+        testSuitList.Add(GameObject.Find("NullSuit").gameObject.GetComponent<SpriteRenderer>().sprite);
+        testSuitList.Add(GameObject.Find("Suit1").gameObject.GetComponent<SpriteRenderer>().sprite);
+
+        testAbilityList.Add(GameObject.Find("NullAbility").gameObject.GetComponent<SpriteRenderer>().sprite);
+        testAbilityList.Add(GameObject.Find("Ability1").gameObject.GetComponent<SpriteRenderer>().sprite);
+        testAbilityList.Add(GameObject.Find("Ability2").gameObject.GetComponent<SpriteRenderer>().sprite);
+        testAbilityList.Add(GameObject.Find("Ability3").gameObject.GetComponent<SpriteRenderer>().sprite);
     }
 
     private void Start()
     {
-        /*bossWall1.SetActive(false);
-        bossWall2.SetActive(false);*/
-
-       // popupWindow.gameObject.SetActive(false);
-
         CInputManager.instance.GamePause += GamePause;
         CInputManager.instance.GameRetry += isRetry;
         CInputManager.instance.MenuClose += TurnOffWindow;
@@ -107,7 +91,6 @@ public class CGameManager : SingleTonManager<CGameManager>
 
     public void GamePause(bool isGamePauseNow)
     {
-        /*cursorTexturePosition = new Vector2(crossHair.width * 0.5f, crossHair.height * 0.5f);*/
         //crossHair 중심을 마우스 좌표로 사용하기 위해 crossHair 텍스쳐의 정 중앙의 포지션으로 놓는다.
 
         if(isGamePauseNow)
@@ -118,8 +101,6 @@ public class CGameManager : SingleTonManager<CGameManager>
         else
         {
             Cursor.visible = false;
-           /* Cursor.SetCursor(crossHair, cursorTexturePosition, CursorMode.Auto);
-            cursor.GetComponent<RawImage>().texture = crossHair;*/
         }
     }
 
@@ -137,7 +118,6 @@ public class CGameManager : SingleTonManager<CGameManager>
     {
         Time.timeScale = 0.7f;
 
-        //playerObject.SetActive(false);
         isDead = true;
         StartCoroutine(FadeOut(5.0f));
     }
@@ -171,13 +151,11 @@ public class CGameManager : SingleTonManager<CGameManager>
 
     public void TurnOnWindow()
     {
-        //popupWindow.gameObject.SetActive(true);
     }
 
     public void TurnOffWindow(bool isMenuClose)
     {
-        //if (isMenuClose)
-            //popupWindow.gameObject.SetActive(false);
+
     }
 
     IEnumerator HasBlink()
@@ -241,7 +219,6 @@ public class CGameManager : SingleTonManager<CGameManager>
 
     IEnumerator slowlyTime()
     {
-
         yield return null;
     }
 

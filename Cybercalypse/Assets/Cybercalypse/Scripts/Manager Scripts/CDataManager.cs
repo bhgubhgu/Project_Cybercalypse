@@ -10,7 +10,7 @@ public class CDataManager : SingleTonManager<CDataManager>
     /// 작성자 : 구용모
     /// 스크립트 : CyberCalypse의 모든 Data 들을 관리하는 매니저 스크립트
     /// 최초 작성일 : 2018.06.11
-    /// 최종 수정일 : 2018.06.27
+    /// 최종 수정일 : 2018.07.08
     /// </summary>
 
     ///<summary
@@ -43,10 +43,18 @@ public class CDataManager : SingleTonManager<CDataManager>
         LoadJsonData();
     }
 
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.Alpha0))
+        {
+            SaveJsonData();
+        }
+    }
+
     private void LoadJsonData() //게임 시작시 로드할 데이터 메소드(처음 게임 시작시에는 미리 json에 저장된 데이터를 불러온다.)
     {
-        string playerJsonString = File.ReadAllText(Application.dataPath + "/Cybercalypse/Data/playerData.json"); //Player의 데이터
-        string monsterJsonString = File.ReadAllText(Application.dataPath + "/Cybercalypse/Data/monsterData.json"); //Monster들의 데이터
+        string playerJsonString = File.ReadAllText(Application.streamingAssetsPath + "/playerData.json");//Player의 데이터
+        string monsterJsonString = File.ReadAllText(Application.streamingAssetsPath + "/monsterData.json"); //Monster들의 데이터
 
         JsonData playerJsonData = JsonMapper.ToObject(playerJsonString); //플레이어 데이터 불러옴
         JsonData monsterJsonData = JsonMapper.ToObject(monsterJsonString); //몬스터 데이터 불러옴
@@ -63,13 +71,12 @@ public class CDataManager : SingleTonManager<CDataManager>
              playerJsonData["PlayerSavePosition"].ToString()
             );
 
-        CGameManager.instance.playerObject.GetComponent<CExecutor>().MoveForce = float.Parse(playerData.PlayerMoveForce); //플레이어 moveForce 할당
+        CGameManager.instance.playerObject.GetComponent<CExecutor>().MoveForce = float.Parse(playerData.PlayerMoveForce);//플레이어 moveForce 할당
         CGameManager.instance.playerObject.GetComponent<CExecutor>().JumpForce = float.Parse(playerData.PlayerJumpForce); //플레이어 jumpForce 할당
 
         //플레이어 저장된 position 로드
         string[] playerPositionData = playerData.PlayerSavePosition.Split('/');
         CGameManager.instance.playerObject.transform.position = new Vector3(float.Parse(playerPositionData[0]), float.Parse(playerPositionData[1]), float.Parse(playerPositionData[2]));
-        
 
         //몬스터 데이터 로드
         for (int i = 0; i < monsterJsonData.Count; i++)
@@ -101,8 +108,7 @@ public class CDataManager : SingleTonManager<CDataManager>
         //앞으로 플레이어에 관한 모든 정보를 저장
 
         JsonData savePlayerJsonData = JsonMapper.ToJson(playerData);
-
-        File.WriteAllText(Application.dataPath + "/Cybercalypse/Data/playerData.json", savePlayerJsonData.ToString()); //데이터 저장
+        File.WriteAllText(Application.streamingAssetsPath + "playerData.json", savePlayerJsonData.ToString()); //데이터 저장
     }
 }
 
