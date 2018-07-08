@@ -76,6 +76,10 @@ public class CPlayerController : APhysics
         {
             return m_moveForce;
         }
+        set
+        {
+            m_moveForce = value;
+        }
     }
 
     public override float HorizontalMoveAcceleration
@@ -91,6 +95,10 @@ public class CPlayerController : APhysics
         get
         {
             return m_jumpForce;
+        }
+        set
+        {
+            m_jumpForce = value;
         }
     }
 
@@ -212,12 +220,12 @@ public class CPlayerController : APhysics
         whatIsGround = 1 << 8 | 1 << 20 | 1 << 0 | 1 << 21;
         whatIsPlayerHit = 1 << 25;
         executor = this.GetComponent<CExecutor>();
-        skillOffset_Instance = CGameManager.instance.skillLibrary.GetComponent<CSkillLibrary>();
     }
 
     private void Start()
     {
         Physics2D.autoSimulation = false; //Unity 물리 사용안함
+        skillOffset_Instance = CGameManager.instance.skillLibrary.GetComponent<CSkillLibrary>();
 
         skillMethodList = new List<CSkillLibrary.SkillOffsetDel>();
 
@@ -245,15 +253,15 @@ public class CPlayerController : APhysics
         skillMethodList.Add(CActSkillMouseLeft);
         skillMethodList.Add(CActSkillMouseRight);
         #endregion
-
+        
         for(int i = 0; i < skillMethodList.Count; i++)
         {
             skillOffset_Instance.SetSkillSlot(skillMethodList[i]);
         }
 
-        //jumpForce, moveForce
-        m_moveForce = executor.MoveForce;
-        m_jumpForce = executor.JumpForce;
+        //Get Player Data
+        MoveForce = executor.MoveForce;
+        JumpForce = executor.JumpForce;
     }
 
     #region InputManager Event Method

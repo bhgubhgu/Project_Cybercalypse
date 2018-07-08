@@ -43,11 +43,6 @@ public class CDataManager : SingleTonManager<CDataManager>
         LoadJsonData();
     }
 
-    private void Start()
-    {
-        LoadJsonData();
-    }
-
     private void Update()
     {
         if(Input.GetKeyDown(KeyCode.Alpha0))
@@ -76,7 +71,7 @@ public class CDataManager : SingleTonManager<CDataManager>
              playerJsonData["PlayerSavePosition"].ToString()
             );
 
-        CGameManager.instance.playerObject.GetComponent<CExecutor>().MoveForce = float.Parse(playerData.PlayerMoveForce); //플레이어 moveForce 할당
+        CGameManager.instance.playerObject.GetComponent<CExecutor>().MoveForce = float.Parse(playerData.PlayerMoveForce);//플레이어 moveForce 할당
         CGameManager.instance.playerObject.GetComponent<CExecutor>().JumpForce = float.Parse(playerData.PlayerJumpForce); //플레이어 jumpForce 할당
 
         //플레이어 저장된 position 로드

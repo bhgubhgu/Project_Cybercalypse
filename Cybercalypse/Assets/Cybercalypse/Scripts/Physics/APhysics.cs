@@ -44,10 +44,12 @@ public abstract class APhysics : MonoBehaviour
     public abstract float MoveForce
     {
         get;
+        set;
     }
     public abstract float JumpForce
     {
         get;
+        set;
     }
     public abstract float HorizontalMoveAcceleration
     {
