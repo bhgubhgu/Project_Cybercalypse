@@ -48,7 +48,7 @@ public class CNewBitEjection : ASkill
         set;
     }
 
-    public override ETalantCategory TalantCagegory
+    public override ETalantCategory TalentCategory
     {
         get;
         set;
@@ -74,7 +74,7 @@ public class CNewBitEjection : ASkill
         //오브젝트 준비
         ItemName = "Bit Ejection";
         ItemCategory = EItemCategory.Talent;
-        TalantCagegory = ETalantCategory.Skill;
+        TalentCategory = ETalantCategory.Skill;
 
         bitEjectionCount = 1;
         bitEjectionComponent = new List<CSkill_BitEjection>();

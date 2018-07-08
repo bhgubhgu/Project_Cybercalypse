@@ -43,10 +43,10 @@ public class CDataManager : SingleTonManager<CDataManager>
         LoadJsonData();
     }
 
-   /* private void Start()
+    private void Start()
     {
         LoadJsonData();
-    }*/
+    }
 
     private void Update()
     {
@@ -99,7 +99,6 @@ public class CDataManager : SingleTonManager<CDataManager>
         }
 #endif
 #if UNITY_STANDALONE_WIN
-
         TextAsset playerJsonStringAsset = (TextAsset)Resources.Load("playerData", typeof(TextAsset));
         string buildPlayerJsonString = playerJsonStringAsset.text;
 
@@ -173,7 +172,6 @@ public class CDataManager : SingleTonManager<CDataManager>
 
 #if UNITY_EDITOR
         string playerJsonString = Application.dataPath + "/Cybercalypse/Data/playerData.json"; //Player의 데이터
-        string monsterJsonString = File.ReadAllText(Application.dataPath + "/Cybercalypse/Data/monsterData.json"); //Monster들의 데이터
         File.WriteAllText(playerJsonString, savePlayerJsonData.ToString()); //데이터 저장
 #endif
 
