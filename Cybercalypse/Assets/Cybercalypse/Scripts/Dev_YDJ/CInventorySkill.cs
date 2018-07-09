@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class CInventorySkill : AInventoryTalent, IDropHandler
+public class CInventorySkill : AInventoryTalent, IDropHandler, ISwappable
 {
     public int CoolTime { get; set; }
 
@@ -25,10 +25,10 @@ public class CInventorySkill : AInventoryTalent, IDropHandler
 	void Update () {
         
     }
-
+    
     public void SwapData(GameObject _object)
     {
-       var skill = _object.GetComponent<CInventorySkill>();
+        var target = _object.GetComponent<CInventorySkill>();
 
         var temp = new CInventorySkill();
 
@@ -40,22 +40,22 @@ public class CInventorySkill : AInventoryTalent, IDropHandler
         temp.Tooltip = Tooltip;
         temp.CoolTime = CoolTime;
 
-        ItemCategory = skill.ItemCategory;
-        ItemName = skill.ItemName;
-        ItemIcon = skill.ItemIcon;
-        TalentCategory = skill.TalentCategory;
-        Tooltip = skill.Tooltip;
-        CoolTime = skill.CoolTime;
+        ItemCategory = target.ItemCategory;
+        ItemName = target.ItemName;
+        ItemIcon = target.ItemIcon;
+        TalentCategory = target.TalentCategory;
+        Tooltip = target.Tooltip;
+        CoolTime = target.CoolTime;
         
-        skill.ItemCategory = temp.ItemCategory;
-        skill.ItemName = temp.ItemName;
-        skill.ItemIcon = temp.ItemIcon;
-        skill.TalentCategory = temp.TalentCategory;
-        skill.Tooltip = temp.Tooltip;
-        skill.CoolTime = temp.CoolTime;
+        target.ItemCategory = temp.ItemCategory;
+        target.ItemName = temp.ItemName;
+        target.ItemIcon = temp.ItemIcon;
+        target.TalentCategory = temp.TalentCategory;
+        target.Tooltip = temp.Tooltip;
+        target.CoolTime = temp.CoolTime;
 
         transform.GetComponent<Image>().sprite = ItemIcon;
-        _object.GetComponent<Image>().sprite = skill.ItemIcon;
+        _object.GetComponent<Image>().sprite = target.ItemIcon;
         //Debug.Log("Data Swap Complete");
     }
 
@@ -65,7 +65,7 @@ public class CInventorySkill : AInventoryTalent, IDropHandler
         {
             return;
         }
-
+        
         SwapData(eventData.pointerDrag);
     }
 }

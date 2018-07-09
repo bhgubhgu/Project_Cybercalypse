@@ -54,3 +54,12 @@ public interface IItemHolder
 {
     void PutItem();
 }
+
+public interface ISwappable
+{
+    /// <summary>
+    /// _object와 데이터를 교환하는 함수
+    /// </summary>
+    /// <param name="_object">교환 대상 Object</param>
+    void SwapData(GameObject _object);
+}

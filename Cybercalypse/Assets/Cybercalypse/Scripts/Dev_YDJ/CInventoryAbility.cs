@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
-public class CInventoryAbility : AInventoryTalent, IDropHandler
+public class CInventoryAbility : AInventoryTalent, IDropHandler, ISwappable
 {
     public bool IsActive { get; set; }
 
@@ -22,14 +23,12 @@ public class CInventoryAbility : AInventoryTalent, IDropHandler
     void Update() {
 
     }
-
-    /// <summary>
-    /// targetAbility와 데이터를 교환하는 함수
-    /// </summary>
-    /// <param name="target">target이 될 Ability</param>
-    public void SwapData(CInventoryAbility target)
+    
+    public void SwapData(GameObject _object)
     {
-        CInventoryAbility temp = target;
+        var target = _object.GetComponent<CInventoryAbility>();
+
+        var temp = new CInventoryAbility();
 
         temp.ItemCategory = ItemCategory;
         temp.ItemName = ItemName;
@@ -52,6 +51,8 @@ public class CInventoryAbility : AInventoryTalent, IDropHandler
         target.Tooltip = temp.Tooltip;
         target.IsActive = temp.IsActive;
 
+        transform.GetComponent<Image>().sprite = ItemIcon;
+        _object.GetComponent<Image>().sprite = target.ItemIcon;
         Debug.Log("Data Swap Complete");
     }
 
@@ -61,9 +62,9 @@ public class CInventoryAbility : AInventoryTalent, IDropHandler
             return;
         }
 
-        var draggingItem = eventData.pointerDrag.GetComponent<CInventoryAbility>();
+        //var draggingItem = eventData.pointerDrag.GetComponent<CInventoryAbility>();
 
-        SwapData(draggingItem);
+        SwapData(eventData.pointerDrag);
     }
 
     //public override void SwapData<T>(T item)

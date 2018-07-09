@@ -32,8 +32,9 @@ public abstract class AInventoryItem : AItem, IBeginDragHandler, IDragHandler, I
         Vector3 mousePosition = new Vector3(Input.mousePosition.x, Input.mousePosition.y);
         mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
         transform.position = new Vector3(mousePosition.x, mousePosition.y);
-    }
 
+        
+    }
     //public void OnDrop(PointerEventData eventData)
     //{
     //    Debug.Log("Called OnDrop");
