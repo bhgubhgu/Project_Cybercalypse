@@ -8,15 +8,12 @@ public abstract class APhysics : MonoBehaviour
     /// 작성자 : 구용모
     /// 스크립트 : 모든 움직이는 동적인 객체들의 움직일 수 있고 여러 행동들을 할 수 있게 하는 물리 스크립트
     /// 최초 작성일 : . . .
-    /// 최종 수정일 : 2018.06.14
+    /// 최종 수정일 : 2018.07.09
     /// </summary>
-
     const float gravityVelocity = 9.8f;
     const float knockbackSmoother = 100.0f;
     const float playerMass = 1;
     const float playerGravity = 1;
-
-    bool testMonsterHitCheck;
 
     #region abstract Property
     public abstract float HInputValue
@@ -44,12 +41,10 @@ public abstract class APhysics : MonoBehaviour
     public abstract float MoveForce
     {
         get;
-        set;
     }
     public abstract float JumpForce
     {
         get;
-        set;
     }
     public abstract float HorizontalMoveAcceleration
     {
@@ -76,26 +71,6 @@ public abstract class APhysics : MonoBehaviour
         get;
     }
 
-    public abstract bool IsDefaultFrontWall
-    {
-        get;
-    }
-
-    public abstract bool IsDefaultBackWall
-    {
-        get;
-    }
-
-    public abstract bool IsLeftWallHit
-    {
-        get;
-    }
-
-    public abstract bool IsRightWallHit
-    {
-        get;
-    }
-
     public abstract bool IsHeadHit
     {
         get;
@@ -111,11 +86,6 @@ public abstract class APhysics : MonoBehaviour
         get;
     }
 
-    public abstract bool IsJumpForGrounded
-    {
-        get;
-    }
-
     public abstract bool IsKnockback
     {
         get;
@@ -124,40 +94,11 @@ public abstract class APhysics : MonoBehaviour
 
     #region 각종 물리 상태에 필요한 변수들
     //충돌 체크 --> 충돌체크 부분 모두 삭제
-    protected float groundCheckerRadious;
-    protected Transform groundChecker;
     protected LayerMask whatIsGround;
 
-    protected Transform platformChecker;
     protected LayerMask whatIsPlatform;
 
-    protected Transform defaultFrontWallChecker;
-    protected LayerMask whatIsDefault;
-
-    protected Transform defaultBackWallChecker;
-
-    protected Transform anotherCollisionChecker;
-    protected LayerMask whatIsAnotherObject;
-    protected Collider2D collisionObject;
-
-    protected Transform waterCollisionChecker;
-    protected LayerMask whatIsWater;
-    protected Collider2D waterCollisionObject;
-
-    protected Transform trapCollisionChecker;
-    protected LayerMask whatIsTrap;
-    protected Collider2D trapCollisionObject;
-
-    protected Transform headCollideChecker;
     protected LayerMask whatIsHeadCheckLayer;
-
-    protected Transform leftWallChecker;
-    protected Transform rightWallChecker;
-
-    protected Transform platformHit;
-
-    protected Transform leftPlatformChecker;
-    protected Transform rightPlatformChecker;
 
     protected LayerMask whatIsPlayerHit;
     protected LayerMask whatIsMonsterHit;
@@ -171,39 +112,21 @@ public abstract class APhysics : MonoBehaviour
     protected float m_jumpTime;
     protected float m_gravity;
 
-    //플레이어 마우스(방향)
-    private int mouseDir;
-
     //상태 체크 --> 안쓰는 충돌상태체크변수 삭제
-    private bool m_isRunning;
-    private bool m_isBackward;
     protected bool m_isJumpNow;
-    protected bool m_isUseJumpPack;
     protected bool m_isDashNow;
     protected bool m_isGrounded;
-    protected bool m_isDefaultFrontWall;
-    protected bool m_isDefaultBackWall;
     protected bool m_isPlatform;
-    protected bool m_isLeftWallHit;
-    protected bool m_isRightWallHit;
     protected bool m_isHeadHit;
     protected bool m_isKnockback;
     protected bool m_isHit;
     protected bool m_isDownPlatform;
-    protected bool m_isJumpForGrounded;
 
     //New Collision --> 위와 같음
-    protected bool m_isNewDetectAnotherObject;
-    protected bool m_isWater;
-    protected bool m_isTrap;
     protected bool m_isKnockBackNow;
     protected bool m_isHeadCollide;
     protected bool m_isLeftCheck;
     protected bool m_isRightCheck;
-    protected bool m_isHitPlatform;
-    protected bool m_isLeftPlatformCheck;
-    protected bool m_isRightPlatformCheck;
-
 
     protected Vector3 previousPosition;
     protected float m_angle;
@@ -215,7 +138,7 @@ public abstract class APhysics : MonoBehaviour
         CheckCalypseAABBVertical(Physics2D.OverlapBox(this.gameObject.GetComponent<CapsuleCollider2D>().bounds.center, new Vector2(0, this.GetComponent<CapsuleCollider2D>().size.y), 0, whatIsGround));
         CheckCalypseAABBHorizontal(Physics2D.OverlapBox(this.gameObject.GetComponent<CapsuleCollider2D>().bounds.center, new Vector2(this.GetComponent<CapsuleCollider2D>().size.x * 2f, 0), 0, whatIsGround));
         CheckCalypseAABBHit(Physics2D.OverlapBox(this.gameObject.GetComponent<CapsuleCollider2D>().bounds.center, new Vector2(this.GetComponent<CapsuleCollider2D>().size.x, this.GetComponent<CapsuleCollider2D>().size.y), 0, whatIsPlayerHit));
-        //중력
+
         m_gravity = Gravity(m_isGrounded);
 
         //Position Check
@@ -288,7 +211,7 @@ public abstract class APhysics : MonoBehaviour
         ///플레이어와 몬스터의 경계를 나눠야 한다.
         ///</summary>
         //몬스터 왼쪽 넉백
-        if ((pBoundRight >= hBoundLeft && pBoundLeft <= hBoundLeft && (pBoundTop <= hBoundBottom || pBoundBottom <= hBboundTop) && !testMonsterHitCheck))
+        if ((pBoundRight >= hBoundLeft && pBoundLeft <= hBoundLeft && (pBoundTop <= hBoundBottom || pBoundBottom <= hBboundTop)))
         {
             //몬스터가 아닐시 리턴
             if(colliders.gameObject.layer == 25)
@@ -298,12 +221,11 @@ public abstract class APhysics : MonoBehaviour
             else
             {
                 Hit(0.01f, -1f); //Test
-                StartCoroutine(TestInvincible());
                 return;
             }
         }
         //몬스터 오른쪽 넉백
-        else if ((pBoundLeft <= hBoundRight && pBoundLeft >= hBoundLeft && ((pBoundTop <= hBoundBottom || pBoundBottom <= hBboundTop)) && !testMonsterHitCheck))
+        else if ((pBoundLeft <= hBoundRight && pBoundLeft >= hBoundLeft && ((pBoundTop <= hBoundBottom || pBoundBottom <= hBboundTop))))
         {
             if (colliders.gameObject.layer == 25)
             {
@@ -312,18 +234,8 @@ public abstract class APhysics : MonoBehaviour
             else
             {
                 Hit(0.01f, +1f); //Test
-                StartCoroutine(TestInvincible());
             }
         }
-    }
-
-    IEnumerator TestInvincible()
-    {
-        Physics2D.IgnoreLayerCollision(25, 9, true);
-        testMonsterHitCheck = true;
-        yield return new WaitForSeconds(0.2f);
-        Physics2D.IgnoreLayerCollision(25, 9, false);
-        testMonsterHitCheck = false;
     }
 
     private void CheckCalypseAABBVertical(Collider2D colliders) //바닦, 머리 충돌
@@ -358,7 +270,7 @@ public abstract class APhysics : MonoBehaviour
             m_isGrounded = true;
             m_isSlope = true;
 
-            PolygonCollider2D slopeCollider = colliders.GetComponent<PolygonCollider2D>(); //성능에 영향 x
+            PolygonCollider2D slopeCollider = colliders.GetComponent<PolygonCollider2D>();//colliders.GetComponent<PolygonCollider2D>(); //성능에 영향 x
             Vector2 firstPoint = slopeCollider.points[0]; //왼쪽 정점
             Vector2 lastPoint = slopeCollider.points[2]; //Top 정점(꼭대기 꼭짓점)
             Vector2 vectorAngle = lastPoint - firstPoint; //가장 높은곳에서 가장 낮고 플레이어가 가장 먼저 접하는 접점을 빼줌
@@ -446,39 +358,26 @@ public abstract class APhysics : MonoBehaviour
 
 
     #region Physics Virtual Method for Player
-    public virtual float HMove(float moveForce, float hInputValue, Vector3 mousePosition)
+    public virtual float HMove(float moveForce, float hInputValue)
     {
-        if ((this.transform.position.x < mousePosition.x))
+        if (hInputValue > 0)
         {
             this.transform.localScale = new Vector3(+1, 1, 1);
         }
-        else if ((this.transform.position.x > mousePosition.x))
+        else if (hInputValue < 0)
         {
             this.transform.localScale = new Vector3(-1, 1, 1);
         }
 
-
-        switch (MoveCondition(hInputValue, MouseDir(this.gameObject, mousePosition))) //up down 추가 예정
+        switch (MoveCondition(hInputValue, this.transform.localScale.x))
         {
-            case CLiveMoveStatement.rightFoward:
-                m_isBackward = false;
+            case ELiveMoveStatement.rightFoward:
                 m_hVelocity = +moveForce * (0.25f * (playerMass + playerGravity)) * Time.deltaTime;
                 break;
-            case CLiveMoveStatement.leftFoward:
-                m_isBackward = false;
+            case ELiveMoveStatement.leftFoward:
                 m_hVelocity = -moveForce * (0.25f * (playerMass + playerGravity)) * Time.deltaTime;
                 break;
-            case CLiveMoveStatement.rightBackward:
-                m_isBackward = true;
-                m_hVelocity = +moveForce * (0.25f * (playerMass + playerGravity)) * Time.deltaTime;
-                break;
-            case CLiveMoveStatement.leftBackward:
-                m_isBackward = true;
-                m_hVelocity = -moveForce * (0.25f * (playerMass + playerGravity)) * Time.deltaTime;
-                break;
-            case CLiveMoveStatement.wait:
-                m_isBackward = false;
-                m_isRunning = false;
+            case ELiveMoveStatement.wait:
                 m_hVelocity = 0.0f;
                 break;
         }
@@ -514,7 +413,7 @@ public abstract class APhysics : MonoBehaviour
     }
     public virtual void HorizontalAccel(float moveForce)
     {
-        if(m_isDashNow || m_isBackward)
+        if(m_isDashNow)
         {
             return;
         }
@@ -524,50 +423,21 @@ public abstract class APhysics : MonoBehaviour
     #endregion
 
     #region For Player Method
-
-    #region MoveCondition
-    /*private*/
-    private CLiveMoveStatement MoveCondition(float moveValue, int mouseDir)
+    private ELiveMoveStatement MoveCondition(float moveValue, float playerDir)
     {
-        if (moveValue > 0.0f && mouseDir > 0)
+        if (playerDir > 0 && moveValue > 0.0f)
         {
-            return CLiveMoveStatement.rightFoward;
+            return ELiveMoveStatement.rightFoward;
         }
-        else if (moveValue < 0.0f && mouseDir < 0)
+        else if (playerDir < 0 && moveValue < 0.0f)
         {
-            return CLiveMoveStatement.leftFoward;
-        }
-        else if (moveValue > 0.0f && mouseDir < 0)
-        {
-            return CLiveMoveStatement.rightBackward;
-        }
-        else if (moveValue < 0.0f && mouseDir > 0)
-        {
-            return CLiveMoveStatement.leftBackward;
+            return ELiveMoveStatement.leftFoward;
         }
         else
         {
-            return CLiveMoveStatement.wait;
+            return ELiveMoveStatement.wait;
         }
     }
-    #endregion
-
-    #region MouseDir
-    public int MouseDir(GameObject targetObject, Vector3 mousePosition)
-    {
-        if (targetObject.transform.position.x > mousePosition.x)
-        {
-            mouseDir = -1;
-        }
-        else if (targetObject.transform.position.x < mousePosition.x)
-        {
-            mouseDir = +1;
-        }
-
-        return mouseDir;
-    }
-    #endregion
-
     #endregion
 
     #region Physics Virtual Method for Object
@@ -621,55 +491,45 @@ public abstract class APhysics : MonoBehaviour
 
         switch (MoveCondition(hInputValue)) //up down 추가 예정
         {
-            case CLiveMoveStatement.rightFoward:
+            case ELiveMoveStatement.rightFoward:
                 m_hVelocity += +moveForce * (0.25f * (playerMass + playerGravity)) * Time.deltaTime * 60 * 0.15f;
                 break;
-            case CLiveMoveStatement.leftFoward:
+            case ELiveMoveStatement.leftFoward:
                 m_hVelocity += -moveForce * (0.25f * (playerMass + playerGravity)) * Time.deltaTime * 60 * 0.15f;
                 break;
-            case CLiveMoveStatement.wait:
+            case ELiveMoveStatement.wait:
                 m_hVelocity = 0.0f;
                 break;
         }
 
         m_hVelocity = Mathf.Clamp(m_hVelocity, -0.008f, 0.008f);
 
-        if (m_isLeftWallHit || m_isRightWallHit)
+        if (m_isLeftCheck || m_isRightCheck)
         {
             this.transform.Translate(new Vector2(0, 0));
             return m_hVelocity;
         }
 
-        if(CSkill_BlackOut.isMonsterHitBlackOut)
-        {
-            m_hVelocity = Mathf.Clamp(m_hVelocity, -0.002f, 0.002f);
-        }
-
         this.transform.Translate(new Vector2(m_hVelocity, 0));
         return m_hVelocity;
-    }
-
-    public virtual void Attack(GameObject attackObject)
-    {
-        StartCoroutine(GroundAttack(attackObject));
     }
     #endregion
 
     #region For Monster Method
 
-    private CLiveMoveStatement MoveCondition(float moveValue)
+    private ELiveMoveStatement MoveCondition(float moveValue)
     {
         if (moveValue > 0.0f)
         {
-            return CLiveMoveStatement.rightFoward;
+            return ELiveMoveStatement.rightFoward;
         }
         else if (moveValue < 0.0f)
         {
-            return CLiveMoveStatement.leftFoward;
+            return ELiveMoveStatement.leftFoward;
         }
         else
         {
-            return CLiveMoveStatement.wait;
+            return ELiveMoveStatement.wait;
         }
     }
 
@@ -801,12 +661,10 @@ public abstract class APhysics : MonoBehaviour
     }
     #endregion
 
-    public enum CLiveMoveStatement
+    public enum ELiveMoveStatement
     {
         rightFoward,
         leftFoward,
-        rightBackward,
-        leftBackward,
         wait
     }
 }

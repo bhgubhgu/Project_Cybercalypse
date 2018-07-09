@@ -9,7 +9,7 @@ public class CInputManager : SingleTonManager<CInputManager>
     /// 작성자 : 구용모, 윤동준
     /// 스크립트 : CyberCalypse의 Player의 Input을 관리하는 매니저 스크립트
     /// 최초 작성일 : . . .
-    /// 최종 수정일 : 2018.06.27
+    /// 최종 수정일 : 2018.07.09
     /// </summary>
 
     //리팩토링시 팩토리 패턴 내부의 모든 메소드들 private 처리  
@@ -70,8 +70,6 @@ public class CInputManager : SingleTonManager<CInputManager>
     public event UniqueInput Skill2;
     public event UniqueInput Skill3;
     public event UniqueInput Skill4;
-    public event UniqueInput SkillMouseLeft;
-    public event UniqueInput SkillMouseRight;
 
     public event UniqueInput Interact;
 
@@ -80,15 +78,9 @@ public class CInputManager : SingleTonManager<CInputManager>
     public event MoveInput HRun;
     public event MoveInput PlayerVMove;
 
-    //!< 커서
-    public event MoveInput CursorHMove;
-    public MoveInput CursorVMove;
-
     //move event Command
     public event MoveCommand HMoveCommand;
     public event MoveCommand VMoveCommand;
-    public event MoveCommand HCursorCommand;
-    public event MoveCommand VCursorCommand;
 
     //certain event Command
     public event Command JumpCommand;
@@ -100,12 +92,9 @@ public class CInputManager : SingleTonManager<CInputManager>
     public event Command Skill2Command;
     public event Command Skill3Command;
     public event Command Skill4Command;
-    public event Command SkillMouseLeftCommand;
-    public event Command SkillMouseRightCommand;
 
     //game system Command
     public event Command SaveCommand;
-    public event Command RetryCommand;
     public event Command MenuCommand;
     #endregion
     /* 메소드 */
@@ -127,28 +116,14 @@ public class CInputManager : SingleTonManager<CInputManager>
 
         isDownInteractKey = InteractCommand(isDownInteractKey);
 
-        //!< 커서
-        inputCursorHMoveValue = HCursorCommand(inputCursorHMoveValue);
-        inputCursorVMoveValue = VCursorCommand(inputCursorVMoveValue);
-
         //스킬
         isDownSkill1 = Skill1Command(isDownSkill1);
         isDownSkill2 = Skill2Command(isDownSkill2);
         isDownSkill3 = Skill3Command(isDownSkill3);
         isDownSkill4 = Skill4Command(isDownSkill4);
-        isDownSkillMouseLeft = SkillMouseLeftCommand(isDownSkillMouseLeft);
-        isDownSkillMouseRight = SkillMouseRightCommand(isDownSkillMouseRight);
 
         /* 메뉴 */
         isMenuActive = MenuCommand(isMenuActive);
-
-        /* 다시 시작*/
-        isGameRetry = RetryCommand(isGameRetry);
-        isPressAnykey = isGameRetry;
-
-        //!< 커서
-        /*CursorHMove(inputCursorHMoveValue);
-        CursorVMove(inputCursorVMoveValue);*/
 
         try
         {
@@ -167,10 +142,7 @@ public class CInputManager : SingleTonManager<CInputManager>
             case true:
                 //Menu Acting
                 GamePause(isMenuActive);
-                if (isGameRetry)
-                {
-                    GameRetry(isGameRetry);
-                }
+
                 if (Input.GetKeyDown(KeyCode.R))
                 {
                     SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
@@ -179,57 +151,52 @@ public class CInputManager : SingleTonManager<CInputManager>
 
             case false:
                 //Menu unActing
-                if (isPressAnykey) //메뉴를 닫을려면 아무키나 눌러도 된다.
-                {
-                    MenuClose(isPressAnykey);
-                }
-                if (runCount < 2) //구현 주석처리 해 놓은 run을 기준으로 aa 또는 dd가 아닐때 걷기를 실행한다.
-                {
-                    PlayerHMove(inputHMoveValue);
-                }
-                /*else if (runCount >= 2) //달리기 지금은 주석처리(애니메이션 나올때까지 보류)
-                {
-                    HRun(inputHMoveValue);
-                }*/
-                PlayerVMove(inputVMoveValue); //수직이동
 
-                if (isDownCharacterJumpKey) //점프
+                if(TestShop.isShopOpen)
                 {
-                    Jump(isDownCharacterJumpKey);
+
+
+                    break;
                 }
-                else if (isDownCharacterDashKey) //대쉬
+                else
                 {
-                    Dash(isDownCharacterDashKey);
+                    if (runCount < 2) //구현 주석처리 해 놓은 run을 기준으로 aa 또는 dd가 아닐때 걷기를 실행한다.
+                    {
+                        PlayerHMove(inputHMoveValue);
+                    }
+
+                    PlayerVMove(inputVMoveValue); //수직이동
+
+                    if (isDownCharacterJumpKey) //점프
+                    {
+                        Jump(isDownCharacterJumpKey);
+                    }
+                    else if (isDownCharacterDashKey) //대쉬
+                    {
+                        Dash(isDownCharacterDashKey);
+                    }
+                    else if (isDownSkill1) //스킬 발사 1번
+                    {
+                        Skill1(isDownSkill1);
+                    }
+                    else if (isDownSkill2) //스킬 발사 2번
+                    {
+                        Skill2(isDownSkill2);
+                    }
+                    else if (isDownSkill3) //스킬 발사 3번
+                    {
+                        Skill3(isDownSkill3);
+                    }
+                    else if (isDownSkill4) //스킬 발사 4번
+                    {
+                        Skill4(isDownSkill4);
+                    }
+                    else if (isDownInteractKey) //상호작용(npc와의 대화 등등)
+                    {
+                        Interact(isDownInteractKey);
+                    }
+                    break;
                 }
-                else if (isDownSkill1) //스킬 발사 1번
-                {
-                    Skill1(isDownSkill1);
-                }
-                else if (isDownSkill2) //스킬 발사 2번
-                {
-                    Skill2(isDownSkill2);
-                }
-                else if (isDownSkill3) //스킬 발사 3번
-                {
-                    Skill3(isDownSkill3);
-                }
-                else if (isDownSkill4) //스킬 발사 4번
-                {
-                    Skill4(isDownSkill4);
-                }
-                else if (isDownSkillMouseLeft) //스킬 발사 마우스 왼쪽
-                {
-                    SkillMouseLeft(isDownSkillMouseLeft);
-                }
-                else if (isDownSkillMouseRight) //스킬 발사 마우스 오른쪽
-                {
-                    SkillMouseRight(isDownSkillMouseRight);
-                }
-                else if (isDownInteractKey) //상호작용(npc와의 대화 등등)
-                {
-                    Interact(isDownInteractKey);
-                }
-                break;
         }
     }
 }
@@ -251,17 +218,10 @@ abstract class AbsCommand
     public abstract bool isSkillInput2(bool isDownSkillKey2);
     public abstract bool isSkillInput3(bool isDownSkillKey3);
     public abstract bool isSkillInput4(bool isDownSkillKey4);
-    public abstract bool isSkillInputMouseLeft(bool isDownSkillKeyMouseLeft);
-    public abstract bool isSkillInputMouseRight(bool isDownSkillKeyMouseRight);
 
     public abstract bool isInteractInput(bool isDownInteractKey);
 
-    public abstract bool isRetryInput(bool isRetryKey);
     public abstract bool IsMenuKeyInput(bool isKeyDown);
-
-    //!< 커서
-    public abstract float CursorHMove(float hCursorInput);
-    public abstract float CursorVMove(float vCursorInput);
 }
 #endregion
 
@@ -295,9 +255,11 @@ class PlayerCommand : AbsCommand
     private IEnumerator stopRightCount;
     #endregion
 
-
     public PlayerCommand()
     {
+        CInputManager.instance.HMoveCommand += HMove;
+        CInputManager.instance.VMoveCommand += VMove;
+
         CInputManager.instance.JumpCommand += isJumpInput;
         CInputManager.instance.DashCommand += isDashInput;
 
@@ -305,32 +267,16 @@ class PlayerCommand : AbsCommand
         CInputManager.instance.Skill2Command += isSkillInput2;
         CInputManager.instance.Skill3Command += isSkillInput3;
         CInputManager.instance.Skill4Command += isSkillInput4;
-        CInputManager.instance.SkillMouseLeftCommand += isSkillInputMouseLeft;
-        CInputManager.instance.SkillMouseRightCommand += isSkillInputMouseRight;
 
         CInputManager.instance.InteractCommand += isInteractInput;
 
-        CInputManager.instance.HMoveCommand += HMove;
-        CInputManager.instance.VMoveCommand += VMove;
-
-        CInputManager.instance.RetryCommand += isRetryInput;
         CInputManager.instance.MenuCommand += IsMenuKeyInput;
-
-        CInputManager.instance.HCursorCommand += CursorHMove;
-        CInputManager.instance.VCursorCommand += CursorVMove;
 
         stopLeftCount = LeftRunCount();
         stopRightCount = RightRunCount();
     }
 
     #region override Method
-    public override bool isRetryInput(bool isRetryKey)
-    {
-        isRetryKey = Input.anyKeyDown;
-        isGameRetring = isRetryKey;
-        return isGameRetring;
-    }
-
     public override bool IsMenuKeyInput(bool isMenukeyInput)
     {
         if ((Input.GetKeyDown(KeyCode.JoystickButton7) || Input.GetKeyDown(KeyCode.P)) && !isMenuActing)
@@ -385,24 +331,20 @@ class PlayerCommand : AbsCommand
 
         if (isDownRightKeyUp)
         {
-            CCoroutineHandler.instance.StartCoroutine(stopRightCount);
             return rightRunCount;
         }
         else if (isDownLeftKeyUp)
         {
-            CCoroutineHandler.instance.StartCoroutine(stopLeftCount);
             return leftRunCount;
         }
 
         if (isLeftKey)
         {
-            CCoroutineHandler.instance.StopCoroutine(stopLeftCount);
             stopLeftCount = LeftRunCount();
             return leftRunCount;
         }
         else if (isRightKey)
         {
-            CCoroutineHandler.instance.StopCoroutine(stopRightCount);
             stopRightCount = RightRunCount();
             return rightRunCount;
         }
@@ -472,6 +414,7 @@ class PlayerCommand : AbsCommand
             isDownSkillKey1 = Input.GetKeyDown(KeyCode.JoystickButton4);
 
         isSkill1Acting = isDownSkillKey1;
+
         return isSkill1Acting;
     }
 
@@ -512,66 +455,5 @@ class PlayerCommand : AbsCommand
         isSkill4Acting = isDownSkillKey4;
         return isSkill4Acting;
     }
-
-    public override bool isSkillInputMouseLeft(bool isDownSkillKeyMouseLeft)
-    {
-        isDownSkillKeyMouseLeft = Input.GetButtonDown("Cast Skill Mouse Left");
-        if (!isDownSkillKeyMouseLeft)
-            isDownSkillKeyMouseLeft = Input.GetKeyDown(KeyCode.JoystickButton2);
-
-        isSkillMouseLeftActing = isDownSkillKeyMouseLeft;
-        return isSkillMouseLeftActing;
-    }
-
-    public override bool isSkillInputMouseRight(bool isDownSkillKeyMouseRight)
-    {
-        isDownSkillKeyMouseRight = Input.GetButtonDown("Cast Skill Mouse Right");
-        if (!isDownSkillKeyMouseRight)
-            isDownSkillKeyMouseRight = Input.GetKeyDown(KeyCode.JoystickButton3);
-
-        isSkillMouseRightActing = isDownSkillKeyMouseRight;
-        return isSkillMouseRightActing;
-    }
-
-    //!< 커서
-    public override float CursorHMove(float hCursorInput)
-    {
-        hCursorInput = Input.GetAxisRaw("XBoxAimHorizontal");
-        cursorHMoveValue = hCursorInput;
-        return cursorHMoveValue;
-    }
-
-    public override float CursorVMove(float vCursorInput)
-    {
-        vCursorInput = Input.GetAxisRaw("XBoxAimVertical");
-        cursorVMoveValue = vCursorInput;
-        return cursorVMoveValue;
-    }
-
     #endregion
 }
-
-#region ccoroutine Handler
-/* 코루틴 이용을 위한 Handler Class */
-public class CCoroutineHandler : MonoBehaviour //나중에 다른 오브젝트 및 스크립트로 빼놓기, 캐싱 고려
-{
-    private static CCoroutineHandler _instance;
-    public static CCoroutineHandler instance
-    {
-        get
-        {
-            if (CCoroutineHandler.Equals(_instance, null))//_instance == null)
-            {
-                _instance = new GameObject("cCoroutineHandler").AddComponent<CCoroutineHandler>();
-            }
-
-            return _instance;
-        }
-    }
-
-    private void Awake()
-    {
-        DontDestroyOnLoad(this);
-    }
-}
-#endregion

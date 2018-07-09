@@ -74,10 +74,6 @@ public class CMonsterController : APhysics
         {
             return m_moveForce;
         }
-        set
-        {
-            m_moveForce = value;
-        }
     }
 
     public override float HorizontalMoveAcceleration //입력 안받음
@@ -93,10 +89,6 @@ public class CMonsterController : APhysics
         get
         {
             return m_jumpForce;
-        }
-        set
-        {
-            m_jumpForce = value;
         }
     }
 
@@ -140,38 +132,6 @@ public class CMonsterController : APhysics
         }
     }
 
-    public override bool IsDefaultBackWall
-    {
-        get
-        {
-            return m_isDefaultBackWall;
-        }
-    }
-
-    public override bool IsDefaultFrontWall
-    {
-        get
-        {
-            return m_isDefaultFrontWall;
-        }
-    }
-
-    public override bool IsLeftWallHit
-    {
-        get
-        {
-            return m_isLeftWallHit;
-        }
-    }
-
-    public override bool IsRightWallHit
-    {
-        get
-        {
-            return m_isRightWallHit;
-        }
-    }
-
     public override bool IsHeadHit
     {
         get
@@ -196,14 +156,6 @@ public class CMonsterController : APhysics
         }
     }
 
-    public override bool IsJumpForGrounded
-    {
-        get
-        {
-            return false;
-        }
-    }
-
     public override bool IsKnockback
     {
         get
@@ -215,12 +167,8 @@ public class CMonsterController : APhysics
 
     private void Awake()
     {
-        groundCheckerRadious = 0.01f;
-
         whatIsGround = 1 << 8 | 1 << 20 | 1 << 0;
         whatIsPlatform = 1 << 20;
-        whatIsDefault = 1 << 0 | 1 << 8;
-        whatIsAnotherObject = 1 << 13 | 1 << 14 | 1 << 15 | 1 << 16 | 1 << 17 | 1 << 18;
         whatIsPlayerHit = 1 << 9;
 
         inputCommand = this.gameObject.GetComponent<CMonsterInputCommand>();
@@ -236,8 +184,6 @@ public class CMonsterController : APhysics
 
     private void Start()
     {
-        Physics2D.autoSimulation = false; //Unity 물리 사용안함
-
         inputCommand.HMove += HMoveControl;
         inputCommand.GroundAttack += AttackControl;
 
@@ -262,7 +208,6 @@ public class CMonsterController : APhysics
                 {
                     cMonster.GetDamage(100.0f);
                 }
-                StartCoroutine(HitDelay());
             }
             else
             {
@@ -274,7 +219,6 @@ public class CMonsterController : APhysics
                 {
                     cMonster.GetDamage(100.0f);
                 }
-                StartCoroutine(HitDelay());
             }
         }
 
@@ -289,51 +233,6 @@ public class CMonsterController : APhysics
         }
     }
 
-    IEnumerator HitDelay()
-    {
-        m_isHit = true;
-
-        yield return new WaitForSeconds(0.5f);
-
-        m_isHit = false;
-
-        if (!m_isBossInvincible && monsterKind == EMonsterKind.Apostle_Monster)
-        {
-            StartCoroutine(TestBossInvincible());
-            StartCoroutine(TestBossBlink());
-        }
-    }
-
-    public IEnumerator TestBossInvincible()
-    {
-        m_isBossInvincible = true;
-        yield return new WaitForSeconds(0.75f);
-        m_isBossInvincible = false;
-    } //Test
-
-    public IEnumerator TestBossBlink()
-    {
-        bossSprite.color = new Vector4(1, 0, 0, 0.75f);
-        yield return new WaitForSeconds(0.05f);
-        bossSprite.color = new Vector4(1, 1, 1, 1);
-
-        for (float i = 0; i < 1.5f; i += Time.deltaTime)
-        {
-            if (!m_isBossInvincible)
-            {
-                bossSprite.enabled = true;
-                yield break;
-            }
-
-            bossSprite.enabled = false;
-
-            yield return new WaitForSeconds(0.01f);
-            bossSprite.enabled = true;
-            yield return new WaitForSeconds(0.01f);
-        }
-    }
-
-
     public void HMoveControl(float hInputValue)
     {
         m_inputHMoveValue = hInputValue;
@@ -342,7 +241,7 @@ public class CMonsterController : APhysics
 
     public void AttackControl()
     {
-        Attack(groundAttack);
+        //Monster Attack
     }
 
     public void BossJumpControl()
@@ -403,11 +302,6 @@ public class CMonsterController : APhysics
         {
             base.HorizontalAccel(moveForce);
         }
-    }
-
-    public override void Attack(GameObject attackObject)
-    {
-        base.Attack(attackObject);
     }
 
     public enum EMonsterKind

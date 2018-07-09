@@ -89,7 +89,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1753039472196976
 GameObject:
   m_ObjectHideFlags: 1
@@ -137,7 +137,7 @@ GameObject:
   - component: {fileID: 114825419200568316}
   - component: {fileID: 114200395525446644}
   - component: {fileID: 70827171276911058}
-  - component: {fileID: 50946850125372424}
+  - component: {fileID: 50243703682006056}
   m_Layer: 25
   m_Name: Monster_RedWatcher
   m_TagString: Untagged
@@ -256,7 +256,7 @@ Transform:
   m_Father: {fileID: 4421777806537526}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!50 &50946850125372424
+--- !u!50 &50243703682006056
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 1
@@ -265,7 +265,7 @@ Rigidbody2D:
   m_GameObject: {fileID: 1962199076352934}
   m_BodyType: 1
   m_Simulated: 1
-  m_UseFullKinematicContacts: 0
+  m_UseFullKinematicContacts: 1
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
@@ -275,7 +275,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 7
+  m_Constraints: 0
 --- !u!70 &70827171276911058
 CapsuleCollider2D:
   m_ObjectHideFlags: 1
