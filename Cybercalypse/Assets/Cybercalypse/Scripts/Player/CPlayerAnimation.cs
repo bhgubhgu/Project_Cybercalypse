@@ -38,16 +38,12 @@ public class CPlayerAnimation : MonoBehaviour
         CInputManager.instance.Skill2 += SkillAni;
         CInputManager.instance.Skill3 += SkillAni;
         CInputManager.instance.Skill4 += SkillAni;
-        CInputManager.instance.SkillMouseLeft += SkillAni;
-        CInputManager.instance.SkillMouseRight += SkillAni;
         CInputManager.instance.HRun += HRunAni;
 
         skillSlots[0] = playerController.CActSkill1;
         skillSlots[1] = playerController.CActSkill2;
         skillSlots[2] = playerController.CActSkill3;
         skillSlots[3] = playerController.CActSkill4;
-        skillSlots[4] = playerController.CActSkillMouseLeft;
-        skillSlots[5] = playerController.CActSkillMouseRight;
     }
 
     private void Update()
@@ -106,29 +102,21 @@ public class CPlayerAnimation : MonoBehaviour
     //스킬
     public void SkillAni(bool isDownSkillKey)
     {
-        if(Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown(KeyCode.Joystick1Button4))
+        if(Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.Joystick1Button4))
         {
             skills = skillPool.FindSKillSlot(skillSlots[0]);
         }
-        else if(Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown(KeyCode.Joystick1Button5))
+        else if(Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.Joystick1Button5))
         {
             skills = skillPool.FindSKillSlot(skillSlots[1]);
         }
-        else if (Input.GetKeyDown(KeyCode.Alpha3) || Input.GetButtonDown("XBoxLT"))
+        else if (Input.GetKeyDown(KeyCode.D) || Input.GetButtonDown("XBoxLT"))
         {
             skills = skillPool.FindSKillSlot(skillSlots[2]);
         }
-        else if (Input.GetKeyDown(KeyCode.Alpha4) || Input.GetButtonDown("XBoxRT"))
+        else if (Input.GetKeyDown(KeyCode.F) || Input.GetButtonDown("XBoxRT"))
         {
             skills = skillPool.FindSKillSlot(skillSlots[3]);
-        }
-        else if (Input.GetKeyDown(KeyCode.Mouse0) || Input.GetKeyDown(KeyCode.Joystick1Button2))
-        {
-            skills = skillPool.FindSKillSlot(skillSlots[4]);
-        }
-        else if (Input.GetKeyDown(KeyCode.Mouse1) || Input.GetKeyDown(KeyCode.Joystick1Button3))
-        {
-            skills = skillPool.FindSKillSlot(skillSlots[5]);
         }
 
         skillIndex = skillPool.CheckSkillIndex(skills); //해당 스킬의 애니메이션 인덱스

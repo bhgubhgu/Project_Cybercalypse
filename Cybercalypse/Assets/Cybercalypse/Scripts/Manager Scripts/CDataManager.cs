@@ -10,7 +10,7 @@ public class CDataManager : SingleTonManager<CDataManager>
     /// 작성자 : 구용모
     /// 스크립트 : CyberCalypse의 모든 Data 들을 관리하는 매니저 스크립트
     /// 최초 작성일 : 2018.06.11
-    /// 최종 수정일 : 2018.07.08
+    /// 최종 수정일 : 2018.07.09
     /// </summary>
 
     ///<summary
@@ -41,14 +41,6 @@ public class CDataManager : SingleTonManager<CDataManager>
         base.Awake(); //추상 싱글톤 클래스에서의 Awake 오버라이딩
         monsterDataList = new List<CMonsterData>();
         LoadJsonData();
-    }
-
-    private void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.Alpha0))
-        {
-            SaveJsonData();
-        }
     }
 
     private void LoadJsonData() //게임 시작시 로드할 데이터 메소드(처음 게임 시작시에는 미리 json에 저장된 데이터를 불러온다.)
@@ -108,7 +100,7 @@ public class CDataManager : SingleTonManager<CDataManager>
         //앞으로 플레이어에 관한 모든 정보를 저장
 
         JsonData savePlayerJsonData = JsonMapper.ToJson(playerData);
-        File.WriteAllText(Application.streamingAssetsPath + "playerData.json", savePlayerJsonData.ToString()); //데이터 저장
+        File.WriteAllText(Application.streamingAssetsPath + "/playerData.json", savePlayerJsonData.ToString()); //데이터 저장
     }
 }
 

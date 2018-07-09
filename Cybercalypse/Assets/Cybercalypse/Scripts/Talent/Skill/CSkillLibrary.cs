@@ -8,7 +8,7 @@ public class CSkillLibrary : ASkill
     /// 작성자 : 구용모
     /// 스크립트 : 스킬들을 등록, 해제 및 발사 객체를 등록시켜주는 일종의 스킬 도서관 같은 기능을 하는 스크립트
     /// 최초 작성일 : . . .
-    /// 최종 수정일 : 2018.07.04
+    /// 최종 수정일 : 2018.07.09
     /// </summary>
 
     #region Override
@@ -87,8 +87,8 @@ public class CSkillLibrary : ASkill
         SkillCastingTime = 0.0f;
         SkillCoolDown = 0.0f;
 
-        skillOffsetArray = new SkillOffsetDel[6];
-        skillSlotList = new Skill[6];
+        skillOffsetArray = new SkillOffsetDel[4];
+        skillSlotList = new Skill[4];
         //EX) skillLIst[0] = 0번째 슬롯에 등록된 스킬 ...
     }
 
@@ -155,7 +155,7 @@ public class CSkillLibrary : ASkill
 
     private void ResetSlot() //스킬 셋팅 초기화
     {
-        for (int i = 0; i < 6; i++)
+        for (int i = 0; i < 4; i++)
         {
             skillSlotList[i] += skillsDictionary["Null"];
         }
@@ -180,10 +180,6 @@ public class CSkillLibrary : ASkill
                 return skillSlotList[2];
             case ESkillOffset.Slot4:
                 return skillSlotList[3];
-            case ESkillOffset.SlotMouseLeft:
-                return skillSlotList[4];
-            case ESkillOffset.SlotMouseRight:
-                return skillSlotList[5];
             case ESkillOffset.Error:
                 break;
         }
@@ -211,14 +207,6 @@ public class CSkillLibrary : ASkill
                 skillSlotList[3]();
                 CAudioManager.instance.SelectSkillSound(skillSlotList[3]);
                 break;
-            case ESkillOffset.SlotMouseLeft:
-                skillSlotList[4]();
-                CAudioManager.instance.SelectSkillSound(skillSlotList[4]);
-                break;
-            case ESkillOffset.SlotMouseRight:
-                skillSlotList[5]();
-                CAudioManager.instance.SelectSkillSound(skillSlotList[5]);
-                break;
             case ESkillOffset.Error:
                 break;
         }
@@ -241,14 +229,6 @@ public class CSkillLibrary : ASkill
         else if (Equals(offsetDel, skillOffsetArray[3]))
         {
             return ESkillOffset.Slot4;
-        }
-        else if (Equals(offsetDel, skillOffsetArray[4]))
-        {
-            return ESkillOffset.SlotMouseLeft;
-        }
-        else if (Equals(offsetDel, skillOffsetArray[5]))
-        {
-            return ESkillOffset.SlotMouseRight;
         }
         else
         {
@@ -337,7 +317,5 @@ public enum ESkillOffset
     Slot2,
     Slot3,
     Slot4,
-    SlotMouseLeft,
-    SlotMouseRight,
     Error
 }

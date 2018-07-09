@@ -164,12 +164,12 @@ public class CEquiptmentLibrary : AEquipment
 
     private void CrimsonStrike()
     {
-        Debug.Log("Suit");
+        Debug.Log("Mask");
     }
 
     private void BlackOut()
     {
-        Debug.Log("Mask");
+        Debug.Log("Suit");
     }
 
     private void Null()

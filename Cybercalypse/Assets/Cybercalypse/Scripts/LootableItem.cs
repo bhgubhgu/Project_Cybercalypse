@@ -12,7 +12,6 @@ public class LootableItem : MonoBehaviour
     /// </summary>
 
     private CExecutor executor;
-    public CGameManager.StatusType consumableType;
     public float recoverAmount;
     private string triggerTag;
     private bool contactToPlayer;
@@ -46,7 +45,6 @@ public class LootableItem : MonoBehaviour
     
     private void ObtainedByPlayer()
     {
-        executor.GetStatusPoint(recoverAmount, consumableType);
         gameObject.SetActive(false);
     }
 

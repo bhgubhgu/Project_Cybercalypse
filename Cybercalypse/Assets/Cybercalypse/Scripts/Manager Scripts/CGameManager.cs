@@ -30,7 +30,6 @@ public class CGameManager : SingleTonManager<CGameManager>
     public List<Sprite> testSuitList;
 
     private SpriteRenderer sprite;
-    private Vector2 cursorTexturePosition;
     
     //!< GameOver
     private GameObject fadeObject;
@@ -84,7 +83,6 @@ public class CGameManager : SingleTonManager<CGameManager>
     {
         CInputManager.instance.GamePause += GamePause;
         CInputManager.instance.GameRetry += isRetry;
-        CInputManager.instance.MenuClose += TurnOffWindow;
 
         Time.timeScale = 1.0f;
     }
@@ -96,7 +94,6 @@ public class CGameManager : SingleTonManager<CGameManager>
         if(isGamePauseNow)
         {
             Cursor.visible = true;
-            Cursor.SetCursor(null, cursorTexturePosition, CursorMode.Auto);
         }
         else
         {
@@ -111,15 +108,6 @@ public class CGameManager : SingleTonManager<CGameManager>
     public void GameSave()
     {
         //save event 실행
-    }
-
-
-    public void GameOver()
-    {
-        Time.timeScale = 0.7f;
-
-        isDead = true;
-        StartCoroutine(FadeOut(5.0f));
     }
 
     public void PlayerHasInvincible()
@@ -141,21 +129,6 @@ public class CGameManager : SingleTonManager<CGameManager>
     public void SceneReload()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-    }
-
-    public void NotifyMessage(string message)
-    {
-        TurnOnWindow();
-        content.text = message;
-    }
-
-    public void TurnOnWindow()
-    {
-    }
-
-    public void TurnOffWindow(bool isMenuClose)
-    {
-
     }
 
     IEnumerator HasBlink()
@@ -187,45 +160,5 @@ public class CGameManager : SingleTonManager<CGameManager>
         yield return new WaitForSeconds(1.5f);
         isPlayerInvincible = false;
         Physics2D.IgnoreLayerCollision(9, 25, false);
-    }
-
-    IEnumerator FadeOut(float fadeTime)
-    {
-        SpriteRenderer renderer = fadeObject.GetComponent<SpriteRenderer>();
-
-        for (float f = 0.0f, interval = 0.1f; f <= 1.0f; f += interval)
-        {
-            fadeObject.transform.position = new Vector2(Camera.main.transform.position.x, Camera.main.transform.position.y);
-            renderer.color = new Color(0, 0, 0, f); 
-            yield return new WaitForSeconds(interval);
-        }
-
-        NotifyMessage("죽었습니다\n아무 버튼이나 눌러 재시작 합니다");
-
-        renderer.color = Color.black;
-        //!< fadeTime 동안 1.0f 증가
-
-        //!< 2개는 주어져야 계산이 가능함. 주어진것이 fadeTime 하고 interval.
-        //!< fadeTime = interval * for문 회전횟수
-        //!< interval = fadeTime / for문 회전횟수
-        //!< for문 회전횟수 = fadeTime / interval
-        //!< 1.0f = interval * for문 회전횟수
-
-        //retryText.GetComponent<TextMesh>().color = Color.yellow;
-
-        Physics2D.IgnoreLayerCollision(9, 25,false);
-        isGameOver = true;
-    }
-
-    IEnumerator slowlyTime()
-    {
-        yield return null;
-    }
-
-    public enum StatusType
-    {
-        health,
-        shield,
-        energy
     }
 }

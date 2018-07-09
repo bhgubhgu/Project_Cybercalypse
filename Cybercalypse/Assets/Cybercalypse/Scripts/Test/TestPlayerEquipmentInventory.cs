@@ -48,8 +48,10 @@ public class TestPlayerEquipmentInventory : MonoBehaviour, IBeginDragHandler, ID
              {
                 return;
              }
-
-            CGameManager.instance.equipmentLibrary.GetComponent<CEquiptmentLibrary>().ChangeSlot(CGameManager.instance.equipmentLibrary.GetComponent<CEquiptmentLibrary>().FindEquipmentToEquipmentIcon(dragSprite), 0);
+             else
+            {
+                CGameManager.instance.equipmentLibrary.GetComponent<CEquiptmentLibrary>().ChangeSlot(CGameManager.instance.equipmentLibrary.GetComponent<CEquiptmentLibrary>().FindEquipmentToEquipmentIcon(dragSprite), 0);
+            }
         }
         else if (slot == EEquipmentSlot.Mask && this.GetComponent<Image>().sprite.name == "NullMask")
         {
@@ -57,8 +59,10 @@ public class TestPlayerEquipmentInventory : MonoBehaviour, IBeginDragHandler, ID
             {
                 return;
             }
-
-            CGameManager.instance.equipmentLibrary.GetComponent<CEquiptmentLibrary>().ChangeSlot(CGameManager.instance.equipmentLibrary.GetComponent<CEquiptmentLibrary>().FindEquipmentToEquipmentIcon(dragSprite), 1);
+            else
+            {
+                CGameManager.instance.equipmentLibrary.GetComponent<CEquiptmentLibrary>().ChangeSlot(CGameManager.instance.equipmentLibrary.GetComponent<CEquiptmentLibrary>().FindEquipmentToEquipmentIcon(dragSprite), 1);
+            }
         }
         else if (slot == EEquipmentSlot.Suit && this.GetComponent<Image>().sprite.name == "NullSuit")
         {
@@ -66,8 +70,44 @@ public class TestPlayerEquipmentInventory : MonoBehaviour, IBeginDragHandler, ID
             {
                 return;
             }
+            else
+            {
+                CGameManager.instance.equipmentLibrary.GetComponent<CEquiptmentLibrary>().ChangeSlot(CGameManager.instance.equipmentLibrary.GetComponent<CEquiptmentLibrary>().FindEquipmentToEquipmentIcon(dragSprite), 2);
+            }
+        }
 
-            CGameManager.instance.equipmentLibrary.GetComponent<CEquiptmentLibrary>().ChangeSlot(CGameManager.instance.equipmentLibrary.GetComponent<CEquiptmentLibrary>().FindEquipmentToEquipmentIcon(dragSprite), 2);
+        if (slot == EEquipmentSlot.Weapon && this.GetComponent<Image>().sprite.name != "NullWeapon")
+        {
+            if (!CGameManager.instance.testWeaponList.Contains(eventData.pointerDrag.GetComponent<Image>().sprite))
+            {
+                return;
+            }
+            else
+            {
+                CGameManager.instance.equipmentLibrary.GetComponent<CEquiptmentLibrary>().ChangeSlot(CGameManager.instance.equipmentLibrary.GetComponent<CEquiptmentLibrary>().FindEquipmentToEquipmentIcon(dragSprite), 0);
+            }
+        }
+        else if (slot == EEquipmentSlot.Mask && this.GetComponent<Image>().sprite.name != "NullMask")
+        {
+            if (!CGameManager.instance.testMaskList.Contains(eventData.pointerDrag.GetComponent<Image>().sprite))
+            {
+                return;
+            }
+            else
+            {
+                CGameManager.instance.equipmentLibrary.GetComponent<CEquiptmentLibrary>().ChangeSlot(CGameManager.instance.equipmentLibrary.GetComponent<CEquiptmentLibrary>().FindEquipmentToEquipmentIcon(dragSprite), 1);
+            }
+        }
+        else if (slot == EEquipmentSlot.Suit && this.GetComponent<Image>().sprite.name != "NullSuit")
+        {
+            if (!CGameManager.instance.testSuitList.Contains(eventData.pointerDrag.GetComponent<Image>().sprite))
+            {
+                return;
+            }
+            else
+            {
+                CGameManager.instance.equipmentLibrary.GetComponent<CEquiptmentLibrary>().ChangeSlot(CGameManager.instance.equipmentLibrary.GetComponent<CEquiptmentLibrary>().FindEquipmentToEquipmentIcon(dragSprite), 2);
+            }
         }
 
         this.GetComponent<Image>().sprite = dragSprite;
@@ -85,8 +125,10 @@ public class TestPlayerEquipmentInventory : MonoBehaviour, IBeginDragHandler, ID
             {
                 return;
             }
-
-            CGameManager.instance.equipmentLibrary.GetComponent<CEquiptmentLibrary>().ChangeSlot(CGameManager.instance.equipmentLibrary.GetComponent<CEquiptmentLibrary>().FindEquipmentToEquipmentIcon(dragSprite), 0);
+            else
+            {
+                CGameManager.instance.equipmentLibrary.GetComponent<CEquiptmentLibrary>().ChangeSlot(CGameManager.instance.equipmentLibrary.GetComponent<CEquiptmentLibrary>().FindEquipmentToEquipmentIcon(dragSprite), 0);
+            }
         }
         else if (slot == EEquipmentSlot.Mask && this.GetComponent<Image>().sprite.name == "NullMask")
         {
@@ -94,8 +136,10 @@ public class TestPlayerEquipmentInventory : MonoBehaviour, IBeginDragHandler, ID
             {
                 return;
             }
-
-            CGameManager.instance.equipmentLibrary.GetComponent<CEquiptmentLibrary>().ChangeSlot(CGameManager.instance.equipmentLibrary.GetComponent<CEquiptmentLibrary>().FindEquipmentToEquipmentIcon(dragSprite), 1);
+            else
+            {
+                CGameManager.instance.equipmentLibrary.GetComponent<CEquiptmentLibrary>().ChangeSlot(CGameManager.instance.equipmentLibrary.GetComponent<CEquiptmentLibrary>().FindEquipmentToEquipmentIcon(dragSprite), 1);
+            }
         }
         else if (slot == EEquipmentSlot.Suit && this.GetComponent<Image>().sprite.name == "NullSuit")
         {
@@ -103,8 +147,10 @@ public class TestPlayerEquipmentInventory : MonoBehaviour, IBeginDragHandler, ID
             {
                 return;
             }
-
-            CGameManager.instance.equipmentLibrary.GetComponent<CEquiptmentLibrary>().ChangeSlot(CGameManager.instance.equipmentLibrary.GetComponent<CEquiptmentLibrary>().FindEquipmentToEquipmentIcon(dragSprite), 2);
+            else
+            {
+                CGameManager.instance.equipmentLibrary.GetComponent<CEquiptmentLibrary>().ChangeSlot(CGameManager.instance.equipmentLibrary.GetComponent<CEquiptmentLibrary>().FindEquipmentToEquipmentIcon(dragSprite), 2);
+            }
         }
 
         this.gameObject.GetComponent<CanvasGroup>().blocksRaycasts = true;
