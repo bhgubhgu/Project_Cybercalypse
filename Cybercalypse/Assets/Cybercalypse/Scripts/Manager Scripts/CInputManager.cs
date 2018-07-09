@@ -151,42 +151,52 @@ public class CInputManager : SingleTonManager<CInputManager>
 
             case false:
                 //Menu unActing
-                if (runCount < 2) //구현 주석처리 해 놓은 run을 기준으로 aa 또는 dd가 아닐때 걷기를 실행한다.
-                {
-                    PlayerHMove(inputHMoveValue);
-                }
 
-                PlayerVMove(inputVMoveValue); //수직이동
+                if(TestShop.isShopOpen)
+                {
 
-                if (isDownCharacterJumpKey) //점프
-                {
-                    Jump(isDownCharacterJumpKey);
+
+                    break;
                 }
-                else if (isDownCharacterDashKey) //대쉬
+                else
                 {
-                    Dash(isDownCharacterDashKey);
+                    if (runCount < 2) //구현 주석처리 해 놓은 run을 기준으로 aa 또는 dd가 아닐때 걷기를 실행한다.
+                    {
+                        PlayerHMove(inputHMoveValue);
+                    }
+
+                    PlayerVMove(inputVMoveValue); //수직이동
+
+                    if (isDownCharacterJumpKey) //점프
+                    {
+                        Jump(isDownCharacterJumpKey);
+                    }
+                    else if (isDownCharacterDashKey) //대쉬
+                    {
+                        Dash(isDownCharacterDashKey);
+                    }
+                    else if (isDownSkill1) //스킬 발사 1번
+                    {
+                        Skill1(isDownSkill1);
+                    }
+                    else if (isDownSkill2) //스킬 발사 2번
+                    {
+                        Skill2(isDownSkill2);
+                    }
+                    else if (isDownSkill3) //스킬 발사 3번
+                    {
+                        Skill3(isDownSkill3);
+                    }
+                    else if (isDownSkill4) //스킬 발사 4번
+                    {
+                        Skill4(isDownSkill4);
+                    }
+                    else if (isDownInteractKey) //상호작용(npc와의 대화 등등)
+                    {
+                        Interact(isDownInteractKey);
+                    }
+                    break;
                 }
-                else if (isDownSkill1) //스킬 발사 1번
-                {
-                    Skill1(isDownSkill1);
-                }
-                else if (isDownSkill2) //스킬 발사 2번
-                {
-                    Skill2(isDownSkill2);
-                }
-                else if (isDownSkill3) //스킬 발사 3번
-                {
-                    Skill3(isDownSkill3);
-                }
-                else if (isDownSkill4) //스킬 발사 4번
-                {
-                    Skill4(isDownSkill4);
-                }
-                else if (isDownInteractKey) //상호작용(npc와의 대화 등등)
-                {
-                    Interact(isDownInteractKey);
-                }
-                break;
         }
     }
 }

@@ -184,8 +184,6 @@ public class CMonsterController : APhysics
 
     private void Start()
     {
-        Physics2D.autoSimulation = false; //Unity 물리 사용안함
-
         inputCommand.HMove += HMoveControl;
         inputCommand.GroundAttack += AttackControl;
 

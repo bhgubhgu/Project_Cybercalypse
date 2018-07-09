@@ -10,7 +10,6 @@ public abstract class APhysics : MonoBehaviour
     /// 최초 작성일 : . . .
     /// 최종 수정일 : 2018.07.09
     /// </summary>
-
     const float gravityVelocity = 9.8f;
     const float knockbackSmoother = 100.0f;
     const float playerMass = 1;
@@ -139,7 +138,7 @@ public abstract class APhysics : MonoBehaviour
         CheckCalypseAABBVertical(Physics2D.OverlapBox(this.gameObject.GetComponent<CapsuleCollider2D>().bounds.center, new Vector2(0, this.GetComponent<CapsuleCollider2D>().size.y), 0, whatIsGround));
         CheckCalypseAABBHorizontal(Physics2D.OverlapBox(this.gameObject.GetComponent<CapsuleCollider2D>().bounds.center, new Vector2(this.GetComponent<CapsuleCollider2D>().size.x * 2f, 0), 0, whatIsGround));
         CheckCalypseAABBHit(Physics2D.OverlapBox(this.gameObject.GetComponent<CapsuleCollider2D>().bounds.center, new Vector2(this.GetComponent<CapsuleCollider2D>().size.x, this.GetComponent<CapsuleCollider2D>().size.y), 0, whatIsPlayerHit));
-        //중력
+
         m_gravity = Gravity(m_isGrounded);
 
         //Position Check
@@ -271,7 +270,7 @@ public abstract class APhysics : MonoBehaviour
             m_isGrounded = true;
             m_isSlope = true;
 
-            PolygonCollider2D slopeCollider = colliders.GetComponent<PolygonCollider2D>(); //성능에 영향 x
+            PolygonCollider2D slopeCollider = colliders.GetComponent<PolygonCollider2D>();//colliders.GetComponent<PolygonCollider2D>(); //성능에 영향 x
             Vector2 firstPoint = slopeCollider.points[0]; //왼쪽 정점
             Vector2 lastPoint = slopeCollider.points[2]; //Top 정점(꼭대기 꼭짓점)
             Vector2 vectorAngle = lastPoint - firstPoint; //가장 높은곳에서 가장 낮고 플레이어가 가장 먼저 접하는 접점을 빼줌
@@ -369,7 +368,6 @@ public abstract class APhysics : MonoBehaviour
         {
             this.transform.localScale = new Vector3(-1, 1, 1);
         }
-
 
         switch (MoveCondition(hInputValue, this.transform.localScale.x))
         {

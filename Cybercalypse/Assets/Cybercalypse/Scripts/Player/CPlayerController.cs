@@ -177,6 +177,8 @@ public class CPlayerController : APhysics
     private void Start()
     {
         Physics2D.autoSimulation = false; //Unity 물리 사용안함
+        Physics2D.callbacksOnDisable = false;
+
         skillOffset_Instance = CGameManager.instance.skillLibrary.GetComponent<CSkillLibrary>();
 
         skillMethodList = new List<CSkillLibrary.SkillOffsetDel>();
