@@ -19,7 +19,7 @@ public abstract class AItem : MonoBehaviour
 
     public abstract string ItemName { get; set; }
     public abstract string ItemDesc { get; set; }
-    public abstract SpriteRenderer ItemIcon { get; set; }
-    public abstract SpriteRenderer ItemSubs { get; set; }
+    public abstract Sprite ItemIcon { get; set; }
+    public abstract Sprite ItemSubs { get; set; }
     public abstract EItemCategory ItemCategory { get; set; }
 }

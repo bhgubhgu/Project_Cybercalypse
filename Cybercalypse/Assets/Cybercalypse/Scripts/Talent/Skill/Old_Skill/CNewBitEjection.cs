@@ -18,7 +18,7 @@ public class CNewBitEjection : ASkill
         set;
     }
 
-    public override SpriteRenderer ItemIcon
+    public override Sprite ItemIcon
     {
         get;
         set;
@@ -30,7 +30,7 @@ public class CNewBitEjection : ASkill
         set;
     }
 
-    public override SpriteRenderer ItemSubs
+    public override Sprite ItemSubs
     {
         get;
         set;
@@ -48,11 +48,7 @@ public class CNewBitEjection : ASkill
         set;
     }
 
-    public override ETalantCategory TalentCategory
-    {
-        get;
-        set;
-    }
+    public override ETalentCategory TalentCategory { get; set; }
     #endregion
 
     private float ShockwaveMagnitude;// (충격파 크기)
@@ -74,8 +70,7 @@ public class CNewBitEjection : ASkill
         //오브젝트 준비
         ItemName = "Bit Ejection";
         ItemCategory = EItemCategory.Talent;
-        TalentCategory = ETalantCategory.Skill;
-
+        TalentCategory = ETalentCategory.Skill;
         bitEjectionCount = 1;
         bitEjectionComponent = new List<CSkill_BitEjection>();
         cSkillOffset_Instance = transform.parent.gameObject.GetComponent<CSkillLibrary>();

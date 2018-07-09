@@ -25,7 +25,7 @@ public class CSkillLibrary : ASkill
         set;
     }
 
-    public override SpriteRenderer ItemIcon
+    public override Sprite ItemIcon
     {
         get;
         set;
@@ -37,7 +37,7 @@ public class CSkillLibrary : ASkill
         set;
     }
 
-    public override SpriteRenderer ItemSubs
+    public override Sprite ItemSubs
     {
         get;
         set;
@@ -54,12 +54,8 @@ public class CSkillLibrary : ASkill
         get;
         set;
     }
-
-    public override ETalantCategory TalentCategory
-    {
-        get;
-        set;
-    }
+    
+    public override ETalentCategory TalentCategory { get; set; }
     #endregion
 
     private int delegateIndex = 0;

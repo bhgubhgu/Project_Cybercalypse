@@ -11,7 +11,7 @@ public abstract class ATalent : AItem
     /// 최종 수정일 : 2018.06.14
     /// </summary>
 
-    public enum ETalantCategory { Ability, Skill }
-
-    public abstract ETalantCategory TalentCategory { get; set; }
+    public enum ETalentCategory { Skill, Ability }
+    
+    public abstract ETalentCategory TalentCategory { get; set; }
 }
