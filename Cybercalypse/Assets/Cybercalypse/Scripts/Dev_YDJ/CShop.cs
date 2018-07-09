@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
-public class CShop : MonoBehaviour {
+public class CShop : MonoBehaviour, I {
 
     public GameObject equipmentPanel;
     public GameObject consumablePanel;
@@ -13,6 +14,8 @@ public class CShop : MonoBehaviour {
     private GameObject currentPanel;
 
     private int money;
+
+    private List<AItem> items;
 
     // Use this for initialization
     void Start()
@@ -33,7 +36,12 @@ public class CShop : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
+        
+    }
 
+    private void OnMouseDown()
+    {
+        
     }
 
     public void OnInventoryActivate(GameObject targetTab)
