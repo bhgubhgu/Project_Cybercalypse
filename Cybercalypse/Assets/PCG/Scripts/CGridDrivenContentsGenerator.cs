@@ -50,6 +50,36 @@ public class CGridDrivenContentsGenerator : MonoBehaviour
         initGenerator();
         makeEssentialPath();
         makeDummyPath(StartChamberPos);
+
+        //Vector2Int current = StartChamberPos;
+        //Queue<Vector2Int> tempQueue = new Queue<Vector2Int>();
+        //tempQueue.Enqueue(StartChamberPos);
+        //while(tempQueue.Count != 0)
+        //{
+        //    current = tempQueue.Dequeue();
+        //    Debug.Log(current);
+        //    ChamberPosition[current].NextChamberPosition.ForEach(delegate (Vector2Int next)
+        //    {
+        //        tempQueue.Enqueue(next);
+        //    });
+        //}
+
+        //Debug.Log("Essential Path @@@");
+        //foreach(KeyValuePair<Vector2Int, CChamber> pair in ChamberPosition)
+        //{
+        //    if (pair.Value.ChamberType == EChamberType.Essential)
+        //    {
+        //        Debug.Log(pair.Key);
+        //    }
+        //}
+        //Debug.Log("Dummy Path @@@");
+        //foreach (KeyValuePair<Vector2Int, CChamber> pair in ChamberPosition)
+        //{
+        //    if (pair.Value.ChamberType == EChamberType.Dummy)
+        //    {
+        //        Debug.Log(pair.Key);
+        //    }
+        //}
         // generator를 이용해여 맵 구성요소 생성
         generator.GenerateContents();
     }
@@ -146,8 +176,13 @@ public class CGridDrivenContentsGenerator : MonoBehaviour
     /// <param name="start"></param>
     private void makeDummyPath(Vector2Int start)
     {
+        if(start == EndChamberPos)
+        {
+            return;
+        }
+
         // 해당 Chamber가 필수 경로 상의 Chamber인 경우
-        if (ChamberPosition[start].ChamberType == EChamberType.Essential && ChamberPosition[start].NextChamberPosition.Count != 0)
+        if (ChamberPosition[start].ChamberType == EChamberType.Essential)
         {
             // 다음 필수경로를 대상으로 실행
             makeDummyPath(ChamberPosition[start].NextChamberPosition[0]);

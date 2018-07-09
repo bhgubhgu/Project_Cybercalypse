@@ -26,7 +26,7 @@ public abstract class AContentsGenerator : MonoBehaviour {
     {
         elementDict = new Dictionary<ETileType, List<CContent>>();
 
-        for (ETileType t = ETileType.Flat; t<ETileType.COUNT; t++)
+        for (ETileType t = ETileType.Ground; t<ETileType.COUNT; t++)
         {
             elementDict.Add(t, new List<CContent>());
         }

@@ -9,7 +9,7 @@ public class CDungeonGenerator : AContentsGenerator
 
     // Tile을 생성하기 위해 필요한 추가 정보
     private Dictionary<Vector2Int, CChamber> chamberPosition;
-    private Vector2Int startChamberPos, endChamberPos, currentChamberPos;
+    private Vector2Int startChamberPos, endChamberPos;
     // 생성된 게임 오브젝트를 관리하는 Dictionary
     private Transform spriteHolder;
     // 각 Chamber에 배치된 타일 정보를 저장, 관리하는 Dictionary
@@ -34,7 +34,6 @@ public class CDungeonGenerator : AContentsGenerator
         startChamberPos = LevelManager.instance.GridGenerator.StartChamberPos;
         endChamberPos = LevelManager.instance.GridGenerator.EndChamberPos;
 
-        currentChamberPos = startChamberPos;
         Queue<Vector2Int> startQueue = new Queue<Vector2Int>();
         startQueue.Enqueue(new Vector2Int(startChamberPos.x * chamberWidth + chamberWidth / 2, startChamberPos.y * chamberHeight + chamberHeight / 2));
         operateSimulation(startChamberPos, startQueue);
@@ -56,6 +55,26 @@ public class CDungeonGenerator : AContentsGenerator
         // 재귀 메소드가 가지고 있어야 할 정보
         Queue<Vector2Int> nextStartQueue = new Queue<Vector2Int>();
         int eachNumOfSimulation = numOfSimulation / prevStartQueue.Count;
+        //Debug.Log("PrevStartCount : " + prevStartQueue.Count);
+        //Debug.Log("EachNumOfSim" + eachNumOfSimulation);
+        // 막힌 길인 경우, ++삭제 가능
+        if (chamberPosition[currentChamberPos].NextChamberPosition.Count == 0)
+        {
+            Vector2Int gap = currentChamberPos - chamberPosition[currentChamberPos].PrevChamberPosition;
+
+            // 각 start지점 마다 계산된 횟수만큼 시뮬레이션
+            foreach (Vector2Int start in prevStartQueue)
+            {
+                if (!tileDict.ContainsKey(start))
+                {
+                    tileDict.Add(start, ETileType.Empty);
+                }
+                for (int i = 0; i < eachNumOfSimulation; i++)
+                {
+                    simulation(start, currentChamberPos, nextStartQueue, gap);
+                }
+            }
+        }
         
         chamberPosition[currentChamberPos].NextChamberPosition.ForEach(delegate (Vector2Int nextChamber)
             {
@@ -71,7 +90,6 @@ public class CDungeonGenerator : AContentsGenerator
                     }
                     for (int i = 0; i < eachNumOfSimulation; i++)
                     {
-                        // 무한 츠쿠요미 ㅠㅠ
                         simulation(start, currentChamberPos, nextStartQueue, gap);
                     }
                 }

@@ -141,10 +141,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TILE_LENGTH: 0.16
-  numOfChamberInHorizontal: 30
-  numOfChamberInVertical: 30
-  possibilityOfContinuousDummy: 60
-  possibilityOfDividedDummy: 30
+  numOfChamberInHorizontal: 50
+  numOfChamberInVertical: 50
+  possibilityOfContinuousDummy: 25
+  possibilityOfDividedDummy: 70
   generator: {fileID: 1327378090}
 --- !u!4 &16656405
 Transform:
@@ -230,9 +230,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   contents:
   - {fileID: 114943804673443378, guid: f8784ebe4f8730b4eaa90621e10bd33d, type: 2}
-  chamberWidth: 30
-  chamberHeight: 30
-  numOfSimulation: 10
+  chamberWidth: 10
+  chamberHeight: 10
+  numOfSimulation: 1
 --- !u!4 &1327378091
 Transform:
   m_ObjectHideFlags: 0
