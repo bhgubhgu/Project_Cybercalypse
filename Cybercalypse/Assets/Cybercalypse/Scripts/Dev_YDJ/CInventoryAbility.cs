@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class CInventoryAbility : AInventoryTalent, IAbility, IDropHandler
+public class CInventoryAbility : AInventoryTalent, IDropHandler
 {
     public bool IsActive { get; set; }
 
+    public override EItemCategory ItemCategory { get; set; }
     public override string ItemName { get; set; }
-
     public override string ItemDesc { get; set; }
     public override Sprite ItemIcon { get; set; }
     public override Sprite ItemSubs { get; set; }
@@ -27,9 +27,9 @@ public class CInventoryAbility : AInventoryTalent, IAbility, IDropHandler
     /// targetAbility와 데이터를 교환하는 함수
     /// </summary>
     /// <param name="target">target이 될 Ability</param>
-    public void SwapData(IAbility target)
+    public void SwapData(CInventoryAbility target)
     {
-        IAbility temp = target;
+        CInventoryAbility temp = target;
 
         temp.ItemCategory = ItemCategory;
         temp.ItemName = ItemName;

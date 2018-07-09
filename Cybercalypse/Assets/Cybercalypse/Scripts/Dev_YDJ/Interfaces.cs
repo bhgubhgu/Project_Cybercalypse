@@ -49,3 +49,8 @@ public interface IAbility : ITalent
 {
     bool IsActive { get; set; }
 }
+
+public interface IItemHolder
+{
+    void PutItem();
+}

@@ -4,18 +4,11 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public abstract class AInventoryItem : MonoBehaviour, IItem, IBeginDragHandler, IDragHandler, IEndDragHandler
+public abstract class AInventoryItem : AItem, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
-    public AItem.EItemCategory ItemCategory { get; set; }
-    public abstract string ItemName { get; set; }
-    public abstract string ItemDesc { get; set; }
-    public abstract Sprite ItemIcon { get; set; }
-    public abstract Sprite ItemSubs { get; set; }
-
-    public void SwapData<T>(ref T origin, ref T target) where T : Component
-    {
+    public void SwapData<T>(ref T origin, ref T target) where T : AInventoryItem
+    {   
         System.Type type = origin.GetType();
-
     }
 
     #region #_Drag관련 함수들

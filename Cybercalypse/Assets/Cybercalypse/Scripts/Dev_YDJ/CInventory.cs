@@ -12,6 +12,19 @@ public class CInventory : MonoBehaviour {
 
     private GameObject currentInventoryTab;
 
+    private int money;
+
+    //!<
+    //!< ---
+
+    private CInventoryAbility[] inventoryAbilities;
+    private CInventorySkill[] inventorySkills;
+
+    public int InventoryAbilityIndex;
+    public int InventorySkillIndex;
+
+    public const int maxSlotCount = 32;
+
 	// Use this for initialization
 	void Start () {
         equipmentPanel = GameObject.Find("Panel_Equipment");
@@ -25,6 +38,9 @@ public class CInventory : MonoBehaviour {
         abilityPanel.SetActive(false);
 
         currentInventoryTab = equipmentPanel;
+
+        inventoryAbilities = new CInventoryAbility[maxSlotCount];
+        inventorySkills = new CInventorySkill[maxSlotCount];
 	}
 	
 	// Update is called once per frame
@@ -32,14 +48,25 @@ public class CInventory : MonoBehaviour {
 		
 	}
 
-    public void OnInventoryActivate(GameObject targetTab)
+    public void ActivateTab(GameObject _object)
     {
         currentInventoryTab.SetActive(false);
-        currentInventoryTab = targetTab;
+        currentInventoryTab = _object;
         currentInventoryTab.SetActive(true);
+        //DeActivateExcludeTab(_object);
     }
 
-    public void GetItem()
+    public void DeActivateExcludeTab(GameObject _object)
+    {
+
+    }
+
+    public void GetItem<T>(T _item) where T : AItem
+    {
+        
+    }
+
+    public void GetMoney()
     {
 
     }

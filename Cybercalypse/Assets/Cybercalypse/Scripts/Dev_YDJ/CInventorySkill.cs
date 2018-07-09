@@ -8,15 +8,15 @@ public class CInventorySkill : AInventoryTalent, IDropHandler
 {
     public int CoolTime { get; set; }
 
+    public override EItemCategory ItemCategory { get; set; }
     public override string ItemName { get; set; }
-
     public override string ItemDesc { get; set; }
     public override Sprite ItemIcon { get; set; }
     public override Sprite ItemSubs { get; set; }
 
     // Use this for initialization
     void Awake () {
-        ItemCategory = AItem.EItemCategory.Talent;
+        ItemCategory = EItemCategory.Talent;
         ItemIcon = GetComponent<Image>().sprite;
         TalentCategory = ATalent.ETalentCategory.Skill;
     }
