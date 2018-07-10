@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class CUIManager : SingleTonManager<CUIManager> {
-    
+
+    public CInventory inventory;
 
     private new void Awake()
     {
-        
+        inventory = GameObject.Find("Panel_Inventory").GetComponent<CInventory>();
     }
 
     private void Start()

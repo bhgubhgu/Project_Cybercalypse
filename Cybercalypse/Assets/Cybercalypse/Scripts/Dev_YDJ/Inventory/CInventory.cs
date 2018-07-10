@@ -65,6 +65,11 @@ public class CInventory : MonoBehaviour {
 
     }
 
+    /// <summary>
+    /// 아이템을 인벤토리에 집어넣어주는 함수
+    /// </summary>
+    /// <typeparam name="T">AItem을 상속받는 모든 오브젝트는 인벤토리에 Get가능</typeparam>
+    /// <param name="_item">인벤토리에 집어넣을 아이템 인스턴스</param>
     public void GetItem<T>(T _item) where T : AItem
     {
         

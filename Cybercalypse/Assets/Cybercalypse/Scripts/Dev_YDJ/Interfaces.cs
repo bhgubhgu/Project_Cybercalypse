@@ -63,3 +63,8 @@ public interface ISwappable
     /// <param name="_object">교환 대상 Object</param>
     void SwapData(GameObject _object);
 }
+
+public interface IConvertInventorySkill
+{
+    FixInventorySkill ConvertToInventorySkill();
+}
