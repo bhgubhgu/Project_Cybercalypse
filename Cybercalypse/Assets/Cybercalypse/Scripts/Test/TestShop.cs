@@ -7,12 +7,14 @@ public class TestShop : MonoBehaviour
 {
     private GameObject shopInventory;
     private GameObject playerInventory;
+    private GameObject playerSelect;
     public static bool isShopOpen;
 
     private void Awake()
     {
         shopInventory = GameObject.Find("Shop Inventory").gameObject;
         playerInventory = GameObject.Find("Player Inventory").gameObject;
+        playerSelect = GameObject.Find("Select").gameObject;
     }
 
     private void Start()
@@ -27,6 +29,7 @@ public class TestShop : MonoBehaviour
             isShopOpen = false;
             shopInventory.SetActive(false);
             playerInventory.SetActive(false);
+            playerSelect.SetActive(false);
 
             this.GetComponent<BoxCollider2D>().enabled = true;
         }
@@ -40,6 +43,8 @@ public class TestShop : MonoBehaviour
                 isShopOpen = true;
                 shopInventory.SetActive(true);
                 playerInventory.SetActive(true);
+                playerSelect.SetActive(true);
+
                 this.GetComponent<BoxCollider2D>().enabled = true;
             }
         }

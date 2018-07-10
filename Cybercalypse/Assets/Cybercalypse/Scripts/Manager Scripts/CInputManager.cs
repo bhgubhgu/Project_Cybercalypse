@@ -9,7 +9,7 @@ public class CInputManager : SingleTonManager<CInputManager>
     /// 작성자 : 구용모, 윤동준
     /// 스크립트 : CyberCalypse의 Player의 Input을 관리하는 매니저 스크립트
     /// 최초 작성일 : . . .
-    /// 최종 수정일 : 2018.07.09
+    /// 최종 수정일 : 2018.07.10
     /// </summary>
 
     //리팩토링시 팩토리 패턴 내부의 모든 메소드들 private 처리  
@@ -37,6 +37,9 @@ public class CInputManager : SingleTonManager<CInputManager>
     bool isDownInteractKey;
 
     bool isMenuActive; // Command 메소드 OR 클래스를 통해 구별
+    bool isInputHMenuButton;
+    bool isInputVMenuButton;
+    bool inputMenuVMoveValue;
     bool isGameRetry;
     bool isPressAnykey;
 
@@ -73,7 +76,6 @@ public class CInputManager : SingleTonManager<CInputManager>
 
     public event UniqueInput Interact;
 
-    public event MoveInput Menumove;
     public event MoveInput PlayerHMove;
     public event MoveInput HRun;
     public event MoveInput PlayerVMove;
@@ -81,6 +83,14 @@ public class CInputManager : SingleTonManager<CInputManager>
     //move event Command
     public event MoveCommand HMoveCommand;
     public event MoveCommand VMoveCommand;
+
+    //menu move event
+    public event MoveInput HMenuMove;
+    public event MoveInput VMenuMove;
+    public event MoveInput HShopMove;
+    public event MoveInput VShopMove;
+    public event Command HMenuMoveCommand;
+    public event Command VMenuMoveCommand;
 
     //certain event Command
     public event Command JumpCommand;
@@ -123,6 +133,8 @@ public class CInputManager : SingleTonManager<CInputManager>
         isDownSkill4 = Skill4Command(isDownSkill4);
 
         /* 메뉴 */
+        isInputHMenuButton = HMenuMoveCommand(isInputHMenuButton);
+        isInputVMenuButton = VMenuMoveCommand(isInputVMenuButton);
         isMenuActive = MenuCommand(isMenuActive);
 
         try
@@ -152,10 +164,26 @@ public class CInputManager : SingleTonManager<CInputManager>
             case false:
                 //Menu unActing
 
-                if(TestShop.isShopOpen)
+                if(TestShop.isShopOpen || TestPlayerInventoryOnOff.isOnInventory)
                 {
+                    //상점 메뉴에서만 사용 가능한 것, 인벤토리에서만 이용 가능한 것
+                    if(isInputHMenuButton && TestPlayerInventoryOnOff.isOnInventory)
+                    {
+                        HMenuMove(inputHMoveValue);
+                    }
+                    else if(isInputVMenuButton && TestPlayerInventoryOnOff.isOnInventory)
+                    {
+                        VMenuMove(inputVMoveValue);
+                    }
 
-
+                    if (isInputHMenuButton && TestShop.isShopOpen)
+                    {
+                        HShopMove(inputHMoveValue);
+                    }
+                    else if (isInputVMenuButton && TestShop.isShopOpen)
+                    {
+                        VShopMove(inputVMoveValue);
+                    }
                     break;
                 }
                 else
@@ -222,6 +250,8 @@ abstract class AbsCommand
     public abstract bool isInteractInput(bool isDownInteractKey);
 
     public abstract bool IsMenuKeyInput(bool isKeyDown);
+    public abstract bool IsHMenuMove(bool inputHValue);
+    public abstract bool IsVMenuMove(bool inputVValue);
 }
 #endregion
 
@@ -272,6 +302,9 @@ class PlayerCommand : AbsCommand
 
         CInputManager.instance.MenuCommand += IsMenuKeyInput;
 
+        CInputManager.instance.HMenuMoveCommand += IsHMenuMove;
+        CInputManager.instance.VMenuMoveCommand += IsVMenuMove;
+
         stopLeftCount = LeftRunCount();
         stopRightCount = RightRunCount();
     }
@@ -296,6 +329,18 @@ class PlayerCommand : AbsCommand
             isMenuActing = isMenukeyInput;
             return isMenuActing;
         }
+    }
+
+    public override bool IsHMenuMove(bool isInputHValue)
+    {
+        isInputHValue = Input.GetButtonDown("Move Horizontally");
+        return isInputHValue;
+    }
+
+    public override bool IsVMenuMove(bool isInputVValue)
+    {
+        isInputVValue = Input.GetButtonDown("Move Vertically");
+        return isInputVValue;
     }
 
     public override float HMove(float hInputValue)
