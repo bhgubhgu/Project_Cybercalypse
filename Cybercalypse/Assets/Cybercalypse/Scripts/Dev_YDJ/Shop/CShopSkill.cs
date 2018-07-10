@@ -14,6 +14,7 @@ public class CShopSkill : ASkill, IConvertInventorySkill, IPointerClickHandler
     public override ETalentCategory TalentCategory { get; set; }
     public override float SkillCastingTime { get; set; }
     public override float SkillCoolDown { get; set; }
+    public FixInventorySkill skill;
 
     private void OnMouseDown()
     {
@@ -22,7 +23,9 @@ public class CShopSkill : ASkill, IConvertInventorySkill, IPointerClickHandler
 
     public FixInventorySkill ConvertToInventorySkill()
     {
-        var skill = new FixInventorySkill();
+        //var skill = new FixInventorySkill();
+
+        skill = new FixInventorySkill();
 
         skill.ItemName = ItemName;
         skill.ItemDesc = ItemDesc;
