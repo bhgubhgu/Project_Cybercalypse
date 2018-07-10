@@ -92,7 +92,7 @@ public class CSkillLibrary : ASkill
         //EX) skillLIst[0] = 0번째 슬롯에 등록된 스킬 ...
     }
 
-    private new void Start()
+    private void Start()
     {
         ResetRegistSkills();
         RegistAllSkill();
