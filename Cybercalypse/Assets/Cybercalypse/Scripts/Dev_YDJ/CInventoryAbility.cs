@@ -13,6 +13,7 @@ public class CInventoryAbility : AInventoryTalent, IDropHandler, ISwappable
     public override string ItemDesc { get; set; }
     public override Sprite ItemIcon { get; set; }
     public override Sprite ItemSubs { get; set; }
+    public override ATalent.ETalentCategory TalentCategory { get; set; }
 
     // Use this for initialization
     void Awake() {
@@ -34,21 +35,18 @@ public class CInventoryAbility : AInventoryTalent, IDropHandler, ISwappable
         temp.ItemName = ItemName;
         temp.ItemIcon = ItemIcon;
         temp.TalentCategory = TalentCategory;
-        temp.Tooltip = Tooltip;
         temp.IsActive = IsActive;
 
         ItemCategory = target.ItemCategory;
         ItemName = target.ItemName;
         ItemIcon = target.ItemIcon;
         TalentCategory = target.TalentCategory;
-        Tooltip = target.Tooltip;
         IsActive = target.IsActive;
 
         target.ItemCategory = temp.ItemCategory;
         target.ItemName = temp.ItemName;
         target.ItemIcon = temp.ItemIcon;
         target.TalentCategory = temp.TalentCategory;
-        target.Tooltip = temp.Tooltip;
         target.IsActive = temp.IsActive;
 
         transform.GetComponent<Image>().sprite = ItemIcon;
@@ -66,12 +64,4 @@ public class CInventoryAbility : AInventoryTalent, IDropHandler, ISwappable
 
         SwapData(eventData.pointerDrag);
     }
-
-    //public override void SwapData<T>(T item)
-    //{
-    //    if(item.GetType().Equals(GetType()))
-    //    {
-            
-    //    }
-    //}
 }

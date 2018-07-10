@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class AInventory : MonoBehaviour {
-    
+public class Swappable : MonoBehaviour {
+
 	// Use this for initialization
 	void Start () {
 		

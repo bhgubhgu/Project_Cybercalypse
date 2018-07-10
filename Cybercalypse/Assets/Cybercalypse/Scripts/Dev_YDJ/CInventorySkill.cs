@@ -13,6 +13,9 @@ public class CInventorySkill : AInventoryTalent, IDropHandler, ISwappable
     public override string ItemDesc { get; set; }
     public override Sprite ItemIcon { get; set; }
     public override Sprite ItemSubs { get; set; }
+    public override ATalent.ETalentCategory TalentCategory { get; set; }
+    public float SkillCastingTime { get; set; }
+    public float SkillCoolDown { get; set; }
 
     // Use this for initialization
     void Awake () {
@@ -37,21 +40,18 @@ public class CInventorySkill : AInventoryTalent, IDropHandler, ISwappable
         temp.ItemName = ItemName;
         temp.ItemIcon = ItemIcon;
         temp.TalentCategory = TalentCategory;
-        temp.Tooltip = Tooltip;
         temp.CoolTime = CoolTime;
 
         ItemCategory = target.ItemCategory;
         ItemName = target.ItemName;
         ItemIcon = target.ItemIcon;
         TalentCategory = target.TalentCategory;
-        Tooltip = target.Tooltip;
         CoolTime = target.CoolTime;
         
         target.ItemCategory = temp.ItemCategory;
         target.ItemName = temp.ItemName;
         target.ItemIcon = temp.ItemIcon;
         target.TalentCategory = temp.TalentCategory;
-        target.Tooltip = temp.Tooltip;
         target.CoolTime = temp.CoolTime;
 
         transform.GetComponent<Image>().sprite = ItemIcon;

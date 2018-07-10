@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class CShop : MonoBehaviour, I {
+public class CShop : MonoBehaviour {
 
     public GameObject equipmentPanel;
     public GameObject consumablePanel;
@@ -20,12 +20,12 @@ public class CShop : MonoBehaviour, I {
     // Use this for initialization
     void Start()
     {
-        equipmentPanel = GameObject.Find("Panel_Equipment");
-        consumablePanel = GameObject.Find("Panel_Consumable");
+        equipmentPanel = GameObject.Find("Panel_Shop_Equipment");
+        consumablePanel = GameObject.Find("Panel_Shop_Consumable");
 
-        skillPanel = GameObject.Find("Panel_Skill");
-        abilityPanel = GameObject.Find("Panel_Ability");
-
+        skillPanel = GameObject.Find("Panel_Shop_Skill");
+        abilityPanel = GameObject.Find("Panel_Shop_Ability");
+        
         consumablePanel.SetActive(false);
         skillPanel.SetActive(false);
         abilityPanel.SetActive(false);
@@ -44,7 +44,7 @@ public class CShop : MonoBehaviour, I {
         
     }
 
-    public void OnInventoryActivate(GameObject targetTab)
+    public void ActivateTab(GameObject targetTab)
     {
         currentPanel.SetActive(false);
         currentPanel = targetTab;

@@ -28,7 +28,7 @@ public abstract class ASkill : ATalent
     public delegate void Skill();
     public delegate void SkillOffsetDel(bool isDownKey);
 
-    public virtual void Start()
+    void Start()
     {
         /* slotArray[0] = GameObject.Find("Talent_Image 1").GetComponent<TestChangeSkillSlot>();
          slotArray[1] = GameObject.Find("Talent_Image 2").GetComponent<TestChangeSkillSlot>();

@@ -27,12 +27,11 @@ public class CInventory : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        equipmentPanel = GameObject.Find("Panel_Equipment");
-        consumablePanel = GameObject.Find("Panel_Consumable");
+        equipmentPanel = GameObject.Find("Panel_Inventory_Equipment");
+        consumablePanel = GameObject.Find("Panel_Inventory_Consumable");
 
-        skillPanel = GameObject.Find("Panel_Skill");
-        abilityPanel = GameObject.Find("Panel_Ability");
-
+        skillPanel = GameObject.Find("Panel_Inventory_Skill");
+        abilityPanel = GameObject.Find("Panel_Inventory_Ability");
         consumablePanel.SetActive(false);
         skillPanel.SetActive(false);
         abilityPanel.SetActive(false);
@@ -57,6 +56,11 @@ public class CInventory : MonoBehaviour {
     }
 
     public void DeActivateExcludeTab(GameObject _object)
+    {
+
+    }
+
+    public void AddItem(GameObject _object)
     {
 
     }
