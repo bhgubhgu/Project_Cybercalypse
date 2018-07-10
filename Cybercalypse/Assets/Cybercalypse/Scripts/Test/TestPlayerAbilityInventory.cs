@@ -91,8 +91,7 @@ public class TestPlayerAbilityInventory : MonoBehaviour, IBeginDragHandler, IDra
         }
 
          this.GetComponent<Image>().sprite = dragSprite;
-         eventData.pointerDrag.transform.gameObject.GetComponent<Image>().sprite = enterSprite;
-        
+         eventData.pointerDrag.transform.gameObject.GetComponent<Image>().sprite = enterSprite;     
     }
 
     public void OnEndDrag(PointerEventData eventData)

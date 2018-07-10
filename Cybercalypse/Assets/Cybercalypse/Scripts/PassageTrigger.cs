@@ -57,13 +57,6 @@ public class PassageTrigger : MonoBehaviour
             rendererList.Add(transform.GetChild(i).GetComponent<SpriteRenderer>());
         }
         
-        //if (CGameManager.doors[myIndex].IsOpend)
-        //    OpenDoor(door);
-        /*if (CGameManager.isDoorOpen.Count > 0)
-        {
-            if (CGameManager.isDoorOpen[myIndex])
-                StartCoroutine(OpenDoor(door));
-        }*/
     }
 
     //!< 문이 열렸다는 사실을 저장해야함. 이 문이 열렸는가.
@@ -77,43 +70,14 @@ public class PassageTrigger : MonoBehaviour
     {
         if (collision.gameObject.layer == 9 && !isOpend)
         {
-            //CGameManager.instance.isOpend[doorIndex] = true;
-
-            CGameManager.instance.NotifyMessage("문이 열립니다");
             StartCoroutine(OpenDoor(door));
             StartCoroutine(SinkLever());
         }
     }
 
-    /*private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.layer == 9 && !isOpend)
-        {
-            //CGameManager.instance.isOpend[doorIndex] = true;
-
-            CGameManager.instance.NotifyMessage("문이 열립니다");
-            StartCoroutine(OpenDoor(door));
-            StartCoroutine(SinkLever());
-        }
-    }*/
-
-    /*private void OnCollisionEnter2D(Collider2D collision)
-    {
-        if(collision.tag.Equals("Player") && !isOpend)
-        {
-            //CGameManager.instance.isOpend[doorIndex] = true;
-            
-            CGameManager.instance.NotifyMessage("문이 열립니다");
-            StartCoroutine(OpenDoor(door));
-            StartCoroutine(SinkLever());
-        }
-    }*/
-
     IEnumerator OpenDoor(Transform door)
     {
         isOpend = true;
-        //CGameManager.isDoorOpen.Add(isOpend);
-        /*CGameManager.isDoorOpen[myIndex] = isOpend;*/
 
         for (float time = 0.0f, runningTime = 3.0f; time <= runningTime; time += Time.deltaTime)
         {

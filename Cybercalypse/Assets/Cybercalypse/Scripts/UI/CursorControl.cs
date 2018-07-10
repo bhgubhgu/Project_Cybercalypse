@@ -24,8 +24,6 @@ public class CursorControl : MonoBehaviour {
         player = CGameManager.instance.playerObject;
 
         /* Cursor Control */
-        CInputManager.instance.CursorHMove += CursorHMove;
-        CInputManager.instance.CursorVMove += CursorVMove;
         prevMousePos = Vector3.zero;
         mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 

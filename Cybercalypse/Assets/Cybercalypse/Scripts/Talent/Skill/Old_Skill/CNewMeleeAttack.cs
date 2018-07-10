@@ -75,9 +75,8 @@ public class CNewMeleeAttack : ASkill
         Init();
     }
 
-    public override void Start()
+    public void Start()
     {
-        base.Start();
         cSkillOffset_Instance.moonLightSlashDel += MoonLightSlash;
         moonLightSlashObject = this.transform.GetChild(0).gameObject;
         moonSlashTrailParticle = moonLightSlashObject.transform.GetChild(0).gameObject.GetComponent<ParticleSystem>();
