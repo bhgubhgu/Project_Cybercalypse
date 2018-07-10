@@ -60,19 +60,29 @@ public class CInventory : MonoBehaviour {
 
     }
 
-    public void AddItem(GameObject _object)
-    {
-
-    }
-
     /// <summary>
     /// 아이템을 인벤토리에 집어넣어주는 함수
     /// </summary>
     /// <typeparam name="T">AItem을 상속받는 모든 오브젝트는 인벤토리에 Get가능</typeparam>
     /// <param name="_item">인벤토리에 집어넣을 아이템 인스턴스</param>
-    public void GetItem<T>(T _item) where T : AItem
+    public void AddItem<T>(T _item) where T : AItem
     {
-        
+        switch(_item.ItemCategory)
+        {
+            case AItem.EItemCategory.Equipment:
+                break;
+            case AItem.EItemCategory.Consumable:
+                break;
+            case AItem.EItemCategory.Talent:
+                if (_item.GetComponent<ATalent>().TalentCategory.Equals(ATalent.ETalentCategory.Ability))
+                    Debug.Log("Ability");
+                else
+                    Debug.Log("Skill");
+                break;
+            default:
+                Debug.Log("Null Item reference");
+                break;
+        }
     }
 
     public void GetMoney()

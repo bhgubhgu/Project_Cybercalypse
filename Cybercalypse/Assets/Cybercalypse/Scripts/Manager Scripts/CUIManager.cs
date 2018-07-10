@@ -6,8 +6,9 @@ public class CUIManager : SingleTonManager<CUIManager> {
 
     public CInventory inventory;
 
-    private new void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         inventory = GameObject.Find("Panel_Inventory").GetComponent<CInventory>();
     }
 
