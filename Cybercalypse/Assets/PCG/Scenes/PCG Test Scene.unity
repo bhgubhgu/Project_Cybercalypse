@@ -145,13 +145,56 @@ MonoBehaviour:
   numOfChamberInVertical: 20
   possibilityOfContinuousDummy: 30
   possibilityOfDividedDummy: 30
-  generator: {fileID: 1327378090}
+  gameObjectGenerator: {fileID: 75391267}
 --- !u!4 &16656405
 Transform:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 16656403}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1327378091}
+  m_Father: {fileID: 887819893}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &75391266
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 75391268}
+  - component: {fileID: 75391267}
+  m_Layer: 0
+  m_Name: DungeonGenerator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &75391267
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 75391266}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9f63a2c39d81ff4ca233d2d53d45cb3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  contents:
+  - {fileID: 114943804673443378, guid: f8784ebe4f8730b4eaa90621e10bd33d, type: 2}
+--- !u!4 &75391268
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 75391266}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -185,8 +228,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 75391268}
   - {fileID: 16656405}
-  - {fileID: 1327378091}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -211,7 +254,7 @@ GameObject:
   - component: {fileID: 1327378091}
   - component: {fileID: 1327378090}
   m_Layer: 0
-  m_Name: DungeonGen
+  m_Name: VirtualGenerator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -228,11 +271,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 421d82baed2989b4d87f6fd7c65f13ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  contents:
-  - {fileID: 114943804673443378, guid: f8784ebe4f8730b4eaa90621e10bd33d, type: 2}
+  numOfSimulation: 10
   chamberWidth: 10
   chamberHeight: 10
-  numOfSimulation: 10
 --- !u!4 &1327378091
 Transform:
   m_ObjectHideFlags: 0
@@ -243,8 +284,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 887819893}
-  m_RootOrder: 1
+  m_Father: {fileID: 16656405}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1376071644
 GameObject:

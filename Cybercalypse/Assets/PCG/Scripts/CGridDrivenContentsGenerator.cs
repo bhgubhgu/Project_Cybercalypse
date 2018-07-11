@@ -14,6 +14,8 @@ public class CGridDrivenContentsGenerator : MonoBehaviour
     
     // 그리드 사각형 내에 어떤 그리드에 어떤 Chamber가 위치하는지 저장
     public Dictionary<Vector2Int, CChamber> ChamberPosition { get; private set; }
+    // 각 Chamber에 배치된 타일 정보를 저장, 관리하는 Dictionary, VirtualCoordGenerator에 의해 
+    public Dictionary<Vector2Int, ETileType> TileDict { get; private set; }
 
     // 각 Chamber에 대한 공통 정보
     public int NumOfChamberInHorizontal { get; private set; }
@@ -24,11 +26,14 @@ public class CGridDrivenContentsGenerator : MonoBehaviour
     // 도착 지점의 Chamber 상대 좌표
     public Vector2Int EndChamberPos { get; private set; }
 
-    public AContentsGenerator generator;
+    private CVirtualCoordGenerator virtualCoordGenerator;
+    public AContentsGenerator gameObjectGenerator;
 
     void Awake()
     {
         ChamberPosition = new Dictionary<Vector2Int, CChamber>();
+        TileDict = new Dictionary<Vector2Int, ETileType>();
+        virtualCoordGenerator = GetComponentInChildren<CVirtualCoordGenerator>();
     }
 
     /// <summary>
@@ -52,7 +57,8 @@ public class CGridDrivenContentsGenerator : MonoBehaviour
         makeDummyPath(StartChamberPos);
 
         // generator를 이용해여 맵 구성요소 생성
-        generator.GenerateContents();
+        virtualCoordGenerator.GenerateVirtualCoord();
+        gameObjectGenerator.GenerateContents();
     }
 
     private void checkPossibility()
