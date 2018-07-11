@@ -34,9 +34,10 @@ public class CDungeonGenerator : AContentsGenerator
         startChamberPos = LevelManager.instance.GridGenerator.StartChamberPos;
         endChamberPos = LevelManager.instance.GridGenerator.EndChamberPos;
 
-        Queue<Vector2Int> startQueue = new Queue<Vector2Int>();
-        startQueue.Enqueue(new Vector2Int(startChamberPos.x * chamberWidth + chamberWidth / 2, startChamberPos.y * chamberHeight + chamberHeight / 2));
-        operateSimulation(startChamberPos, startQueue);
+        //Queue<Vector2Int> startQueue = new Queue<Vector2Int>();
+        //startQueue.Enqueue(new Vector2Int(startChamberPos.x * chamberWidth + chamberWidth / 2, startChamberPos.y * chamberHeight + chamberHeight / 2));
+        //operateSimulation(startChamberPos, startQueue);
+        operateSimulation2();
         instantiateGameObject();
     }
 
@@ -45,57 +46,97 @@ public class CDungeonGenerator : AContentsGenerator
     /// </summary>
     /// <param name="currentChamberPos">경로 생성 시뮬레이션을 할 Chamber의 상대 위치</param>
     /// <param name="prevStartQueue">시뮬레이션 할 start 지점 큐</param>
-    private void operateSimulation(Vector2Int currentChamberPos, Queue<Vector2Int> prevStartQueue)
-    {
-        // 출발할 지점의 큐가 빈 상태면 예외!, StartQueue가 Empty가 되는경우가 언제일까????
-        if (prevStartQueue.Count == 0)
-        {
-            return;
-        }
-        // 재귀 메소드가 가지고 있어야 할 정보
-        Queue<Vector2Int> nextStartQueue = new Queue<Vector2Int>();
-        int eachNumOfSimulation = numOfSimulation / prevStartQueue.Count;
-        //Debug.Log("PrevStartCount : " + prevStartQueue.Count);
-        //Debug.Log("EachNumOfSim" + eachNumOfSimulation);
-        // 막힌 길인 경우, ++삭제 가능
-        if (chamberPosition[currentChamberPos].NextChamberPosition.Count == 0)
-        {
-            Vector2Int gap = currentChamberPos - chamberPosition[currentChamberPos].PrevChamberPosition;
+    //private void operateSimulation(Vector2Int currentChamberPos, Queue<Vector2Int> prevStartQueue)
+    //{
+    //    // 출발할 지점의 큐가 빈 상태면 예외!, StartQueue가 Empty가 되는경우가 언제일까????
+    //    if (prevStartQueue.Count == 0)
+    //    {
+    //        return;
+    //    }
+    //    // 재귀 메소드가 가지고 있어야 할 정보
+    //    Queue<Vector2Int> nextStartQueue = new Queue<Vector2Int>();
+    //    int eachNumOfSimulation = numOfSimulation / prevStartQueue.Count;
+    //    //Debug.Log("PrevStartCount : " + prevStartQueue.Count);
+    //    //Debug.Log("EachNumOfSim" + eachNumOfSimulation);
+    //    // 막힌 길인 경우, ++삭제 가능
+    //    if (chamberPosition[currentChamberPos].NextChamberPosition.Count == 0)
+    //    {
+    //        Vector2Int gap = currentChamberPos - chamberPosition[currentChamberPos].PrevChamberPosition;
 
-            // 각 start지점 마다 계산된 횟수만큼 시뮬레이션
-            foreach (Vector2Int start in prevStartQueue)
-            {
-                if (!tileDict.ContainsKey(start))
-                {
-                    tileDict.Add(start, ETileType.Empty);
-                }
-                for (int i = 0; i < eachNumOfSimulation; i++)
-                {
-                    simulation(start, currentChamberPos, nextStartQueue, gap);
-                }
-            }
+    //        // 각 start지점 마다 계산된 횟수만큼 시뮬레이션
+    //        foreach (Vector2Int start in prevStartQueue)
+    //        {
+    //            if (!tileDict.ContainsKey(start))
+    //            {
+    //                tileDict.Add(start, ETileType.Empty);
+    //            }
+    //            for (int i = 0; i < eachNumOfSimulation; i++)
+    //            {
+    //                simulation(start, currentChamberPos, nextStartQueue, gap);
+    //            }
+    //        }
+    //    }
+
+    //    chamberPosition[currentChamberPos].NextChamberPosition.ForEach(delegate (Vector2Int nextChamber)
+    //        {
+    //            // 해당하는 nextChamber가 현재 기준으로 어디 방향인지 검사
+    //            Vector2Int gap = nextChamber - currentChamberPos;
+
+    //            // 각 start지점 마다 계산된 횟수만큼 시뮬레이션
+    //            foreach (Vector2Int start in prevStartQueue)
+    //            {
+    //                if (!tileDict.ContainsKey(start))
+    //                {
+    //                    tileDict.Add(start, ETileType.Empty);
+    //                }
+    //                for (int i = 0; i < eachNumOfSimulation; i++)
+    //                {
+    //                    simulation(start, currentChamberPos, nextStartQueue, gap);
+    //                }
+    //            }
+
+    //            operateSimulation(nextChamber, nextStartQueue);
+    //        });
+    //}
+
+    private void operateSimulation2()
+    {
+        Vector2Int currentChamber, gap; // 현재 시뮬레이션 중인 Chamber의 좌표, 다음 Chamber로 향하는 방향이 어디인지 표시
+        Queue<Vector2Int> bfsQueue = new Queue<Vector2Int>(); // dfs 방식으로 Chamber를 조회하기 위한 큐
+        Queue<Vector2Int> currentStartQueue = new Queue<Vector2Int>(); // 현재 Chamber에서 시뮬레이션을 할 start 좌표
+        Queue<Queue<Vector2Int>> bfsStartQueue = new Queue<Queue<Vector2Int>>(); // dfs 방식으로 조회할 때, 생성된 Next Start 좌표들을 저장하기 위한 큐
+        // 각 start 좌표에서 실행할 시뮬레이션 횟수
+        
+        for(int i = 0; i<numOfSimulation; i++)
+        {
+            currentStartQueue.Enqueue(new Vector2Int(startChamberPos.x * chamberWidth + chamberWidth / 2, startChamberPos.y * chamberHeight + chamberHeight / 2));
         }
         
-        chamberPosition[currentChamberPos].NextChamberPosition.ForEach(delegate (Vector2Int nextChamber)
-            {
-                // 해당하는 nextChamber가 현재 기준으로 어디 방향인지 검사
-                Vector2Int gap = nextChamber - currentChamberPos;
+        bfsStartQueue.Enqueue(currentStartQueue);
+        bfsQueue.Enqueue(startChamberPos);
 
-                // 각 start지점 마다 계산된 횟수만큼 시뮬레이션
-                foreach (Vector2Int start in prevStartQueue)
+        while(bfsQueue.Count != 0)
+        {
+            currentStartQueue = bfsStartQueue.Dequeue();
+            currentChamber = bfsQueue.Dequeue();
+            
+            chamberPosition[currentChamber].NextChamberPosition.ForEach(delegate (Vector2Int nextChamber)
+            {
+                bfsQueue.Enqueue(nextChamber);
+                Queue<Vector2Int> nextStartQueue = new Queue<Vector2Int>();
+
+                gap = nextChamber - currentChamber;
+
+                for(int i=0; i<currentStartQueue.Count; i++)
                 {
-                    if (!tileDict.ContainsKey(start))
-                    {
-                        tileDict.Add(start, ETileType.Empty);
-                    }
-                    for (int i = 0; i < eachNumOfSimulation; i++)
-                    {
-                        simulation(start, currentChamberPos, nextStartQueue, gap);
-                    }
+                    Vector2Int start = currentStartQueue.Dequeue();
+                    currentStartQueue.Enqueue(start);
+                    simulation(start, currentChamber, nextStartQueue, gap);
                 }
 
-                operateSimulation(nextChamber, nextStartQueue);
+                bfsStartQueue.Enqueue(nextStartQueue);
             });
+        }
     }
 
     /// <summary>

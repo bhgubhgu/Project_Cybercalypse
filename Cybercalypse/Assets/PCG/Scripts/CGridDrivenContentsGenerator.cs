@@ -51,35 +51,6 @@ public class CGridDrivenContentsGenerator : MonoBehaviour
         makeEssentialPath();
         makeDummyPath(StartChamberPos);
 
-        //Vector2Int current = StartChamberPos;
-        //Queue<Vector2Int> tempQueue = new Queue<Vector2Int>();
-        //tempQueue.Enqueue(StartChamberPos);
-        //while(tempQueue.Count != 0)
-        //{
-        //    current = tempQueue.Dequeue();
-        //    Debug.Log(current);
-        //    ChamberPosition[current].NextChamberPosition.ForEach(delegate (Vector2Int next)
-        //    {
-        //        tempQueue.Enqueue(next);
-        //    });
-        //}
-
-        //Debug.Log("Essential Path @@@");
-        //foreach(KeyValuePair<Vector2Int, CChamber> pair in ChamberPosition)
-        //{
-        //    if (pair.Value.ChamberType == EChamberType.Essential)
-        //    {
-        //        Debug.Log(pair.Key);
-        //    }
-        //}
-        //Debug.Log("Dummy Path @@@");
-        //foreach (KeyValuePair<Vector2Int, CChamber> pair in ChamberPosition)
-        //{
-        //    if (pair.Value.ChamberType == EChamberType.Dummy)
-        //    {
-        //        Debug.Log(pair.Key);
-        //    }
-        //}
         // generator를 이용해여 맵 구성요소 생성
         generator.GenerateContents();
     }
@@ -104,12 +75,10 @@ public class CGridDrivenContentsGenerator : MonoBehaviour
         Vector2Int[] adjacentPosition;
         // 필수 경로 시작 지점
         currentPosition = StartChamberPos = new Vector2Int(0, (int)Random.Range(0.0f, NumOfChamberInVertical));
-        //ChamberPosition[currentPosition].ChamberType = EChamberType.Essential;
         ChamberPosition.Add(currentPosition, new CChamber(EChamberType.Essential, currentPosition));
         // 필수 경로 인접 지점
         adjacentPosition = getAdjacentPath(currentPosition, true);
         nextPosition = adjacentPosition[(int)Random.Range(0.0f, adjacentPosition.Length)];
-        //ChamberPosition[nextPosition].ChamberType = EChamberType.Essential;
         ChamberPosition.Add(nextPosition, new CChamber(EChamberType.Essential, nextPosition));
         addFromCurrentToNextChamberPassage(currentPosition, nextPosition);
         currentPosition = nextPosition;
@@ -119,7 +88,6 @@ public class CGridDrivenContentsGenerator : MonoBehaviour
             adjacentPosition = getAdjacentPath(currentPosition, true);
 
             nextPosition = adjacentPosition[(int)Random.Range(0.0f, adjacentPosition.Length)];
-            //ChamberPosition[nextPosition].ChamberType = EChamberType.Essential;
             ChamberPosition.Add(nextPosition, new CChamber(EChamberType.Essential, nextPosition));
             addFromCurrentToNextChamberPassage(currentPosition, nextPosition);
             currentPosition = nextPosition;
