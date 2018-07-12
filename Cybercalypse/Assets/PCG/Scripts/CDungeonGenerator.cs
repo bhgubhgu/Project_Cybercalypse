@@ -23,9 +23,10 @@ public class CDungeonGenerator : AContentsGenerator {
         tileDict = LevelManager.instance.GridGenerator.TileDict;
         tileLength = LevelManager.instance.GridGenerator.TILE_LENGTH;
 
-        //generateGameObject_test();
         addTileType();
         generateGameObject_0();
+        //addTileType();
+        //generateGameObject_1();
     }
 
     private void generateGameObject_test()
