@@ -25,7 +25,7 @@ public class CDungeonGenerator : AContentsGenerator {
 
         //generateGameObject_test();
         addTileType();
-        generateGameObject();
+        generateGameObject_0();
     }
 
     private void generateGameObject_test()
@@ -80,7 +80,7 @@ public class CDungeonGenerator : AContentsGenerator {
         }
     }
 
-    private void generateGameObject()
+    private void generateGameObject_0()
     {
         List<CContent> selectedList;
         GameObject instObject;
@@ -109,6 +109,44 @@ public class CDungeonGenerator : AContentsGenerator {
                 instObject.transform.SetParent(tileHolder);
             }
             else if(tile.Value == ETileType.RightWall)
+            {
+                selectedList = elementDict[ETileType.RightWall];
+                instObject = GameObject.Instantiate(selectedList[(int)Random.Range(0.0f, selectedList.Count)].content,
+                    new Vector3(tile.Key.x * tileLength, tile.Key.y * tileLength, 0.0f), Quaternion.identity);
+                instObject.transform.SetParent(tileHolder);
+            }
+        }
+    }
+
+    private void generateGameObject_1()
+    {
+        List<CContent> selectedList;
+        GameObject instObject;
+
+        foreach (KeyValuePair<Vector2Int, ETileType> tile in tileDict)
+        {
+            if (tile.Value == ETileType.Ground)
+            {
+                selectedList = elementDict[ETileType.Ground];
+                instObject = GameObject.Instantiate(selectedList[(int)Random.Range(0.0f, selectedList.Count)].content,
+                    new Vector3(tile.Key.x * tileLength, tile.Key.y * tileLength, 0.0f), Quaternion.identity);
+                instObject.transform.SetParent(tileHolder);
+            }
+            else if (tile.Value == ETileType.Ceiling)
+            {
+                selectedList = elementDict[ETileType.Ceiling];
+                instObject = GameObject.Instantiate(selectedList[(int)Random.Range(0.0f, selectedList.Count)].content,
+                    new Vector3(tile.Key.x * tileLength, tile.Key.y * tileLength, 0.0f), Quaternion.identity);
+                instObject.transform.SetParent(tileHolder);
+            }
+            else if (tile.Value == ETileType.LeftWall)
+            {
+                selectedList = elementDict[ETileType.LeftWall];
+                instObject = GameObject.Instantiate(selectedList[(int)Random.Range(0.0f, selectedList.Count)].content,
+                    new Vector3(tile.Key.x * tileLength, tile.Key.y * tileLength, 0.0f), Quaternion.identity);
+                instObject.transform.SetParent(tileHolder);
+            }
+            else if (tile.Value == ETileType.RightWall)
             {
                 selectedList = elementDict[ETileType.RightWall];
                 instObject = GameObject.Instantiate(selectedList[(int)Random.Range(0.0f, selectedList.Count)].content,
