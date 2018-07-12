@@ -18,7 +18,8 @@ public class CInventory : MonoBehaviour {
     //!< ---
 
     private CInventoryAbility[] inventoryAbilities;
-    private CInventorySkill[] inventorySkills;
+    //private CInventorySkill[] inventorySkills;
+    private FixInventorySkill[] inventorySkills;
 
     public int InventoryAbilityIndex;
     public int InventorySkillIndex;
@@ -39,7 +40,7 @@ public class CInventory : MonoBehaviour {
         currentInventoryTab = equipmentPanel;
 
         inventoryAbilities = new CInventoryAbility[maxSlotCount];
-        inventorySkills = new CInventorySkill[maxSlotCount];
+        //inventorySkills = new CInventorySkill[maxSlotCount];
 	}
 	
 	// Update is called once per frame
@@ -80,7 +81,7 @@ public class CInventory : MonoBehaviour {
                     Debug.Log("Skill");
                 break;
             default:
-                Debug.Log("Null Item reference");
+                Debug.Log("Not exist Item");
                 break;
         }
     }
@@ -100,5 +101,35 @@ public class CInventory : MonoBehaviour {
             field.SetValue(copy, field.GetValue(original));
         }
         return copy as T;
+    }
+
+    //!<인벤토리가 아니라 탭에 대한 클래스가 될 듯
+    //!< 자기 자식에 있는 슬롯들에 대한 정보(갯수, 지금 빈 공간 등등) -> -s, -ies;
+    //!< 
+    //!< CShopSkill이나 CShopAbility등이 눌리면 Inventory의 AddItem을 호출할 것임.
+    //!< Add할 Item을 매개변수로 받아서, 어떤 형식의 아이템인지 알아야 함.
+    //!< Item의 ItemCategory를 따져서 장비/소비/특성을 가려낸다.
+    //!< 만약 특성이라면, 스킬일 수도 어빌리티일 수도 있기 때문에 한번 더 가려야 한다.(그러나 Item으로는 불가능)
+    //!< item의 GetType()에 따라서 
+    public T FindObject<T>() where T : Component
+    {
+        for(int i=0; ;i++)
+        {
+            if (!inventorySkills[i].IsContain)
+            {
+                break;
+            }
+        }
+
+        while(true)
+        {
+            foreach(var item in inventorySkills)
+            {
+                if (item.IsContain.Equals(false))
+                    break;
+            }
+        }
+        Component component = new Component();
+        return component as T;
     }
 }

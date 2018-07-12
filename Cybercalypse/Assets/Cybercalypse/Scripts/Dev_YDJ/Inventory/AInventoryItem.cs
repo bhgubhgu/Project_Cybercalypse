@@ -9,6 +9,8 @@ public abstract class AInventoryItem : AItem, IBeginDragHandler, IDragHandler, I
     public void SwapData<T>(ref T origin, ref T target) where T : AInventoryItem
     {   
         System.Type type = origin.GetType();
+
+
     }
 
     #region #_Drag관련 함수들

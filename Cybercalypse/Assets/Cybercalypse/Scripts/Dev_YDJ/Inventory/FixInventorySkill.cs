@@ -14,7 +14,9 @@ public class FixInventorySkill : ASkill, IBeginDragHandler, IDragHandler, IDropH
     public override ETalentCategory TalentCategory { get; set; }
     public override float SkillCastingTime { get; set; }
     public override float SkillCoolDown { get; set; }
-    
+
+    public bool IsContain { get; set; }
+
     // Use this for initialization
     private void Start() {
         
@@ -25,7 +27,7 @@ public class FixInventorySkill : ASkill, IBeginDragHandler, IDragHandler, IDropH
 		
 	}
 
-    void InitSkill(ASkill other)
+    public void InitSkill(ASkill other)
     {
         //other.ItemName = ItemName;
         //other.ItemDesc = ItemDesc;
@@ -33,7 +35,9 @@ public class FixInventorySkill : ASkill, IBeginDragHandler, IDragHandler, IDropH
 
         ItemName = other.ItemName;
         ItemDesc = other.ItemDesc;
+        ItemIcon = new Sprite();
         ItemIcon = other.ItemIcon;
+        ItemSubs = new Sprite();
         ItemSubs = other.ItemSubs;
         ItemCategory = other.ItemCategory;
         TalentCategory= other.TalentCategory;
@@ -69,6 +73,17 @@ public class FixInventorySkill : ASkill, IBeginDragHandler, IDragHandler, IDropH
         other.TalentCategory = temp.TalentCategory;
         other.SkillCastingTime = temp.SkillCastingTime;
         other.SkillCoolDown = temp.SkillCoolDown;
+    }
+
+    private void SwapData<T>(T other)
+    {
+        System.Type type = other.GetType();
+        Component copy = new Component();
+        System.Reflection.FieldInfo[] fields = type.GetFields();
+        foreach (System.Reflection.FieldInfo field in fields)
+        {
+            field.SetValue(copy, field.GetValue(other));
+        }
     }
 
     public void OnBeginDrag(PointerEventData eventData)

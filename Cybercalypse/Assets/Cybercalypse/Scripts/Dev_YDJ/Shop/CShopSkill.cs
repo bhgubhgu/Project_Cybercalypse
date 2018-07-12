@@ -14,18 +14,28 @@ public class CShopSkill : ASkill, IConvertInventorySkill, IPointerClickHandler
     public override ETalentCategory TalentCategory { get; set; }
     public override float SkillCastingTime { get; set; }
     public override float SkillCoolDown { get; set; }
-    public FixInventorySkill skill;
+
+    void Start()
+    {
+        ItemName = "";
+        ItemDesc = "";
+        ItemIcon = GetComponent<Image>().sprite;
+        ItemCategory = EItemCategory.Talent;
+        TalentCategory = ETalentCategory.Skill;
+        SkillCastingTime = 1.0f;
+        SkillCoolDown = 5.0f;
+
+        Debug.Log(ItemIcon);
+    }
 
     private void OnMouseDown()
     {
-        
+        CUIManager.PasteComponentValues<CShopSkill>(GetComponent<CShopSkill>());
     }
 
     public FixInventorySkill ConvertToInventorySkill()
     {
-        //var skill = new FixInventorySkill();
-
-        skill = new FixInventorySkill();
+        FixInventorySkill skill = new FixInventorySkill();
 
         skill.ItemName = ItemName;
         skill.ItemDesc = ItemDesc;
@@ -33,10 +43,13 @@ public class CShopSkill : ASkill, IConvertInventorySkill, IPointerClickHandler
         skill.ItemIcon = ItemIcon;
         skill.ItemSubs = new Sprite();
         skill.ItemSubs = ItemSubs;
-        skill.ItemCategory = ItemCategory;
+        //skill.ItemCategory = ItemCategory;
+        skill.ItemCategory = EItemCategory.Talent;
         skill.TalentCategory = TalentCategory;
         skill.SkillCastingTime = SkillCastingTime;
         skill.SkillCoolDown = SkillCoolDown;
+
+        //skill.InitSkill(GetComponent<CShopSkill>());
 
         return skill;
     }
