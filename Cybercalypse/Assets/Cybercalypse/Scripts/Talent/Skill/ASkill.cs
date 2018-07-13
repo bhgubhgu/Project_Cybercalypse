@@ -5,18 +5,19 @@ using UnityEngine.UI;
 
 public abstract class ASkill : ATalent
 {
-    /// <summary>
-    /// 작성자 : 구용모, 윤동준, 김현우
-    /// 스크립트 : 스킬들의 속성을 갖는 추상클래스
-    /// 최초 작성일 : . . .
-    /// 최종 수정일 : 2018.06.14
-    /// </summary>
-
+    /*
+     * 작성자 : 구용모, 윤동준, 김현우
+     * 스크립트 : 스킬들의 속성을 갖는 추상클래스
+     * 최초 작성일 : . . .
+     * 최종 수정일 : 2018.06.14
+     */
+    
     public abstract float SkillCastingTime
     {
         get;
         set;
     }
+
     public abstract float SkillCoolDown
     {
         get;
@@ -36,8 +37,8 @@ public abstract class ASkill : ATalent
          slotArray[3] = GameObject.Find("Talent_Image 4").GetComponent<TestChangeSkillSlot>();
          slotArray[4] = GameObject.Find("Talent_Image 5").GetComponent<TestChangeSkillSlot>();
          slotArray[5] = GameObject.Find("Talent_Image 6").GetComponent<TestChangeSkillSlot>();*/
-    }
-    public IEnumerator SqrClockwiseAnim(float runningTime, GameObject Slot)
+}
+public IEnumerator SqrClockwiseAnim(float runningTime, GameObject Slot)
     {
         Image alpha = Slot.transform.GetChild(0).GetChild(0).GetComponent<Image>();
         for (float f = 1.0f, interval = 0.01f; f > 0.0f; f -= interval)

@@ -15,6 +15,7 @@ public class CShopSkill : ASkill, IConvertInventorySkill, IPointerClickHandler
     public override float SkillCastingTime { get; set; }
     public override float SkillCoolDown { get; set; }
 
+
     void Start()
     {
         ItemName = "";

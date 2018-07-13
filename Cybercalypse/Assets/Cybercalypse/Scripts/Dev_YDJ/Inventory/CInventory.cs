@@ -61,6 +61,11 @@ public class CInventory : MonoBehaviour {
 
     }
 
+    public static void AddItem()
+    {
+
+    }
+
     /// <summary>
     /// 아이템을 인벤토리에 집어넣어주는 함수
     /// </summary>
