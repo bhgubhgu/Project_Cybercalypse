@@ -26,6 +26,14 @@ public class CGridDrivenContentsGenerator : MonoBehaviour
     // 도착 지점의 Chamber 상대 좌표
     public Vector2Int EndChamberPos { get; private set; }
 
+    // 플레이어 생성 지점 절대 좌표
+    private Vector3 playerStartPosition;
+    public Vector3 PlayerStartPosition
+    {
+        get { return playerStartPosition; }
+        set { playerStartPosition = new Vector3(value.x * TILE_LENGTH, value.y * TILE_LENGTH); }
+    }
+
     private CVirtualCoordGenerator virtualCoordGenerator;
     public AContentsGenerator gameObjectGenerator;
 
@@ -187,4 +195,6 @@ public class CGridDrivenContentsGenerator : MonoBehaviour
         }
         // 이외의 확률로 길이 끊어짐
     }
+
+    
 }

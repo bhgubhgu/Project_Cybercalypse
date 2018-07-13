@@ -13,10 +13,6 @@ public class TestScript : MonoBehaviour {
     {
         generator = LevelManager.instance.GridGenerator;
         generator.StartGenerator();
-
-        x = 0.9f;//(generator.StartChamberPos.x + 1) * 10 * generator.TILE_LENGTH / 2;
-        y = 15.8f;//(generator.StartChamberPos.y + 1) * 10 * generator.TILE_LENGTH / 2;
-
-        CGameManager.instance.playerObject.transform.position = new Vector3(x, y);
-    }
+        Debug.Log(generator.PlayerStartPosition);
+	}
 }
