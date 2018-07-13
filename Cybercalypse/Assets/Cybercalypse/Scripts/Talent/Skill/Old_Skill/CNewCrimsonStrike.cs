@@ -96,7 +96,6 @@ public class CNewCrimsonStrike : ASkill
 
         SkillCoolDown = 3.0f;
     }
-
     public void Start()
     {
         cSkillOffset_Instance.crimsonStrikeDel += CrimsonStrikeFire;

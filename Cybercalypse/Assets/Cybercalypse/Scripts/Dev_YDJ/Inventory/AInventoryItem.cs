@@ -4,17 +4,12 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public abstract class AInventoryItem : MonoBehaviour, IItem, IBeginDragHandler, IDragHandler, IEndDragHandler
+public abstract class AInventoryItem : AItem, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
-    public AItem.EItemCategory ItemCategory { get; set; }
-    public abstract string ItemName { get; set; }
-    public abstract string ItemDesc { get; set; }
-    public abstract Sprite ItemIcon { get; set; }
-    public abstract Sprite ItemSubs { get; set; }
-
-    public void SwapData<T>(ref T origin, ref T target) where T : Component
-    {
+    public void SwapData<T>(ref T origin, ref T target) where T : AInventoryItem
+    {   
         System.Type type = origin.GetType();
+
 
     }
 
@@ -40,7 +35,6 @@ public abstract class AInventoryItem : MonoBehaviour, IItem, IBeginDragHandler, 
         mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
         transform.position = new Vector3(mousePosition.x, mousePosition.y);
     }
-
     //public void OnDrop(PointerEventData eventData)
     //{
     //    Debug.Log("Called OnDrop");
