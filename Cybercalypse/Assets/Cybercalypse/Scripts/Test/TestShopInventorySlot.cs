@@ -27,7 +27,7 @@ public class TestShopInventorySlot : MonoBehaviour
     {
        for (int i = 0; i < playerInventory.transform.childCount - 1; i++)
        {
-            if (slotDictionary[i].GetComponent<Image>().sprite.name == "NullSkill" || slotDictionary[i].GetComponent<Image>().sprite.name == "NullAbility" || slotDictionary[i].GetComponent<Image>().sprite.name == "NullWeapon" || slotDictionary[i].GetComponent<Image>().sprite.name == "NullMask" || slotDictionary[i].GetComponent<Image>().sprite.name == "NullSuit")
+            if (slotDictionary[i].GetComponent<Image>().sprite.name == "NullSkill" || slotDictionary[i].GetComponent<Image>().sprite.name == "NullAbility" || slotDictionary[i].GetComponent<Image>().sprite.name == "NullWeapon" || slotDictionary[i].GetComponent<Image>().sprite.name == "NullArmor")
             {
                 TestTradeSystem.instance.Trade(this.transform.GetComponent<Image>().sprite, 1);
 

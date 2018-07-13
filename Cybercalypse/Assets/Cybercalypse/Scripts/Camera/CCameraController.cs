@@ -11,7 +11,7 @@ public class CCameraController : MonoBehaviour
     /// 최종 수정일 : 2018.06.14
     /// </summary>
 
-    public GameObject target;
+    private GameObject target;
     /* CamerShake */
     private float shakeCircleX;
     private float shakeCircleY;
@@ -49,6 +49,8 @@ public class CCameraController : MonoBehaviour
     // 16 : 10 -1
     private void Awake()
     {
+        target = CGameManager.instance.playerObject;
+
         horizontalAddition = -0.36f;
         shakeCircleX = 0.06f;
         shakeCircleY = 0.06f;
