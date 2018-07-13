@@ -6,10 +6,17 @@ using UnityEngine.UI;
 public class TestSelect : MonoBehaviour
 {
     private int selectSlotIndex = 0;
+    private int selelctButtonIndex = 0;
+
+    private bool isOpenWeaponSlot;
+    private bool isOpenArmorSlot;
+    private bool isOpenSkillSlot;
+    private bool isOpenAbilitySlot;
 
     private Vector3 initSelectPosition;
 
     private GameObject[] itemSlotList;
+    private GameObject[] itemButtonList;
     private GameObject[] shopSlotList;
     private GameObject[] inventorySlotCategoryList;
     private GameObject[] inventoryShopSlotList;
@@ -56,6 +63,7 @@ public class TestSelect : MonoBehaviour
         abilityBtn = abilityButton.GetComponent<Button>();
 
         itemSlotList = new GameObject[6]; //인벤토리 안의 아이템 슬롯
+        itemButtonList = new GameObject[4]; //인벤토리 안의 슬롯 버튼
         shopSlotList = new GameObject[9 + itemSlotList.Length]; //상점 안의 아이템 슬롯( + 인벤토리까지)
         inventorySlotCategoryList = new GameObject[3]; //인벤토리 - 카테고리 버튼 - 장착슬롯
         inventoryShopSlotList = new GameObject[2]; // 인벤토리 - 상점
@@ -64,6 +72,7 @@ public class TestSelect : MonoBehaviour
     private void OnEnable()
     {
         selectSlotIndex = 0;
+        selelctButtonIndex = 0;
         select.transform.localPosition = initSelectPosition;
     }
 
@@ -72,6 +81,11 @@ public class TestSelect : MonoBehaviour
         for (int i = 0; i < itemSlotList.Length; i++)
         {
             itemSlotList[i] = playerInventory.transform.GetChild(i).gameObject;
+        }
+
+        for (int i = 0; i < itemButtonList.Length; i++)
+        {
+            itemButtonList[i] = playerInventory.transform.GetChild(i + 7).gameObject;
         }
 
         for (int i = 0, j = 3, k = 6, x = 9, y = 12; i < 3; i++, j++, k++, x++, y++)
@@ -96,18 +110,34 @@ public class TestSelect : MonoBehaviour
         if(this.transform.position == weaponButton.transform.position && Input.GetKeyDown(KeyCode.Z))
         {
             weaponBtn.onClick.Invoke();
+            isOpenWeaponSlot = true;
+            isOpenSkillSlot = false;
+            isOpenArmorSlot = false;
+            isOpenAbilitySlot = false;
         }
         else if (this.transform.position == armorButton.transform.position && Input.GetKeyDown(KeyCode.Z))
         {
             armorBtn.onClick.Invoke();
+            isOpenWeaponSlot = false;
+            isOpenSkillSlot = false;
+            isOpenArmorSlot = true;
+            isOpenAbilitySlot = false;
         }
         else if (this.transform.position == skillButton.transform.position && Input.GetKeyDown(KeyCode.Z))
         {
             skillBtn.onClick.Invoke();
+            isOpenWeaponSlot = false;
+            isOpenSkillSlot = true;
+            isOpenArmorSlot = false;
+            isOpenAbilitySlot = false;
         }
         else if (this.transform.position == abilityButton.transform.position && Input.GetKeyDown(KeyCode.Z))
         {
             abilityBtn.onClick.Invoke();
+            isOpenWeaponSlot = false;
+            isOpenSkillSlot = false;
+            isOpenArmorSlot = false;
+            isOpenAbilitySlot = true;
         }
     }
 
@@ -115,6 +145,20 @@ public class TestSelect : MonoBehaviour
     {
         if (inputHValue > 0)
         {
+            //버튼의 움직임들
+            if (select.transform.position == itemButtonList[0].transform.position || select.transform.position == itemButtonList[1].transform.position || select.transform.position == itemButtonList[2].transform.position || select.transform.position == itemButtonList[3].transform.position)
+            {
+                return;
+            }
+
+            if (selectSlotIndex == 2 || selectSlotIndex == 5)
+            {
+                select.transform.position = itemButtonList[0].transform.position;
+                return;
+            }
+
+            //인벤토리 내에서만의 움직임
+
             if (selectSlotIndex >= itemSlotList.Length - 1)
             {
                 selectSlotIndex = -1;
@@ -124,6 +168,16 @@ public class TestSelect : MonoBehaviour
         }
         else if (inputHValue < 0)
         {
+            if (select.transform.position == itemButtonList[0].transform.position || select.transform.position == itemButtonList[1].transform.position || select.transform.position == itemButtonList[2].transform.position || select.transform.position == itemButtonList[3].transform.position)
+            {
+                selelctButtonIndex = 0;
+                selectSlotIndex = 2;
+                select.transform.position = itemSlotList[selectSlotIndex].transform.position;
+                return;
+            }
+
+            //인벤토리 내에서만의 움직임
+
             if (selectSlotIndex == 0)
             {
                 selectSlotIndex = itemSlotList.Length;
@@ -131,12 +185,30 @@ public class TestSelect : MonoBehaviour
 
             select.transform.position = itemSlotList[--selectSlotIndex].transform.position;
         }
+        else
+        {
+            return;
+        }
     }
 
     private void VInventorySlotMove(float inputVValue)
     {
         if (inputVValue > 0)
         {
+            if (select.transform.position == itemButtonList[0].transform.position || select.transform.position == itemButtonList[1].transform.position || select.transform.position == itemButtonList[2].transform.position || select.transform.position == itemButtonList[3].transform.position)
+            {
+                if(selelctButtonIndex == 0)
+                {
+                    selelctButtonIndex = itemButtonList.Length;
+                }
+
+                select.transform.position = itemButtonList[--selelctButtonIndex].transform.position;
+                return;
+            }
+
+
+            //인벤토리 내에서만의 움직임
+
             selectSlotIndex -= 3;
 
             if (selectSlotIndex < 0)
@@ -149,6 +221,20 @@ public class TestSelect : MonoBehaviour
         }
         else if (inputVValue < 0)
         {
+            if (select.transform.position == itemButtonList[0].transform.position || select.transform.position == itemButtonList[1].transform.position || select.transform.position == itemButtonList[2].transform.position || select.transform.position == itemButtonList[3].transform.position)
+            {
+                if (selelctButtonIndex == itemButtonList.Length - 1)
+                {
+                    selelctButtonIndex = -1;
+                }
+
+
+                //인벤토리 내에서만의 움직임
+
+                select.transform.position = itemButtonList[++selelctButtonIndex].transform.position;
+                return;
+            }
+
             selectSlotIndex += 3;
 
             if (selectSlotIndex > itemSlotList.Length - 1)
@@ -158,6 +244,10 @@ public class TestSelect : MonoBehaviour
             }
 
             select.transform.position = itemSlotList[selectSlotIndex].transform.position;
+        }
+        else
+        {
+            return;
         }
     }
 

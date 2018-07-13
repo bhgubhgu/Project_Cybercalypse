@@ -60,15 +60,19 @@ public class CDataManager : SingleTonManager<CDataManager>
              playerJsonData["PlayerMaxShield"].ToString(),
              playerJsonData["PlayerMoveForce"].ToString(),
              playerJsonData["PlayerJumpForce"].ToString(),
+             playerJsonData["PlayerDodgeForce"].ToString(),
+             playerJsonData["PlayerKnockbackForce"].ToString(),
              playerJsonData["PlayerSavePosition"].ToString()
             );
 
         CGameManager.instance.playerObject.GetComponent<CExecutor>().MoveForce = float.Parse(playerData.PlayerMoveForce);//플레이어 moveForce 할당
         CGameManager.instance.playerObject.GetComponent<CExecutor>().JumpForce = float.Parse(playerData.PlayerJumpForce); //플레이어 jumpForce 할당
+        CGameManager.instance.playerObject.GetComponent<CExecutor>().DodgeForce = float.Parse(playerData.PlayerDodgeForce);//플레이어 dodgeForce 할당
+        CGameManager.instance.playerObject.GetComponent<CExecutor>().KnockbackForce = float.Parse(playerData.PlayerKnockbackForce);//플레이어 knockbackForce 할당
 
         //플레이어 저장된 position 로드
         string[] playerPositionData = playerData.PlayerSavePosition.Split('/');
-        CGameManager.instance.playerObject.transform.position = new Vector3(float.Parse(playerPositionData[0]), float.Parse(playerPositionData[1]), float.Parse(playerPositionData[2]));
+        //CGameManager.instance.playerObject.transform.position = new Vector3(float.Parse(playerPositionData[0]), float.Parse(playerPositionData[1]), float.Parse(playerPositionData[2]));
 
         //몬스터 데이터 로드
         for (int i = 0; i < monsterJsonData.Count; i++)
@@ -95,6 +99,8 @@ public class CDataManager : SingleTonManager<CDataManager>
             CGameManager.instance.playerObject.GetComponent<CExecutor>().MaximumShield.ToString(), //Max Shield
             CGameManager.instance.playerObject.GetComponent<CExecutor>().MoveForce.ToString(), //MoveForce
             CGameManager.instance.playerObject.GetComponent<CExecutor>().JumpForce.ToString(), //Jump Force
+            CGameManager.instance.playerObject.GetComponent<CExecutor>().DodgeForce.ToString(),//Dodge Force
+            CGameManager.instance.playerObject.GetComponent<CExecutor>().KnockbackForce.ToString(),
             CGameManager.instance.playerObject.transform.position.x + "/"+ CGameManager.instance.playerObject.transform.position.y + "/" + CGameManager.instance.playerObject.transform.position.z //Position
         );
         //앞으로 플레이어에 관한 모든 정보를 저장
@@ -115,9 +121,11 @@ public class CPlayerData
     private string playerCurrentShield;
     private string playerMaxShield;
 
-    //플레이어의 moveForce, jumpForce
+    //플레이어의 moveForce, jumpForce, knockbackForce, dodegeForce
     private string playerMoveForce;
     private string playerJumpForce;
+    private string playerDodgeForce;
+    private string playerKnockbackForce;
 
     //플레이어의 Position
     private string playerSavePosition;
@@ -189,6 +197,28 @@ public class CPlayerData
             playerJumpForce = value;
         }
     }
+    public string PlayerDodgeForce
+    {
+        get
+        {
+            return playerDodgeForce;
+        }
+        set
+        {
+            playerDodgeForce = value;
+        }
+    }
+    public string PlayerKnockbackForce
+    {
+        get
+        {
+            return playerKnockbackForce;
+        }
+        set
+        {
+            playerKnockbackForce = value;
+        }
+    }
     public string PlayerSavePosition
     {
         get
@@ -201,7 +231,7 @@ public class CPlayerData
         }
     }
 
-    public CPlayerData(string currentHealth, string maxHealth, string currentShield, string maxShield, string moveForce, string jumpForce, string playerPositionData)
+    public CPlayerData(string currentHealth, string maxHealth, string currentShield, string maxShield, string moveForce, string jumpForce, string dodgeForce, string knockbackForce, string playerPositionData)
     {
         if (currentHealth == "0") //처음 게임 시작할때, 죽었을때 다시 부활할때
         {
@@ -211,6 +241,8 @@ public class CPlayerData
             PlayerCurrentShield = PlayerMaxShield;
             PlayerMoveForce = moveForce;
             PlayerJumpForce = jumpForce;
+            PlayerDodgeForce = dodgeForce;
+            PlayerKnockbackForce = knockbackForce;
             PlayerSavePosition = playerPositionData;
         }
         else //게임 진행중
@@ -221,6 +253,8 @@ public class CPlayerData
             PlayerCurrentShield = currentShield;
             PlayerMoveForce = moveForce;
             PlayerJumpForce = jumpForce;
+            PlayerDodgeForce = dodgeForce;
+            PlayerKnockbackForce = knockbackForce;
             PlayerSavePosition = playerPositionData;
         }
     }

@@ -86,6 +86,14 @@ public class CPlayerController : APhysics
         }
     }
 
+    public override float KnockbackForce
+    {
+        get
+        {
+            return m_knockBackForce;
+        }
+    }
+
     public override float JumpForce
     {
         get
@@ -212,6 +220,8 @@ public class CPlayerController : APhysics
         //Get Player Data
         m_moveForce = executor.MoveForce;
         m_jumpForce = executor.JumpForce;
+        m_horizontalMoveAcceleration = executor.DodgeForce;
+        m_knockBackForce = executor.KnockbackForce;
     }
 
     #region InputManager Event Method
@@ -252,7 +262,7 @@ public class CPlayerController : APhysics
             CAudioManager.instance.PlayEffectSoundUniqueEvent(HorizontalAccelControl);
         }
 
-        HorizontalAccel(m_moveForce);
+        HorizontalAccel(m_horizontalMoveAcceleration);
     }
     #endregion
 

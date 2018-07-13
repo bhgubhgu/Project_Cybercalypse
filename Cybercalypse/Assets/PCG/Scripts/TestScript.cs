@@ -4,8 +4,13 @@ using UnityEngine;
 
 public class TestScript : MonoBehaviour {
     private CGridDrivenContentsGenerator generator;
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+
+    float x;
+    float y;
+
+	void Start ()
+    {
         generator = LevelManager.instance.GridGenerator;
         generator.StartGenerator();
         Debug.Log(generator.PlayerStartPosition);

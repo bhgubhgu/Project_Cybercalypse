@@ -59,6 +59,13 @@ public class CMonsterController : APhysics
             return m_hMoveVelocity;
         } 
     }
+    public override float KnockbackForce
+    {
+        get
+        {
+            return m_knockBackForce;
+        }
+    }
 
     public override float VerticalVelocity //입력 안받음
     {
