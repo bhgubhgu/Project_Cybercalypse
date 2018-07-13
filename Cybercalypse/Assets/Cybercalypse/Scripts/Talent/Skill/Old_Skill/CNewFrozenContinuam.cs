@@ -71,12 +71,7 @@ public class CNewFrozenContinuam : ASkill
         frozenCountinuamCount = 1;
         Init();
     }
-
-<<<<<<< HEAD
-    private void Start()
-=======
     public void Start()
->>>>>>> dev
     {
         cSkillOffset_Instance.FrozenContinuamDel += FrozenContinuam;
     }

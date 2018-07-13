@@ -79,12 +79,8 @@ public class CNewBitEjection : ASkill
 
         SkillCoolDown = 3.0f;
     }
-
-<<<<<<< HEAD
-    private void Start()
-=======
+   
     public void Start()
->>>>>>> dev
     {
         cSkillOffset_Instance.lightningSphereDel += BitEjectionFire;
     }
