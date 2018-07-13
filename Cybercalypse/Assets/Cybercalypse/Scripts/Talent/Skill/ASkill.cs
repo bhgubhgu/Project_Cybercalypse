@@ -28,6 +28,7 @@ public abstract class ASkill : ATalent
     public delegate void Skill();
     public delegate void SkillOffsetDel(bool isDownKey);
 
+<<<<<<< HEAD
     void Start()
     {
         /* slotArray[0] = GameObject.Find("Talent_Image 1").GetComponent<TestChangeSkillSlot>();
@@ -38,6 +39,8 @@ public abstract class ASkill : ATalent
          slotArray[5] = GameObject.Find("Talent_Image 6").GetComponent<TestChangeSkillSlot>();*/
     }
 
+=======
+>>>>>>> dev
     public IEnumerator SqrClockwiseAnim(float runningTime, GameObject Slot)
     {
         Image alpha = Slot.transform.GetChild(0).GetChild(0).GetComponent<Image>();

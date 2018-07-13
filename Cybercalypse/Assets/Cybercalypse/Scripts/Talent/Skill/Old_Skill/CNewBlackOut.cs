@@ -74,7 +74,11 @@ public class CNewBlackOut : ASkill
         Init();
     }
 
+<<<<<<< HEAD
     private void Start()
+=======
+    public void Start()
+>>>>>>> dev
     {
         cSkillOffset_Instance.BlackOutDel += BlackOut;
     }

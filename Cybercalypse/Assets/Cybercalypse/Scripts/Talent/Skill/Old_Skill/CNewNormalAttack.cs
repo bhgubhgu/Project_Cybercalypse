@@ -75,7 +75,11 @@ public class CNewNormalAttack : ASkill
         Init();
     }
 
+<<<<<<< HEAD
     void Start()
+=======
+    public void Start()
+>>>>>>> dev
     {
         cSkillOffset_Instance.fireBallDel += NormalAttack;
     }

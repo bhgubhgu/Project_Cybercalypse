@@ -9,7 +9,7 @@ public class CExecutor : MonoBehaviour
     /// 작성자 : 구용모, 윤동준
     /// 스크립트 : Player의 내부 속성들과 HP,Shield 등등을 체크하고 스탯을 나타내는 스크립트
     /// 최초 작성일 : . . .
-    /// 최종 수정일 : 2018.06.14
+    /// 최종 수정일 : 2018.07.09
     /// </summary>
 
     //!< private 변수이름은 첫글자 소문자
@@ -23,10 +23,11 @@ public class CExecutor : MonoBehaviour
 
     private float defensivePower;
 
-    private static float moveForce; //값을 할당 후 변하였을 때만 변하는 전역변수 그 외에는 값이 상실되면 안된다.
-    private static float jumpForce; //값을 할당 후 변하였을 때만 변하는 전역변수 그 외에는 값이 상실되면 안된다.
+    private float moveForce; //값을 할당 후 변하였을 때만 변하는 전역변수 그 외에는 값이 상실되면 안된다.
+    private float jumpForce; //값을 할당 후 변하였을 때만 변하는 전역변수 그 외에는 값이 상실되면 안된다.
+    private float dodgeForce;
+    private float knockbackForce;
 
-    /*public Transform gaugeGroup;*/
     private Image HP;
     private Image SP;
     private Image EP;
@@ -74,7 +75,28 @@ public class CExecutor : MonoBehaviour
             jumpForce = value;
         }
     }
-
+    public float DodgeForce
+    {
+        get
+        {
+            return dodgeForce;
+        }
+        set
+        {
+            dodgeForce = value;
+        }
+    }
+    public float KnockbackForce
+    {
+        get
+        {
+            return knockbackForce;
+        }
+        set
+        {
+            knockbackForce = value;
+        }
+    }
     #endregion
 
     private void Awake()
@@ -93,12 +115,6 @@ public class CExecutor : MonoBehaviour
 
         MaximumBulletCount = 30;// --> 정확한 수치가 나오면 JSON 파일로 파싱하여 할당함
         CurrentBulletCount = 0;// --> 정확한 수치가 나오면 JSON 파일로 파싱하여 할당함
-
-        /*if (gaugeGroup.Equals(null))
-            gaugeGroup = GameObject.Find("Gauge_Group").transform;
-        HP = gaugeGroup.Find("Fix_HP").GetChild(0).GetComponent<Image>();
-        SP = gaugeGroup.Find("Fix_SP").GetChild(0).GetComponent<Image>();
-        EP = gaugeGroup.Find("Fix_EP").GetChild(0).GetComponent<Image>();*/
     }
 
     private void Start()
@@ -106,13 +122,6 @@ public class CExecutor : MonoBehaviour
         StartCoroutine(RecoverShield());
         StartCoroutine(RecoveryEnergy());
     }
-
-   /* private void Update()
-    {
-        HP.fillAmount = CurrentHealth / MaximumHealth;
-        SP.fillAmount = CurrentShield / MaximumShield;
-        EP.fillAmount = CurrentEnergy / MaximumEnergy;
-    }*/
 
     IEnumerator RecoverShield()
     {
@@ -141,29 +150,9 @@ public class CExecutor : MonoBehaviour
         }
     }
 
-    public void GetStatusPoint(float amount, CGameManager.StatusType statusType)
+    public void GetStatusPoint(float amount)
     {
 
-        if (statusType.Equals(CGameManager.StatusType.health))
-        {
-            if (CurrentHealth + amount > MaximumHealth)
-                amount = MaximumHealth - CurrentHealth;
-            CurrentHealth += amount;
-        }
-
-        else if (statusType.Equals(CGameManager.StatusType.shield))
-        {
-            if (CurrentShield + amount > MaximumShield)
-                amount = MaximumShield - CurrentShield;
-            CurrentShield += amount;
-        }
-
-        else if (statusType.Equals(CGameManager.StatusType.energy))
-        {
-            if (CurrentEnergy + amount > MaximumEnergy)
-                amount = MaximumEnergy - CurrentEnergy;
-            CurrentEnergy += amount;
-        }
     }
 
     public void GetDamage(float damage)
@@ -184,20 +173,8 @@ public class CExecutor : MonoBehaviour
             if(CurrentHealth <= 0.0f)
             {
                 CurrentHealth = 0.0f;
-                CGameManager.instance.GameOver();
             }
-
-            //else if(CurrentHealth >= damage)
-            //{
-            //    CurrentHealth -= damage;        //!< 체력을 깎는다.
-            //}
-            //else if(CurrentHealth < damage)    //!< 현재체력보다 더 큰 데미지를 받음
-            //{
-            //    CurrentHealth = 0.0f;
-            //    CGameManager.instance.GameOver();
-            //}
         }
-        //Debug.Log(CurrentShield);
     }
 
     /// <summary>

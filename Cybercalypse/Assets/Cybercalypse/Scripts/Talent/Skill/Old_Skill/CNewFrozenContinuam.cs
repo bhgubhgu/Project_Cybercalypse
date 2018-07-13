@@ -72,7 +72,11 @@ public class CNewFrozenContinuam : ASkill
         Init();
     }
 
+<<<<<<< HEAD
     private void Start()
+=======
+    public void Start()
+>>>>>>> dev
     {
         cSkillOffset_Instance.FrozenContinuamDel += FrozenContinuam;
     }

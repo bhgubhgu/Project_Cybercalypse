@@ -515,7 +515,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4175938707097582}
-  - component: {fileID: 114877350254083934}
+  - component: {fileID: 114457747281099802}
   m_Layer: 0
   m_Name: Ability Library
   m_TagString: Untagged
@@ -1410,17 +1410,17 @@ Rigidbody2D:
   m_GameObject: {fileID: 1908784784948806}
   m_BodyType: 1
   m_Simulated: 1
-  m_UseFullKinematicContacts: 0
+  m_UseFullKinematicContacts: 1
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 0.0001
   m_LinearDrag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 7
+  m_Constraints: 0
 --- !u!61 &61083965962718960
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -1555,7 +1555,7 @@ CapsuleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0.115}
@@ -1830,6 +1830,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6791cf37422c8c4fafc66add902bf18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114457747281099802
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1645272773935188}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2ce5101dc0456548a37680f321378c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114466787271734434
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1859,34 +1870,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isPlayerInvincible: 0
   playerObject: {fileID: 1908784784948806}
-  skillLibrary: {fileID: 0}
-  abilityLibrary: {fileID: 0}
-  equipmentLibrary: {fileID: 0}
+  skillLibrary: {fileID: 1919221065195624}
+  abilityLibrary: {fileID: 1645272773935188}
+  equipmentLibrary: {fileID: 1379308921828430}
   isDead: 0
   isGameOver: 0
   isMenuClose: 0
-  testSkillList:
-  - {fileID: 21300000, guid: 06946a7fc2d77314d9c7d0919ab55f02, type: 3}
-  - {fileID: 21300000, guid: e4ab738c3a9c842b69fa93cbbff0ea53, type: 3}
-  - {fileID: 21300000, guid: 945b6607d85804ca6b5bc6f6d628e68c, type: 3}
-  - {fileID: 21300000, guid: 3a4b9847928664b89af00f52efdf5b90, type: 3}
-  - {fileID: 21300000, guid: b7c237ced05de4c44a8337e4c9d5da9f, type: 3}
-  - {fileID: 21300000, guid: c65c5b7bb3c1aea489d33e99eedd5825, type: 3}
-  - {fileID: 21300000, guid: 7dae316cab1f54aeea0b7b52a1f0495d, type: 3}
-  testAbilityList:
-  - {fileID: 21300000, guid: 19b672e5a5109e843a3f1ad34adfa709, type: 3}
-  - {fileID: 21300000, guid: 43597c51dd50b4747b8285c33ea57329, type: 3}
-  - {fileID: 21300000, guid: c89b43bfa20a9458b9f49b9d641ac47c, type: 3}
-  - {fileID: 21300000, guid: dec23d3f1b157493ea928ad647f275c2, type: 3}
-  testWeaponList:
-  - {fileID: 21300000, guid: a2b157e5acac1944cb3442bd57e0390a, type: 3}
-  - {fileID: 21300000, guid: c18f7c9d872c57f4d8cae42ae2e58c73, type: 3}
-  testMaskList:
-  - {fileID: 21300000, guid: 165de5d7249ac404d8a6c7400697de4a, type: 3}
-  - {fileID: 21300002, guid: c18f7c9d872c57f4d8cae42ae2e58c73, type: 3}
-  testSuitList:
-  - {fileID: 21300000, guid: 4aac5621669fdac4ba955a951a32d2cf, type: 3}
-  - {fileID: 21300004, guid: c18f7c9d872c57f4d8cae42ae2e58c73, type: 3}
+  testSkillList: []
+  testAbilityList: []
+  testWeaponList: []
+  testMaskList: []
+  testSuitList: []
 --- !u!114 &114666935132007160
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1925,17 +1919,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 83e247b8aafd4f74a82fc20220705090, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &114877350254083934
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1645272773935188}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2ff3b16a522f16f4795c66890dc09a27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &114885155784105520
@@ -2409,7 +2392,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: c89b43bfa20a9458b9f49b9d641ac47c, type: 3}
+  m_Sprite: {fileID: 21300746, guid: 02da2c06a41c740b99f8cf897fbc96d7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -2497,7 +2480,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: dec23d3f1b157493ea928ad647f275c2, type: 3}
+  m_Sprite: {fileID: 21300748, guid: 02da2c06a41c740b99f8cf897fbc96d7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -2761,7 +2744,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 43597c51dd50b4747b8285c33ea57329, type: 3}
+  m_Sprite: {fileID: 21300744, guid: 02da2c06a41c740b99f8cf897fbc96d7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

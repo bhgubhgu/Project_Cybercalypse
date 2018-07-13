@@ -75,7 +75,11 @@ public class CNewMeleeAttack : ASkill
         Init();
     }
 
+<<<<<<< HEAD
     private void Start()
+=======
+    public void Start()
+>>>>>>> dev
     {
         cSkillOffset_Instance.moonLightSlashDel += MoonLightSlash;
         moonLightSlashObject = this.transform.GetChild(0).gameObject;

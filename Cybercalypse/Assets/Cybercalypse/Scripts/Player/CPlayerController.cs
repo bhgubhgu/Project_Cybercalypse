@@ -8,7 +8,7 @@ public class CPlayerController : APhysics
     /// 작성자 : 구용모
     /// 스크립트 : Player 객체의 행동들을 입력을 받는 스크립트
     /// 최초 작성일 : . . .
-    /// 최종 수정일 : 2018.07.04
+    /// 최종 수정일 : 2018.07.09
     /// </summary>
 
     private CSkillLibrary skillOffset_Instance;
@@ -76,10 +76,6 @@ public class CPlayerController : APhysics
         {
             return m_moveForce;
         }
-        set
-        {
-            m_moveForce = value;
-        }
     }
 
     public override float HorizontalMoveAcceleration
@@ -90,15 +86,19 @@ public class CPlayerController : APhysics
         }
     }
 
+    public override float KnockbackForce
+    {
+        get
+        {
+            return m_knockBackForce;
+        }
+    }
+
     public override float JumpForce
     {
         get
         {
             return m_jumpForce;
-        }
-        set
-        {
-            m_jumpForce = value;
         }
     }
 
@@ -142,38 +142,6 @@ public class CPlayerController : APhysics
         }
     }
 
-    public override bool IsDefaultBackWall
-    {
-        get
-        {
-            return m_isDefaultBackWall;
-        }
-    }
-
-    public override bool IsDefaultFrontWall
-    {
-        get
-        {
-            return m_isDefaultFrontWall;
-        }
-    }
-
-    public override bool IsLeftWallHit
-    {
-        get
-        {
-            return m_isLeftWallHit;
-        }
-    }
-
-    public override bool IsRightWallHit
-    {
-        get
-        {
-            return m_isRightWallHit;
-        }
-    }
-
     public override bool IsHeadHit
     {
         get
@@ -198,14 +166,6 @@ public class CPlayerController : APhysics
         }
     }
 
-    public override bool IsJumpForGrounded
-    {
-        get
-        {
-            return m_isJumpForGrounded;
-        }
-    }
-
     public override bool IsKnockback
     {
         get
@@ -225,6 +185,8 @@ public class CPlayerController : APhysics
     private void Start()
     {
         Physics2D.autoSimulation = false; //Unity 물리 사용안함
+        Physics2D.callbacksOnDisable = false;
+
         skillOffset_Instance = CGameManager.instance.skillLibrary.GetComponent<CSkillLibrary>();
 
         skillMethodList = new List<CSkillLibrary.SkillOffsetDel>();
@@ -241,8 +203,6 @@ public class CPlayerController : APhysics
         CInputManager.instance.Skill2 += CActSkill2;
         CInputManager.instance.Skill3 += CActSkill3;
         CInputManager.instance.Skill4 += CActSkill4;
-        CInputManager.instance.SkillMouseLeft += CActSkillMouseLeft;
-        CInputManager.instance.SkillMouseRight += CActSkillMouseRight;
         #endregion
 
         #region skillMethod Regist
@@ -250,8 +210,6 @@ public class CPlayerController : APhysics
         skillMethodList.Add(CActSkill2);
         skillMethodList.Add(CActSkill3);
         skillMethodList.Add(CActSkill4);
-        skillMethodList.Add(CActSkillMouseLeft);
-        skillMethodList.Add(CActSkillMouseRight);
         #endregion
         
         for(int i = 0; i < skillMethodList.Count; i++)
@@ -260,8 +218,10 @@ public class CPlayerController : APhysics
         }
 
         //Get Player Data
-        MoveForce = executor.MoveForce;
-        JumpForce = executor.JumpForce;
+        m_moveForce = executor.MoveForce;
+        m_jumpForce = executor.JumpForce;
+        m_horizontalMoveAcceleration = executor.DodgeForce;
+        m_knockBackForce = executor.KnockbackForce;
     }
 
     #region InputManager Event Method
@@ -274,7 +234,7 @@ public class CPlayerController : APhysics
         }
 
         m_hInputValue = hInputValue;
-        m_hMoveVelocity = HMove(m_moveForce, m_hInputValue, Camera.main.ScreenToWorldPoint(Input.mousePosition) /*cursor.gameObject.transform.position*/);
+        m_hMoveVelocity = HMove(m_moveForce, m_hInputValue);
     }
 
     public void VMoveControl(float vInputValue)
@@ -302,14 +262,14 @@ public class CPlayerController : APhysics
             CAudioManager.instance.PlayEffectSoundUniqueEvent(HorizontalAccelControl);
         }
 
-        HorizontalAccel(m_moveForce);
+        HorizontalAccel(m_horizontalMoveAcceleration);
     }
     #endregion
 
     #region Virtual Override Method
-    public override float HMove(float moveForce, float hInputValue, Vector3 mousePosition)
+    public override float HMove(float moveForce, float hInputValue)
     {
-        return base.HMove(moveForce, hInputValue, mousePosition);
+        return base.HMove(moveForce, hInputValue);
     }
 
     public override float VMove(float vInputValue)
@@ -343,6 +303,7 @@ public class CPlayerController : APhysics
     {
         isDownSkill1 = isDownSkill1Manager;
         //Skill Slot 1 Key
+
         skillOffset_Instance.FindSKillOffset(CActSkill1);
     }
 
@@ -368,22 +329,6 @@ public class CPlayerController : APhysics
 
         //Skill Slot 4 Key
         skillOffset_Instance.FindSKillOffset(CActSkill4);
-    }
-
-    public void CActSkillMouseLeft(bool isDownSkillMouseLeftManager)
-    {
-        isDownSkillMouseLeft = isDownSkillMouseLeftManager;
-
-        //Skill Slot MouseLeft Key
-        skillOffset_Instance.FindSKillOffset(CActSkillMouseLeft);
-    }
-
-    public void CActSkillMouseRight(bool isDownSkillMouseRightManager)
-    {
-        isDownSkillMouseRight = isDownSkillMouseRightManager;
-
-        //Skill Slot MouseRight Key
-        skillOffset_Instance.FindSKillOffset(CActSkillMouseRight);
     }
 #endregion
 }

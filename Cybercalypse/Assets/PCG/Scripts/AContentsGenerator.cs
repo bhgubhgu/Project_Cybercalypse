@@ -8,10 +8,9 @@ using UnityEngine;
 public abstract class AContentsGenerator : MonoBehaviour {
     // Tile을 생성하기 위한 최소 정보
     public CContent[] contents;
-    public int chamberWidth, chamberHeight;
+
     // 각 ETileType별로 어떠한 요소가 있는지 저장하는 Dictionary
     protected Dictionary<ETileType, List<CContent>> elementDict;
-
 
     protected virtual void Awake()
     {
@@ -26,7 +25,7 @@ public abstract class AContentsGenerator : MonoBehaviour {
     {
         elementDict = new Dictionary<ETileType, List<CContent>>();
 
-        for (ETileType t = ETileType.Flat; t<ETileType.COUNT; t++)
+        for (ETileType t = ETileType.Ground; t<ETileType.COUNT; t++)
         {
             elementDict.Add(t, new List<CContent>());
         }

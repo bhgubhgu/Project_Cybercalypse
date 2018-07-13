@@ -210,7 +210,6 @@ public class CMonsterInputCommand : MonoBehaviour
                     BossJump();
                 }
 
-                StartCoroutine(control.TestBossInvincible());
                 hInputValue = 0;
                 BossLightAttack();
                 yield return new WaitForSeconds(Time.deltaTime * 60 * 0.5f);
@@ -222,7 +221,6 @@ public class CMonsterInputCommand : MonoBehaviour
 
                 if ((possbility != 7 && !control.m_isDodge) || (possbility != 8 && !control.m_isDodge) || (possbility != 9 && !control.m_isDodge) || (possbility != 5 && !control.m_isDodge))
                 {
-                    StartCoroutine(control.TestBossInvincible());
                     BossDodge(false);
                 }
                 else
@@ -239,7 +237,6 @@ public class CMonsterInputCommand : MonoBehaviour
                 }
                 else if (Mathf.Abs(this.transform.position.x - player.transform.position.x) <= groundAttackInterval)
                 {
-                    StartCoroutine(control.TestBossInvincible());
                     hInputValue = 0;
                     BossLightAttack();
                     yield return new WaitForSeconds(Time.deltaTime * 60 * 0.5f);
@@ -251,7 +248,6 @@ public class CMonsterInputCommand : MonoBehaviour
                 {
                     if(!control.m_isDodge)
                     {
-                        StartCoroutine(control.TestBossInvincible());
                         BossDodge(false);
                     }
                 }
