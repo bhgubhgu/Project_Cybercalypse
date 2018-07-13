@@ -11,17 +11,6 @@ public class TestPlayerEquipmentInventory : MonoBehaviour, IBeginDragHandler, ID
     private Vector3 startPosition;
     private Vector3 mousePosition;
 
-    private GameObject slotEquipment1;
-    private GameObject slotEquipment2;
-    private GameObject slotEquipment3;
-
-    private void Awake()
-    {
-        slotEquipment1 = GameObject.Find("Weapon Slot Image").gameObject; //weapon
-        slotEquipment2 = GameObject.Find("Mask Slot Image").gameObject; //mask
-        slotEquipment3 = GameObject.Find("Suit Slot Image").gameObject; //suit
-    }
-
     public void OnBeginDrag(PointerEventData eventData)
     {
         transform.parent.SetAsLastSibling();
@@ -53,9 +42,9 @@ public class TestPlayerEquipmentInventory : MonoBehaviour, IBeginDragHandler, ID
                 CGameManager.instance.equipmentLibrary.GetComponent<CEquiptmentLibrary>().ChangeSlot(CGameManager.instance.equipmentLibrary.GetComponent<CEquiptmentLibrary>().FindEquipmentToEquipmentIcon(dragSprite), 0);
             }
         }
-        else if (slot == EEquipmentSlot.Mask && this.GetComponent<Image>().sprite.name == "NullMask")
+        else if (slot == EEquipmentSlot.Armor && this.GetComponent<Image>().sprite.name == "NullArmor")
         {
-            if (!CGameManager.instance.testMaskList.Contains(eventData.pointerDrag.GetComponent<Image>().sprite))
+            if (!CGameManager.instance.testArmorList.Contains(eventData.pointerDrag.GetComponent<Image>().sprite))
             {
                 return;
             }
@@ -64,17 +53,7 @@ public class TestPlayerEquipmentInventory : MonoBehaviour, IBeginDragHandler, ID
                 CGameManager.instance.equipmentLibrary.GetComponent<CEquiptmentLibrary>().ChangeSlot(CGameManager.instance.equipmentLibrary.GetComponent<CEquiptmentLibrary>().FindEquipmentToEquipmentIcon(dragSprite), 1);
             }
         }
-        else if (slot == EEquipmentSlot.Suit && this.GetComponent<Image>().sprite.name == "NullSuit")
-        {
-            if (!CGameManager.instance.testSuitList.Contains(eventData.pointerDrag.GetComponent<Image>().sprite))
-            {
-                return;
-            }
-            else
-            {
-                CGameManager.instance.equipmentLibrary.GetComponent<CEquiptmentLibrary>().ChangeSlot(CGameManager.instance.equipmentLibrary.GetComponent<CEquiptmentLibrary>().FindEquipmentToEquipmentIcon(dragSprite), 2);
-            }
-        }
+
 
         if (slot == EEquipmentSlot.Weapon && this.GetComponent<Image>().sprite.name != "NullWeapon")
         {
@@ -87,26 +66,15 @@ public class TestPlayerEquipmentInventory : MonoBehaviour, IBeginDragHandler, ID
                 CGameManager.instance.equipmentLibrary.GetComponent<CEquiptmentLibrary>().ChangeSlot(CGameManager.instance.equipmentLibrary.GetComponent<CEquiptmentLibrary>().FindEquipmentToEquipmentIcon(dragSprite), 0);
             }
         }
-        else if (slot == EEquipmentSlot.Mask && this.GetComponent<Image>().sprite.name != "NullMask")
+        else if (slot == EEquipmentSlot.Armor && this.GetComponent<Image>().sprite.name != "NullArmor")
         {
-            if (!CGameManager.instance.testMaskList.Contains(eventData.pointerDrag.GetComponent<Image>().sprite))
+            if (!CGameManager.instance.testArmorList.Contains(eventData.pointerDrag.GetComponent<Image>().sprite))
             {
                 return;
             }
             else
             {
                 CGameManager.instance.equipmentLibrary.GetComponent<CEquiptmentLibrary>().ChangeSlot(CGameManager.instance.equipmentLibrary.GetComponent<CEquiptmentLibrary>().FindEquipmentToEquipmentIcon(dragSprite), 1);
-            }
-        }
-        else if (slot == EEquipmentSlot.Suit && this.GetComponent<Image>().sprite.name != "NullSuit")
-        {
-            if (!CGameManager.instance.testSuitList.Contains(eventData.pointerDrag.GetComponent<Image>().sprite))
-            {
-                return;
-            }
-            else
-            {
-                CGameManager.instance.equipmentLibrary.GetComponent<CEquiptmentLibrary>().ChangeSlot(CGameManager.instance.equipmentLibrary.GetComponent<CEquiptmentLibrary>().FindEquipmentToEquipmentIcon(dragSprite), 2);
             }
         }
 
@@ -130,26 +98,15 @@ public class TestPlayerEquipmentInventory : MonoBehaviour, IBeginDragHandler, ID
                 CGameManager.instance.equipmentLibrary.GetComponent<CEquiptmentLibrary>().ChangeSlot(CGameManager.instance.equipmentLibrary.GetComponent<CEquiptmentLibrary>().FindEquipmentToEquipmentIcon(dragSprite), 0);
             }
         }
-        else if (slot == EEquipmentSlot.Mask && this.GetComponent<Image>().sprite.name == "NullMask")
+        else if (slot == EEquipmentSlot.Armor && this.GetComponent<Image>().sprite.name == "NullArmor")
         {
-            if (!CGameManager.instance.testMaskList.Contains(eventData.pointerDrag.GetComponent<Image>().sprite))
+            if (!CGameManager.instance.testArmorList.Contains(eventData.pointerDrag.GetComponent<Image>().sprite))
             {
                 return;
             }
             else
             {
                 CGameManager.instance.equipmentLibrary.GetComponent<CEquiptmentLibrary>().ChangeSlot(CGameManager.instance.equipmentLibrary.GetComponent<CEquiptmentLibrary>().FindEquipmentToEquipmentIcon(dragSprite), 1);
-            }
-        }
-        else if (slot == EEquipmentSlot.Suit && this.GetComponent<Image>().sprite.name == "NullSuit")
-        {
-            if (!CGameManager.instance.testSuitList.Contains(eventData.pointerDrag.GetComponent<Image>().sprite))
-            {
-                return;
-            }
-            else
-            {
-                CGameManager.instance.equipmentLibrary.GetComponent<CEquiptmentLibrary>().ChangeSlot(CGameManager.instance.equipmentLibrary.GetComponent<CEquiptmentLibrary>().FindEquipmentToEquipmentIcon(dragSprite), 2);
             }
         }
 
@@ -160,8 +117,7 @@ public class TestPlayerEquipmentInventory : MonoBehaviour, IBeginDragHandler, ID
     public enum EEquipmentSlot
     {
         Weapon,
-        Mask,
-        Suit,
+        Armor,
         Nothing
     }
 }

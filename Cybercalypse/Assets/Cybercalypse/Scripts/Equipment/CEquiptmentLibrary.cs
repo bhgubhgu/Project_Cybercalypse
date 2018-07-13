@@ -140,11 +140,11 @@ public class CEquiptmentLibrary : AEquipment
     {
         //Test 실질적인 아이콘을 가진 스킬 오브젝트
         registEquipmentSpriteDictionary.Add(CGameManager.instance.testWeaponList[0], Null);
-        registEquipmentSpriteDictionary.Add(CGameManager.instance.testMaskList[0], Null);
-        registEquipmentSpriteDictionary.Add(CGameManager.instance.testSuitList[0], Null);
+        registEquipmentSpriteDictionary.Add(CGameManager.instance.testArmorList[0], Null);
+        //registEquipmentSpriteDictionary.Add(CGameManager.instance.testSuitList[0], Null);
         registEquipmentSpriteDictionary.Add(CGameManager.instance.testWeaponList[1], LightningSphere); //weapon은 0
-        registEquipmentSpriteDictionary.Add(CGameManager.instance.testMaskList[1], CrimsonStrike); //weapon은 1
-        registEquipmentSpriteDictionary.Add(CGameManager.instance.testSuitList[1], BlackOut); //weapon은 2
+        registEquipmentSpriteDictionary.Add(CGameManager.instance.testArmorList[1], CrimsonStrike); //Armor은 1
+        registEquipmentSpriteDictionary.Add(CGameManager.instance.testArmorList[2], BlackOut); //Armor은 1
     }
 
     private void ResetSlot() //스킬 셋팅 초기화
@@ -164,12 +164,12 @@ public class CEquiptmentLibrary : AEquipment
 
     private void CrimsonStrike()
     {
-        Debug.Log("Mask");
+        Debug.Log("Armor 1");
     }
 
     private void BlackOut()
     {
-        Debug.Log("Suit");
+        Debug.Log("Armor 2");
     }
 
     private void Null()
