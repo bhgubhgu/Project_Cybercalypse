@@ -125,7 +125,7 @@ public class CCameraController : MonoBehaviour
             targetPosition = new Vector3(targetPosition.x + horizontalAddition, targetPosition.y + vertexAddition, this.transform.position.z);
         }
 
-        targetPosition = new Vector3(Mathf.Clamp(targetPosition.x, leftWallPosition.position.x, rightWallPosition.position.x), Mathf.Clamp(targetPosition.y, bottomWallPosition.position.y, roofWallPosition.position.y), this.transform.position.z);
+        //targetPosition = new Vector3(Mathf.Clamp(targetPosition.x, leftWallPosition.position.x, rightWallPosition.position.x), Mathf.Clamp(targetPosition.y, bottomWallPosition.position.y, roofWallPosition.position.y), this.transform.position.z);
         transform.position = Vector3.Lerp(transform.position, targetPosition, smoother * Time.deltaTime);     
     }
 
