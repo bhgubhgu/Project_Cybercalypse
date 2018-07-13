@@ -25,6 +25,8 @@ public class CExecutor : MonoBehaviour
 
     private float moveForce; //값을 할당 후 변하였을 때만 변하는 전역변수 그 외에는 값이 상실되면 안된다.
     private float jumpForce; //값을 할당 후 변하였을 때만 변하는 전역변수 그 외에는 값이 상실되면 안된다.
+    private float dodgeForce;
+    private float knockbackForce;
 
     private Image HP;
     private Image SP;
@@ -71,6 +73,28 @@ public class CExecutor : MonoBehaviour
         set
         {
             jumpForce = value;
+        }
+    }
+    public float DodgeForce
+    {
+        get
+        {
+            return dodgeForce;
+        }
+        set
+        {
+            dodgeForce = value;
+        }
+    }
+    public float KnockbackForce
+    {
+        get
+        {
+            return knockbackForce;
+        }
+        set
+        {
+            knockbackForce = value;
         }
     }
     #endregion

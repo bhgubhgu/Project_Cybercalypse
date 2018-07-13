@@ -50,7 +50,10 @@ public abstract class APhysics : MonoBehaviour
     {
         get;
     }
-    
+    public abstract float KnockbackForce
+    {
+        get;
+    }
     public abstract bool IsDashNow
     {
         get;
@@ -109,6 +112,7 @@ public abstract class APhysics : MonoBehaviour
     protected float m_hInputValue;
     protected float m_jumpVelocity;
     protected float m_dashVelocity;
+    protected float m_knockBackForce;
     protected float m_jumpTime;
     protected float m_gravity;
 
@@ -188,7 +192,7 @@ public abstract class APhysics : MonoBehaviour
             else
             {
                 CGameManager.instance.PlayerHasInvincible(); // 플레이어 만의 무적 판정
-                Hit(0.01f, -1f);
+                Hit(m_knockBackForce, -1f);
             }
         }
         //플레이어 오른쪽 넉백
@@ -201,7 +205,7 @@ public abstract class APhysics : MonoBehaviour
             else
             {
                 CGameManager.instance.PlayerHasInvincible(); // 플레이어 만의 무적 판정
-                Hit(0.01f, +1f);
+                Hit(m_knockBackForce, +1f);
             }
         }
 
@@ -220,7 +224,7 @@ public abstract class APhysics : MonoBehaviour
             }
             else
             {
-                Hit(0.01f, -1f); //Test
+                Hit(m_knockBackForce, -1f); //Test
                 return;
             }
         }
@@ -233,7 +237,7 @@ public abstract class APhysics : MonoBehaviour
             }
             else
             {
-                Hit(0.01f, +1f); //Test
+                Hit(m_knockBackForce, +1f); //Test
             }
         }
     }
@@ -574,7 +578,6 @@ public abstract class APhysics : MonoBehaviour
     public IEnumerator ActionDash(float dashForce)
     {
         m_dashVelocity = 0.0f;
-        dashForce = 4f;
 
         for (float dashTime = 0, lessTime = 1f; m_dashVelocity >= -Mathf.Epsilon ; dashTime += Time.deltaTime, lessTime -= Time.deltaTime)
         {

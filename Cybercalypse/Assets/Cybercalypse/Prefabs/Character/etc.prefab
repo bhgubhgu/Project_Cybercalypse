@@ -1870,9 +1870,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isPlayerInvincible: 0
   playerObject: {fileID: 1908784784948806}
-  skillLibrary: {fileID: 0}
-  abilityLibrary: {fileID: 0}
-  equipmentLibrary: {fileID: 0}
+  skillLibrary: {fileID: 1919221065195624}
+  abilityLibrary: {fileID: 1645272773935188}
+  equipmentLibrary: {fileID: 1379308921828430}
   isDead: 0
   isGameOver: 0
   isMenuClose: 0
