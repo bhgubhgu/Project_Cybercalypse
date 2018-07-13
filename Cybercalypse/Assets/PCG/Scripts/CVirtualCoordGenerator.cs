@@ -95,8 +95,11 @@ public class CVirtualCoordGenerator : MonoBehaviour
         Queue<Vector2Int> bfsQueue = new Queue<Vector2Int>(); // dfs 방식으로 Chamber를 조회하기 위한 큐
         Queue<Vector2Int> currentStartQueue = new Queue<Vector2Int>(); // 현재 Chamber에서 시뮬레이션을 할 start 좌표
         Queue<Queue<Vector2Int>> bfsStartQueue = new Queue<Queue<Vector2Int>>(); // dfs 방식으로 조회할 때, 생성된 Next Start 좌표들을 저장하기 위한 큐
+        Vector2Int startPositionOfSimulation = new Vector2Int(startChamberPos.x * chamberWidth + chamberWidth / 2, startChamberPos.y * chamberHeight + chamberHeight / 2);
+
+        LevelManager.instance.GridGenerator.PlayerStartPosition = new Vector3(startPositionOfSimulation.x, startPositionOfSimulation.y);
         // 시뮬레이션 실행 횟수만큼 start Queue에 삽입
-        for(int i = 0; i<numOfSimulation; i++)
+        for (int i = 0; i<numOfSimulation; i++)
         {
             currentStartQueue.Enqueue(new Vector2Int(startChamberPos.x * chamberWidth + chamberWidth / 2, startChamberPos.y * chamberHeight + chamberHeight / 2));
         }

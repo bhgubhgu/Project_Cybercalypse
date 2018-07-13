@@ -8,5 +8,6 @@ public class TestScript : MonoBehaviour {
 	void Start () {
         generator = LevelManager.instance.GridGenerator;
         generator.StartGenerator();
+        Debug.Log(generator.PlayerStartPosition);
 	}
 }
