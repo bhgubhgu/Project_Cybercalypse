@@ -13,6 +13,6 @@ public class TestScript : MonoBehaviour {
     {
         generator = LevelManager.instance.GridGenerator;
         generator.StartGenerator();
-        CGameManager.instance.playerObject.transform.position = generator.PlayerStartPosition;
+        //CGameManager.instance.playerObject.transform.position = generator.PlayerStartPosition;
 	}
 }

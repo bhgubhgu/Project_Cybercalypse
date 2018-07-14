@@ -107,7 +107,7 @@ public class CDungeonGenerator : AContentsGenerator
         }
     }
 
-    private void generateGameObject_0()
+    private void generateGameObject_1()
     {
         List<CContent> selectedList;
         GameObject instObject;
@@ -127,7 +127,7 @@ public class CDungeonGenerator : AContentsGenerator
         }
     }
 
-    private void generateGameObject_1()
+    private void generateGameObject_0()
     {
         List<CContent> selectedList;
         GameObject instObject;
