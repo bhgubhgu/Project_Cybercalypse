@@ -8,8 +8,11 @@ public class CPlayerController : APhysics
     /// 작성자 : 구용모
     /// 스크립트 : Player 객체의 행동들을 입력을 받는 스크립트
     /// 최초 작성일 : . . .
-    /// 최종 수정일 : 2018.07.09
+    /// 최종 수정일 : 2018.07.14
     /// </summary>
+    /// 
+
+    private const float runAccel = 2f;
 
     private CSkillLibrary skillOffset_Instance;
     private List<CSkillLibrary.SkillOffsetDel> skillMethodList;
@@ -194,6 +197,7 @@ public class CPlayerController : APhysics
         #region regist event
         /* Physics Control */
         CInputManager.instance.PlayerHMove += HMoveControl;
+        CInputManager.instance.PlayerHRun += HRunControl;
         CInputManager.instance.PlayerVMove += VMoveControl;
         CInputManager.instance.Jump += JumpControl;
         CInputManager.instance.Dash += HorizontalAccelControl;
@@ -235,6 +239,17 @@ public class CPlayerController : APhysics
 
         m_hInputValue = hInputValue;
         m_hMoveVelocity = HMove(m_moveForce, m_hInputValue);
+    }
+
+    public void HRunControl(float hInputValue)
+    {
+        if (hInputValue != 0 && m_isGrounded)
+        {
+            CAudioManager.instance.PlayEffectSoundMoveEvent(HMoveControl);
+        }
+
+        m_hInputValue = hInputValue;        
+        m_hMoveVelocity = HMove(m_moveForce * runAccel , m_hInputValue);
     }
 
     public void VMoveControl(float vInputValue)
