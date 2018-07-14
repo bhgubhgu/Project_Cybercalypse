@@ -616,7 +616,7 @@ public abstract class APhysics : MonoBehaviour
         {
             m_isDownPlatform = true;
             m_isGrounded = false;
-            this.transform.Translate(new Vector2(0, 0.7f * -Time.deltaTime));
+            this.transform.position = Vector3.Lerp(this.transform.position, testPosition, 3.5f * Time.deltaTime);
             yield return null;
         }
 
