@@ -8,7 +8,7 @@ public abstract class APhysics : MonoBehaviour
     /// 작성자 : 구용모
     /// 스크립트 : 모든 움직이는 동적인 객체들의 움직일 수 있고 여러 행동들을 할 수 있게 하는 물리 스크립트
     /// 최초 작성일 : . . .
-    /// 최종 수정일 : 2018.07.09
+    /// 최종 수정일 : 2018.07.14
     /// </summary>
     const float gravityVelocity = 9.8f;
     const float knockbackSmoother = 100.0f;
