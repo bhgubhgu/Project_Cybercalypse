@@ -20,8 +20,9 @@ public class CWallChecker : ATileTypeChecker {
                 {
                     objectTileDict.Add(new Vector2Int(tile.Key.x - 1, tile.Key.y), ETileType.BothWall);
                 }
-            } // RightWall 패턴 검사
-            else if(!objectTileDict.ContainsKey(new Vector2Int(tile.Key.x + 1, tile.Key.y)) &&
+            }
+            // RightWall 패턴 검사
+            if (!objectTileDict.ContainsKey(new Vector2Int(tile.Key.x + 1, tile.Key.y)) &&
                 !tileDict.ContainsKey(new Vector2Int(tile.Key.x + 1, tile.Key.y)))
             {
                 if(!tileDict.ContainsKey(new Vector2Int(tile.Key.x + 2, tile.Key.y)))

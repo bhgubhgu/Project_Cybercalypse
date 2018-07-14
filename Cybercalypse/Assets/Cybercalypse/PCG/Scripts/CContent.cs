@@ -11,5 +11,5 @@ using UnityEngine;
 public class CContent : MonoBehaviour {
     public ETileType tileType;
     public int numOfWidth, numOfHeight;
-    public GameObject content;
+    public GameObject[] content;
 }
