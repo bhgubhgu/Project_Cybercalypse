@@ -348,7 +348,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 421d82baed2989b4d87f6fd7c65f13ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numOfSimulation: 5
+  numOfSimulation: 10
   chamberWidth: 10
   chamberHeight: 10
 --- !u!4 &1327378091
@@ -500,7 +500,7 @@ Prefab:
     - target: {fileID: 114688200986363240, guid: 0cebe81255122cf498a25569b610f97e,
         type: 2}
       propertyPath: tileTypeChecker.Array.size
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4378462016494252, guid: 0cebe81255122cf498a25569b610f97e, type: 2}
       propertyPath: m_LocalPosition.x
@@ -587,6 +587,12 @@ Prefab:
       propertyPath: contents.Array.data[16]
       value: 
       objectReference: {fileID: 114937291432270602, guid: 25cfb85ca36d828478dec6f65d6e5a6d,
+        type: 2}
+    - target: {fileID: 114688200986363240, guid: 0cebe81255122cf498a25569b610f97e,
+        type: 2}
+      propertyPath: tileTypeChecker.Array.data[7]
+      value: 
+      objectReference: {fileID: 114099586338409010, guid: 3157e2170ee2f16428ac323ca02ac479,
         type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0cebe81255122cf498a25569b610f97e, type: 2}

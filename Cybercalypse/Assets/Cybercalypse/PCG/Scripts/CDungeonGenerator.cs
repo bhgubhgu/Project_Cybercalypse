@@ -103,7 +103,14 @@ public class CDungeonGenerator : AContentsGenerator
         // objectTileDict의 정보를 tileDict에 전달
         foreach (KeyValuePair<Vector2Int, ETileType> tile in objectTileDict)
         {
-            tileDict.Add(tile.Key, tile.Value);
+            if(!tileDict.ContainsKey(tile.Key))
+            {
+                tileDict.Add(tile.Key, tile.Value);
+            }
+            else
+            {
+                tileDict[tile.Key] = tile.Value;
+            }
         }
     }
 
