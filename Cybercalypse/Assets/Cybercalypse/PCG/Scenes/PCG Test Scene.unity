@@ -141,8 +141,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TILE_LENGTH: 0.16
-  numOfChamberInHorizontal: 20
-  numOfChamberInVertical: 20
+  numOfChamberInHorizontal: 30
+  numOfChamberInVertical: 5
   possibilityOfContinuousDummy: 30
   possibilityOfDividedDummy: 30
   gameObjectGenerator: {fileID: 420782131}
@@ -350,7 +350,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   numOfSimulation: 10
   chamberWidth: 10
-  chamberHeight: 10
+  chamberHeight: 3
 --- !u!4 &1327378091
 Transform:
   m_ObjectHideFlags: 0
