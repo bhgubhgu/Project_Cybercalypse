@@ -25,71 +25,10 @@ public class CVirtualCoordGenerator : MonoBehaviour
         endChamberPos = LevelManager.instance.GridGenerator.EndChamberPos;
         tileDict = LevelManager.instance.GridGenerator.TileDict;
 
-        //Queue<Vector2Int> startQueue = new Queue<Vector2Int>();
-        //startQueue.Enqueue(new Vector2Int(startChamberPos.x * chamberWidth + chamberWidth / 2, startChamberPos.y * chamberHeight + chamberHeight / 2));
-        //operateSimulation(startChamberPos, startQueue);
-        operateSimulation2();
+        operateSimulation();
     }
 
-    /// <summary>
-    /// currentChamberPos의 Chamber를 대상으로 다음 Chamber로 향하는 경로를 시뮬레이션 하여 생성하는 메소드
-    /// </summary>
-    /// <param name="currentChamberPos">경로 생성 시뮬레이션을 할 Chamber의 상대 위치</param>
-    /// <param name="prevStartQueue">시뮬레이션 할 start 지점 큐</param>
-    //private void operateSimulation(Vector2Int currentChamberPos, Queue<Vector2Int> prevStartQueue)
-    //{
-    //    // 출발할 지점의 큐가 빈 상태면 예외!, StartQueue가 Empty가 되는경우가 언제일까????
-    //    if (prevStartQueue.Count == 0)
-    //    {
-    //        return;
-    //    }
-    //    // 재귀 메소드가 가지고 있어야 할 정보
-    //    Queue<Vector2Int> nextStartQueue = new Queue<Vector2Int>();
-    //    int eachNumOfSimulation = numOfSimulation / prevStartQueue.Count;
-    //    //Debug.Log("PrevStartCount : " + prevStartQueue.Count);
-    //    //Debug.Log("EachNumOfSim" + eachNumOfSimulation);
-    //    // 막힌 길인 경우, ++삭제 가능
-    //    if (chamberPosition[currentChamberPos].NextChamberPosition.Count == 0)
-    //    {
-    //        Vector2Int gap = currentChamberPos - chamberPosition[currentChamberPos].PrevChamberPosition;
-
-    //        // 각 start지점 마다 계산된 횟수만큼 시뮬레이션
-    //        foreach (Vector2Int start in prevStartQueue)
-    //        {
-    //            if (!tileDict.ContainsKey(start))
-    //            {
-    //                tileDict.Add(start, ETileType.Empty);
-    //            }
-    //            for (int i = 0; i < eachNumOfSimulation; i++)
-    //            {
-    //                simulation(start, currentChamberPos, nextStartQueue, gap);
-    //            }
-    //        }
-    //    }
-
-    //    chamberPosition[currentChamberPos].NextChamberPosition.ForEach(delegate (Vector2Int nextChamber)
-    //        {
-    //            // 해당하는 nextChamber가 현재 기준으로 어디 방향인지 검사
-    //            Vector2Int gap = nextChamber - currentChamberPos;
-
-    //            // 각 start지점 마다 계산된 횟수만큼 시뮬레이션
-    //            foreach (Vector2Int start in prevStartQueue)
-    //            {
-    //                if (!tileDict.ContainsKey(start))
-    //                {
-    //                    tileDict.Add(start, ETileType.Empty);
-    //                }
-    //                for (int i = 0; i < eachNumOfSimulation; i++)
-    //                {
-    //                    simulation(start, currentChamberPos, nextStartQueue, gap);
-    //                }
-    //            }
-
-    //            operateSimulation(nextChamber, nextStartQueue);
-    //        });
-    //}
-
-    private void operateSimulation2()
+    private void operateSimulation()
     {
         Vector2Int currentChamber, gap; // 현재 시뮬레이션 중인 Chamber의 좌표, 다음 Chamber로 향하는 방향이 어디인지 표시
         Queue<Vector2Int> bfsQueue = new Queue<Vector2Int>(); // dfs 방식으로 Chamber를 조회하기 위한 큐
@@ -97,7 +36,7 @@ public class CVirtualCoordGenerator : MonoBehaviour
         Queue<Queue<Vector2Int>> bfsStartQueue = new Queue<Queue<Vector2Int>>(); // dfs 방식으로 조회할 때, 생성된 Next Start 좌표들을 저장하기 위한 큐
         Vector2Int startPositionOfSimulation = new Vector2Int(startChamberPos.x * chamberWidth + chamberWidth / 2, startChamberPos.y * chamberHeight + chamberHeight / 2);
 
-        LevelManager.instance.GridGenerator.PlayerStartPosition = new Vector3(startPositionOfSimulation.x, startPositionOfSimulation.y);
+        //LevelManager.instance.GridGenerator.PlayerStartPosition = new Vector3(startPositionOfSimulation.x, startPositionOfSimulation.y);
         // 시뮬레이션 실행 횟수만큼 start Queue에 삽입
         for (int i = 0; i<numOfSimulation; i++)
         {

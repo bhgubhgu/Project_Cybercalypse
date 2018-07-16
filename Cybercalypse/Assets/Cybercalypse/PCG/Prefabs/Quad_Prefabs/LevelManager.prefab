@@ -157,7 +157,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TILE_LENGTH: 0.16
   numOfChamberInHorizontal: 30
-  numOfChamberInVertical: 5
+  numOfChamberInVertical: 2
   possibilityOfContinuousDummy: 30
   possibilityOfDividedDummy: 30
   gameObjectGenerator: {fileID: 114165213004850440}
@@ -190,6 +190,7 @@ MonoBehaviour:
   - {fileID: 114655919451498580, guid: 0b557eb23e2bd69458c3d47dad8153b0, type: 2}
   - {fileID: 114845412107064392, guid: 1e76beb99197f9d43b574f9466c56b83, type: 2}
   - {fileID: 114937291432270602, guid: 25cfb85ca36d828478dec6f65d6e5a6d, type: 2}
+  - {fileID: 114336226512756426, guid: 45a53ad77f9b619478485d3c7761c2c1, type: 2}
   tileTypeChecker:
   - {fileID: 114228678349733010, guid: 04f3ef1cc470fd949aced5dcdf482a62, type: 2}
   - {fileID: 114425309080331594, guid: a9f5866004b6f9b4b8433645ec42460d, type: 2}
@@ -198,7 +199,6 @@ MonoBehaviour:
   - {fileID: 114953422115972556, guid: 46fa2ffe203c51c4d89f213ca4dfbc7f, type: 2}
   - {fileID: 114451113824776162, guid: b9f70d5ad19ce0d4ba59248f53ecc789, type: 2}
   - {fileID: 114160587794194622, guid: 267ff250352b79947a3136793afdb02d, type: 2}
-  - {fileID: 114099586338409010, guid: 3157e2170ee2f16428ac323ca02ac479, type: 2}
 --- !u!114 &114639821160588088
 MonoBehaviour:
   m_ObjectHideFlags: 1

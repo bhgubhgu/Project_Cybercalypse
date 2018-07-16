@@ -31,7 +31,7 @@ public class CGridDrivenContentsGenerator : MonoBehaviour
     public Vector3 PlayerStartPosition
     {
         get { return playerStartPosition; }
-        set { playerStartPosition = new Vector3(value.x * TILE_LENGTH, value.y * TILE_LENGTH); }
+        set { playerStartPosition = new Vector3(value.x * TILE_LENGTH * 2, value.y * TILE_LENGTH * 2); }
     }
 
     private CVirtualCoordGenerator virtualCoordGenerator;
@@ -67,6 +67,28 @@ public class CGridDrivenContentsGenerator : MonoBehaviour
         // generator를 이용해여 맵 구성요소 생성
         virtualCoordGenerator.GenerateVirtualCoord();
         gameObjectGenerator.GenerateContents();
+
+        Vector2Int playerStartPos = new Vector2Int(StartChamberPos.x * virtualCoordGenerator.chamberWidth + virtualCoordGenerator.chamberWidth / 2, StartChamberPos.y * virtualCoordGenerator.chamberHeight + virtualCoordGenerator.chamberHeight / 2);
+        while(TileDict[playerStartPos] != ETileType.Empty)
+        {
+            if(TileDict.ContainsKey(new Vector2Int(playerStartPos.x + 1, playerStartPos.y)))
+            {
+                playerStartPos = new Vector2Int(playerStartPos.x + 1, playerStartPos.y);
+            }
+            else if(TileDict.ContainsKey(new Vector2Int(playerStartPos.x - 1, playerStartPos.y)))
+            {
+                playerStartPos = new Vector2Int(playerStartPos.x - 1, playerStartPos.y);
+            }
+            else if(TileDict.ContainsKey(new Vector2Int(playerStartPos.x, playerStartPos.y - 1)))
+            {
+                playerStartPos = new Vector2Int(playerStartPos.x, playerStartPos.y - 1);
+            }
+            else if(TileDict.ContainsKey(new Vector2Int(playerStartPos.x, playerStartPos.y + 1)))
+            {
+                playerStartPos = new Vector2Int(playerStartPos.x, playerStartPos.y + 1);
+            }
+        }
+        PlayerStartPosition = new Vector3(playerStartPos.x, playerStartPos.y, 0.0f);
     }
 
     private void checkPossibility()

@@ -13,7 +13,7 @@ OcclusionCullingSettings:
 --- !u!104 &2
 RenderSettings:
   m_ObjectHideFlags: 0
-  serializedVersion: 8
+  serializedVersion: 9
   m_Fog: 0
   m_FogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   m_FogMode: 3
@@ -39,6 +39,7 @@ RenderSettings:
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
   m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -54,11 +55,10 @@ LightmapSettings:
     m_EnableBakedLightmaps: 0
     m_EnableRealtimeLightmaps: 0
   m_LightmapEditorSettings:
-    serializedVersion: 9
+    serializedVersion: 10
     m_Resolution: 2
     m_BakeResolution: 40
-    m_TextureWidth: 1024
-    m_TextureHeight: 1024
+    m_AtlasSize: 1024
     m_AO: 0
     m_AOMaxDistance: 1
     m_CompAOExponent: 1
@@ -26026,6 +26026,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114165213004850440, guid: 93e12d1805939904a996ee788822e394,
+        type: 2}
+      propertyPath: tileTypeChecker.Array.size
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4495908219822158, guid: 93e12d1805939904a996ee788822e394, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -26057,6 +26062,83 @@ Prefab:
     - target: {fileID: 4495908219822158, guid: 93e12d1805939904a996ee788822e394, type: 2}
       propertyPath: m_RootOrder
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114058378174521950, guid: 93e12d1805939904a996ee788822e394,
+        type: 2}
+      propertyPath: numOfChamberInVertical
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114058378174521950, guid: 93e12d1805939904a996ee788822e394,
+        type: 2}
+      propertyPath: numOfChamberInHorizontal
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 114005081210834882, guid: 93e12d1805939904a996ee788822e394,
+        type: 2}
+      propertyPath: chamberHeight
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 114005081210834882, guid: 93e12d1805939904a996ee788822e394,
+        type: 2}
+      propertyPath: chamberWidth
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 114058378174521950, guid: 93e12d1805939904a996ee788822e394,
+        type: 2}
+      propertyPath: possibilityOfContinuousDummy
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 114058378174521950, guid: 93e12d1805939904a996ee788822e394,
+        type: 2}
+      propertyPath: possibilityOfDividedDummy
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 114165213004850440, guid: 93e12d1805939904a996ee788822e394,
+        type: 2}
+      propertyPath: tileTypeChecker.Array.data[7]
+      value: 
+      objectReference: {fileID: 114160587794194622, guid: 267ff250352b79947a3136793afdb02d,
+        type: 2}
+    - target: {fileID: 114165213004850440, guid: 93e12d1805939904a996ee788822e394,
+        type: 2}
+      propertyPath: tileTypeChecker.Array.data[1]
+      value: 
+      objectReference: {fileID: 114610103043794562, guid: cdf966b6d51778a4e94ac2a2dd5b6e43,
+        type: 2}
+    - target: {fileID: 114165213004850440, guid: 93e12d1805939904a996ee788822e394,
+        type: 2}
+      propertyPath: tileTypeChecker.Array.data[2]
+      value: 
+      objectReference: {fileID: 114197652990421718, guid: d87e33799b6ada344a5219073c683230,
+        type: 2}
+    - target: {fileID: 114165213004850440, guid: 93e12d1805939904a996ee788822e394,
+        type: 2}
+      propertyPath: tileTypeChecker.Array.data[3]
+      value: 
+      objectReference: {fileID: 114953422115972556, guid: 46fa2ffe203c51c4d89f213ca4dfbc7f,
+        type: 2}
+    - target: {fileID: 114165213004850440, guid: 93e12d1805939904a996ee788822e394,
+        type: 2}
+      propertyPath: tileTypeChecker.Array.data[4]
+      value: 
+      objectReference: {fileID: 114451113824776162, guid: b9f70d5ad19ce0d4ba59248f53ecc789,
+        type: 2}
+    - target: {fileID: 114165213004850440, guid: 93e12d1805939904a996ee788822e394,
+        type: 2}
+      propertyPath: tileTypeChecker.Array.data[5]
+      value: 
+      objectReference: {fileID: 114160587794194622, guid: 267ff250352b79947a3136793afdb02d,
+        type: 2}
+    - target: {fileID: 114165213004850440, guid: 93e12d1805939904a996ee788822e394,
+        type: 2}
+      propertyPath: tileTypeChecker.Array.data[6]
+      value: 
+      objectReference: {fileID: 114160587794194622, guid: 267ff250352b79947a3136793afdb02d,
+        type: 2}
+    - target: {fileID: 114005081210834882, guid: 93e12d1805939904a996ee788822e394,
+        type: 2}
+      propertyPath: numOfSimulation
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 93e12d1805939904a996ee788822e394, type: 2}

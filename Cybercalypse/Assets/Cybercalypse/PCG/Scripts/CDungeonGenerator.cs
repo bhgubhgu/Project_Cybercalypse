@@ -121,7 +121,7 @@ public class CDungeonGenerator : AContentsGenerator
 
         foreach (KeyValuePair<Vector2Int, ETileType> tile in tileDict)
         {
-            for (ETileType type = ETileType.Ground; type < ETileType.Empty; type++)
+            for (ETileType type = ETileType.Ground; type < ETileType.Portal - 1; type++)
             {
                 if (tile.Value == type && elementDict[type].Count != 0)
                 {
