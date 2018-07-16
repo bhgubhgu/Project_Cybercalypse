@@ -31,10 +31,12 @@ public class TestShop : MonoBehaviour
             playerInventory.SetActive(false);
             playerSelect.SetActive(false);
 
+            TestShop.isShopOpen = false;
+            TestPlayerInventoryOnOff.isOnInventory = false;
+
             this.GetComponent<BoxCollider2D>().enabled = true;
         }
-
-        if (Physics2D.OverlapCircle(this.transform.position, 0.1f, 1 << 9))
+        else if (Physics2D.OverlapCircle(this.transform.position, 0.1f, 1 << 9))
         {
             this.GetComponent<SpriteRenderer>().color = new Vector4(0, 1, 0, 1);
 
