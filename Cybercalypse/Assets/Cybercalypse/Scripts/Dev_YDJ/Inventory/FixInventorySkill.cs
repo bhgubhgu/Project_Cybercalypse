@@ -35,9 +35,9 @@ public class FixInventorySkill : ASkill, IBeginDragHandler, IDragHandler, IDropH
 
         ItemName = other.ItemName;
         ItemDesc = other.ItemDesc;
-        ItemIcon = new Sprite();
+        //ItemIcon = new Sprite();
         ItemIcon = other.ItemIcon;
-        ItemSubs = new Sprite();
+        //ItemSubs = new Sprite();
         ItemSubs = other.ItemSubs;
         ItemCategory = other.ItemCategory;
         TalentCategory= other.TalentCategory;

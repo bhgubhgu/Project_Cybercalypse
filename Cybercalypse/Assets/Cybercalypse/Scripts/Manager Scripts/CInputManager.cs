@@ -9,7 +9,7 @@ public class CInputManager : SingleTonManager<CInputManager>
     /// 작성자 : 구용모, 윤동준
     /// 스크립트 : CyberCalypse의 Player의 Input을 관리하는 매니저 스크립트
     /// 최초 작성일 : . . .
-    /// 최종 수정일 : 2018.07.10
+    /// 최종 수정일 : 2018.07.14
     /// </summary>
 
     //리팩토링시 팩토리 패턴 내부의 모든 메소드들 private 처리  
@@ -60,6 +60,7 @@ public class CInputManager : SingleTonManager<CInputManager>
     public delegate void MoveInput(float inputHMoveValue);
     public delegate bool Command(bool isCheckInput);
     public delegate float MoveCommand(float inputHMoveValue);
+    public delegate int RunInputCommand(float inputHMoveValue);
     #endregion
 
     #region public
@@ -77,12 +78,15 @@ public class CInputManager : SingleTonManager<CInputManager>
     public event UniqueInput Interact;
 
     public event MoveInput PlayerHMove;
-    public event MoveInput HRun;
+    public event MoveInput PlayerHRun;
     public event MoveInput PlayerVMove;
 
     //move event Command
     public event MoveCommand HMoveCommand;
     public event MoveCommand VMoveCommand;
+
+    //run event Command
+    public event RunInputCommand HRunCountCommand;
 
     //menu move event
     public event MoveInput HMenuMove;
@@ -121,6 +125,9 @@ public class CInputManager : SingleTonManager<CInputManager>
         /* 플레이어 */
         inputHMoveValue = HMoveCommand(inputHMoveValue);
         inputVMoveValue = VMoveCommand(inputVMoveValue);
+
+        runCount = HRunCountCommand(HMoveCommand(inputHMoveValue));
+
         isDownCharacterJumpKey = JumpCommand(isDownCharacterJumpKey);
         isDownCharacterDashKey = DashCommand(isDownCharacterDashKey);
 
@@ -192,6 +199,10 @@ public class CInputManager : SingleTonManager<CInputManager>
                     {
                         PlayerHMove(inputHMoveValue);
                     }
+                    else if(runCount >= 2)
+                    {
+                        PlayerHRun(inputHMoveValue);
+                    }
 
                     PlayerVMove(inputVMoveValue); //수직이동
 
@@ -237,7 +248,7 @@ abstract class AbsCommand
     public abstract float HMove(float hInputValue);
     public abstract float VMove(float vInputValue);
 
-    public abstract int HRun(); // 몇초안에 2번 누르면 달리기 실행
+    public abstract int HRun(float hInputValue); // 몇초안에 2번 누르면 달리기 실행
 
     public abstract bool isJumpInput(bool isDownJumpKey);
     public abstract bool isDashInput(bool isDownDashKey);
@@ -263,32 +274,38 @@ class PlayerCommand : AbsCommand
     private bool isJumpActing;
     private bool isDashActing;
 
-    //!< 커서
+    #region  커서
     private float cursorHMoveValue;
     private float cursorVMoveValue;
+#endregion
 
-    //스킬 사용 키
+    #region  //스킬 사용 키
     private bool isSkill1Acting;
     private bool isSkill2Acting;
     private bool isSkill3Acting;
     private bool isSkill4Acting;
     private bool isSkillMouseLeftActing;
     private bool isSkillMouseRightActing;
+    #endregion
 
-    //상호작용
+    #region//상호작용
     private bool isInteracting;
+    #endregion
 
-    //run을 위한 변수 (수정 예정)
+    #region   //run을 위한 변수 (수정 예정)
+    private float delayTime;
     private int rightRunCount;
     private int leftRunCount;
-    private IEnumerator stopLeftCount;
-    private IEnumerator stopRightCount;
+#endregion
+
     #endregion
 
     public PlayerCommand()
     {
         CInputManager.instance.HMoveCommand += HMove;
         CInputManager.instance.VMoveCommand += VMove;
+
+        CInputManager.instance.HRunCountCommand += HRun;
 
         CInputManager.instance.JumpCommand += isJumpInput;
         CInputManager.instance.DashCommand += isDashInput;
@@ -304,9 +321,6 @@ class PlayerCommand : AbsCommand
 
         CInputManager.instance.HMenuMoveCommand += IsHMenuMove;
         CInputManager.instance.VMenuMoveCommand += IsVMenuMove;
-
-        stopLeftCount = LeftRunCount();
-        stopRightCount = RightRunCount();
     }
 
     #region override Method
@@ -353,64 +367,42 @@ class PlayerCommand : AbsCommand
         return hInputValue;
     }
 
-    public override int HRun() //매니저에서 코루틴을 쓰지 않는 방법
+    public override int HRun(float hInputValue) //매니저에서 코루틴을 쓰지 않는 방법
     {
-        //키를 다르게 눌렸을때 가속을 못하게 한다.(한쪽 키만 빠르게 따닥 눌렸을때만 뛰기)
-        bool isDownLeftKey = Input.GetKeyDown(KeyCode.A);
-        bool isDownRightKey = Input.GetKeyDown(KeyCode.D);
-        bool isDownRightKeyUp = Input.GetKeyUp(KeyCode.D);
-        bool isDownLeftKeyUp = Input.GetKeyUp(KeyCode.A);
-        bool isRightKey = Input.GetKey(KeyCode.D);
-        bool isLeftKey = Input.GetKey(KeyCode.A);
+        delayTime += Time.deltaTime;
 
-        if (isDownRightKey)
+        if (Input.GetButtonDown("Move Horizontally") && hInputValue > 0.0f && delayTime < 1f)
         {
             rightRunCount++;
+            rightRunCount = Mathf.Clamp(rightRunCount, 0, 3);
             return rightRunCount;
         }
-        else if (isDownLeftKey)
+        else if (Input.GetButtonDown("Move Horizontally") && hInputValue < 0.0f && delayTime < 1f)
         {
             leftRunCount++;
+            leftRunCount = Mathf.Clamp(leftRunCount, 0, 3);
             return leftRunCount;
         }
-
-        if (isDownRightKeyUp)
+        else if(hInputValue > 0.0f)
         {
             return rightRunCount;
         }
-        else if (isDownLeftKeyUp)
+        else if(hInputValue < 0.0f)
         {
             return leftRunCount;
         }
-
-        if (isLeftKey)
-        {
-            stopLeftCount = LeftRunCount();
-            return leftRunCount;
-        }
-        else if (isRightKey)
-        {
-            stopRightCount = RightRunCount();
-            return rightRunCount;
-        }
-        else
+        else if(hInputValue ==0 && delayTime < 1f)
         {
             return 0;
         }
+        else
+        {
+            rightRunCount = 0;
+            leftRunCount = 0;
+            delayTime = 0;
+            return 0;
+        }
     }
-
-    IEnumerator LeftRunCount()
-    {
-        yield return new WaitForSeconds(0.2f);
-        leftRunCount = 0;
-    }
-
-    IEnumerator RightRunCount()
-    {
-        yield return new WaitForSeconds(0.2f);
-        rightRunCount = 0;
-    }
-
 
     public override float VMove(float vInputValue)
     {

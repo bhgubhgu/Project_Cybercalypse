@@ -26,57 +26,22 @@ public class CGameManager : SingleTonManager<CGameManager>
     public List<Sprite> testSkillList;
     public List<Sprite> testAbilityList;
     public List<Sprite> testWeaponList;
-    public List<Sprite> testMaskList;
-    public List<Sprite> testSuitList;
+    public List<Sprite> testArmorList;
+    //public List<Sprite> testSuitList;
 
     private SpriteRenderer sprite;
-    
-    //!< GameOver
-    private GameObject fadeObject;
-    private GameObject retryText;
-    private GameObject retryButton;
 
-    private Text content;
 
     private new void Awake()
     {
         base.Awake();
 
-        testSkillList = new List<Sprite>();
-        testAbilityList = new List<Sprite>();
-        testWeaponList = new List<Sprite>();
-        testMaskList = new List<Sprite>();
-        testSuitList = new List<Sprite>();
-        sprite = playerObject.GetComponent<SpriteRenderer>();
-
-        fadeObject = transform.Find("Fade").gameObject;
-        fadeObject.GetComponent<SpriteRenderer>().color = Color.clear;
-
+        playerObject = GameObject.Find("Player").gameObject;
         skillLibrary = GameObject.Find("Skill Library").gameObject;
         abilityLibrary = GameObject.Find("Ability Library").gameObject;
         equipmentLibrary = GameObject.Find("Equipment Library").gameObject;
 
-        testSkillList.Add(GameObject.Find("NullSkill").gameObject.GetComponent<SpriteRenderer>().sprite);
-        testSkillList.Add(GameObject.Find("Skill1").gameObject.GetComponent<SpriteRenderer>().sprite);
-        testSkillList.Add(GameObject.Find("Skill2").gameObject.GetComponent<SpriteRenderer>().sprite);
-        testSkillList.Add(GameObject.Find("Skill3").gameObject.GetComponent<SpriteRenderer>().sprite);
-        testSkillList.Add(GameObject.Find("Skill4").gameObject.GetComponent<SpriteRenderer>().sprite);
-        testSkillList.Add(GameObject.Find("Skill5").gameObject.GetComponent<SpriteRenderer>().sprite);
-        testSkillList.Add(GameObject.Find("Skill6").gameObject.GetComponent<SpriteRenderer>().sprite);
-
-        testWeaponList.Add(GameObject.Find("NullWeapon").gameObject.GetComponent<SpriteRenderer>().sprite);
-        testWeaponList.Add(GameObject.Find("Weapon1").gameObject.GetComponent<SpriteRenderer>().sprite);
-
-        testMaskList.Add(GameObject.Find("NullMask").gameObject.GetComponent<SpriteRenderer>().sprite);
-        testMaskList.Add(GameObject.Find("Mask1").gameObject.GetComponent<SpriteRenderer>().sprite);
-
-        testSuitList.Add(GameObject.Find("NullSuit").gameObject.GetComponent<SpriteRenderer>().sprite);
-        testSuitList.Add(GameObject.Find("Suit1").gameObject.GetComponent<SpriteRenderer>().sprite);
-
-        testAbilityList.Add(GameObject.Find("NullAbility").gameObject.GetComponent<SpriteRenderer>().sprite);
-        testAbilityList.Add(GameObject.Find("Ability1").gameObject.GetComponent<SpriteRenderer>().sprite);
-        testAbilityList.Add(GameObject.Find("Ability2").gameObject.GetComponent<SpriteRenderer>().sprite);
-        testAbilityList.Add(GameObject.Find("Ability3").gameObject.GetComponent<SpriteRenderer>().sprite);
+        sprite = playerObject.GetComponent<SpriteRenderer>();
     }
 
     private void Start()

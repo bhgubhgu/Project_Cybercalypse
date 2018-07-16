@@ -40,9 +40,9 @@ public class CShopSkill : ASkill, IConvertInventorySkill, IPointerClickHandler
 
         skill.ItemName = ItemName;
         skill.ItemDesc = ItemDesc;
-        skill.ItemIcon = new Sprite();
+        //skill.ItemIcon = new Sprite();
         skill.ItemIcon = ItemIcon;
-        skill.ItemSubs = new Sprite();
+        //skill.ItemSubs = new Sprite();
         skill.ItemSubs = ItemSubs;
         //skill.ItemCategory = ItemCategory;
         skill.ItemCategory = EItemCategory.Talent;

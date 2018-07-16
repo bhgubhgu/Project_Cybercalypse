@@ -31,6 +31,7 @@ public class CPlayerAnimation : MonoBehaviour
     {
         /* 인풋매니저의 인스턴스가 먼저 생성된 다음에 델리게이트로 등록 가능하다. 그래서 Start에서 인풋매니저의 델리게이트에 등록한다.*/
         CInputManager.instance.PlayerHMove += HMoveAni;
+        CInputManager.instance.PlayerHRun += HRunAni;
         CInputManager.instance.PlayerVMove += VMoveAni;
         CInputManager.instance.Jump += JumpAni;
         CInputManager.instance.Dash += DashAni;
@@ -38,7 +39,6 @@ public class CPlayerAnimation : MonoBehaviour
         CInputManager.instance.Skill2 += SkillAni;
         CInputManager.instance.Skill3 += SkillAni;
         CInputManager.instance.Skill4 += SkillAni;
-        CInputManager.instance.HRun += HRunAni;
 
         skillSlots[0] = playerController.CActSkill1;
         skillSlots[1] = playerController.CActSkill2;
