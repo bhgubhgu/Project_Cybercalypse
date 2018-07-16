@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Reflection;
 using UnityEngine;
 
 public class CInventory : MonoBehaviour {
@@ -82,7 +83,11 @@ public class CInventory : MonoBehaviour {
                 break;
             case "Skill":
                 //skillInventory[SkillInventoryIndex]
-                GetEmptySlot(skillPanel);
+                var boo = GetEmptySlot(skillPanel);
+                Debug.Log(boo.name);
+                var emptySlot = GetEmptySlot(skillPanel);
+                PasteComponentValues<CSkill>(Item.GetComponent<CSkill>(), GetEmptySlot(skillPanel));
+                
                 break;
             case "Ability":
                 break;
@@ -107,9 +112,51 @@ public class CInventory : MonoBehaviour {
         for (int i = 0; i < panel.transform.childCount; i++)
         {
             if (panel.transform.GetChild(i).GetComponent<CSlot>().IsEmpty)
-                return panel.transform.GetChild(0).gameObject;
+                return panel.transform.GetChild(i).gameObject;
         }
         return null;
+    }
+
+    //private static T PasteComponentValues<T>(T original, GameObject destination) where T : Component
+    //{
+    //    System.Type type = original.GetType();
+    //    Component copy = destination.GetComponent(type);
+    //    System.Reflection.FieldInfo[] fields = type.GetFields();
+    //    foreach (System.Reflection.FieldInfo field in fields)
+    //    {
+    //        field.SetValue(copy, field.GetValue(original));
+    //    }
+
+    //    return copy as T;
+    //}
+
+    private static void PasteComponentValues<T>(T original, GameObject destination) where T : Component
+    {
+        System.Type type = original.GetType();
+        var copy = destination.transform.GetChild(0).GetComponent(type);
+        PropertyInfo[] properties = type.GetProperties();
+
+        int count = 0;
+
+        foreach (var property in properties)
+        {
+            if(property.DeclaringType.Equals(typeof(CSkill)))
+            {
+                Debug.Log(property);
+                Debug.Log(property.GetValue(original));
+                property.SetValue(copy, property.GetValue(original));
+                count++;
+            }
+
+            //Debug.Log(property.DeclaringType.Equals(typeof(AItem)));
+            //if (property.IsDefined(property.GetType(), true))
+            //{
+            //    property.SetValue(copy, property.GetValue(original));
+            //    Debug.Log(property);
+            //    Debug.Log(property.GetValue(original));
+            //}
+        }
+        Debug.Log(count);
     }
 
     /* Legarcy Code

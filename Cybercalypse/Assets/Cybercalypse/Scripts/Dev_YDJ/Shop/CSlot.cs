@@ -14,10 +14,6 @@ public class CSlot : MonoBehaviour, IPointerClickHandler {
     private void Start()
     {
         //!< Slot의 자식에 Item이 없으면 empty상태, 있으면 false
-        //if (itemTransform.GetComponent<UnityEngine.UI.Image>().sprite.name.Equals("UISprite"))
-        //{ IsEmpty = true; }
-        //else
-        //{ IsEmpty = false; }
 
         Transform itemTransform = transform.GetChild(0);
         string tag = itemTransform.tag;
@@ -35,6 +31,11 @@ public class CSlot : MonoBehaviour, IPointerClickHandler {
             default:
                 break;
         }
+
+        if (itemTransform.GetComponent<UnityEngine.UI.Image>().sprite.name.Equals("UISprite"))
+        { IsEmpty = true; }
+        else
+        { IsEmpty = false; }
     }
 
     public void OnPointerClick(PointerEventData eventData)
