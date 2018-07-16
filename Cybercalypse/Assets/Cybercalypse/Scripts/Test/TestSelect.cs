@@ -5,22 +5,32 @@ using UnityEngine.UI;
 
 public class TestSelect : MonoBehaviour
 {
+#region select index
     private int selectSlotIndex = 0;
     private int selelctButtonIndex = 0;
+    private int selectCategoryIndex = 0;
+    #endregion
 
+#region slot open check
     private bool isOpenWeaponSlot;
     private bool isOpenArmorSlot;
     private bool isOpenSkillSlot;
     private bool isOpenAbilitySlot;
+    #endregion
 
+#region select position
     private Vector3 initSelectPosition;
+    #endregion
 
+#region gameobject array
     private GameObject[] itemSlotList;
     private GameObject[] itemButtonList;
     private GameObject[] shopSlotList;
     private GameObject[] inventorySlotCategoryList;
     private GameObject[] inventoryShopSlotList;
+    #endregion
 
+#region gameobject
     private GameObject playerInventory;
     private GameObject select;
     private GameObject weaponButton;
@@ -33,11 +43,14 @@ public class TestSelect : MonoBehaviour
     private GameObject abilityCategory;
 
     private GameObject shopInventory;
+    #endregion
 
+#region button
     private Button weaponBtn;
     private Button armorBtn;
     private Button skillBtn;
     private Button abilityBtn;
+#endregion
 
     private void Awake()
     {
@@ -65,7 +78,7 @@ public class TestSelect : MonoBehaviour
         itemSlotList = new GameObject[6]; //인벤토리 안의 아이템 슬롯
         itemButtonList = new GameObject[4]; //인벤토리 안의 슬롯 버튼
         shopSlotList = new GameObject[9 + itemSlotList.Length]; //상점 안의 아이템 슬롯( + 인벤토리까지)
-        inventorySlotCategoryList = new GameObject[3]; //인벤토리 - 카테고리 버튼 - 장착슬롯
+        inventorySlotCategoryList = new GameObject[4]; //인벤토리 - 카테고리 버튼 - 장착슬롯
         inventoryShopSlotList = new GameObject[2]; // 인벤토리 - 상점
     }
 
@@ -97,6 +110,11 @@ public class TestSelect : MonoBehaviour
             shopSlotList[y] = shopInventory.transform.GetChild(k).gameObject;
         }
 
+        inventorySlotCategoryList[0] = weaponCategory;
+        inventorySlotCategoryList[1] = armorCategory;
+        inventorySlotCategoryList[2] = skillCategory;
+        inventorySlotCategoryList[3] = abilityCategory;
+
         CInputManager.instance.HMenuMove += HInventorySlotMove;
         CInputManager.instance.VMenuMove += VInventorySlotMove;
         CInputManager.instance.HShopMove += HShopMove;
@@ -115,6 +133,7 @@ public class TestSelect : MonoBehaviour
             isOpenSkillSlot = false;
             isOpenArmorSlot = false;
             isOpenAbilitySlot = false;
+            selectCategoryIndex = 0;
         }
         else if (this.transform.position == armorButton.transform.position && Input.GetKeyDown(KeyCode.Z))
         {
@@ -124,6 +143,7 @@ public class TestSelect : MonoBehaviour
             isOpenSkillSlot = false;
             isOpenArmorSlot = true;
             isOpenAbilitySlot = false;
+            selectCategoryIndex = 0;
         }
         else if (this.transform.position == skillButton.transform.position && Input.GetKeyDown(KeyCode.Z))
         {
@@ -133,6 +153,7 @@ public class TestSelect : MonoBehaviour
             isOpenSkillSlot = true;
             isOpenArmorSlot = false;
             isOpenAbilitySlot = false;
+            selectCategoryIndex = 0;
         }
         else if (this.transform.position == abilityButton.transform.position && Input.GetKeyDown(KeyCode.Z))
         {
@@ -142,6 +163,7 @@ public class TestSelect : MonoBehaviour
             isOpenSkillSlot = false;
             isOpenArmorSlot = false;
             isOpenAbilitySlot = true;
+            selectCategoryIndex = 0;
         }
 
         if (this.transform.position == weaponButton.transform.position && Input.GetKeyUp(KeyCode.Z))
@@ -160,6 +182,33 @@ public class TestSelect : MonoBehaviour
         {
             abilityButton.GetComponent<Image>().sprite = abilityButton.GetComponent<TestClickListner>().initImage;
         }
+
+
+        if (((2 < selectSlotIndex && selectSlotIndex < 6) || (8 < selectSlotIndex && selectSlotIndex < 16)) && Input.GetKeyDown(KeyCode.Z) && TestShop.isShopOpen)
+        {
+            shopSlotList[selectSlotIndex].transform.GetChild(0).GetComponent<TestShopInventorySlot>().BuyItemUseKeyBoard();
+        }
+        else if((select.transform.position == itemSlotList[0].transform.position 
+            || select.transform.position == itemSlotList[1].transform.position 
+            || select.transform.position == itemSlotList[2].transform.position 
+            || select.transform.position == itemSlotList[3].transform.position 
+            || select.transform.position == itemSlotList[4].transform.position 
+            || select.transform.position == itemSlotList[5].transform.position) &&  Input.GetKeyDown(KeyCode.Z) && TestShop.isShopOpen)
+        {
+            if(selectSlotIndex > 5 && selectSlotIndex < 9)
+            {
+                itemSlotList[selectSlotIndex - 3].transform.GetChild(0).GetComponent<TestPlayerInventorySlot>().SellItemUseKeyBoard();
+            }
+            else
+            {
+                itemSlotList[selectSlotIndex].transform.GetChild(0).GetComponent<TestPlayerInventorySlot>().SellItemUseKeyBoard();
+            }
+        }
+
+        if ((select.transform.position == itemSlotList[0].transform.position || select.transform.position == itemSlotList[1].transform.position || select.transform.position == itemSlotList[2].transform.position || select.transform.position == itemSlotList[3].transform.position || select.transform.position == itemSlotList[4].transform.position || select.transform.position == itemSlotList[5].transform.position) && Input.GetKeyDown(KeyCode.Z) && TestPlayerInventoryOnOff.isOnInventory)
+        {
+            itemSlotList[selectSlotIndex].transform.GetChild(0).GetComponent<TestPlayerInventorySlot>().SetItemUseKeyBoard(itemSlotList[selectSlotIndex]);
+        }
     }
 
     private void HInventorySlotMove(float inputHValue)
@@ -167,15 +216,57 @@ public class TestSelect : MonoBehaviour
         if (inputHValue > 0)
         {
             //버튼의 움직임들
-            if (select.transform.position == itemButtonList[0].transform.position || select.transform.position == itemButtonList[1].transform.position || select.transform.position == itemButtonList[2].transform.position || select.transform.position == itemButtonList[3].transform.position)
+            if (select.transform.position == itemButtonList[0].transform.position || select.transform.position == itemButtonList[1].transform.position || select.transform.position == itemButtonList[2].transform.position || select.transform.position == itemButtonList[3].transform.position || select.transform.position == inventorySlotCategoryList[2].transform.GetChild(0).transform.position || select.transform.position == inventorySlotCategoryList[2].transform.GetChild(1).transform.position || select.transform.position == inventorySlotCategoryList[3].transform.GetChild(0).transform.position || select.transform.position == inventorySlotCategoryList[3].transform.GetChild(1).transform.position || select.transform.position == inventorySlotCategoryList[3].transform.GetChild(2).transform.position)
             {
-                return;
+                if (isOpenWeaponSlot) //weapon slot 켜졌을때
+                {
+                    selectCategoryIndex = 0;
+
+                    select.transform.position = inventorySlotCategoryList[0].transform.GetChild(selectCategoryIndex).transform.position;
+                    return;
+                }
+                else if (isOpenArmorSlot) //armor slot 켜졌을때
+                {
+                    selectCategoryIndex = 0;
+
+                    select.transform.position = inventorySlotCategoryList[1].transform.GetChild(selectCategoryIndex).transform.position;
+                    return;
+                }
+                else if (isOpenSkillSlot) //skilll slot 켜졌을때
+                {
+                    select.transform.position = inventorySlotCategoryList[2].transform.GetChild(selectCategoryIndex++).transform.position;
+
+                    if (selectCategoryIndex > 1)
+                    {
+                        selectCategoryIndex = 1;
+                        return;
+                    }
+
+                    return;
+                }
+                else if (isOpenAbilitySlot) //ability slot 켜졌을때
+                {
+
+                    select.transform.position = inventorySlotCategoryList[3].transform.GetChild(selectCategoryIndex++).transform.position;
+
+                    if (selectCategoryIndex > 2)
+                    {
+                        selectCategoryIndex = 2;
+                        return;
+                    }
+
+                    return;
+                }
+                else
+                {
+                    return;
+                }
             }
 
             if (selectSlotIndex == 2 || selectSlotIndex == 5)
             {
                 select.transform.position = itemButtonList[0].transform.position;
-                select.GetComponent<RectTransform>().sizeDelta = itemButtonList[selectSlotIndex].GetComponent<RectTransform>().sizeDelta;
+                select.GetComponent<RectTransform>().sizeDelta = itemButtonList[0].GetComponent<RectTransform>().sizeDelta;
                 return;
             }
 
@@ -200,19 +291,73 @@ public class TestSelect : MonoBehaviour
                 return;
             }
 
-            //인벤토리 내에서만의 움직임
-
-            if (selectSlotIndex == 0)
+            if (select.transform.position == inventorySlotCategoryList[0].transform.GetChild(0).transform.position
+                || select.transform.position == inventorySlotCategoryList[1].transform.GetChild(0).transform.position
+                || select.transform.position == inventorySlotCategoryList[2].transform.GetChild(0).transform.position
+                || select.transform.position == inventorySlotCategoryList[2].transform.GetChild(1).transform.position
+                || select.transform.position == inventorySlotCategoryList[3].transform.GetChild(0).transform.position
+                || select.transform.position == inventorySlotCategoryList[3].transform.GetChild(1).transform.position
+                || select.transform.position == inventorySlotCategoryList[3].transform.GetChild(2).transform.position)
             {
-                selectSlotIndex = itemSlotList.Length;
-            }
+                if (isOpenWeaponSlot) //weapon slot 켜졌을때
+                {
+                    select.transform.position = weaponButton.transform.position;
+                    isOpenWeaponSlot = false;
 
-            select.transform.position = itemSlotList[--selectSlotIndex].transform.position;
-            select.GetComponent<RectTransform>().sizeDelta = itemSlotList[selectSlotIndex].GetComponent<RectTransform>().sizeDelta;
-        }
-        else
-        {
-            return;
+                    inventorySlotCategoryList[0].SetActive(false);
+                    return;
+                }
+                else if (isOpenArmorSlot) //armor slot 켜졌을때
+                {
+                    select.transform.position = armorButton.transform.position;
+                    isOpenArmorSlot = false;
+                    inventorySlotCategoryList[1].SetActive(false);
+                    return;
+                }
+                else if (isOpenSkillSlot) //skilll slot 켜졌을때
+                {
+                    if (selectCategoryIndex < 1)
+                    {
+                        select.transform.position = skillButton.transform.position;
+                        isOpenSkillSlot = false;
+                        inventorySlotCategoryList[2].SetActive(false);
+                        return;
+                    }
+                    else
+                    {
+                        select.transform.position = inventorySlotCategoryList[2].transform.GetChild(--selectCategoryIndex).transform.position;
+                        return;
+                    }              
+                }
+                else if (isOpenAbilitySlot) //ability slot 켜졌을때
+                {
+                    if (selectCategoryIndex < 1)
+                    {
+                        select.transform.position = abilityButton.transform.position;
+                        isOpenAbilitySlot = false;
+                        inventorySlotCategoryList[3].SetActive(false);
+                        return;
+                    }
+                    else
+                    {
+                        select.transform.position = inventorySlotCategoryList[3].transform.GetChild(--selectCategoryIndex).transform.position;
+                        return;
+                    }
+                }          
+            }
+            else
+            {
+                //인벤토리 내에서만의 움직임
+
+                if (selectSlotIndex == 0)
+                {
+                    selectSlotIndex = itemSlotList.Length;
+                }
+
+                select.transform.position = itemSlotList[--selectSlotIndex].transform.position;
+                select.GetComponent<RectTransform>().sizeDelta = itemSlotList[selectSlotIndex].GetComponent<RectTransform>().sizeDelta;
+                return;
+            }
         }
     }
 
@@ -228,7 +373,7 @@ public class TestSelect : MonoBehaviour
                 }
 
                 select.transform.position = itemButtonList[--selelctButtonIndex].transform.position;
-                select.GetComponent<RectTransform>().sizeDelta = itemButtonList[selectSlotIndex].GetComponent<RectTransform>().sizeDelta;
+                select.GetComponent<RectTransform>().sizeDelta = itemButtonList[selelctButtonIndex].GetComponent<RectTransform>().sizeDelta;
                 return;
             }
 
@@ -259,7 +404,7 @@ public class TestSelect : MonoBehaviour
                 //인벤토리 내에서만의 움직임
 
                 select.transform.position = itemButtonList[++selelctButtonIndex].transform.position;
-                select.GetComponent<RectTransform>().sizeDelta = itemButtonList[selectSlotIndex].GetComponent<RectTransform>().sizeDelta;
+                select.GetComponent<RectTransform>().sizeDelta = itemButtonList[selelctButtonIndex].GetComponent<RectTransform>().sizeDelta;
                 return;
             }
 
@@ -301,6 +446,10 @@ public class TestSelect : MonoBehaviour
 
             select.transform.position = shopSlotList[--selectSlotIndex].transform.position;
             select.GetComponent<RectTransform>().sizeDelta = shopSlotList[selectSlotIndex].GetComponent<RectTransform>().sizeDelta;
+        }
+        else if(inputHValue == 0 && ((2 < selectSlotIndex && selectSlotIndex < 6) || (9 < selectSlotIndex && selectSlotIndex < 16) ) && Input.GetKeyDown(KeyCode.Z))
+        {
+            shopSlotList[selectSlotIndex].GetComponent<TestShopInventorySlot>().BuyItemUseKeyBoard();
         }
     }
 

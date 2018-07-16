@@ -50,4 +50,32 @@ public class TestShopInventorySlot : MonoBehaviour
             }
        }
     }
+
+    public void BuyItemUseKeyBoard()
+    {
+        for (int i = 0; i < 6; i++) //현재 아이템 슬롯 6개
+        {
+            if (slotDictionary[i].GetComponent<Image>().sprite.name == "NullSkill" || slotDictionary[i].GetComponent<Image>().sprite.name == "NullAbility" || slotDictionary[i].GetComponent<Image>().sprite.name == "NullWeapon" || slotDictionary[i].GetComponent<Image>().sprite.name == "NullArmor")
+            {
+                TestTradeSystem.instance.Trade(this.transform.GetComponent<Image>().sprite, 1);
+
+                if (TestTradeSystem.instance.isCantBuy)
+                {
+                    return;
+                }
+                else
+                {
+                    slotDictionary[i].GetComponent<Image>().sprite = this.transform.GetComponent<Image>().sprite;
+                    return;
+                }
+            }
+            else
+            {
+                if (i == playerInventory.transform.childCount - 2)
+                {
+                    return;
+                }
+            }
+        }
+    }
 }
