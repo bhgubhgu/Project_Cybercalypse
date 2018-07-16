@@ -63,4 +63,21 @@ public class TestPlayerInventorySlot : MonoBehaviour, IBeginDragHandler, IDragHa
         this.gameObject.GetComponent<CanvasGroup>().blocksRaycasts = true;
         this.transform.localPosition = new Vector3(0, 0);
     }
+
+    public void SellItemUseKeyBoard()
+    {
+        if (Input.GetKeyDown(KeyCode.Z) && TestShop.isShopOpen)
+        {
+            if (this.GetComponent<Image>().sprite.name != "NullSkill" || this.GetComponent<Image>().sprite.name != "NullAbility")
+            {
+                TestTradeSystem.instance.Trade(this.GetComponent<Image>().sprite, 0);
+                this.GetComponent<Image>().sprite = nullSprite;
+            }
+        }
+    }
+
+    public void SetItemUseKeyBoard(GameObject categorySlot)
+    {
+        Debug.Log("wowowow");       
+    }
 }
