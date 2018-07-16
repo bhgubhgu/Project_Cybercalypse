@@ -1,9 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TestClickListner : MonoBehaviour
 {
+    public Sprite clickImage;
+
+    private Sprite initImage;
+
     private GameObject weaponCategorySlot;
     private GameObject armorCategorySlot;
     private GameObject skillCategorySlot;
@@ -11,6 +16,8 @@ public class TestClickListner : MonoBehaviour
 
     private void Awake()
     {
+        initImage = this.GetComponent<Image>().sprite;
+
         weaponCategorySlot = GameObject.Find("Weapon Category Inventory").gameObject;
         armorCategorySlot = GameObject.Find("Armor Category Inventory").gameObject;
         skillCategorySlot = GameObject.Find("Skill Category Inventory").gameObject;
@@ -37,6 +44,16 @@ public class TestClickListner : MonoBehaviour
             skillCategorySlot.SetActive(false);
             abilityCategorySlot.SetActive(false);
         }
+    }
+
+    private void OnMouseDown()
+    {
+        this.GetComponent<Image>().sprite = clickImage;
+    }
+
+    private void OnMouseUpAsButton()
+    {
+        this.GetComponent<Image>().sprite = initImage;
     }
 
     private void OnDisable()

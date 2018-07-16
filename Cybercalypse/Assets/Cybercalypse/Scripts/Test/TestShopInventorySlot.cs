@@ -17,7 +17,7 @@ public class TestShopInventorySlot : MonoBehaviour
 
     private void Start()
     {
-        for(int i = 0; i < playerInventory.transform.childCount - 1; i++)
+        for(int i = 0; i < 6 ; i++)
         {
             slotDictionary.Add(i, playerInventory.transform.GetChild(i).transform.GetChild(0).gameObject);
         }
@@ -25,7 +25,7 @@ public class TestShopInventorySlot : MonoBehaviour
 
     private void OnMouseDown()
     {
-       for (int i = 0; i < playerInventory.transform.childCount - 1; i++)
+       for (int i = 0; i < 6 ; i++)
        {
             if (slotDictionary[i].GetComponent<Image>().sprite.name == "NullSkill" || slotDictionary[i].GetComponent<Image>().sprite.name == "NullAbility" || slotDictionary[i].GetComponent<Image>().sprite.name == "NullWeapon" || slotDictionary[i].GetComponent<Image>().sprite.name == "NullArmor")
             {
