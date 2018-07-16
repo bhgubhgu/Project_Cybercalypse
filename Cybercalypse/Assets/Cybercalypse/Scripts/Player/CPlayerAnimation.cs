@@ -18,6 +18,7 @@ public class CPlayerAnimation : MonoBehaviour
     private CSkillLibrary.SkillOffsetDel[] skillSlots = new CSkillLibrary.SkillOffsetDel[6];
     private ASkill.Skill skills;
     private int skillIndex;
+    private bool isRun;
 
     private void Awake()
     {
@@ -52,24 +53,19 @@ public class CPlayerAnimation : MonoBehaviour
         ani.SetBool("isGrounded", control.IsGrounded);
         ani.SetBool("isJumpNow", control.IsJumpNow);
         ani.SetBool("isDashNow", control.IsDashNow);
-    }
-
-    private void OnTriggerEnter2D(Collider2D col)
-    {
-        if (col.gameObject.layer == 25 && !CGameManager.instance.isPlayerInvincible)
-        {
-            ani.SetTrigger("hit");
-        }
+        ani.SetBool("isRun", isRun);
     }
 
     /* delegate 메소드 */
     public void HMoveAni(float inputMoveValueInputManager)
     {
+        isRun = false;
         ani.SetFloat("moveSpeed", Mathf.Abs(control.HorizontalVelocity));
     }
 
     public void HRunAni(float inputMoveValueInputManager)
     {
+        isRun = true;
         ani.SetFloat("moveSpeed", Mathf.Abs(control.HorizontalVelocity));
     }
 
@@ -96,6 +92,11 @@ public class CPlayerAnimation : MonoBehaviour
     //점멸
     public void DashAni(bool isDownCharacterBlinkKeyInputMananger)
     {
+        if(control.IsDashNow)
+        {
+            return;
+        }
+
         ani.SetTrigger("accelerateHorizontally");
     }
 
