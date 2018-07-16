@@ -141,9 +141,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 421d82baed2989b4d87f6fd7c65f13ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numOfSimulation: 10
-  chamberWidth: 10
-  chamberHeight: 3
+  numOfSimulation: 3
+  chamberWidth: 30
+  chamberHeight: 10
 --- !u!114 &114058378174521950
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -156,10 +156,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TILE_LENGTH: 0.16
-  numOfChamberInHorizontal: 30
-  numOfChamberInVertical: 2
-  possibilityOfContinuousDummy: 30
-  possibilityOfDividedDummy: 30
+  numOfChamberInHorizontal: 20
+  numOfChamberInVertical: 5
+  possibilityOfContinuousDummy: 10
+  possibilityOfDividedDummy: 10
   gameObjectGenerator: {fileID: 114165213004850440}
 --- !u!114 &114165213004850440
 MonoBehaviour:
@@ -193,7 +193,6 @@ MonoBehaviour:
   - {fileID: 114336226512756426, guid: 45a53ad77f9b619478485d3c7761c2c1, type: 2}
   tileTypeChecker:
   - {fileID: 114228678349733010, guid: 04f3ef1cc470fd949aced5dcdf482a62, type: 2}
-  - {fileID: 114425309080331594, guid: a9f5866004b6f9b4b8433645ec42460d, type: 2}
   - {fileID: 114610103043794562, guid: cdf966b6d51778a4e94ac2a2dd5b6e43, type: 2}
   - {fileID: 114197652990421718, guid: d87e33799b6ada344a5219073c683230, type: 2}
   - {fileID: 114953422115972556, guid: 46fa2ffe203c51c4d89f213ca4dfbc7f, type: 2}
