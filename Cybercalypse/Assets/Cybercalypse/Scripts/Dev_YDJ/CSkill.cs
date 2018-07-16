@@ -11,4 +11,6 @@ public class CSkill : ASkill {
     public override ETalentCategory TalentCategory { get; set; }
     public override float SkillCastingTime { get; set; }
     public override float SkillCoolDown { get; set; }
+
+    
 }

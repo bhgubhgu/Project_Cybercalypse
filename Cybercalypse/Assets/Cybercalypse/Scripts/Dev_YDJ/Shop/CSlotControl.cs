@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Slot List에 대한 정보를 가지고, Slot들 전체적인 처리를 정의하는 클래스(일종의 관리 성격을 가짐)
+/// </summary>
 public class CSlotControl : MonoBehaviour {
 
     public List<GameObject> Slots;
@@ -19,7 +22,7 @@ public class CSlotControl : MonoBehaviour {
         
     }
 
-    public List<GameObject> GetListRef()
+    public List<GameObject> GetSlotList()
     {
         return Slots;
     }

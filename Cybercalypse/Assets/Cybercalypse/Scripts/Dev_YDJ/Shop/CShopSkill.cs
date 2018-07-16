@@ -58,8 +58,8 @@ public class CShopSkill : ASkill, IConvertInventorySkill, IPointerClickHandler
     public void OnPointerClick(PointerEventData eventData)
     {
         Debug.Log("OnMouseDown from CShopSkill");
-        
-        CUIManager.instance.inventory.AddItem(ConvertToInventorySkill());
+
+        //CUIManager.instance.inventory.AddItem(ConvertToInventorySkill());
     }
 }
 

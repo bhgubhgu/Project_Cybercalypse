@@ -3,23 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class CSlot : MonoBehaviour, IPointerClickHandler
-{
+public class CSlot : MonoBehaviour, IPointerClickHandler {
 
-    // Use this for initialization
-    void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    public bool IsEmpty { get; set; }
 
     public void OnPointerClick(PointerEventData eventData)
     {
         Debug.Log("Click Slot");
-        CInventory.AddItem();
+        CInventory.AddItem(transform.tag, gameObject);
+        //CInventory.AddItem(GetComponent<AItem>().ItemCategory);
         throw new System.NotImplementedException();
     }
 }
