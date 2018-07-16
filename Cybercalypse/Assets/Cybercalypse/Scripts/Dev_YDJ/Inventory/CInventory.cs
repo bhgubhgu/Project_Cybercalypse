@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class CInventory : MonoBehaviour {
 
-    public GameObject equipmentPanel;
-    public GameObject consumablePanel;
+    public static GameObject equipmentPanel;
+    public static GameObject consumablePanel;
 
-    public GameObject skillPanel;
-    public GameObject abilityPanel;
+    public static GameObject skillPanel;
+    public static GameObject abilityPanel;
 
     private GameObject currentInventoryTab;
 
-    private static int money = 0;
+    public static int money = 0;
 
     //!<
     //!< ---
@@ -22,8 +22,8 @@ public class CInventory : MonoBehaviour {
     //private FixInventorySkill[] inventorySkills;
     //private static CSkill[] skills;
 
-    public static CSkill[] skills;  //!< 인벤토리(슬롯들)에 담겨있는 CSkill에 대한 참조(참조라는 것이 중요함.)
-    public static CAbility[] abilitys;  //!< 인벤토리(슬롯들)에 담겨있는 CAbility에 대한 참조(참조라는 것이 중요함.)
+    public static GameObject[] skillInventory;  //!< 인벤토리(슬롯들)에 담겨있는 CSkill에 대한 참조(참조라는 것이 중요함.)
+    public static GameObject[] abilityInventory;  //!< 인벤토리(슬롯들)에 담겨있는 CAbility에 대한 참조(참조라는 것이 중요함.)
 
     public static int SkillInventoryIndex { get; set; } //!< 
     public static int AbilityInventoryIndex { get; set; }
@@ -70,8 +70,10 @@ public class CInventory : MonoBehaviour {
 
     }
 
-    public static void AddItem(string tag, GameObject Item)
+    public static void AddItem(GameObject Item)
     {
+        string tag = Item.tag;
+
         switch(tag)
         {
             case "Equipment":
@@ -79,7 +81,8 @@ public class CInventory : MonoBehaviour {
             case "Consumable":
                 break;
             case "Skill":
-                skills[SkillInventoryIndex] = Item.GetComponent<CSkill>();
+                //skillInventory[SkillInventoryIndex]
+                GetEmptySlot(skillPanel);
                 break;
             case "Ability":
                 break;
@@ -103,7 +106,7 @@ public class CInventory : MonoBehaviour {
     {
         for (int i = 0; i < panel.transform.childCount; i++)
         {
-            if (panel.transform.GetChild(0).GetComponent<CSlot>().IsEmpty)
+            if (panel.transform.GetChild(i).GetComponent<CSlot>().IsEmpty)
                 return panel.transform.GetChild(0).gameObject;
         }
         return null;

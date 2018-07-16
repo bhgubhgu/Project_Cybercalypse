@@ -26,7 +26,7 @@ public class CShopSkill : ASkill, IConvertInventorySkill, IPointerClickHandler
         SkillCastingTime = 1.0f;
         SkillCoolDown = 5.0f;
 
-        Debug.Log(ItemIcon);
+        //Debug.Log(ItemIcon);
     }
 
     private void OnMouseDown()
