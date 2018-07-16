@@ -1,45 +1,55 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Reflection;
 using UnityEngine;
 
 public class CInventory : MonoBehaviour {
 
-    public GameObject equipmentPanel;
-    public GameObject consumablePanel;
+    public static GameObject equipmentPanel;
+    public static GameObject consumablePanel;
 
-    public GameObject skillPanel;
-    public GameObject abilityPanel;
+    public static GameObject skillPanel;
+    public static GameObject abilityPanel;
 
     private GameObject currentInventoryTab;
 
-    private int money;
+    public static int money = 0;
 
     //!<
     //!< ---
 
-    private CInventoryAbility[] inventoryAbilities;
+    //private CInventoryAbility[] inventoryAbilities;
     //private CInventorySkill[] inventorySkills;
-    private FixInventorySkill[] inventorySkills;
+    //private FixInventorySkill[] inventorySkills;
+    //private static CSkill[] skills;
 
-    public int InventoryAbilityIndex;
-    public int InventorySkillIndex;
+    public static GameObject[] skillInventory;  //!< 인벤토리(슬롯들)에 담겨있는 CSkill에 대한 참조(참조라는 것이 중요함.)
+    public static GameObject[] abilityInventory;  //!< 인벤토리(슬롯들)에 담겨있는 CAbility에 대한 참조(참조라는 것이 중요함.)
+
+    public static int SkillInventoryIndex { get; set; } //!< 
+    public static int AbilityInventoryIndex { get; set; }
 
     public const int maxSlotCount = 32;
 
-	// Use this for initialization
-	void Start () {
+    private void Awake()
+    {
         equipmentPanel = GameObject.Find("Panel_Inventory_Equipment");
         consumablePanel = GameObject.Find("Panel_Inventory_Consumable");
 
         skillPanel = GameObject.Find("Panel_Inventory_Skill");
         abilityPanel = GameObject.Find("Panel_Inventory_Ability");
+    }
+
+    // Use this for initialization
+    void Start ()
+    {
         consumablePanel.SetActive(false);
         skillPanel.SetActive(false);
         abilityPanel.SetActive(false);
 
         currentInventoryTab = equipmentPanel;
 
-        inventoryAbilities = new CInventoryAbility[maxSlotCount];
+        //inventoryAbilities = new CInventoryAbility[maxSlotCount];
         //inventorySkills = new CInventorySkill[maxSlotCount];
 	}
 	
@@ -61,11 +71,95 @@ public class CInventory : MonoBehaviour {
 
     }
 
-    public static void AddItem()
+    public static void AddItem(GameObject Item)
     {
+        string tag = Item.tag;
 
+        switch(tag)
+        {
+            case "Equipment":
+                break;
+            case "Consumable":
+                break;
+            case "Skill":
+                //skillInventory[SkillInventoryIndex]
+                var boo = GetEmptySlot(skillPanel);
+                Debug.Log(boo.name);
+                var emptySlot = GetEmptySlot(skillPanel);
+                PasteComponentValues<CSkill>(Item.GetComponent<CSkill>(), GetEmptySlot(skillPanel));
+                
+                break;
+            case "Ability":
+                break;
+        }
     }
 
+    public static void AddItem(AItem.EItemCategory itemCategory)
+    {
+        switch(itemCategory)
+        {
+            case AItem.EItemCategory.Equipment:
+                break;
+            case AItem.EItemCategory.Consumable:
+                break;
+            case AItem.EItemCategory.Talent:
+                break;
+        }
+    }
+
+    public static GameObject GetEmptySlot(GameObject panel)
+    {
+        for (int i = 0; i < panel.transform.childCount; i++)
+        {
+            if (panel.transform.GetChild(i).GetComponent<CSlot>().IsEmpty)
+                return panel.transform.GetChild(i).gameObject;
+        }
+        return null;
+    }
+
+    //private static T PasteComponentValues<T>(T original, GameObject destination) where T : Component
+    //{
+    //    System.Type type = original.GetType();
+    //    Component copy = destination.GetComponent(type);
+    //    System.Reflection.FieldInfo[] fields = type.GetFields();
+    //    foreach (System.Reflection.FieldInfo field in fields)
+    //    {
+    //        field.SetValue(copy, field.GetValue(original));
+    //    }
+
+    //    return copy as T;
+    //}
+
+    private static void PasteComponentValues<T>(T original, GameObject destination) where T : Component
+    {
+        System.Type type = original.GetType();
+        var copy = destination.transform.GetChild(0).GetComponent(type);
+        PropertyInfo[] properties = type.GetProperties();
+
+        int count = 0;
+
+        foreach (var property in properties)
+        {
+            if(property.DeclaringType.Equals(typeof(CSkill)))
+            {
+                Debug.Log(property);
+                Debug.Log(property.GetValue(original));
+                property.SetValue(copy, property.GetValue(original));
+                count++;
+            }
+
+            //Debug.Log(property.DeclaringType.Equals(typeof(AItem)));
+            //if (property.IsDefined(property.GetType(), true))
+            //{
+            //    property.SetValue(copy, property.GetValue(original));
+            //    Debug.Log(property);
+            //    Debug.Log(property.GetValue(original));
+            //}
+        }
+        Debug.Log(count);
+    }
+
+    /* Legarcy Code
     /// <summary>
     /// 아이템을 인벤토리에 집어넣어주는 함수
     /// </summary>
@@ -120,21 +214,22 @@ public class CInventory : MonoBehaviour {
     {
         for(int i=0; ;i++)
         {
-            if (!inventorySkills[i].IsContain)
-            {
-                break;
-            }
+            //if (!inventorySkills[i].IsContain)
+            //{
+            //    break;
+            //}
         }
 
         while(true)
         {
-            foreach(var item in inventorySkills)
-            {
-                if (item.IsContain.Equals(false))
-                    break;
-            }
+            //foreach(var item in inventorySkills)
+            //{
+            //    if (item.IsContain.Equals(false))
+            //        break;
+            //}
         }
         Component component = new Component();
         return component as T;
     }
+    */
 }

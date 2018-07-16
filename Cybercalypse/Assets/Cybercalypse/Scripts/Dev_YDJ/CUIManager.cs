@@ -44,7 +44,6 @@ public class CUIManager : SingleTonManager<CUIManager> {
 
     public static T PasteComponentValues<T>(T original, GameObject destination) where T : Component
     {
-
         System.Type type = original.GetType();
         Component copy = destination.GetComponent(type);
         System.Reflection.FieldInfo[] fields = type.GetFields();
