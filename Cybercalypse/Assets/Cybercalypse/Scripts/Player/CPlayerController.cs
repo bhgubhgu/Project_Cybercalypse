@@ -8,7 +8,7 @@ public class CPlayerController : APhysics
     /// 작성자 : 구용모
     /// 스크립트 : Player 객체의 행동들을 입력을 받는 스크립트
     /// 최초 작성일 : . . .
-    /// 최종 수정일 : 2018.07.14
+    /// 최종 수정일 : 2018.07.16
     /// </summary>
     /// 
 
@@ -272,12 +272,11 @@ public class CPlayerController : APhysics
 
     public void HorizontalAccelControl(bool isHorizontalAccelKeyDown)
     {
-        if(!m_isDashNow)
+        if(!m_isDashNow && m_isGrounded)
         {
             CAudioManager.instance.PlayEffectSoundUniqueEvent(HorizontalAccelControl);
+            HorizontalAccel(m_horizontalMoveAcceleration);
         }
-
-        HorizontalAccel(m_horizontalMoveAcceleration);
     }
     #endregion
 
