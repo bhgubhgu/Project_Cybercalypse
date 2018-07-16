@@ -110,6 +110,7 @@ public class TestSelect : MonoBehaviour
         if(this.transform.position == weaponButton.transform.position && Input.GetKeyDown(KeyCode.Z))
         {
             weaponBtn.onClick.Invoke();
+            weaponBtn.GetComponent<Image>().sprite = weaponBtn.GetComponent<TestClickListner>().clickImage;
             isOpenWeaponSlot = true;
             isOpenSkillSlot = false;
             isOpenArmorSlot = false;
@@ -118,6 +119,7 @@ public class TestSelect : MonoBehaviour
         else if (this.transform.position == armorButton.transform.position && Input.GetKeyDown(KeyCode.Z))
         {
             armorBtn.onClick.Invoke();
+            armorButton.GetComponent<Image>().sprite = armorButton.GetComponent<TestClickListner>().clickImage;
             isOpenWeaponSlot = false;
             isOpenSkillSlot = false;
             isOpenArmorSlot = true;
@@ -126,6 +128,7 @@ public class TestSelect : MonoBehaviour
         else if (this.transform.position == skillButton.transform.position && Input.GetKeyDown(KeyCode.Z))
         {
             skillBtn.onClick.Invoke();
+            skillButton.GetComponent<Image>().sprite = skillButton.GetComponent<TestClickListner>().clickImage;
             isOpenWeaponSlot = false;
             isOpenSkillSlot = true;
             isOpenArmorSlot = false;
@@ -134,10 +137,28 @@ public class TestSelect : MonoBehaviour
         else if (this.transform.position == abilityButton.transform.position && Input.GetKeyDown(KeyCode.Z))
         {
             abilityBtn.onClick.Invoke();
+            abilityButton.GetComponent<Image>().sprite = abilityButton.GetComponent<TestClickListner>().clickImage;
             isOpenWeaponSlot = false;
             isOpenSkillSlot = false;
             isOpenArmorSlot = false;
             isOpenAbilitySlot = true;
+        }
+
+        if (this.transform.position == weaponButton.transform.position && Input.GetKeyUp(KeyCode.Z))
+        {
+            weaponBtn.GetComponent<Image>().sprite = weaponBtn.GetComponent<TestClickListner>().initImage;
+        }
+        else if (this.transform.position == armorButton.transform.position && Input.GetKeyUp(KeyCode.Z))
+        {
+            armorButton.GetComponent<Image>().sprite = armorButton.GetComponent<TestClickListner>().initImage;
+        }
+        else if (this.transform.position == skillButton.transform.position && Input.GetKeyUp(KeyCode.Z))
+        {
+            skillButton.GetComponent<Image>().sprite = skillButton.GetComponent<TestClickListner>().initImage;
+        }
+        else if (this.transform.position == abilityButton.transform.position && Input.GetKeyUp(KeyCode.Z))
+        {
+            abilityButton.GetComponent<Image>().sprite = abilityButton.GetComponent<TestClickListner>().initImage;
         }
     }
 
@@ -154,6 +175,7 @@ public class TestSelect : MonoBehaviour
             if (selectSlotIndex == 2 || selectSlotIndex == 5)
             {
                 select.transform.position = itemButtonList[0].transform.position;
+                select.GetComponent<RectTransform>().sizeDelta = itemButtonList[selectSlotIndex].GetComponent<RectTransform>().sizeDelta;
                 return;
             }
 
@@ -165,6 +187,7 @@ public class TestSelect : MonoBehaviour
             }
 
             select.transform.position = itemSlotList[++selectSlotIndex].transform.position;
+            select.GetComponent<RectTransform>().sizeDelta = itemSlotList[selectSlotIndex].GetComponent<RectTransform>().sizeDelta;
         }
         else if (inputHValue < 0)
         {
@@ -173,6 +196,7 @@ public class TestSelect : MonoBehaviour
                 selelctButtonIndex = 0;
                 selectSlotIndex = 2;
                 select.transform.position = itemSlotList[selectSlotIndex].transform.position;
+                select.GetComponent<RectTransform>().sizeDelta = itemSlotList[selectSlotIndex].GetComponent<RectTransform>().sizeDelta;
                 return;
             }
 
@@ -184,6 +208,7 @@ public class TestSelect : MonoBehaviour
             }
 
             select.transform.position = itemSlotList[--selectSlotIndex].transform.position;
+            select.GetComponent<RectTransform>().sizeDelta = itemSlotList[selectSlotIndex].GetComponent<RectTransform>().sizeDelta;
         }
         else
         {
@@ -203,6 +228,7 @@ public class TestSelect : MonoBehaviour
                 }
 
                 select.transform.position = itemButtonList[--selelctButtonIndex].transform.position;
+                select.GetComponent<RectTransform>().sizeDelta = itemButtonList[selectSlotIndex].GetComponent<RectTransform>().sizeDelta;
                 return;
             }
 
@@ -218,6 +244,7 @@ public class TestSelect : MonoBehaviour
             }
 
             select.transform.position = itemSlotList[selectSlotIndex].transform.position;
+            select.GetComponent<RectTransform>().sizeDelta = itemSlotList[selectSlotIndex].GetComponent<RectTransform>().sizeDelta;
         }
         else if (inputVValue < 0)
         {
@@ -232,6 +259,7 @@ public class TestSelect : MonoBehaviour
                 //인벤토리 내에서만의 움직임
 
                 select.transform.position = itemButtonList[++selelctButtonIndex].transform.position;
+                select.GetComponent<RectTransform>().sizeDelta = itemButtonList[selectSlotIndex].GetComponent<RectTransform>().sizeDelta;
                 return;
             }
 
@@ -244,6 +272,7 @@ public class TestSelect : MonoBehaviour
             }
 
             select.transform.position = itemSlotList[selectSlotIndex].transform.position;
+            select.GetComponent<RectTransform>().sizeDelta = itemSlotList[selectSlotIndex].GetComponent<RectTransform>().sizeDelta;
         }
         else
         {
@@ -261,6 +290,7 @@ public class TestSelect : MonoBehaviour
             }
 
             select.transform.position = shopSlotList[++selectSlotIndex].transform.position;
+            select.GetComponent<RectTransform>().sizeDelta = shopSlotList[selectSlotIndex].GetComponent<RectTransform>().sizeDelta;
         }
         else if (inputHValue < 0)
         {
@@ -270,6 +300,7 @@ public class TestSelect : MonoBehaviour
             }
 
             select.transform.position = shopSlotList[--selectSlotIndex].transform.position;
+            select.GetComponent<RectTransform>().sizeDelta = shopSlotList[selectSlotIndex].GetComponent<RectTransform>().sizeDelta;
         }
     }
 
@@ -291,6 +322,7 @@ public class TestSelect : MonoBehaviour
             }
 
             select.transform.position = shopSlotList[selectSlotIndex].transform.position;
+            select.GetComponent<RectTransform>().sizeDelta = shopSlotList[selectSlotIndex].GetComponent<RectTransform>().sizeDelta;
         }
         else if (inputVValue < 0)
         {
@@ -313,6 +345,7 @@ public class TestSelect : MonoBehaviour
             }
 
             select.transform.position = shopSlotList[selectSlotIndex].transform.position;
+            select.GetComponent<RectTransform>().sizeDelta = shopSlotList[selectSlotIndex].GetComponent<RectTransform>().sizeDelta;
         }
     }
 }

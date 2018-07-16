@@ -17,7 +17,7 @@ public class TestShopInventorySlot : MonoBehaviour
 
     private void Start()
     {
-        for(int i = 0; i < 6 ; i++)
+        for(int i = 0; i < 6 ; i++) //현재 아이템 슬롯 6개
         {
             slotDictionary.Add(i, playerInventory.transform.GetChild(i).transform.GetChild(0).gameObject);
         }
@@ -25,8 +25,8 @@ public class TestShopInventorySlot : MonoBehaviour
 
     private void OnMouseDown()
     {
-       for (int i = 0; i < 6 ; i++)
-       {
+       for (int i = 0; i < 6 ; i++) //현재 아이템 슬롯 6개
+        {
             if (slotDictionary[i].GetComponent<Image>().sprite.name == "NullSkill" || slotDictionary[i].GetComponent<Image>().sprite.name == "NullAbility" || slotDictionary[i].GetComponent<Image>().sprite.name == "NullWeapon" || slotDictionary[i].GetComponent<Image>().sprite.name == "NullArmor")
             {
                 TestTradeSystem.instance.Trade(this.transform.GetComponent<Image>().sprite, 1);

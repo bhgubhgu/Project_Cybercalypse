@@ -7,7 +7,7 @@ public class TestClickListner : MonoBehaviour
 {
     public Sprite clickImage;
 
-    private Sprite initImage;
+    public Sprite initImage;
 
     private GameObject weaponCategorySlot;
     private GameObject armorCategorySlot;
