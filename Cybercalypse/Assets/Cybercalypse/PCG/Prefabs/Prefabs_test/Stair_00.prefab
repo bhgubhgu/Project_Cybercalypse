@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4450695061241428}
   m_Layer: 0
-  m_Name: Platform_01
+  m_Name: Stair_00
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

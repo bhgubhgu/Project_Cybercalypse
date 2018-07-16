@@ -9,30 +9,30 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1039946361635306}
+  m_RootGameObject: {fileID: 1207416581059572}
   m_IsPrefabParent: 1
---- !u!1 &1039946361635306
+--- !u!1 &1207416581059572
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4060293843994472}
-  - component: {fileID: 114941249045412392}
+  - component: {fileID: 4259518596988990}
+  - component: {fileID: 114336226512756426}
   m_Layer: 0
-  m_Name: Content_Quad_LeftStair
+  m_Name: Content_Quad_GroundPlatform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4060293843994472
+--- !u!4 &4259518596988990
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1039946361635306}
+  m_GameObject: {fileID: 1207416581059572}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -40,19 +40,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114941249045412392
+--- !u!114 &114336226512756426
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1039946361635306}
+  m_GameObject: {fileID: 1207416581059572}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b79bca37846414d47bfd563a6cbbe1a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tileType: 15
+  tileType: 17
   numOfWidth: 2
   numOfHeight: 2
   content:
-  - {fileID: 1140086317362994, guid: a4a4f87c0dfda0b46bbf4abe6f165e98, type: 2}
+  - {fileID: 1110237275140188, guid: 310eb5bf320f3034a82622c8d0d09223, type: 2}
+  - {fileID: 1146430153038950, guid: bbbc97315a6891d4584f54a683f05aee, type: 2}
+  - {fileID: 1581200512122884, guid: 287fafefccaa29843a5df3cb34c4d9ee, type: 2}
+  - {fileID: 1179020496622756, guid: fabd1648b59b99f4581e8f261caf8af5, type: 2}
+  - {fileID: 1845657142975144, guid: c86066e9f76c7f24a80a7d69b9455059, type: 2}
+  - {fileID: 1375804887452908, guid: 76b99a3f91a53f64185f263641311290, type: 2}
