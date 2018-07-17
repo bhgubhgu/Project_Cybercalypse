@@ -49,6 +49,7 @@ public class CInventorySlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
 
     void IDropHandler.OnDrop(PointerEventData eventData)
     {
+        AItem item;
         switch(eventData.pointerDrag.tag)
         {
             case "Weapon":
@@ -58,15 +59,17 @@ public class CInventorySlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
             case "Consumable":
                 break;
             case "Skill":
+                item = eventData.pointerDrag.GetComponent<CSkill>();
+                SwapData(item, Item.gameObject);
                 break;
             case "Ability":
+                item = eventData.pointerDrag.GetComponent<CAbility>();
                 break;
             default:
                 break;
         }
         //eventData.pointerDrag.GetComponent
         //if(eventData.pointerDrag.GetType().Equals(typeof()))
-        //!< eventData는 드래그 되기 시작한 Item일 것.
         
         throw new System.NotImplementedException();
     }
@@ -76,5 +79,35 @@ public class CInventorySlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
         Item.localPosition = Vector3.zero;
 
         GetComponent<CanvasGroup>().blocksRaycasts = true;
+    }
+
+    void SwapData<T>(T original, GameObject destination) where T : AItem
+    {
+        System.Type type = original.GetType();
+        var copy = new CSkill();
+        System.Reflection.PropertyInfo[] properties = type.GetProperties();
+
+        for (int i = 0; i < properties.Length; i++)
+        {
+            if (properties[i].DeclaringType.Equals(copy.GetType()))
+            {
+                properties[i].SetValue(copy, properties[i].GetValue(original));
+                properties[i].SetValue(destination, properties[i].GetValue(original));
+                properties[i].SetValue(original, properties[i].GetValue(original));
+            }
+        }
+
+        for (int i = 0; i < properties.Length; i++)
+        {
+            properties[i].SetValue(copy, properties[i].GetValue(original));
+        }
+        for (int i = 0; i < properties.Length; i++)
+        {
+            properties[i].SetValue(destination, properties[i].GetValue(original));
+        }
+        for (int i = 0; i < properties.Length; i++)
+        {
+            properties[i].SetValue(original, properties[i].GetValue(original));
+        }
     }
 }

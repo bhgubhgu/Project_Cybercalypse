@@ -139,8 +139,6 @@ public class CInventory : MonoBehaviour {
         var copy = destination.transform.GetChild(0).GetComponent(type);
         PropertyInfo[] properties = type.GetProperties();
 
-        int count = 0;
-
         foreach (var property in properties)
         {
             if(property.DeclaringType.Equals(typeof(CSkill)))
@@ -148,7 +146,6 @@ public class CInventory : MonoBehaviour {
                 Debug.Log(property);
                 Debug.Log(property.GetValue(original));
                 property.SetValue(copy, property.GetValue(original));
-                count++;
             }
 
             //Debug.Log(property.DeclaringType.Equals(typeof(AItem)));
@@ -159,7 +156,6 @@ public class CInventory : MonoBehaviour {
             //    Debug.Log(property.GetValue(original));
             //}
         }
-        Debug.Log(count);
     }
 
     /* Legarcy Code
