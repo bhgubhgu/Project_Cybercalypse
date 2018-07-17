@@ -9,39 +9,39 @@ public class CInputManager : SingleTonManager<CInputManager>
     /// 작성자 : 구용모, 윤동준
     /// 스크립트 : CyberCalypse의 Player의 Input을 관리하는 매니저 스크립트
     /// 최초 작성일 : . . .
-    /// 최종 수정일 : 2018.07.14
+    /// 최종 수정일 : 2018.07.17
     /// </summary>
 
     //리팩토링시 팩토리 패턴 내부의 모든 메소드들 private 처리  
     /* 필드 */
     #region private
-    bool isDownMenuUniqueKey;
-    bool isDownCharacterJumpKey;
-    bool isDownCharacterDashKey;
+    private bool isDownMenuUniqueKey;
+    private bool isDownCharacterJumpKey;
+    private bool isDownCharacterDashKey;
 
-    bool isDownSkill1;
-    bool isDownSkill2;
-    bool isDownSkill3;
-    bool isDownSkill4;
-    bool isDownSkillMouseLeft;
-    bool isDownSkillMouseRight;
+    private bool isDownSkill1;
+    private bool isDownSkill2;
+    private bool isDownSkill3;
+    private bool isDownSkill4;
+    private bool isDownNormalAttack;
+    private bool isDownSpecialAttack;
 
-    int runCount;
-    float inputHMoveValue;
-    float inputVMoveValue;
+    private int runCount;
+    private float inputHMoveValue;
+    private float inputVMoveValue;
 
     //!< 커서
-    float inputCursorHMoveValue;
-    float inputCursorVMoveValue;
+    private float inputCursorHMoveValue;
+    private float inputCursorVMoveValue;
 
-    bool isDownInteractKey;
+    private bool isDownInteractKey;
 
-    bool isMenuActive; // Command 메소드 OR 클래스를 통해 구별
-    bool isInputHMenuButton;
-    bool isInputVMenuButton;
-    bool inputMenuVMoveValue;
-    bool isGameRetry;
-    bool isPressAnykey;
+    private bool isMenuActive; // Command 메소드 OR 클래스를 통해 구별
+    private bool isInputHMenuButton;
+    private bool isInputVMenuButton;
+    private bool inputMenuVMoveValue;
+    private bool isGameRetry;
+    private bool isPressAnykey;
 
     // Switch 를 위한 변수 필요
     // AI와 Player를 구별하기 위한 메소드 필요 ( 보류 )
@@ -75,6 +75,9 @@ public class CInputManager : SingleTonManager<CInputManager>
     public event UniqueInput Skill3;
     public event UniqueInput Skill4;
 
+    public event UniqueInput NormalAttack;
+    public event UniqueInput SpecialAttack;
+
     public event UniqueInput Interact;
 
     public event MoveInput PlayerHMove;
@@ -107,6 +110,10 @@ public class CInputManager : SingleTonManager<CInputManager>
     public event Command Skill3Command;
     public event Command Skill4Command;
 
+    //attack event Command
+    public event Command NormalAttackCommand;
+    public event Command SpecialAttackCommand;
+
     //game system Command
     public event Command SaveCommand;
     public event Command MenuCommand;
@@ -138,6 +145,10 @@ public class CInputManager : SingleTonManager<CInputManager>
         isDownSkill2 = Skill2Command(isDownSkill2);
         isDownSkill3 = Skill3Command(isDownSkill3);
         isDownSkill4 = Skill4Command(isDownSkill4);
+
+        //공격
+        isDownNormalAttack = NormalAttackCommand(isDownNormalAttack);
+        isDownSpecialAttack = SpecialAttackCommand(isDownSpecialAttack);
 
         /* 메뉴 */
         isInputHMenuButton = HMenuMoveCommand(isInputHMenuButton);
@@ -214,6 +225,14 @@ public class CInputManager : SingleTonManager<CInputManager>
                     {
                         Dash(isDownCharacterDashKey);
                     }
+                    else if(isDownNormalAttack)
+                    {
+                        NormalAttack(isDownNormalAttack);
+                    }
+                    else if(isDownSpecialAttack)
+                    {
+                        SpecialAttack(isDownSpecialAttack);
+                    }
                     else if (isDownSkill1) //스킬 발사 1번
                     {
                         Skill1(isDownSkill1);
@@ -258,6 +277,9 @@ abstract class AbsCommand
     public abstract bool isSkillInput3(bool isDownSkillKey3);
     public abstract bool isSkillInput4(bool isDownSkillKey4);
 
+    public abstract bool IsNormalAttackInput(bool isDownNormalAttackKey);
+    public abstract bool IsSpecialAttackInput(bool isDownSpecialAttackKey);
+
     public abstract bool isInteractInput(bool isDownInteractKey);
 
     public abstract bool IsMenuKeyInput(bool isKeyDown);
@@ -288,6 +310,11 @@ class PlayerCommand : AbsCommand
     private bool isSkillMouseRightActing;
     #endregion
 
+    #region //공격 사용 키
+    private bool isDownNormalAttackCommand;
+    private bool isDownSpecialAttackCommand;
+#endregion
+
     #region//상호작용
     private bool isInteracting;
     #endregion
@@ -309,6 +336,9 @@ class PlayerCommand : AbsCommand
 
         CInputManager.instance.JumpCommand += isJumpInput;
         CInputManager.instance.DashCommand += isDashInput;
+
+        CInputManager.instance.NormalAttackCommand += IsNormalAttackInput;
+        CInputManager.instance.SpecialAttackCommand += IsSpecialAttackInput;
 
         CInputManager.instance.Skill1Command += isSkillInput1;
         CInputManager.instance.Skill2Command += isSkillInput2;
@@ -442,6 +472,20 @@ class PlayerCommand : AbsCommand
 
         isInteracting = isDownInteractKey;
         return isInteracting;
+    }
+
+    public override bool IsNormalAttackInput(bool isDownNormalAttackKey)
+    {
+        isDownNormalAttackKey = Input.GetKeyDown(KeyCode.Z);
+        isDownNormalAttackCommand = isDownNormalAttackKey;
+        return isDownNormalAttackCommand;
+    }
+
+    public override bool IsSpecialAttackInput(bool isDownSpecialAttackKey)
+    {
+        isDownSpecialAttackKey = Input.GetKeyDown(KeyCode.X);
+        isDownSpecialAttackCommand = isDownSpecialAttackKey;
+        return isDownSpecialAttackCommand;
     }
 
     public override bool isSkillInput1(bool isDownSkillKey1)

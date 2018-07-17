@@ -8,7 +8,7 @@ public class CPlayerAnimation : MonoBehaviour
     /// 작성자 : 구용모
     /// 스크립트 : Player 객체의 애니메이션을 구현하는 스크립트
     /// 최초 작성일 : . . .
-    /// 최종 수정일 : 2018.07.04
+    /// 최종 수정일 : 2018.07.17
     /// </summary>
 
     private CSkillLibrary skillPool;
@@ -19,12 +19,13 @@ public class CPlayerAnimation : MonoBehaviour
     private ASkill.Skill skills;
     private int skillIndex;
     private bool isRun;
+    private bool isAttackNow;
 
     private void Awake()
     {
-        playerController = GetComponent<CPlayerController>();
+        playerController = GetComponent<CPlayerController>(); //스킬 애니메이션을 위함
         ani = GetComponent<Animator>();
-        control = GetComponent<CPlayerController>();
+        control = GetComponent<CPlayerController>(); //플레이어의 공격 및 스킬 애니메이션을 제외한 애니메이션 판정할때 쓰임
         skillPool = CGameManager.instance.skillLibrary.GetComponent<CSkillLibrary>();
     }
 
@@ -41,6 +42,9 @@ public class CPlayerAnimation : MonoBehaviour
         CInputManager.instance.Skill3 += SkillAni;
         CInputManager.instance.Skill4 += SkillAni;
 
+        CInputManager.instance.NormalAttack += NormalAttackAni;
+        CInputManager.instance.SpecialAttack += SpecialAttackAni;
+
         skillSlots[0] = playerController.CActSkill1;
         skillSlots[1] = playerController.CActSkill2;
         skillSlots[2] = playerController.CActSkill3;
@@ -54,6 +58,7 @@ public class CPlayerAnimation : MonoBehaviour
         ani.SetBool("isJumpNow", control.IsJumpNow);
         ani.SetBool("isDashNow", control.IsDashNow);
         ani.SetBool("isRun", isRun);
+        ani.SetBool("isAttackNow", isAttackNow);
     }
 
     /* delegate 메소드 */
@@ -89,7 +94,7 @@ public class CPlayerAnimation : MonoBehaviour
         ani.SetTrigger("accelerateUpward");
     }
 
-    //점멸
+    //구르기
     public void DashAni(bool isDownCharacterBlinkKeyInputMananger)
     {
         if(control.IsDashNow)
@@ -98,6 +103,17 @@ public class CPlayerAnimation : MonoBehaviour
         }
 
         ani.SetTrigger("accelerateHorizontally");
+    }
+
+    //스킬
+    public void NormalAttackAni(bool isDownNormalAttackKey)
+    {
+        ani.SetTrigger("SlashAttack1");
+    }
+
+    public void SpecialAttackAni(bool isDownSpecialAttackKey)
+    {
+        ani.SetTrigger("SlashAttack2");
     }
 
     //스킬
@@ -144,14 +160,7 @@ public class CPlayerAnimation : MonoBehaviour
         }
         else if (Equals(skillIndex, 5))
         {
-            if(control.IsGrounded && !CNewMeleeAttack.isDoingNow)
-            {
-                ani.SetTrigger("MoonlightSlash");
-            }
-            else if(!control.IsGrounded && !CNewMeleeAttack.isDoingNow)
-            {
-                ani.SetTrigger("MoonLightSlashJump");
-            }
+
         }
     }
 }

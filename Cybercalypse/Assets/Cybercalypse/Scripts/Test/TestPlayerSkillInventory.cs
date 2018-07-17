@@ -10,13 +10,27 @@ public class TestPlayerSkillInventory : MonoBehaviour, IBeginDragHandler, IDragH
 
     private Vector3 startPosition;
     private Vector3 mousePosition;
+    private GameObject select;
+
     private GameObject slotQ;
     private GameObject slotE;
 
     private void Awake()
     {
+        select = GameObject.Find("Select").gameObject;
+
         slotQ = this.transform.parent.transform.parent.GetChild(0).transform.GetChild(0).gameObject;
         slotE = this.transform.parent.transform.parent.GetChild(1).transform.GetChild(0).gameObject;
+    }
+
+    private void OnMouseOver()
+    {
+        select.transform.SetAsFirstSibling();
+    }
+
+    private void OnMouseExit()
+    {
+        select.transform.SetAsLastSibling();
     }
 
     public void OnBeginDrag(PointerEventData eventData)
@@ -96,10 +110,66 @@ public class TestPlayerSkillInventory : MonoBehaviour, IBeginDragHandler, IDragH
             if (slotE.GetComponent<Image>().sprite.name != "NullSkill")
             {
                 CGameManager.instance.skillLibrary.GetComponent<CSkillLibrary>().ChangeSlot(CGameManager.instance.skillLibrary.GetComponent<CSkillLibrary>().FindSkillToSkillIcon(slotE.GetComponent<Image>().sprite), 1);
-            }     
+            }
 
+        select.transform.SetAsLastSibling();
         this.gameObject.GetComponent<CanvasGroup>().blocksRaycasts = true;
         this.transform.localPosition = new Vector3(0, 0);
+    }
+
+
+    //키보드로 스킬 등록
+    public void SetItemUseKeyBoard(GameObject inventoryItem)
+    {
+        Sprite dragSprite = inventoryItem.transform.GetChild(0).GetComponent<Image>().sprite;
+
+        if (!CGameManager.instance.testSkillList.Contains(dragSprite))
+        {
+            return;
+        }
+
+        if (slotQ.GetComponent<Image>().sprite.name == "NullSkill")
+        {
+            CGameManager.instance.skillLibrary.GetComponent<CSkillLibrary>().ChangeSlot(CGameManager.instance.skillLibrary.GetComponent<CSkillLibrary>().FindSkillToSkillIcon(dragSprite), 0);
+            inventoryItem.transform.GetChild(0).GetComponent<Image>().sprite = slotQ.GetComponent<Image>().sprite;
+            slotQ.GetComponent<Image>().sprite = dragSprite;
+            return;
+        }
+        else if(slotE.GetComponent<Image>().sprite.name == "NullSkill")
+        {
+            CGameManager.instance.skillLibrary.GetComponent<CSkillLibrary>().ChangeSlot(CGameManager.instance.skillLibrary.GetComponent<CSkillLibrary>().FindSkillToSkillIcon(dragSprite), 1);
+            inventoryItem.transform.GetChild(0).GetComponent<Image>().sprite = slotE.GetComponent<Image>().sprite;
+            slotE.GetComponent<Image>().sprite = dragSprite;
+            return;
+        }
+    }
+
+    public void ResetItemUseKeyBoard(GameObject emptyInventorySlot)
+    {
+        if(emptyInventorySlot == null)
+        {
+            return;
+        }
+
+        Sprite dragSprite;
+        Sprite enterSprite = CGameManager.instance.testSkillList[0];
+
+        if (slotQ.GetComponent<Image>().sprite.name != "NullSkill")
+        {
+            dragSprite = slotQ.GetComponent<Image>().sprite;
+            CGameManager.instance.skillLibrary.GetComponent<CSkillLibrary>().ChangeSlot(CGameManager.instance.skillLibrary.GetComponent<CSkillLibrary>().FindSkillToSkillIcon(enterSprite), 0);
+            emptyInventorySlot.transform.GetChild(0).GetComponent<Image>().sprite = dragSprite;
+            slotQ.GetComponent<Image>().sprite = enterSprite;
+            return;
+        }
+        else if (slotE.GetComponent<Image>().sprite.name != "NullSkill")
+        {
+            dragSprite = slotE.GetComponent<Image>().sprite;
+            CGameManager.instance.skillLibrary.GetComponent<CSkillLibrary>().ChangeSlot(CGameManager.instance.skillLibrary.GetComponent<CSkillLibrary>().FindSkillToSkillIcon(enterSprite), 1);
+            emptyInventorySlot.transform.GetChild(0).GetComponent<Image>().sprite = dragSprite;
+            slotE.GetComponent<Image>().sprite = enterSprite;
+            return;
+        }
     }
 
     public enum ESkillSlot
@@ -108,5 +178,4 @@ public class TestPlayerSkillInventory : MonoBehaviour, IBeginDragHandler, IDragH
         E,
         Nothing
     }
-
 }

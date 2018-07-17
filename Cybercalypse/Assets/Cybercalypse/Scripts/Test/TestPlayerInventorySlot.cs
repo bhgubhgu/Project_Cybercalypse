@@ -10,14 +10,24 @@ public class TestPlayerInventorySlot : MonoBehaviour, IBeginDragHandler, IDragHa
     private Vector3 mousePosition;
     private Sprite nullSprite;
 
+    private GameObject select;
+
     private void Awake()
     {
         nullSprite = this.GetComponent<Image>().sprite;
+        select = GameObject.Find("Select").gameObject;
     }
 
     private void OnMouseOver()
     {
-        if(Input.GetKeyDown(KeyCode.Mouse1) && TestShop.isShopOpen)
+        select.transform.SetAsFirstSibling();
+
+        if (this.GetComponent<Image>().sprite.name == "NullSkill" || this.GetComponent<Image>().sprite.name == "NullAbility" || this.GetComponent<Image>().sprite.name == "NullWeapon" || this.GetComponent<Image>().sprite.name == "NullArmor")
+        {
+            return;
+        }
+
+        if (Input.GetKeyDown(KeyCode.Mouse1) && TestShop.isShopOpen)
         {
             if(this.GetComponent<Image>().sprite.name != "NullSkill" || this.GetComponent<Image>().sprite.name != "NullAbility")
             {
@@ -25,6 +35,11 @@ public class TestPlayerInventorySlot : MonoBehaviour, IBeginDragHandler, IDragHa
                 this.GetComponent<Image>().sprite = nullSprite;
             }
         }
+    }
+
+    private void OnMouseExit()
+    {
+        select.transform.SetAsLastSibling();
     }
 
     public void OnBeginDrag(PointerEventData eventData)
@@ -66,18 +81,18 @@ public class TestPlayerInventorySlot : MonoBehaviour, IBeginDragHandler, IDragHa
 
     public void SellItemUseKeyBoard()
     {
+        if (this.GetComponent<Image>().sprite.name == "NullSkill" || this.GetComponent<Image>().sprite.name == "NullAbility" || this.GetComponent<Image>().sprite.name == "NullWeapon" || this.GetComponent<Image>().sprite.name == "NullArmor")
+        {
+            return;
+        }
+
         if (Input.GetKeyDown(KeyCode.Z) && TestShop.isShopOpen)
         {
-            if (this.GetComponent<Image>().sprite.name != "NullSkill" || this.GetComponent<Image>().sprite.name != "NullAbility")
+            if (this.GetComponent<Image>().sprite.name != "NullSkill" || this.GetComponent<Image>().sprite.name != "NullAbility" || this.GetComponent<Image>().sprite.name != "NullWeapon" || this.GetComponent<Image>().sprite.name != "NullArmor")
             {
                 TestTradeSystem.instance.Trade(this.GetComponent<Image>().sprite, 0);
                 this.GetComponent<Image>().sprite = nullSprite;
             }
         }
-    }
-
-    public void SetItemUseKeyBoard(GameObject categorySlot)
-    {
-        Debug.Log("wowowow");       
     }
 }

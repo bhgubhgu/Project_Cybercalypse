@@ -13,6 +13,7 @@ public class TestClickListner : MonoBehaviour
     private GameObject armorCategorySlot;
     private GameObject skillCategorySlot;
     private GameObject abilityCategorySlot;
+    private GameObject select;
 
     private void Awake()
     {
@@ -22,6 +23,7 @@ public class TestClickListner : MonoBehaviour
         armorCategorySlot = GameObject.Find("Armor Category Inventory").gameObject;
         skillCategorySlot = GameObject.Find("Skill Category Inventory").gameObject;
         abilityCategorySlot = GameObject.Find("Ability Category Inventory").gameObject;
+        select = GameObject.Find("Select").gameObject;
     }
 
     private void Start()
@@ -54,6 +56,16 @@ public class TestClickListner : MonoBehaviour
     private void OnMouseUpAsButton()
     {
         this.GetComponent<Image>().sprite = initImage;
+    }
+
+    private void OnMouseOver()
+    {
+        select.transform.SetAsFirstSibling();
+    }
+
+    private void OnMouseExit()
+    {
+        select.transform.SetAsLastSibling();
     }
 
     private void OnDisable()
