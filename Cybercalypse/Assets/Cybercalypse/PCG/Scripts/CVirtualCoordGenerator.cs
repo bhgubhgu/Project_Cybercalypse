@@ -5,8 +5,8 @@ using UnityEngine;
 public class CVirtualCoordGenerator : MonoBehaviour
 {
     // 해당 방향으로 경로를 몇번 생성할 것인지 결정
-    public int numOfSimulation;
-    public int chamberWidth, chamberHeight;
+    private int numOfSimulation;
+    private int chamberWidth, chamberHeight;
 
     // Tile을 생성하기 위해 필요한 추가 정보
     private Dictionary<Vector2Int, CChamber> chamberPosition;
@@ -19,11 +19,15 @@ public class CVirtualCoordGenerator : MonoBehaviour
     /// </summary>
     public void GenerateVirtualCoord()
     {
+        CGridDrivenContentsGenerator gridGenerator = LevelManager.instance.GridGenerator;
         // 초기화
-        chamberPosition = LevelManager.instance.GridGenerator.ChamberPosition;
-        startChamberPos = LevelManager.instance.GridGenerator.StartChamberPos;
-        endChamberPos = LevelManager.instance.GridGenerator.EndChamberPos;
-        tileDict = LevelManager.instance.GridGenerator.TileDict;
+        chamberPosition = gridGenerator.ChamberPosition;
+        startChamberPos = gridGenerator.StartChamberPos;
+        endChamberPos = gridGenerator.EndChamberPos;
+        tileDict = gridGenerator.TileDict;
+        numOfSimulation = gridGenerator.NumOfSimulation;
+        chamberWidth = gridGenerator.ChamberWidth;
+        chamberHeight = gridGenerator.ChamberHeight;
 
         operateSimulation();
     }
