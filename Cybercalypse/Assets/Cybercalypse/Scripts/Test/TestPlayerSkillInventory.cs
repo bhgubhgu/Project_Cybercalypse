@@ -108,7 +108,12 @@ public class TestPlayerSkillInventory : MonoBehaviour, IBeginDragHandler, IDragH
     {
         Sprite dragSprite = inventoryItem.transform.GetChild(0).GetComponent<Image>().sprite;
 
-        if(slotQ.GetComponent<Image>().sprite.name == "NullSkill")
+        if (!CGameManager.instance.testSkillList.Contains(dragSprite))
+        {
+            return;
+        }
+
+        if (slotQ.GetComponent<Image>().sprite.name == "NullSkill")
         {
             CGameManager.instance.skillLibrary.GetComponent<CSkillLibrary>().ChangeSlot(CGameManager.instance.skillLibrary.GetComponent<CSkillLibrary>().FindSkillToSkillIcon(dragSprite), 0);
             inventoryItem.transform.GetChild(0).GetComponent<Image>().sprite = slotQ.GetComponent<Image>().sprite;
@@ -122,8 +127,34 @@ public class TestPlayerSkillInventory : MonoBehaviour, IBeginDragHandler, IDragH
             slotE.GetComponent<Image>().sprite = dragSprite;
             return;
         }
+    }
 
+    public void ResetItemUseKeyBoard(GameObject emptyInventorySlot)
+    {
+        if(emptyInventorySlot == null)
+        {
+            return;
+        }
 
+        Sprite dragSprite;
+        Sprite enterSprite = CGameManager.instance.testSkillList[0];
+
+        if (slotQ.GetComponent<Image>().sprite.name != "NullSkill")
+        {
+            dragSprite = slotQ.GetComponent<Image>().sprite;
+            CGameManager.instance.skillLibrary.GetComponent<CSkillLibrary>().ChangeSlot(CGameManager.instance.skillLibrary.GetComponent<CSkillLibrary>().FindSkillToSkillIcon(enterSprite), 0);
+            emptyInventorySlot.transform.GetChild(0).GetComponent<Image>().sprite = dragSprite;
+            slotQ.GetComponent<Image>().sprite = enterSprite;
+            return;
+        }
+        else if (slotE.GetComponent<Image>().sprite.name != "NullSkill")
+        {
+            dragSprite = slotE.GetComponent<Image>().sprite;
+            CGameManager.instance.skillLibrary.GetComponent<CSkillLibrary>().ChangeSlot(CGameManager.instance.skillLibrary.GetComponent<CSkillLibrary>().FindSkillToSkillIcon(enterSprite), 1);
+            emptyInventorySlot.transform.GetChild(0).GetComponent<Image>().sprite = dragSprite;
+            slotE.GetComponent<Image>().sprite = enterSprite;
+            return;
+        }
     }
 
     public enum ESkillSlot

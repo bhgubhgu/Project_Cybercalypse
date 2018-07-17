@@ -130,10 +130,16 @@ public class TestPlayerAbilityInventory : MonoBehaviour, IBeginDragHandler, IDra
         this.gameObject.GetComponent<CanvasGroup>().blocksRaycasts = true;
         this.transform.localPosition = new Vector3(0, 0);
     }
+    
 
     public void SetItemUseKeyBoard(GameObject inventoryItem)
     {
         Sprite dragSprite = inventoryItem.transform.GetChild(0).GetComponent<Image>().sprite;
+
+        if (!CGameManager.instance.testAbilityList.Contains(dragSprite))
+        {
+            return;
+        }
 
         if (slotAbility1.GetComponent<Image>().sprite.name == "NullAbility")
         {
@@ -157,6 +163,42 @@ public class TestPlayerAbilityInventory : MonoBehaviour, IBeginDragHandler, IDra
             return;
         }
 
+    }
+
+    public void ResetItemUseKeyBoard(GameObject emptyInventorySlot)
+    {
+        if (emptyInventorySlot == null)
+        {
+            return;
+        }
+
+        Sprite dragSprite;
+        Sprite enterSprite = CGameManager.instance.testAbilityList[0];
+
+        if (slotAbility1.GetComponent<Image>().sprite.name != "NullAbility")
+        {
+            dragSprite = slotAbility1.GetComponent<Image>().sprite;
+            CGameManager.instance.abilityLibrary.GetComponent<CAbilityLibrary>().ChangeSlot(CGameManager.instance.abilityLibrary.GetComponent<CAbilityLibrary>().FindAbilityToAbilityIcon(enterSprite), 0);
+            emptyInventorySlot.transform.GetChild(0).GetComponent<Image>().sprite = slotAbility1.GetComponent<Image>().sprite;
+            slotAbility1.GetComponent<Image>().sprite = dragSprite;
+            return;
+        }
+        else if (slotAbility2.GetComponent<Image>().sprite.name != "NullAbility")
+        {
+            dragSprite = slotAbility2.GetComponent<Image>().sprite;
+            CGameManager.instance.abilityLibrary.GetComponent<CAbilityLibrary>().ChangeSlot(CGameManager.instance.abilityLibrary.GetComponent<CAbilityLibrary>().FindAbilityToAbilityIcon(enterSprite), 1);
+            emptyInventorySlot.transform.GetChild(0).GetComponent<Image>().sprite = slotAbility2.GetComponent<Image>().sprite;
+            slotAbility2.GetComponent<Image>().sprite = dragSprite;
+            return;
+        }
+        else if (slotAbility3.GetComponent<Image>().sprite.name != "NullAbility")
+        {
+            dragSprite = slotAbility2.GetComponent<Image>().sprite;
+            CGameManager.instance.abilityLibrary.GetComponent<CAbilityLibrary>().ChangeSlot(CGameManager.instance.abilityLibrary.GetComponent<CAbilityLibrary>().FindAbilityToAbilityIcon(dragSprite), 2);
+            emptyInventorySlot.transform.GetChild(0).GetComponent<Image>().sprite = slotAbility3.GetComponent<Image>().sprite;
+            slotAbility3.GetComponent<Image>().sprite = dragSprite;
+            return;
+        }
     }
 
     public enum EAbilitySlot

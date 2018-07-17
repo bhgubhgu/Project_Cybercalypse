@@ -114,6 +114,7 @@ public class TestPlayerEquipmentInventory : MonoBehaviour, IBeginDragHandler, ID
         this.transform.localPosition = new Vector3(0, 0);
     }
 
+
     public void SetItemUseKeyBoard(GameObject inventoryItem)
     {
         Sprite dragSprite = inventoryItem.transform.GetChild(0).GetComponent<Image>().sprite;
@@ -143,6 +144,48 @@ public class TestPlayerEquipmentInventory : MonoBehaviour, IBeginDragHandler, ID
             return;
         }
 
+    }
+
+    public void ResetItemUseKeyBoard(GameObject emptyInventorySlot)
+    {
+        if (emptyInventorySlot == null)
+        {
+            return;
+        }
+
+        Sprite dragSprite;
+        Sprite enterSprite;
+
+        if (slot == EEquipmentSlot.Weapon && this.GetComponent<Image>().sprite.name != "NullWeapon")
+        {
+            dragSprite = this.GetComponent<Image>().sprite;
+            enterSprite = CGameManager.instance.testWeaponList[0];
+
+            if (!CGameManager.instance.testWeaponList.Contains(dragSprite))
+            {
+                return;
+            }
+
+            CGameManager.instance.equipmentLibrary.GetComponent<CEquiptmentLibrary>().ChangeSlot(CGameManager.instance.equipmentLibrary.GetComponent<CEquiptmentLibrary>().FindEquipmentToEquipmentIcon(enterSprite), 0);
+            emptyInventorySlot.transform.GetChild(0).GetComponent<Image>().sprite = this.GetComponent<Image>().sprite;
+            this.GetComponent<Image>().sprite = enterSprite;
+            return;
+        }
+        else if (slot == EEquipmentSlot.Armor && this.GetComponent<Image>().sprite.name != "NullArmor")
+        {
+            dragSprite = this.GetComponent<Image>().sprite;
+            enterSprite = CGameManager.instance.testArmorList[0];
+
+            if (!CGameManager.instance.testArmorList.Contains(dragSprite))
+            {
+                return;
+            }
+
+            CGameManager.instance.equipmentLibrary.GetComponent<CEquiptmentLibrary>().ChangeSlot(CGameManager.instance.equipmentLibrary.GetComponent<CEquiptmentLibrary>().FindEquipmentToEquipmentIcon(enterSprite), 1);
+            emptyInventorySlot.transform.GetChild(0).GetComponent<Image>().sprite = this.GetComponent<Image>().sprite;
+            this.GetComponent<Image>().sprite = enterSprite;
+            return;
+        }
     }
 
     public enum EEquipmentSlot

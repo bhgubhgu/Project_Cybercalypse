@@ -17,7 +17,12 @@ public class TestPlayerInventorySlot : MonoBehaviour, IBeginDragHandler, IDragHa
 
     private void OnMouseOver()
     {
-        if(Input.GetKeyDown(KeyCode.Mouse1) && TestShop.isShopOpen)
+        if (this.GetComponent<Image>().sprite.name == "NullSkill" || this.GetComponent<Image>().sprite.name == "NullAbility" || this.GetComponent<Image>().sprite.name == "NullWeapon" || this.GetComponent<Image>().sprite.name == "NullArmor")
+        {
+            return;
+        }
+
+        if (Input.GetKeyDown(KeyCode.Mouse1) && TestShop.isShopOpen)
         {
             if(this.GetComponent<Image>().sprite.name != "NullSkill" || this.GetComponent<Image>().sprite.name != "NullAbility")
             {
@@ -66,9 +71,14 @@ public class TestPlayerInventorySlot : MonoBehaviour, IBeginDragHandler, IDragHa
 
     public void SellItemUseKeyBoard()
     {
+        if (this.GetComponent<Image>().sprite.name == "NullSkill" || this.GetComponent<Image>().sprite.name == "NullAbility" || this.GetComponent<Image>().sprite.name == "NullWeapon" || this.GetComponent<Image>().sprite.name == "NullArmor")
+        {
+            return;
+        }
+
         if (Input.GetKeyDown(KeyCode.Z) && TestShop.isShopOpen)
         {
-            if (this.GetComponent<Image>().sprite.name != "NullSkill" || this.GetComponent<Image>().sprite.name != "NullAbility")
+            if (this.GetComponent<Image>().sprite.name != "NullSkill" || this.GetComponent<Image>().sprite.name != "NullAbility" || this.GetComponent<Image>().sprite.name != "NullWeapon" || this.GetComponent<Image>().sprite.name != "NullArmor")
             {
                 TestTradeSystem.instance.Trade(this.GetComponent<Image>().sprite, 0);
                 this.GetComponent<Image>().sprite = nullSprite;
