@@ -125,8 +125,8 @@ public class TestSelect : MonoBehaviour
 
     private void Update()
     {
-#region 키보드로 버튼 누르기
-        if(this.transform.position == weaponButton.transform.position && Input.GetKeyDown(KeyCode.Z))
+        #region 키보드로 버튼 누르기
+        if (this.transform.position == weaponButton.transform.position && Input.GetKeyDown(KeyCode.Z))
         {
             weaponBtn.onClick.Invoke();
             weaponBtn.GetComponent<Image>().sprite = weaponBtn.GetComponent<TestClickListner>().clickImage;

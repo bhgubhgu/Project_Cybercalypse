@@ -10,13 +10,18 @@ public class TestPlayerInventorySlot : MonoBehaviour, IBeginDragHandler, IDragHa
     private Vector3 mousePosition;
     private Sprite nullSprite;
 
+    private GameObject select;
+
     private void Awake()
     {
         nullSprite = this.GetComponent<Image>().sprite;
+        select = GameObject.Find("Select").gameObject;
     }
 
     private void OnMouseOver()
     {
+        select.transform.SetAsFirstSibling();
+
         if (this.GetComponent<Image>().sprite.name == "NullSkill" || this.GetComponent<Image>().sprite.name == "NullAbility" || this.GetComponent<Image>().sprite.name == "NullWeapon" || this.GetComponent<Image>().sprite.name == "NullArmor")
         {
             return;
@@ -30,6 +35,11 @@ public class TestPlayerInventorySlot : MonoBehaviour, IBeginDragHandler, IDragHa
                 this.GetComponent<Image>().sprite = nullSprite;
             }
         }
+    }
+
+    private void OnMouseExit()
+    {
+        select.transform.SetAsLastSibling();
     }
 
     public void OnBeginDrag(PointerEventData eventData)

@@ -10,6 +10,7 @@ public class TestPlayerAbilityInventory : MonoBehaviour, IBeginDragHandler, IDra
 
     private Vector3 startPosition;
     private Vector3 mousePosition;
+    private GameObject select;
 
     private GameObject slotAbility1;
     private GameObject slotAbility2;
@@ -17,9 +18,21 @@ public class TestPlayerAbilityInventory : MonoBehaviour, IBeginDragHandler, IDra
 
     private void Awake()
     {
+        select = GameObject.Find("Select").gameObject;
+
         slotAbility1 = this.transform.parent.transform.parent.GetChild(0).transform.GetChild(0).gameObject;
         slotAbility2 = this.transform.parent.transform.parent.GetChild(1).transform.GetChild(0).gameObject;
         slotAbility3 = this.transform.parent.transform.parent.GetChild(2).transform.GetChild(0).gameObject;
+    }
+
+    private void OnMouseOver()
+    {
+        select.transform.SetAsFirstSibling();
+    }
+
+    private void OnMouseExit()
+    {
+        select.transform.SetAsLastSibling();
     }
 
     public void OnBeginDrag(PointerEventData eventData)
@@ -127,6 +140,7 @@ public class TestPlayerAbilityInventory : MonoBehaviour, IBeginDragHandler, IDra
             CGameManager.instance.abilityLibrary.GetComponent<CAbilityLibrary>().ChangeSlot(CGameManager.instance.abilityLibrary.GetComponent<CAbilityLibrary>().FindAbilityToAbilityIcon(slotAbility3.GetComponent<Image>().sprite), 2);
         }
 
+        select.transform.SetAsLastSibling();
         this.gameObject.GetComponent<CanvasGroup>().blocksRaycasts = true;
         this.transform.localPosition = new Vector3(0, 0);
     }

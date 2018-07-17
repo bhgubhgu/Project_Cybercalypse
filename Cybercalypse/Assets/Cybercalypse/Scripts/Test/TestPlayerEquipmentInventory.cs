@@ -10,6 +10,22 @@ public class TestPlayerEquipmentInventory : MonoBehaviour, IBeginDragHandler, ID
 
     private Vector3 startPosition;
     private Vector3 mousePosition;
+    private GameObject select;
+
+    private void Awake()
+    {
+        select = GameObject.Find("Select").gameObject;
+    }
+
+    private void OnMouseOver()
+    {
+        select.transform.SetAsFirstSibling();
+    }
+
+    private void OnMouseExit()
+    {
+        select.transform.SetAsLastSibling();
+    }
 
     public void OnBeginDrag(PointerEventData eventData)
     {
@@ -110,6 +126,7 @@ public class TestPlayerEquipmentInventory : MonoBehaviour, IBeginDragHandler, ID
             }
         }
 
+        select.transform.SetAsLastSibling();
         this.gameObject.GetComponent<CanvasGroup>().blocksRaycasts = true;
         this.transform.localPosition = new Vector3(0, 0);
     }
