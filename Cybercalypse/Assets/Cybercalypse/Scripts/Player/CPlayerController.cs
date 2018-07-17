@@ -201,7 +201,11 @@ public class CPlayerController : APhysics
         CInputManager.instance.PlayerVMove += VMoveControl;
         CInputManager.instance.Jump += JumpControl;
         CInputManager.instance.Dash += HorizontalAccelControl;
- 
+
+        /* Attack */
+        CInputManager.instance.NormalAttack += NormalAttackContorl;
+        CInputManager.instance.SpecialAttack += SpecialAttackContorl;
+
         /* CastSkill */
         CInputManager.instance.Skill1 += CActSkill1;
         CInputManager.instance.Skill2 += CActSkill2;
@@ -311,6 +315,18 @@ public class CPlayerController : APhysics
         base.Jump(jumpForce);
     }
     #endregion
+
+    #region 공격 키 메소드
+    public void NormalAttackContorl(bool isDownNormalAttackKey)
+    {
+        Debug.Log("Normal Attack!");
+    }
+
+    public void SpecialAttackContorl(bool isDownSpecialAttackKey)
+    {
+        Debug.Log("Special Attack!");
+    }
+#endregion
 
     #region 스킬 발사 키 메소드
     public void CActSkill1(bool isDownSkill1Manager)
