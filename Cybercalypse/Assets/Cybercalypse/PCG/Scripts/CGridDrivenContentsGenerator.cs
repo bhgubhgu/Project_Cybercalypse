@@ -6,12 +6,21 @@ using Random = UnityEngine.Random;
 public class CGridDrivenContentsGenerator : MonoBehaviour
 {
     // 상대 좌표에 곱할 상수
-    public float TILE_LENGTH = 0.16f;
+    public float tileLength = 0.16f;
+
+    // 맵 생성 옵션
     public int numOfChamberInHorizontal;
     public int numOfChamberInVertical;
+    public int chamberWidth, chamberHeight;
+
+    public float possibilityOfUpperChamber;
+    public float possibilityOfUnderChamber;
     public float possibilityOfContinuousDummy;
     public float possibilityOfDividedDummy;
+    // 해당 방향으로 경로를 몇번 생성할 것인지 결정
+    public int numOfSimulation;
     
+
     // 그리드 사각형 내에 어떤 그리드에 어떤 Chamber가 위치하는지 저장
     public Dictionary<Vector2Int, CChamber> ChamberPosition { get; private set; }
     // 각 Chamber에 배치된 타일 정보를 저장, 관리하는 Dictionary, VirtualCoordGenerator에 의해 
@@ -20,6 +29,15 @@ public class CGridDrivenContentsGenerator : MonoBehaviour
     // 각 Chamber에 대한 공통 정보
     public int NumOfChamberInHorizontal { get; private set; }
     public int NumOfChamberInVertical { get; private set; }
+    public int ChamberWidth { get; private set; }
+    public int ChamberHeight { get; private set; }
+    public float PossibilityOfContinuousDummy { get; private set; }
+    public float PossibilityOfDividedDummy { get; private set; }
+    public float PossibilityOfUpperChamber { get; private set; }
+    public float PossibilityOfUnderChamber { get; private set; }
+    
+    public int NumOfSimulation { get; private set; }
+    public float TILE_LENGTH { get; private set; }
 
     // 출발 지점의 Chamber 상대 좌표
     public Vector2Int StartChamberPos { get; private set; }
@@ -51,8 +69,16 @@ public class CGridDrivenContentsGenerator : MonoBehaviour
     {
         NumOfChamberInHorizontal = numOfChamberInHorizontal;
         NumOfChamberInVertical = numOfChamberInVertical;
+        ChamberHeight = chamberHeight;
+        ChamberWidth = chamberWidth;
+        NumOfSimulation = numOfSimulation;
+        TILE_LENGTH = tileLength;
+        checkPossibility();
 
-
+        PossibilityOfContinuousDummy = possibilityOfContinuousDummy;
+        PossibilityOfDividedDummy = possibilityOfDividedDummy;
+        PossibilityOfUnderChamber = possibilityOfUnderChamber;
+        PossibilityOfUpperChamber = possibilityOfUpperChamber;
     }
 
     /// <summary>
@@ -68,7 +94,7 @@ public class CGridDrivenContentsGenerator : MonoBehaviour
         virtualCoordGenerator.GenerateVirtualCoord();
         gameObjectGenerator.GenerateContents();
 
-        Vector2Int playerStartPos = new Vector2Int(StartChamberPos.x * virtualCoordGenerator.chamberWidth + virtualCoordGenerator.chamberWidth / 2, StartChamberPos.y * virtualCoordGenerator.chamberHeight + virtualCoordGenerator.chamberHeight / 2);
+        Vector2Int playerStartPos = new Vector2Int(StartChamberPos.x * ChamberWidth + ChamberWidth / 2, StartChamberPos.y * ChamberHeight + ChamberHeight / 2);
         while(TileDict[playerStartPos] != ETileType.Empty)
         {
             if(TileDict.ContainsKey(new Vector2Int(playerStartPos.x + 1, playerStartPos.y)))
@@ -93,12 +119,22 @@ public class CGridDrivenContentsGenerator : MonoBehaviour
 
     private void checkPossibility()
     {
-        float sum = possibilityOfContinuousDummy + possibilityOfDividedDummy;
-        if(possibilityOfContinuousDummy <= 0.0f || possibilityOfDividedDummy <= 0.0f ||
-            possibilityOfContinuousDummy + possibilityOfDividedDummy >= 100.0f)
+        
+        if(possibilityOfContinuousDummy < 0.0f || possibilityOfDividedDummy < 0.0f ||
+            possibilityOfContinuousDummy + possibilityOfDividedDummy > 100.0f)
         {
             possibilityOfDividedDummy = 20.0f;
             possibilityOfContinuousDummy = 60.0f;
+        }
+
+        if(possibilityOfUpperChamber < 0.0f || possibilityOfUpperChamber > 100.0f)
+        {
+            possibilityOfUpperChamber = 100.0f;
+        }
+
+        if(possibilityOfUnderChamber < 0.0f || possibilityOfUnderChamber > 100.0f)
+        {
+            possibilityOfUnderChamber = 100.0f;
         }
     }
 
@@ -147,8 +183,15 @@ public class CGridDrivenContentsGenerator : MonoBehaviour
         {
             adjacentList.Add(new Vector2Int(path.x - 1, path.y)); // left
         }
-        adjacentList.Add(new Vector2Int(path.x, path.y + 1)); //up
-        adjacentList.Add(new Vector2Int(path.x, path.y - 1)); // down
+
+        if (Random.Range(0.0f, 100.0f) < PossibilityOfUpperChamber)
+        {
+            adjacentList.Add(new Vector2Int(path.x, path.y + 1)); //up
+        }
+        if (Random.Range(0.0f, 100.0f) < PossibilityOfUnderChamber)
+        {
+            adjacentList.Add(new Vector2Int(path.x, path.y - 1)); // down
+        }
         adjacentList.Add(new Vector2Int(path.x + 1, path.y)); // right
 
         adjacentList.ForEach(delegate (Vector2Int adjPath)
@@ -206,11 +249,11 @@ public class CGridDrivenContentsGenerator : MonoBehaviour
         addFromCurrentToNextChamberPassage(start, adjacentChambers[index]);
 
         // 설정된 확률로 길이 확장
-        if (possibility <= possibilityOfContinuousDummy)
+        if (possibility <= PossibilityOfContinuousDummy)
         {
             makeDummyPath(adjacentChambers[index]);
         }  // 설정된 확률로 길이 분열
-        else if (possibility > possibilityOfContinuousDummy && possibility <= possibilityOfDividedDummy + possibilityOfContinuousDummy)
+        else if (possibility > PossibilityOfContinuousDummy && possibility <= PossibilityOfDividedDummy + PossibilityOfContinuousDummy)
         {
             makeDummyPath(adjacentChambers[index]);
             makeDummyPath(start);
