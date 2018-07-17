@@ -5,7 +5,8 @@ using UnityEngine;
 
 public class CInventory : MonoBehaviour {
 
-    public static GameObject equipmentPanel;
+    public static GameObject weaponPanel;
+    public static GameObject armorPanel;
     public static GameObject consumablePanel;
 
     public static GameObject skillPanel;
@@ -33,7 +34,8 @@ public class CInventory : MonoBehaviour {
 
     private void Awake()
     {
-        equipmentPanel = GameObject.Find("Panel_Inventory_Equipment");
+        weaponPanel = GameObject.Find("Panel_Inventory_Weapon");
+        armorPanel = GameObject.Find("Panel_Inventory_Armor");
         consumablePanel = GameObject.Find("Panel_Inventory_Consumable");
 
         skillPanel = GameObject.Find("Panel_Inventory_Skill");
@@ -43,11 +45,12 @@ public class CInventory : MonoBehaviour {
     // Use this for initialization
     void Start ()
     {
+        armorPanel.SetActive(false);
         consumablePanel.SetActive(false);
         skillPanel.SetActive(false);
         abilityPanel.SetActive(false);
 
-        currentInventoryTab = equipmentPanel;
+        currentInventoryTab = weaponPanel;
 
         //inventoryAbilities = new CInventoryAbility[maxSlotCount];
         //inventorySkills = new CInventorySkill[maxSlotCount];
@@ -136,8 +139,6 @@ public class CInventory : MonoBehaviour {
         var copy = destination.transform.GetChild(0).GetComponent(type);
         PropertyInfo[] properties = type.GetProperties();
 
-        int count = 0;
-
         foreach (var property in properties)
         {
             if(property.DeclaringType.Equals(typeof(CSkill)))
@@ -145,7 +146,6 @@ public class CInventory : MonoBehaviour {
                 Debug.Log(property);
                 Debug.Log(property.GetValue(original));
                 property.SetValue(copy, property.GetValue(original));
-                count++;
             }
 
             //Debug.Log(property.DeclaringType.Equals(typeof(AItem)));
@@ -156,7 +156,6 @@ public class CInventory : MonoBehaviour {
             //    Debug.Log(property.GetValue(original));
             //}
         }
-        Debug.Log(count);
     }
 
     /* Legarcy Code
