@@ -26,7 +26,6 @@ public class CSlot : MonoBehaviour, IPointerClickHandler {
                 break;
             case "Ability":
                 item = itemTransform.GetComponent<CAbility>();
-                
                 break;
             default:
                 break;
