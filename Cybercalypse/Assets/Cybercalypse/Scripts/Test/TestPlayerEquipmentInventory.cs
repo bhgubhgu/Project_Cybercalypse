@@ -114,6 +114,37 @@ public class TestPlayerEquipmentInventory : MonoBehaviour, IBeginDragHandler, ID
         this.transform.localPosition = new Vector3(0, 0);
     }
 
+    public void SetItemUseKeyBoard(GameObject inventoryItem)
+    {
+        Sprite dragSprite = inventoryItem.transform.GetChild(0).GetComponent<Image>().sprite;
+
+        if (slot == EEquipmentSlot.Weapon && this.GetComponent<Image>().sprite.name == "NullWeapon")
+        {
+            if (!CGameManager.instance.testWeaponList.Contains(dragSprite))
+            {
+                return;
+            }
+
+            CGameManager.instance.equipmentLibrary.GetComponent<CEquiptmentLibrary>().ChangeSlot(CGameManager.instance.equipmentLibrary.GetComponent<CEquiptmentLibrary>().FindEquipmentToEquipmentIcon(dragSprite), 0);
+            inventoryItem.transform.GetChild(0).GetComponent<Image>().sprite = this.GetComponent<Image>().sprite;
+            this.GetComponent<Image>().sprite = dragSprite;
+            return;
+        }
+        else if (slot == EEquipmentSlot.Armor && this.GetComponent<Image>().sprite.name == "NullArmor")
+        {
+            if (!CGameManager.instance.testArmorList.Contains(dragSprite))
+            {
+                return;
+            }
+
+            CGameManager.instance.equipmentLibrary.GetComponent<CEquiptmentLibrary>().ChangeSlot(CGameManager.instance.equipmentLibrary.GetComponent<CEquiptmentLibrary>().FindEquipmentToEquipmentIcon(dragSprite), 1);
+            inventoryItem.transform.GetChild(0).GetComponent<Image>().sprite = this.GetComponent<Image>().sprite;
+            this.GetComponent<Image>().sprite = dragSprite;
+            return;
+        }
+
+    }
+
     public enum EEquipmentSlot
     {
         Weapon,

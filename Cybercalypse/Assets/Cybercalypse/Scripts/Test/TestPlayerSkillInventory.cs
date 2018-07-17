@@ -102,11 +102,34 @@ public class TestPlayerSkillInventory : MonoBehaviour, IBeginDragHandler, IDragH
         this.transform.localPosition = new Vector3(0, 0);
     }
 
+
+    //키보드로 스킬 등록
+    public void SetItemUseKeyBoard(GameObject inventoryItem)
+    {
+        Sprite dragSprite = inventoryItem.transform.GetChild(0).GetComponent<Image>().sprite;
+
+        if(slotQ.GetComponent<Image>().sprite.name == "NullSkill")
+        {
+            CGameManager.instance.skillLibrary.GetComponent<CSkillLibrary>().ChangeSlot(CGameManager.instance.skillLibrary.GetComponent<CSkillLibrary>().FindSkillToSkillIcon(dragSprite), 0);
+            inventoryItem.transform.GetChild(0).GetComponent<Image>().sprite = slotQ.GetComponent<Image>().sprite;
+            slotQ.GetComponent<Image>().sprite = dragSprite;
+            return;
+        }
+        else if(slotE.GetComponent<Image>().sprite.name == "NullSkill")
+        {
+            CGameManager.instance.skillLibrary.GetComponent<CSkillLibrary>().ChangeSlot(CGameManager.instance.skillLibrary.GetComponent<CSkillLibrary>().FindSkillToSkillIcon(dragSprite), 1);
+            inventoryItem.transform.GetChild(0).GetComponent<Image>().sprite = slotE.GetComponent<Image>().sprite;
+            slotE.GetComponent<Image>().sprite = dragSprite;
+            return;
+        }
+
+
+    }
+
     public enum ESkillSlot
     {
         Q,
         E,
         Nothing
     }
-
 }

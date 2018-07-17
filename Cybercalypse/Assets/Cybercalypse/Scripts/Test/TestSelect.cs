@@ -125,6 +125,7 @@ public class TestSelect : MonoBehaviour
 
     private void Update()
     {
+#region 키보드로 버튼 누르기
         if(this.transform.position == weaponButton.transform.position && Input.GetKeyDown(KeyCode.Z))
         {
             weaponBtn.onClick.Invoke();
@@ -165,7 +166,9 @@ public class TestSelect : MonoBehaviour
             isOpenAbilitySlot = true;
             selectCategoryIndex = 0;
         }
+        #endregion
 
+#region 키보드로 버튼 누를때 색 바뀌는거 원래대로
         if (this.transform.position == weaponButton.transform.position && Input.GetKeyUp(KeyCode.Z))
         {
             weaponBtn.GetComponent<Image>().sprite = weaponBtn.GetComponent<TestClickListner>().initImage;
@@ -182,8 +185,9 @@ public class TestSelect : MonoBehaviour
         {
             abilityButton.GetComponent<Image>().sprite = abilityButton.GetComponent<TestClickListner>().initImage;
         }
+        #endregion
 
-
+#region 상점에서 물건 사고 팔때
         if (((2 < selectSlotIndex && selectSlotIndex < 6) || (8 < selectSlotIndex && selectSlotIndex < 16)) && Input.GetKeyDown(KeyCode.Z) && TestShop.isShopOpen)
         {
             shopSlotList[selectSlotIndex].transform.GetChild(0).GetComponent<TestShopInventorySlot>().BuyItemUseKeyBoard();
@@ -204,11 +208,29 @@ public class TestSelect : MonoBehaviour
                 itemSlotList[selectSlotIndex].transform.GetChild(0).GetComponent<TestPlayerInventorySlot>().SellItemUseKeyBoard();
             }
         }
+        #endregion
 
+#region 아이템 장착
         if ((select.transform.position == itemSlotList[0].transform.position || select.transform.position == itemSlotList[1].transform.position || select.transform.position == itemSlotList[2].transform.position || select.transform.position == itemSlotList[3].transform.position || select.transform.position == itemSlotList[4].transform.position || select.transform.position == itemSlotList[5].transform.position) && Input.GetKeyDown(KeyCode.Z) && TestPlayerInventoryOnOff.isOnInventory)
         {
-            itemSlotList[selectSlotIndex].transform.GetChild(0).GetComponent<TestPlayerInventorySlot>().SetItemUseKeyBoard(itemSlotList[selectSlotIndex]);
+            if (isOpenWeaponSlot)
+            {
+                inventorySlotCategoryList[0].transform.GetChild(0).transform.GetChild(0).GetComponent<TestPlayerEquipmentInventory>().SetItemUseKeyBoard(itemSlotList[selectSlotIndex]);
+            }
+            else if (isOpenArmorSlot)
+            {
+                inventorySlotCategoryList[1].transform.GetChild(0).transform.GetChild(0).GetComponent<TestPlayerEquipmentInventory>().SetItemUseKeyBoard(itemSlotList[selectSlotIndex]);
+            }
+            else if (isOpenSkillSlot)
+            {
+                inventorySlotCategoryList[2].transform.GetChild(0).transform.GetChild(0).GetComponent<TestPlayerSkillInventory>().SetItemUseKeyBoard(itemSlotList[selectSlotIndex]);
+            }
+            else if (isOpenAbilitySlot)
+            {
+                inventorySlotCategoryList[3].transform.GetChild(0).transform.GetChild(0).GetComponent<TestPlayerAbilityInventory>().SetItemUseKeyBoard(itemSlotList[selectSlotIndex]);
+            }
         }
+#endregion
     }
 
     private void HInventorySlotMove(float inputHValue)

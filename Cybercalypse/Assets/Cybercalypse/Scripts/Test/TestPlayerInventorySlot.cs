@@ -75,9 +75,4 @@ public class TestPlayerInventorySlot : MonoBehaviour, IBeginDragHandler, IDragHa
             }
         }
     }
-
-    public void SetItemUseKeyBoard(GameObject categorySlot)
-    {
-        Debug.Log("wowowow");       
-    }
 }

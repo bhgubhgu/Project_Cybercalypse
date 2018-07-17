@@ -105,44 +105,44 @@ public class CAbilityLibrary : AAbility
     }
     #endregion
 
-    public void FindAbilityOffset(AbilityOffsetDel offsetDel) // 어빌리티 적용 용도
-    {
-        EAbilityOffset abilityOffsetKind = AbilityOffsetKind(offsetDel);
-        switch (abilityOffsetKind)
-        {
-            case EAbilityOffset.Slot1:
-                abilitySlotList[0]();
-                break;
-            case EAbilityOffset.Slot2:
-                abilitySlotList[1]();
-                break;
-            case EAbilityOffset.Slot3:
-                abilitySlotList[2]();
-                break;
-            case EAbilityOffset.Error:
-                break;
-        }
-    }
+    //public void FindAbilityOffset(AbilityOffsetDel offsetDel) // 어빌리티 적용 용도
+    //{
+    //    EAbilityOffset abilityOffsetKind = AbilityOffsetKind(offsetDel);
+    //    switch (abilityOffsetKind)
+    //    {
+    //        case EAbilityOffset.Slot1:
+    //            abilitySlotList[0]();
+    //            break;
+    //        case EAbilityOffset.Slot2:
+    //            abilitySlotList[1]();
+    //            break;
+    //        case EAbilityOffset.Slot3:
+    //            abilitySlotList[2]();
+    //            break;
+    //        case EAbilityOffset.Error:
+    //            break;
+    //    }
+    //}
 
-    private EAbilityOffset AbilityOffsetKind(AbilityOffsetDel offsetDel) //어빌리티 체크 용
-    {
-        if (Equals(offsetDel, abilityOffsetArray[0]))
-        {
-            return EAbilityOffset.Slot1;
-        }
-        else if (Equals(offsetDel, abilityOffsetArray[1]))
-        {
-            return EAbilityOffset.Slot2;
-        }
-        else if (Equals(offsetDel, abilityOffsetArray[2]))
-        {
-            return EAbilityOffset.Slot3;
-        }
-        else
-        {
-            return EAbilityOffset.Error;
-        }
-    }
+    //private EAbilityOffset AbilityOffsetKind(AbilityOffsetDel offsetDel) //어빌리티 체크 용
+    //{
+    //    if (Equals(offsetDel, abilityOffsetArray[0]))
+    //    {
+    //        return EAbilityOffset.Slot1;
+    //    }
+    //    else if (Equals(offsetDel, abilityOffsetArray[1]))
+    //    {
+    //        return EAbilityOffset.Slot2;
+    //    }
+    //    else if (Equals(offsetDel, abilityOffsetArray[2]))
+    //    {
+    //        return EAbilityOffset.Slot3;
+    //    }
+    //    else
+    //    {
+    //        return EAbilityOffset.Error;
+    //    }
+    //}
 
     #region Abilitys
     private void LightningSphere()
@@ -172,6 +172,8 @@ public class CAbilityLibrary : AAbility
     {
         abilitySlotList[slotIndex] -= abilitysDictionary[abilitysNameDictionary[abilitySlotList[slotIndex]]];
         abilitySlotList[slotIndex] += abilitysDictionary[changeAbility.Method.Name];
+
+        abilitySlotList[slotIndex]();
     }
 
     public Ability CheckSlotAbility(int index)
