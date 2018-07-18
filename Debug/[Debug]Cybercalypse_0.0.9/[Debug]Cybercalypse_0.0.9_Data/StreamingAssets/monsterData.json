@@ -1,0 +1,20 @@
+//test Monster Data
+[
+  {
+    "monsterInstanceID": 0,
+    "monsterCurrentHealth": 0,
+    "monsterMaxHealth": 100
+  },
+
+  {
+    "monsterInstanceID": 1,
+    "monsterCurrentHealth": 0,
+    "monsterMaxHealth": 200
+  },
+
+  {
+    "monsterInstanceID": 2,
+    "monsterCurrentHealth": 0,
+    "monsterMaxHealth": 300
+  }
+]
