@@ -19,6 +19,7 @@ public class CAudioManager : SingleTonManager<CAudioManager>
     public List<AudioClip> monsterAudioList; //몬스터 전용 sound list
     public List<AudioClip> gameAudioList; //게임에 사용되는 sound list (정적 객체만 해당)
     public List<AudioClip> skillSoundList; //스킬 전용 sound list
+    public List<AudioClip> normalAttackSoundList;//일반공격 전용 sound list
     
     //AudioSourceComponent
     public AudioSource backgroundMusic; //sound play component
@@ -78,6 +79,12 @@ public class CAudioManager : SingleTonManager<CAudioManager>
             effectMusic.Play();
         }
         //추가 이벤트 있으면 조건 추가 할 것
+    }
+
+    public void PlayNormalAttackSoundUniqueEvent(CInputManager.UniqueInput uniqueEvent)
+    {
+            effectMusic.clip = normalAttackSoundList[0];
+            effectMusic.Play();
     }
 
     /// <summary>

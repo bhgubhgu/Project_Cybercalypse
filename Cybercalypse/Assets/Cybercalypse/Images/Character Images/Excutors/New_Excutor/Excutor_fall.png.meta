@@ -1,14 +1,11 @@
 fileFormatVersion: 2
-guid: 7db2361edf1d16644b872f3622b9c803
-timeCreated: 1531818711
+guid: 538097b927fc5a5449db560bb789c85e
+timeCreated: 1531911040
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: Excutor_Ready_Fight_0
-    21300002: Excutor_Ready_Fight_1
-    21300004: Excutor_Ready_Fight_2
-    21300006: Excutor_Ready_Fight_3
-    21300008: Excutor_Ready_Fight_4
+    21300000: Excutor_fall_0
+    21300002: Excutor_fall_1
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -85,69 +82,27 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Excutor_Ready_Fight_0
+      name: Excutor_fall_0
       rect:
         serializedVersion: 2
-        x: 20
-        y: 145
-        width: 89
-        height: 89
-      alignment: 9
-      pivot: {x: 0.553, y: 0}
+        x: 22
+        y: 9
+        width: 64
+        height: 79
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Excutor_Ready_Fight_1
+      name: Excutor_fall_1
       rect:
         serializedVersion: 2
-        x: 145
-        y: 145
-        width: 92
-        height: 87
-      alignment: 9
-      pivot: {x: 0.571, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: Excutor_Ready_Fight_2
-      rect:
-        serializedVersion: 2
-        x: 281
-        y: 145
-        width: 84
-        height: 87
-      alignment: 9
-      pivot: {x: 0.53, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: Excutor_Ready_Fight_3
-      rect:
-        serializedVersion: 2
-        x: 29
-        y: 17
-        width: 80
-        height: 88
-      alignment: 9
-      pivot: {x: 0.505, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: Excutor_Ready_Fight_4
-      rect:
-        serializedVersion: 2
-        x: 158
-        y: 17
-        width: 79
-        height: 88
+        x: 151
+        y: 8
+        width: 61
+        height: 79
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

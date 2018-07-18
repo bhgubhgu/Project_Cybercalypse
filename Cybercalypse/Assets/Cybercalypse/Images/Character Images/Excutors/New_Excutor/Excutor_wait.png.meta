@@ -1,19 +1,19 @@
 fileFormatVersion: 2
-guid: 281dc34e9fc9aa149876760c5e9839ec
-timeCreated: 1531492459
+guid: 4895e15c4440be74b9c9536f051ee4bd
+timeCreated: 1531911040
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: Excutor_walking_0
-    21300002: Excutor_walking_1
-    21300004: Excutor_walking_2
-    21300006: Excutor_walking_3
-    21300008: Excutor_walking_4
-    21300010: Excutor_walking_5
-    21300012: Excutor_walking_6
-    21300014: Excutor_walking_7
-    21300016: Excutor_walking_8
-    21300018: Excutor_walking_9
+    21300000: Excutor_wait_0
+    21300002: Excutor_wait_1
+    21300004: Excutor_wait_2
+    21300006: Excutor_wait_3
+    21300008: Excutor_wait_4
+    21300010: Excutor_wait_5
+    21300012: Excutor_wait_6
+    21300014: Excutor_wait_7
+    21300016: Excutor_wait_8
+    21300018: Excutor_wait_9
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -90,141 +90,141 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Excutor_walking_0
+      name: Excutor_wait_0
       rect:
         serializedVersion: 2
-        x: 32
-        y: 260
+        x: 31
+        y: 267
         width: 53
-        height: 110
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        height: 104
+      alignment: 9
+      pivot: {x: 0.6655309, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Excutor_walking_1
+      name: Excutor_wait_1
       rect:
         serializedVersion: 2
-        x: 158
-        y: 259
-        width: 59
-        height: 108
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 157
+        y: 267
+        width: 57
+        height: 104
+      alignment: 9
+      pivot: {x: 0.65929425, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Excutor_walking_2
+      name: Excutor_wait_2
       rect:
         serializedVersion: 2
-        x: 282
-        y: 261
-        width: 72
-        height: 106
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 286
+        y: 267
+        width: 55
+        height: 104
+      alignment: 9
+      pivot: {x: 0.65906763, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Excutor_walking_3
+      name: Excutor_wait_3
       rect:
         serializedVersion: 2
-        x: 415
-        y: 259
-        width: 58
-        height: 110
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 417
+        y: 267
+        width: 49
+        height: 104
+      alignment: 9
+      pivot: {x: 0.6851688, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Excutor_walking_4
+      name: Excutor_wait_4
       rect:
         serializedVersion: 2
-        x: 38
-        y: 131
+        x: 37
+        y: 139
         width: 45
-        height: 110
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        height: 104
+      alignment: 9
+      pivot: {x: 0.6512758, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Excutor_walking_5
+      name: Excutor_wait_5
       rect:
         serializedVersion: 2
-        x: 163
-        y: 131
-        width: 52
-        height: 110
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 159
+        y: 139
+        width: 53
+        height: 104
+      alignment: 9
+      pivot: {x: 0.6655311, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Excutor_walking_6
+      name: Excutor_wait_6
       rect:
         serializedVersion: 2
-        x: 287
-        y: 131
-        width: 60
-        height: 108
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 285
+        y: 139
+        width: 57
+        height: 104
+      alignment: 9
+      pivot: {x: 0.6599046, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Excutor_walking_7
+      name: Excutor_wait_7
       rect:
         serializedVersion: 2
-        x: 408
-        y: 134
-        width: 71
-        height: 105
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 414
+        y: 139
+        width: 55
+        height: 104
+      alignment: 9
+      pivot: {x: 0.6596996, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Excutor_walking_8
+      name: Excutor_wait_8
       rect:
         serializedVersion: 2
-        x: 30
-        y: 4
-        width: 59
-        height: 109
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 33
+        y: 11
+        width: 49
+        height: 104
+      alignment: 9
+      pivot: {x: 0.6851682, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Excutor_walking_9
+      name: Excutor_wait_9
       rect:
         serializedVersion: 2
-        x: 166
-        y: 4
-        width: 47
-        height: 109
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 165
+        y: 11
+        width: 45
+        height: 104
+      alignment: 9
+      pivot: {x: 0.6584039, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
