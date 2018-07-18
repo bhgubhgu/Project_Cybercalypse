@@ -13,6 +13,7 @@ public class CSlot : MonoBehaviour, IPointerClickHandler {
     }
     private void Start()
     {
+        /*
         //!< Slot의 자식에 Item이 없으면 empty상태, 있으면 false
 
         Transform itemTransform = transform.GetChild(0);
@@ -35,6 +36,7 @@ public class CSlot : MonoBehaviour, IPointerClickHandler {
         { IsEmpty = true; }
         else
         { IsEmpty = false; }
+        */
     }
 
     public void OnPointerClick(PointerEventData eventData)

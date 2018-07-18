@@ -12,7 +12,7 @@ public class CInventory : MonoBehaviour {
     public static GameObject skillPanel;
     public static GameObject abilityPanel;
 
-    private GameObject currentInventoryTab;
+    public static GameObject currentInventoryTab;
 
     public static int money = 0;
 
@@ -30,8 +30,6 @@ public class CInventory : MonoBehaviour {
     public static int SkillInventoryIndex { get; set; } //!< 
     public static int AbilityInventoryIndex { get; set; }
 
-    public const int maxSlotCount = 32;
-
     private void Awake()
     {
         weaponPanel = GameObject.Find("Panel_Inventory_Weapon");
@@ -45,12 +43,13 @@ public class CInventory : MonoBehaviour {
     // Use this for initialization
     void Start ()
     {
+        currentInventoryTab = weaponPanel;
+        Debug.Log(currentInventoryTab);
+
         armorPanel.SetActive(false);
         consumablePanel.SetActive(false);
         skillPanel.SetActive(false);
         abilityPanel.SetActive(false);
-
-        currentInventoryTab = weaponPanel;
 
         //inventoryAbilities = new CInventoryAbility[maxSlotCount];
         //inventorySkills = new CInventorySkill[maxSlotCount];
@@ -66,7 +65,7 @@ public class CInventory : MonoBehaviour {
         currentInventoryTab.SetActive(false);
         currentInventoryTab = _object;
         currentInventoryTab.SetActive(true);
-        //DeActivateExcludeTab(_object);
+        //DeActivateExcludkddeTab(_object);
     }
 
     public void DeActivateExcludeTab(GameObject _object)
@@ -74,11 +73,15 @@ public class CInventory : MonoBehaviour {
 
     }
 
+    /// <summary>
+    /// 인벤토리에 Item을 추가하는 함수
+    /// </summary>
+    /// <param name="Item">상점에서 구입을 위해 클릭된 아이템</param>
     public static void AddItem(GameObject Item)
     {
         string tag = Item.tag;
 
-        switch(tag)
+        switch(tag) //!< 아이템의 종류 판별
         {
             case "Equipment":
                 break;

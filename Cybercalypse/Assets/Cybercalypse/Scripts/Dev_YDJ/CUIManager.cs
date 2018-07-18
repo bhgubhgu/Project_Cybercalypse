@@ -9,7 +9,7 @@ public class CUIManager : SingleTonManager<CUIManager> {
     protected override void Awake()
     {
         base.Awake();
-        inventory = GameObject.Find("Panel_Inventory").GetComponent<CInventory>();
+        //inventory = GameObject.Find("Panel_Inventory").GetComponent<CInventory>();
     }
 
     private void Start()
