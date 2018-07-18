@@ -434,7 +434,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1799160686409334}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.472, y: -0.516, z: 0}
+  m_LocalPosition: {x: -1.451, y: -0.176, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4369847231729784}
@@ -1180,6 +1180,8 @@ MonoBehaviour:
   monsterAudioList: []
   gameAudioList: []
   skillSoundList: []
+  normalAttackSoundList:
+  - {fileID: 8300000, guid: a0ecd038fb392034dbc7f6d943547618, type: 3}
   backgroundMusic: {fileID: 82277168447998230}
   effectMusic: {fileID: 82592150173157606}
 --- !u!114 &114423507170820434
@@ -1204,6 +1206,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83e247b8aafd4f74a82fc20220705090, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fightAnimator: {fileID: 9100000, guid: f9826c38c0ab2864dbb4f4bedef662db, type: 2}
+  defaultAnimator: {fileID: 9100000, guid: 0a1b363f80f084446ac3b8da1ec87835, type: 2}
 --- !u!114 &114461773942535794
 MonoBehaviour:
   m_ObjectHideFlags: 1

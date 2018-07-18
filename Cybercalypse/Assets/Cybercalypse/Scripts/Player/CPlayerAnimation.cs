@@ -8,8 +8,11 @@ public class CPlayerAnimation : MonoBehaviour
     /// 작성자 : 구용모
     /// 스크립트 : Player 객체의 애니메이션을 구현하는 스크립트
     /// 최초 작성일 : . . .
-    /// 최종 수정일 : 2018.07.17
+    /// 최종 수정일 : 2018.07.18
     /// </summary>
+
+    public RuntimeAnimatorController fightAnimator;
+    public RuntimeAnimatorController defaultAnimator;
 
     private CSkillLibrary skillPool;
     private Animator ani;
@@ -20,6 +23,7 @@ public class CPlayerAnimation : MonoBehaviour
     private int skillIndex;
     private bool isRun;
     private bool isAttackNow;
+    private bool isSecondAttackNow;
 
     private void Awake()
     {
@@ -59,6 +63,7 @@ public class CPlayerAnimation : MonoBehaviour
         ani.SetBool("isDashNow", control.IsDashNow);
         ani.SetBool("isRun", isRun);
         ani.SetBool("isAttackNow", isAttackNow);
+        ani.SetBool("isSecondAttack", isSecondAttackNow);
     }
 
     /* delegate 메소드 */
@@ -108,12 +113,49 @@ public class CPlayerAnimation : MonoBehaviour
     //스킬
     public void NormalAttackAni(bool isDownNormalAttackKey)
     {
+        if(isAttackNow)
+        {
+            CancelInvoke("ChangeNormalState");
+            CancelInvoke("StopNormalAttack");
+            Invoke("ChangeNormalState", 15);
+
+            ani.SetTrigger("SlashAttack2");
+            isSecondAttackNow = true;
+
+            Invoke("StopNormalAttack", 0.3f);
+
+            StartCoroutine(Test2());
+        }
+        else
+        {
+            Invoke("ChangeNormalState", 15);
+            Invoke("StopNormalAttack", 0.3f);
+
+            StartCoroutine(Test());
+        }
+
+        ani.runtimeAnimatorController = fightAnimator;
+
         ani.SetTrigger("SlashAttack1");
+
+        isAttackNow = true;
+    }
+
+    IEnumerator Test()
+    {
+        yield return new WaitUntil(() => ani.GetCurrentAnimatorStateInfo(0).IsName("Excutor_SlashAttack1"));
+        CAudioManager.instance.PlayNormalAttackSoundUniqueEvent(NormalAttackAni);
+    }
+
+    IEnumerator Test2()
+    {
+        yield return new WaitUntil(() => ani.GetCurrentAnimatorStateInfo(0).IsName("Excutor_SlashAttack2"));
+        CAudioManager.instance.PlayNormalAttackSoundUniqueEvent(NormalAttackAni);
     }
 
     public void SpecialAttackAni(bool isDownSpecialAttackKey)
     {
-        ani.SetTrigger("SlashAttack2");
+
     }
 
     //스킬
@@ -162,5 +204,18 @@ public class CPlayerAnimation : MonoBehaviour
         {
 
         }
+    }
+
+    //Invoke
+    private void ChangeNormalState()
+    {
+        ani.runtimeAnimatorController = defaultAnimator;
+    }
+
+    private void StopNormalAttack()
+    {
+        isAttackNow = false;
+        isSecondAttackNow = false;
+        ani.ResetTrigger("SlashAttack1");
     }
 }
