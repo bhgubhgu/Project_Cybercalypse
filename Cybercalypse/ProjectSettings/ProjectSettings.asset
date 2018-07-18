@@ -644,7 +644,7 @@ PlayerSettings:
     Hub: 0
     UNet: 1
   facebookSdkVersion: 7.9.4
-  apiCompatibilityLevel: 2
+  apiCompatibilityLevel: 3
   cloudProjectId: e279372c-2aa6-49be-96a2-2969b5b7c5b3
   projectName: Cybercalypse
   organizationId: phantasy_lab
