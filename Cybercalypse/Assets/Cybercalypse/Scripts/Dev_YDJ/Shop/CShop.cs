@@ -4,8 +4,9 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class CShop : MonoBehaviour {
-
-    public GameObject equipmentPanel;
+    
+    public GameObject weaponPanel;
+    public GameObject armorPanel;
     public GameObject consumablePanel;
 
     public GameObject skillPanel;
@@ -19,7 +20,8 @@ public class CShop : MonoBehaviour {
 
     private void Awake()
     {
-        equipmentPanel = GameObject.Find("Panel_Shop_Equipment");
+        weaponPanel = GameObject.Find("Panel_Shop_Weapon");
+        armorPanel = GameObject.Find("Panel_Shop_Armor");
         consumablePanel = GameObject.Find("Panel_Shop_Consumable");
 
         skillPanel = GameObject.Find("Panel_Shop_Skill");
@@ -29,22 +31,12 @@ public class CShop : MonoBehaviour {
     // Use this for initialization
     void Start()
     {
+        armorPanel.SetActive(false);
         consumablePanel.SetActive(false);
         skillPanel.SetActive(false);
         abilityPanel.SetActive(false);
 
-        currentPanel = equipmentPanel;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    private void OnMouseDown()
-    {
-        
+        currentPanel = weaponPanel;
     }
 
     /// <summary>
@@ -53,21 +45,14 @@ public class CShop : MonoBehaviour {
     /// <param name="_object"></param>
     public static void BuyItem(GameObject _object)
     {
-        //!< 돈을 받고 아이템을 준다.
-        
-    }
-
-    public static void SellItem<T>(T other) where T : AItem
-    {
-        //!< 가격 차감
+        //!< 아이템을 받고 돈을 준다.
         int price = 1000;
-        CInventory.money -= price;
-
-        //CInventory.AddItem(other.tag, other.gameObject);
+        CInventory.money += price;
     }
 
     public static void SellItem(GameObject _object)
     {
+        //!< 돈을 받고 아이템을 준다.
         int price = 1000;
         CInventory.money -= price;
 

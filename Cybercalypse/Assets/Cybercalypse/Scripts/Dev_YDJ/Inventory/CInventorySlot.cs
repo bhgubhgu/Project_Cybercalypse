@@ -57,7 +57,7 @@ public class CInventorySlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
 
     void IDropHandler.OnDrop(PointerEventData eventData)
     {
-        AItem item;
+        AItem draggingItem;
         switch (eventData.pointerDrag.transform.GetChild(0).tag)
         {
             case "Weapon":
@@ -67,13 +67,15 @@ public class CInventorySlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
             case "Consumable":
                 break;
             case "Skill":
-                item = eventData.pointerDrag.transform.GetChild(0).GetComponent<CSkill>();
-                SwapData(item, Item.gameObject);
+                draggingItem = eventData.pointerDrag.transform.GetChild(0).GetComponent<CSkill>();
+                SwapData(draggingItem, Item);
+                //SwapData<CSkill>()
                 Item.GetComponent<Image>().sprite = Item.GetComponent<CSkill>().ItemIcon;
                 break;
             case "Ability":
-                item = eventData.pointerDrag.transform.GetChild(0).GetComponent<CAbility>();
-                SwapData(item, Item.gameObject);
+                draggingItem = eventData.pointerDrag.transform.GetChild(0).GetComponent<CAbility>();
+                SwapData(draggingItem, Item);
+                Item.GetComponent<Image>().sprite = Item.GetComponent<CSkill>().ItemIcon;
                 break;
             default:
                 break;
@@ -91,12 +93,13 @@ public class CInventorySlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
         Item.GetComponent<Image>().sprite = Item.GetComponent<CSkill>().ItemIcon;
     }
 
-    void SwapData<T>(T original, GameObject destination) where T : AItem
+    void SwapData<T>(T original, Transform destination) where T : AItem
     {
+        //!< CWeapon, CArmor, CSKill, CAbility...
         System.Type type = original.GetType();
-        //var boo = original;
-        //Debug.Log(boo.GetType());
+        //T copy = new T();
         var copy = new CSkill();
+        Debug.Log(copy.GetType());
         var target = destination.GetComponent(type);
         System.Reflection.PropertyInfo[] properties = type.GetProperties();
 
@@ -105,25 +108,12 @@ public class CInventorySlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
             if (properties[i].DeclaringType.Equals(copy.GetType()))
             {
                 properties[i].SetValue(copy, properties[i].GetValue(original));
-                Debug.Log(properties[i].GetValue(original));
+                //Debug.Log(properties[i].GetValue(original));
                 properties[i].SetValue(original, properties[i].GetValue(target));
-                Debug.Log(properties[i].GetValue(target));
+                //Debug.Log(properties[i].GetValue(target));
                 properties[i].SetValue(target, properties[i].GetValue(copy));
-                Debug.Log(properties[i].GetValue(copy));
+                //Debug.Log(properties[i].GetValue(copy));
             }
         }
-
-        //for (int i = 0; i < properties.Length; i++)
-        //{
-        //    properties[i].SetValue(copy, properties[i].GetValue(original));
-        //}
-        //for (int i = 0; i < properties.Length; i++)
-        //{
-        //    properties[i].SetValue(destination, properties[i].GetValue(original));
-        //}
-        //for (int i = 0; i < properties.Length; i++)
-        //{
-        //    properties[i].SetValue(original, properties[i].GetValue(original));
-        //}
     }
 }

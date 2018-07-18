@@ -30,8 +30,6 @@ public class CInventory : MonoBehaviour {
     public static int SkillInventoryIndex { get; set; } //!< 
     public static int AbilityInventoryIndex { get; set; }
 
-    public const int maxSlotCount = 32;
-
     private void Awake()
     {
         weaponPanel = GameObject.Find("Panel_Inventory_Weapon");
@@ -75,11 +73,15 @@ public class CInventory : MonoBehaviour {
 
     }
 
+    /// <summary>
+    /// 인벤토리에 Item을 추가하는 함수
+    /// </summary>
+    /// <param name="Item">상점에서 구입을 위해 클릭된 아이템</param>
     public static void AddItem(GameObject Item)
     {
         string tag = Item.tag;
 
-        switch(tag)
+        switch(tag) //!< 아이템의 종류 판별
         {
             case "Equipment":
                 break;
