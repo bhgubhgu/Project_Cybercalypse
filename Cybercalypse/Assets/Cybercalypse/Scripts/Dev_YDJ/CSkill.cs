@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CSkill : ASkill
 {
@@ -52,6 +53,11 @@ public class CSkill : ASkill
     {
         get { return _skillCoolDown; }
         set { _skillCoolDown = value; }
+    }
+
+    private void Start()
+    {
+        ItemIcon = GetComponent<Image>().sprite;
     }
 
     public void InitializeSkill()

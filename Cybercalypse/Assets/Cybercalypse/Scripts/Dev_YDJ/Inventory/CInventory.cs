@@ -12,7 +12,7 @@ public class CInventory : MonoBehaviour {
     public static GameObject skillPanel;
     public static GameObject abilityPanel;
 
-    private GameObject currentInventoryTab;
+    public static GameObject currentInventoryTab;
 
     public static int money = 0;
 
@@ -45,12 +45,13 @@ public class CInventory : MonoBehaviour {
     // Use this for initialization
     void Start ()
     {
+        currentInventoryTab = weaponPanel;
+        Debug.Log(currentInventoryTab);
+
         armorPanel.SetActive(false);
         consumablePanel.SetActive(false);
         skillPanel.SetActive(false);
         abilityPanel.SetActive(false);
-
-        currentInventoryTab = weaponPanel;
 
         //inventoryAbilities = new CInventoryAbility[maxSlotCount];
         //inventorySkills = new CInventorySkill[maxSlotCount];
@@ -66,7 +67,7 @@ public class CInventory : MonoBehaviour {
         currentInventoryTab.SetActive(false);
         currentInventoryTab = _object;
         currentInventoryTab.SetActive(true);
-        //DeActivateExcludeTab(_object);
+        //DeActivateExcludkddeTab(_object);
     }
 
     public void DeActivateExcludeTab(GameObject _object)
