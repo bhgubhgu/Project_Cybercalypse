@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Reflection;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CInventory : MonoBehaviour {
 
@@ -14,7 +15,10 @@ public class CInventory : MonoBehaviour {
 
     public static GameObject currentInventoryTab;
 
+    public static GameObject inventoryCursor;
+
     public static int money = 0;
+    public static Text moneyText;
 
     //!<
     //!< ---
@@ -38,18 +42,22 @@ public class CInventory : MonoBehaviour {
 
         skillPanel = GameObject.Find("Panel_Inventory_Skill");
         abilityPanel = GameObject.Find("Panel_Inventory_Ability");
+
+        moneyText = transform.Find("Text_Money").GetComponent<Text>();
     }
 
     // Use this for initialization
     void Start ()
     {
         currentInventoryTab = weaponPanel;
-        Debug.Log(currentInventoryTab);
 
         armorPanel.SetActive(false);
         consumablePanel.SetActive(false);
         skillPanel.SetActive(false);
         abilityPanel.SetActive(false);
+
+        money = 5000;
+        moneyText.text = money.ToString();
 
         //inventoryAbilities = new CInventoryAbility[maxSlotCount];
         //inventorySkills = new CInventorySkill[maxSlotCount];
@@ -81,23 +89,58 @@ public class CInventory : MonoBehaviour {
     {
         string tag = Item.tag;
 
-        switch(tag) //!< 아이템의 종류 판별
+        //switch(tag) //!< 아이템의 종류 판별
+        //{
+        //    case "Equipment":
+        //        break;
+        //    case "Consumable":
+        //        break;
+        //    case "Skill":
+        //        //skillInventory[SkillInventoryIndex]
+        //        var emptySlot = GetEmptySlot(skillPanel);
+        //        PasteComponentValues<CSkill>(Item.GetComponent<CSkill>(), emptySlot);
+        //        Debug.Log(Item.GetComponent<CSkill>().ItemIcon);
+        //        Debug.Log(emptySlot.GetComponent<CSkill>().ItemIcon);
+        //        emptySlot.transform.GetChild(0).GetComponent<Image>().sprite 
+        //            = Item.GetComponent<CSkill>().ItemIcon;
+        //        break;
+        //    case "Ability":
+        //        break;
+        //}
+
+        var emptySlot = GetEmptySlot(currentInventoryTab);
+        var targetImage = emptySlot.Item.GetComponent<Image>();
+        targetImage.sprite = Item.GetComponent<Image>().sprite;
+        targetImage.type = Image.Type.Simple;
+        emptySlot.IsEmpty = false;
+    }
+
+    public static void RemoveItem(CInventorySlot other)
+    {
+        other.Item.GetComponent<Image>().sprite = null;
+        other.IsEmpty = true;
+    }
+
+    public static void SellItem(CInventorySlot other)
+    {
+        int price = 1000;
+        money += price;
+        moneyText.text = money.ToString();
+
+        RemoveItem(other);
+    }
+
+    public static CInventorySlot GetEmptySlot(GameObject panel)
+    {
+        Transform panelTransform = panel.transform;
+        for (int i = 0; i < panel.transform.childCount; i++)
         {
-            case "Equipment":
-                break;
-            case "Consumable":
-                break;
-            case "Skill":
-                //skillInventory[SkillInventoryIndex]
-                var boo = GetEmptySlot(skillPanel);
-                Debug.Log(boo.name);
-                var emptySlot = GetEmptySlot(skillPanel);
-                PasteComponentValues<CSkill>(Item.GetComponent<CSkill>(), GetEmptySlot(skillPanel));
-                
-                break;
-            case "Ability":
-                break;
+            if (panelTransform.GetChild(i).GetComponent<CInventorySlot>().IsEmpty)
+            {
+                return panelTransform.GetChild(i).GetComponent<CInventorySlot>();
+            }
         }
+        return null;
     }
 
     public static void AddItem(AItem.EItemCategory itemCategory)
@@ -111,16 +154,6 @@ public class CInventory : MonoBehaviour {
             case AItem.EItemCategory.Talent:
                 break;
         }
-    }
-
-    public static GameObject GetEmptySlot(GameObject panel)
-    {
-        for (int i = 0; i < panel.transform.childCount; i++)
-        {
-            if (panel.transform.GetChild(i).GetComponent<CSlot>().IsEmpty)
-                return panel.transform.GetChild(i).gameObject;
-        }
-        return null;
     }
 
     //private static T PasteComponentValues<T>(T original, GameObject destination) where T : Component
@@ -144,21 +177,12 @@ public class CInventory : MonoBehaviour {
 
         foreach (var property in properties)
         {
-            if(property.DeclaringType.Equals(typeof(CSkill)))
+            if(property.DeclaringType.Equals(copy.GetType()))
             {
-                Debug.Log(property);
-                Debug.Log(property.GetValue(original));
                 property.SetValue(copy, property.GetValue(original));
             }
-
-            //Debug.Log(property.DeclaringType.Equals(typeof(AItem)));
-            //if (property.IsDefined(property.GetType(), true))
-            //{
-            //    property.SetValue(copy, property.GetValue(original));
-            //    Debug.Log(property);
-            //    Debug.Log(property.GetValue(original));
-            //}
         }
+        
     }
 
     /* Legarcy Code

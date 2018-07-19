@@ -6321,7 +6321,7 @@ GameObject:
   - component: {fileID: 114639890042757432}
   - component: {fileID: 114963797827266672}
   m_Layer: 5
-  m_Name: Canvas_YDJ
+  m_Name: Canvas_YDJ_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

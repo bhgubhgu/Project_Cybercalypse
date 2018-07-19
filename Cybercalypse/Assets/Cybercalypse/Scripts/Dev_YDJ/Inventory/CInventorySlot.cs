@@ -4,12 +4,12 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class CInventorySlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IDropHandler
+public class CInventorySlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IDropHandler, IPointerClickHandler
 {
     private bool _isEmpty;
     private Transform _item;
     private Transform _transform;
-    private AItem _myItem;
+    private int _siblingIndex;
 
     public bool IsEmpty
     {
@@ -23,33 +23,44 @@ public class CInventorySlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
         set { _item = value; }
     }
 
-    public Transform CachingTransform
+    public Transform Transform
     {
         get { return _transform; }
         private set { _transform = value; }
     }
 
-    public AItem MyItem
+    public int SiblingIndex
     {
-        get { return _myItem; }
-        set { _myItem = value; }
+        get { return _siblingIndex; }
+        private set { _siblingIndex = value; }
     }
 
     private void Start()
     {
-        CachingTransform = GetComponent<Transform>();
-        Item = CachingTransform.GetChild(0);    //!< InventorySlot의 Item에 대한 참조
+        Transform = GetComponent<Transform>();
+        Item = Transform.GetChild(0);    //!< InventorySlot의 Item에 대한 참조
+        if(Item.GetComponent<Image>().sprite.Equals(null))
+        {
+            IsEmpty = true;
+        }
+        else /*if(!Item.GetComponent<Image>().sprite.Equals(null))*/
+        {
+            IsEmpty = false;
+        }
     }
 
     void IBeginDragHandler.OnBeginDrag(PointerEventData eventData)
     {
         //if(Transform.parent.parent.name.Equals("Panel_Inventory"))
-        CachingTransform.SetAsLastSibling();
+        SiblingIndex = Transform.GetSiblingIndex();
+        Transform.SetAsLastSibling();
         GetComponent<CanvasGroup>().blocksRaycasts = false;
     }
 
     void IDragHandler.OnDrag(PointerEventData eventData)
     {
+        if (IsEmpty)
+            return;
         Vector3 mousePosition = new Vector3(Input.mousePosition.x, Input.mousePosition.y);
         mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
         Item.position = new Vector3(mousePosition.x, mousePosition.y);
@@ -57,45 +68,68 @@ public class CInventorySlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
 
     void IDropHandler.OnDrop(PointerEventData eventData)
     {
-        AItem draggingItem;
-        switch (eventData.pointerDrag.transform.GetChild(0).tag)
-        {
-            case "Weapon":
-                break;
-            case "Armor":
-                break;
-            case "Consumable":
-                break;
-            case "Skill":
-                draggingItem = eventData.pointerDrag.transform.GetChild(0).GetComponent<CSkill>();
-                SwapData(draggingItem, Item);
-                //SwapData<CSkill>()
-                Item.GetComponent<Image>().sprite = Item.GetComponent<CSkill>().ItemIcon;
-                break;
-            case "Ability":
-                draggingItem = eventData.pointerDrag.transform.GetChild(0).GetComponent<CAbility>();
-                SwapData(draggingItem, Item);
-                Item.GetComponent<Image>().sprite = Item.GetComponent<CSkill>().ItemIcon;
-                break;
-            default:
-                break;
-        }
-        //eventData.pointerDrag.GetComponent
-        //if(eventData.pointerDrag.GetType().Equals(typeof()))
+        //AItem draggingItem;
+        //switch (eventData.pointerDrag.transform.GetChild(0).tag)
+        //{
+        //    case "Weapon":
+        //        break;
+        //    case "Armor":
+        //        break;
+        //    case "Consumable":
+        //        break;
+        //    case "Skill":
+        //        draggingItem = eventData.pointerDrag.transform.GetChild(0).GetComponent<CSkill>();
+        //        //SwapData(draggingItem, Item);
+        //        //SwapData<CSkill>()
+        //        Item.GetComponent<Image>().sprite = Item.GetComponent<CSkill>().ItemIcon;
+        //        break;
+        //    case "Ability":
+        //        draggingItem = eventData.pointerDrag.transform.GetChild(0).GetComponent<CAbility>();
+        //        //SwapData(draggingItem, Item);
+        //        Item.GetComponent<Image>().sprite = Item.GetComponent<CAbility>().ItemIcon;
+        //        break;
+        //    default:
+        //        break; 
+        //}
+
+        //!< draggingImage = 드래그중인 Item의 Image 컴포넌트
+        //var draggingImage = eventData.pointerDrag.transform.GetChild(0).GetComponent<Image>();
+        //!< origin = Drop을 감지한 슬롯 속 Item의 Image 컴포넌트
+
+        var targetSlot = eventData.pointerDrag.GetComponent<CInventorySlot>();
+
+        if (targetSlot.IsEmpty)
+            return;
+
+        var draggingImage = targetSlot.Item.GetComponent<Image>();
+        var original = Item.GetComponent<Image>();
+        var temp = original.sprite;
+        
+        original.sprite = draggingImage.sprite;
+        draggingImage.sprite = temp;
+        
+        var empty = IsEmpty;
+        IsEmpty = targetSlot.IsEmpty;
+        targetSlot.IsEmpty = empty;
     }
 
     void IEndDragHandler.OnEndDrag(PointerEventData eventData)
     {
         Item.localPosition = Vector3.zero;
-
+        Transform.SetSiblingIndex(SiblingIndex);
         GetComponent<CanvasGroup>().blocksRaycasts = true;
-
-        Item.GetComponent<Image>().sprite = Item.GetComponent<CSkill>().ItemIcon;
     }
 
-    void SwapData<T>(T original, Transform destination) where T : AItem
+    void IPointerClickHandler.OnPointerClick(PointerEventData eventData)
     {
-        //!< CWeapon, CArmor, CSKill, CAbility...
+        //!< 상점이 열려있을때만 아이템을 팔 수 있도록 조건문을 걸어줄 것
+        CInventory.SellItem(this);
+    }
+}
+
+/* 템플릿 형식의 스크립트 속성들을 Swap 하는 함수
+ * void SwapData<T>(T original, Transform destination) where T : AItem
+    {
         System.Type type = original.GetType();
         //T copy = new T();
         var copy = new CSkill();
@@ -108,12 +142,17 @@ public class CInventorySlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
             if (properties[i].DeclaringType.Equals(copy.GetType()))
             {
                 properties[i].SetValue(copy, properties[i].GetValue(original));
-                //Debug.Log(properties[i].GetValue(original));
                 properties[i].SetValue(original, properties[i].GetValue(target));
-                //Debug.Log(properties[i].GetValue(target));
                 properties[i].SetValue(target, properties[i].GetValue(copy));
-                //Debug.Log(properties[i].GetValue(copy));
             }
         }
     }
-}
+
+    void IPointerClickHandler.OnPointerClick(PointerEventData eventData)
+    {
+        var itemImage = Item.GetComponent<Image>();
+
+
+        throw new System.NotImplementedException();
+    }
+ */

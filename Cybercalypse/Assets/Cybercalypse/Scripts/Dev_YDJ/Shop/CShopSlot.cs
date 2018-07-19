@@ -30,7 +30,6 @@ public class CShopSlot : MonoBehaviour, IPointerClickHandler {
     void IPointerClickHandler.OnPointerClick(PointerEventData eventData)
     {
         Debug.Log("Click the Slot of Shop");
-        CShop.SellItem(gameObject);
-        throw new System.Exception();
+        CShop.SellItem(CachingTransform.GetChild(0).gameObject);
     }
 }
