@@ -296,20 +296,23 @@ public abstract class APhysics : MonoBehaviour
             m_isPlatform = false;
 
             this.transform.position = Vector3.Lerp(this.transform.position, new Vector3(this.transform.position.x, hCenter.y + hSize.y * 0.5f), 15f * Time.deltaTime);
+            return;
         }
         else if (pBoundBottom <= hBoundBottom && pBoundTop <= hBboundTop && colliders.gameObject.layer != 20)
         {
             m_isHeadCollide = true;
             m_isGrounded = false;
+            return;
         }
-        else if (pBoundTop >= hBboundTop && pBoundBottom <= hBboundTop && colliders.gameObject.layer == 20 && this.transform.position.y == previousPosition.y)
+
+        if (pBoundTop >= hBboundTop && pBoundBottom <= hBboundTop && colliders.gameObject.layer == 20 && this.transform.position.y == previousPosition.y)
         {
             m_isGrounded = true;
             m_isHeadCollide = false;
             m_isPlatform = true;
             this.transform.position = Vector3.Lerp(this.transform.position, new Vector3(this.transform.position.x, hCenter.y + hSize.y * 0.5f), 15f * Time.deltaTime);
         }
-        else
+        else if(pBoundTop <= hBboundTop && pBoundBottom >= hBboundTop && colliders.gameObject.layer == 20  && this.transform.position.y != previousPosition.y)
         {
             m_isGrounded = false;
             m_isPlatform = false;
@@ -340,7 +343,7 @@ public abstract class APhysics : MonoBehaviour
         float hBoundLeft = Mathf.Round((-hSize.x * 0.5f + hCenter.x) * 100) * 0.01f;
         float hBoundRight = Mathf.Round((hBoundLeft + hSize.x) * 100) * 0.01f;
 
-        if (pBoundLeft >= hBoundRight && pBoundRight >= hBoundLeft && colliders.gameObject.layer != 20)
+        if (pBoundLeft >= hBoundRight && pBoundRight >= hBoundLeft)
         {
             m_isLeftCheck = true;
             m_isRightCheck = false;
@@ -349,7 +352,7 @@ public abstract class APhysics : MonoBehaviour
 
             this.transform.position = Vector3.Lerp(this.transform.position, interpolationVector, 2.5f * Time.deltaTime);
         }
-        else if (pBoundRight >= hBoundLeft && pBoundLeft <= hBoundRight && colliders.gameObject.layer != 20)
+        else if (pBoundRight >= hBoundLeft && pBoundLeft <= hBoundRight)
         {
             m_isRightCheck = true;
             m_isLeftCheck = false;

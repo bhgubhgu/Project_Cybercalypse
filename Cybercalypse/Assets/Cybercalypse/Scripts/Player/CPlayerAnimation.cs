@@ -102,7 +102,7 @@ public class CPlayerAnimation : MonoBehaviour
     //구르기
     public void DashAni(bool isDownCharacterBlinkKeyInputMananger)
     {
-        if(control.IsDashNow)
+        if (control.IsDashNow)
         {
             return;
         }
