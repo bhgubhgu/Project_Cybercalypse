@@ -319,7 +319,7 @@ public class CPlayerController : APhysics
     #region 공격 키 메소드
     public void NormalAttackContorl(bool isDownNormalAttackKey)
     {
-        Debug.Log("Normal Attack!");
+        //Debug.Log("Normal Attack!");
     }
 
     public void SpecialAttackContorl(bool isDownSpecialAttackKey)
