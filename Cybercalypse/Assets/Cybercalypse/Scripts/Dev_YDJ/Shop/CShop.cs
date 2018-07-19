@@ -54,7 +54,10 @@ public class CShop : MonoBehaviour {
     {
         //!< 돈을 받고 아이템을 준다.
         int price = 1000;
+        if (CInventory.money - price < 0)
+            return;
         CInventory.money -= price;
+        CInventory.moneyText.text = CInventory.money.ToString();
 
         CInventory.AddItem(_object);
     }
