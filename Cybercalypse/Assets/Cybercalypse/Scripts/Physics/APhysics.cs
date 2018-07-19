@@ -613,7 +613,7 @@ public abstract class APhysics : MonoBehaviour
 
     public IEnumerator DownPlatformMove()
     {
-        Vector3 testPosition = new Vector3(this.transform.position.x, this.transform.position.y - 0.3f, this.transform.position.z);
+        Vector3 testPosition = new Vector3(this.transform.position.x, this.transform.position.y - 0.4f, this.transform.position.z);
 
         while (this.transform.position.y >= testPosition.y)
         {

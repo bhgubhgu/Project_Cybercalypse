@@ -25,6 +25,9 @@ public class CPlayerAnimation : MonoBehaviour
     private bool isAttackNow;
     private bool isSecondAttackNow;
 
+    private BitArray attackCombo = new BitArray(2, false);
+    private int attackIndex;
+
     private void Awake()
     {
         playerController = GetComponent<CPlayerController>(); //스킬 애니메이션을 위함
@@ -113,32 +116,73 @@ public class CPlayerAnimation : MonoBehaviour
     //스킬
     public void NormalAttackAni(bool isDownNormalAttackKey)
     {
-        if(isAttackNow)
+        if(!attackCombo[0] && !attackCombo[1])
         {
-            CancelInvoke("ChangeNormalState");
+            Debug.Log("ready");
+            ani.runtimeAnimatorController = fightAnimator;
+            CheckAttackStatement();
+            isAttackNow = true;
+            return;
+        }
+
+        CheckAttackStatement();
+
+        if (attackCombo[0] && !attackCombo[1])
+        {
             CancelInvoke("StopNormalAttack");
-            Invoke("ChangeNormalState", 15);
+            Invoke("StopNormalAttack", 0.3f);
+            isAttackNow = true;
+
+            ani.SetTrigger("SlashAttack1");
+            StartCoroutine(Test());
+            //CAudioManager.instance.PlayNormalAttackSoundUniqueEvent(NormalAttackAni);
+            attackIndex++;
+            //delay
+
+        }
+        else if(attackCombo[0] && attackCombo[1])
+        {
+            CancelInvoke("StopNormalAttack");
+            Invoke("StopNormalAttack", 0.3f);
+            isAttackNow = true;
+
 
             ani.SetTrigger("SlashAttack2");
-            isSecondAttackNow = true;
-
-            Invoke("StopNormalAttack", 0.3f);
-
             StartCoroutine(Test2());
+            //CAudioManager.instance.PlayNormalAttackSoundUniqueEvent(NormalAttackAni);
+            attackIndex = 0;
+
+            //delay
+
+            InitAttackStatement();
+            //delay
         }
-        else
+
+    }
+
+    private void CheckAttackStatement()
+    {
+        for(int i = 0; i < attackCombo.Length; i++)
         {
-            Invoke("ChangeNormalState", 15);
-            Invoke("StopNormalAttack", 0.3f);
-
-            StartCoroutine(Test());
+            if(attackIndex == i)
+            {
+                attackCombo[attackIndex] = true;
+                return;
+            }
         }
+    }
 
-        ani.runtimeAnimatorController = fightAnimator;
+    private void InitAttackStatement()
+    {
+        for (int i = 1; i < attackCombo.Length; i++)
+        {
+            attackCombo[i] = false;
+        }
+    }
 
-        ani.SetTrigger("SlashAttack1");
-
-        isAttackNow = true;
+    IEnumerator Delay()
+    {
+        yield return null;
     }
 
     IEnumerator Test()
@@ -214,8 +258,42 @@ public class CPlayerAnimation : MonoBehaviour
 
     private void StopNormalAttack()
     {
+        attackIndex = 0;
         isAttackNow = false;
         isSecondAttackNow = false;
         ani.ResetTrigger("SlashAttack1");
     }
 }
+
+/*CancelInvoke("ChangeNormalState");
+CancelInvoke("StopNormalAttack");
+
+if (isAttackNow)
+{
+    CancelInvoke("ChangeNormalState");
+    CancelInvoke("StopNormalAttack");
+    Invoke("ChangeNormalState", 3);
+
+    ani.SetTrigger("SlashAttack2");
+    isSecondAttackNow = true;
+
+    Invoke("StopNormalAttack", 0.3f);
+
+    StartCoroutine(Test2());
+}
+else
+{
+    CancelInvoke("ChangeNormalState");
+    CancelInvoke("StopNormalAttack");
+
+    Invoke("ChangeNormalState", 3);
+    Invoke("StopNormalAttack", 0.3f);
+
+    StartCoroutine(Test());
+}
+
+ani.runtimeAnimatorController = fightAnimator;
+
+ani.SetTrigger("SlashAttack1");
+
+isAttackNow = true;*/
