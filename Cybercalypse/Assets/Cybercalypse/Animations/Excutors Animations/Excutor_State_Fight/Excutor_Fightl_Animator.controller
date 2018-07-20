@@ -895,6 +895,9 @@ AnimatorStateTransition:
   - m_ConditionMode: 1
     m_ConditionEvent: isAttackNow
     m_EventTreshold: 0
+  - m_ConditionMode: 1
+    m_ConditionEvent: SlashAttack1
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102235837537580672}
   m_Solo: 0
@@ -1244,10 +1247,10 @@ AnimatorStateTransition:
     m_ConditionEvent: isGrounded
     m_EventTreshold: 0
   - m_ConditionMode: 1
-    m_ConditionEvent: isAttackNow
+    m_ConditionEvent: SlashAttack1
     m_EventTreshold: 0
   - m_ConditionMode: 1
-    m_ConditionEvent: SlashAttack1
+    m_ConditionEvent: isAttackNow
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102235837537580672}
