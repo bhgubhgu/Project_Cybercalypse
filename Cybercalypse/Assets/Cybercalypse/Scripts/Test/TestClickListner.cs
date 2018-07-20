@@ -78,10 +78,8 @@ public class TestClickListner : MonoBehaviour
 
     public void WeaponClick()
     {
-        Debug.Log("엥?:");
         if (!TestShop.isShopOpen)
         {
-            Debug.Log("엥?:ㅁㄴㅇㅁㄴㅇ");
             weaponCategorySlot.SetActive(true);
             armorCategorySlot.SetActive(false);
             skillCategorySlot.SetActive(false);

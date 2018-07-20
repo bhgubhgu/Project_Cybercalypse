@@ -265,13 +265,13 @@ public class CPlayerAnimation : MonoBehaviour
 
     IEnumerator SlashAttackOneSound()
     {
-        yield return new WaitUntil(() => ani.GetCurrentAnimatorStateInfo(0).IsName("Excutor_SlashAttack1"));
+        yield return new WaitUntil(() => ani.GetCurrentAnimatorStateInfo(0).IsName("Excutor_SlashAttack1") || ani.GetCurrentAnimatorStateInfo(0).IsName("Excutor_JumpSlash"));
         CAudioManager.instance.PlayNormalAttackSoundUniqueEvent(NormalAttackAni);
     }
 
     IEnumerator SlashAttackTwoSound()
     {
-        yield return new WaitUntil(() => ani.GetCurrentAnimatorStateInfo(0).IsName("Excutor_SlashAttack2"));
+        yield return new WaitUntil(() => ani.GetCurrentAnimatorStateInfo(0).IsName("Excutor_SlashAttack2") || ani.GetCurrentAnimatorStateInfo(0).IsName("Excutor_JumpSlash"));
         CAudioManager.instance.PlayNormalAttackSoundUniqueEvent(NormalAttackAni);
     }
 }

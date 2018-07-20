@@ -1,0 +1,307 @@
+fileFormatVersion: 2
+guid: 7c0a0cbba44efb043a2709603099badc
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: Excutor_jumping_weapon_0
+    21300002: Excutor_jumping_weapon_1
+    21300004: Excutor_jumping_weapon_2
+    21300006: Excutor_jumping_weapon_3
+    21300008: Excutor_jumping_weapon_4
+    21300010: Excutor_jumping_weapon_5
+    21300012: Excutor_jumping_weapon_6
+    21300014: Excutor_jumping_weapon_7
+    21300016: Excutor_jumping_weapon_8
+    21300018: Excutor_jumping_weapon_9
+  externalObjects: {}
+  serializedVersion: 6
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 300
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 2
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Excutor_jumping_weapon_0
+      rect:
+        serializedVersion: 2
+        x: 62
+        y: 262
+        width: 66
+        height: 97
+      alignment: 9
+      pivot: {x: 0.5329926, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 94c4c7bf7a355294aa79eaf1e69dd7cb
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Excutor_jumping_weapon_1
+      rect:
+        serializedVersion: 2
+        x: 213
+        y: 264
+        width: 73
+        height: 93
+      alignment: 9
+      pivot: {x: 0.5795438, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0ac46ef7515c5d94aa2b6ef99e478ed4
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Excutor_jumping_weapon_2
+      rect:
+        serializedVersion: 2
+        x: 370
+        y: 267
+        width: 76
+        height: 90
+      alignment: 9
+      pivot: {x: 0.58117914, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c83abf4a6fc9f7d4cb9075f849b9a757
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Excutor_jumping_weapon_3
+      rect:
+        serializedVersion: 2
+        x: 529
+        y: 264
+        width: 75
+        height: 93
+      alignment: 9
+      pivot: {x: 0.58710045, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 42da919468a255144b432ecd33f74570
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Excutor_jumping_weapon_4
+      rect:
+        serializedVersion: 2
+        x: 51
+        y: 143
+        width: 77
+        height: 87
+      alignment: 9
+      pivot: {x: 0.61783123, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 42e17d631e45bd940aa281def5433838
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Excutor_jumping_weapon_5
+      rect:
+        serializedVersion: 2
+        x: 207
+        y: 146
+        width: 79
+        height: 84
+      alignment: 9
+      pivot: {x: 0.6286297, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eee431f28ab8a7f42810afc515319ea4
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Excutor_jumping_weapon_6
+      rect:
+        serializedVersion: 2
+        x: 332
+        y: 154
+        width: 112
+        height: 76
+      alignment: 9
+      pivot: {x: 0.7333058, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 56c175d6dc2701a459eafb8694d27dd5
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Excutor_jumping_weapon_7
+      rect:
+        serializedVersion: 2
+        x: 479
+        y: 160
+        width: 123
+        height: 70
+      alignment: 9
+      pivot: {x: 0.75669897, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1bc8eed3b90ca5c45910d00ed96a9195
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Excutor_jumping_weapon_8
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 38
+        width: 123
+        height: 64
+      alignment: 9
+      pivot: {x: 0.7566999, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bf7ea0d3d2074fa41b21f6ec55c2f297
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Excutor_jumping_weapon_9
+      rect:
+        serializedVersion: 2
+        x: 165
+        y: 26
+        width: 121
+        height: 76
+      alignment: 9
+      pivot: {x: 0.7579434, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 89738961236a07849b3995a5c2dd4a72
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5553514f8c538b3439ed14783ca356d6
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

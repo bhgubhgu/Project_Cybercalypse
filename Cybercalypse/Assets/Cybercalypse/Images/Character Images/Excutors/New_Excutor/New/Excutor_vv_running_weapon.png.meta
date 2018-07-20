@@ -1,0 +1,307 @@
+fileFormatVersion: 2
+guid: 478072c0efebf8a41bd91f04b60b6b40
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: Excutor_vv_running_weapon_0
+    21300002: Excutor_vv_running_weapon_1
+    21300004: Excutor_vv_running_weapon_2
+    21300006: Excutor_vv_running_weapon_3
+    21300008: Excutor_vv_running_weapon_4
+    21300010: Excutor_vv_running_weapon_5
+    21300012: Excutor_vv_running_weapon_6
+    21300014: Excutor_vv_running_weapon_7
+    21300016: Excutor_vv_running_weapon_8
+    21300018: Excutor_vv_running_weapon_9
+  externalObjects: {}
+  serializedVersion: 6
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 300
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 2
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Excutor_vv_running_weapon_0
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 271
+        width: 113
+        height: 85
+      alignment: 9
+      pivot: {x: 0.7082617, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6994755bd72b85c449cff8f9c8a7ff1e
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Excutor_vv_running_weapon_1
+      rect:
+        serializedVersion: 2
+        x: 156
+        y: 275
+        width: 111
+        height: 78
+      alignment: 9
+      pivot: {x: 0.7296823, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 575f9837c85f1dd49806d269db82f9f9
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Excutor_vv_running_weapon_2
+      rect:
+        serializedVersion: 2
+        x: 306
+        y: 288
+        width: 107
+        height: 67
+      alignment: 9
+      pivot: {x: 0.7346026, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 55f85a0ed2ca0224eb1cd1866b792e22
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Excutor_vv_running_weapon_3
+      rect:
+        serializedVersion: 2
+        x: 451
+        y: 279
+        width: 103
+        height: 74
+      alignment: 9
+      pivot: {x: 0.7551376, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d540c872722aa8042b2dd60807bd365a
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Excutor_vv_running_weapon_4
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 145
+        width: 103
+        height: 76
+      alignment: 9
+      pivot: {x: 0.75513756, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fa226d31a87d1df4d95fbd4fec0aae3e
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Excutor_vv_running_weapon_5
+      rect:
+        serializedVersion: 2
+        x: 159
+        y: 145
+        width: 107
+        height: 78
+      alignment: 9
+      pivot: {x: 0.7016117, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 343942df20b88c640abe0edc0d62a550
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Excutor_vv_running_weapon_6
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 145
+        width: 115
+        height: 82
+      alignment: 9
+      pivot: {x: 0.69781864, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c5c1ae215b3cd6d48b10f52753a32900
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Excutor_vv_running_weapon_7
+      rect:
+        serializedVersion: 2
+        x: 445
+        y: 157
+        width: 118
+        height: 72
+      alignment: 9
+      pivot: {x: 0.6529019, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f6f3fa2b7837ed64280ebf207abf927c
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Excutor_vv_running_weapon_8
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 23
+        width: 119
+        height: 76
+      alignment: 9
+      pivot: {x: 0.67139304, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6723bc3e79c805e418ce6aba6dc9dffd
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Excutor_vv_running_weapon_9
+      rect:
+        serializedVersion: 2
+        x: 155
+        y: 14
+        width: 114
+        height: 83
+      alignment: 9
+      pivot: {x: 0.68579143, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4bf7166879da8ba4c9d72291e1b4e0c5
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 7b1b0166aed8be04ba231e38673b1106
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

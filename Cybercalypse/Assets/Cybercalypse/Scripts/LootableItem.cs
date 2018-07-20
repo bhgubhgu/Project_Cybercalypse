@@ -32,7 +32,6 @@ public class LootableItem : MonoBehaviour
         //coroutine = StartCoroutine(HoverItem(velocity));
     }
 
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag.Equals(triggerTag))
